@@ -1240,6 +1240,14 @@ img {
   height: 75px;
 }
 
+.partner-logo-deep {
+  height: 70px;
+}
+
+.partner-logo-anlam {
+  height: 65px;
+}
+
 /* ===== POSTS SECTION ===== */
 .posts-section {
   padding: 80px 0;
