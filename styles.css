@@ -1066,9 +1066,9 @@ img {
 .nav-link {
   font-family: 'DM Sans', -apple-system, BlinkMacSystemFont, sans-serif;
   font-size: 15px;
-  font-weight: 500;
+  font-weight: 700;
   color: #003080;
-  letter-spacing: 0.3px;
+  letter-spacing: 0.2px;
   transition: all 0.2s ease;
   display: flex;
   align-items: center;
@@ -1076,6 +1076,7 @@ img {
 
 .nav-link:hover {
   color: #0050b3;
+  opacity: 0.85;
 }
 
 .dropdown-icon {
