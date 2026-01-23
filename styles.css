@@ -865,13 +865,22 @@
   background: #f0f0f0;
 }
 .hl-main-img-wide {
-  height: 300px;
+  min-height: 300px;
   max-width: 420px;
+  background: #e6e4ea url('assets/images/fatih-hero.png') center center/cover no-repeat;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 16px;
+  overflow: hidden;
 }
 .hl-main-img-wide img {
   width: 100%;
   height: 100%;
+  min-height: 220px;
   object-fit: cover;
+  background: #e6e4ea url('assets/images/fatih-hero.png') center center/cover no-repeat;
+  display: block;
 }
 /* ===== BASE STYLES ===== */
 * {
@@ -922,7 +931,8 @@ img {
 .container {
   max-width: 1400px;
   margin: 0 auto;
-  padding: 0 40px;
+  padding: 0 80px;
+  box-sizing: border-box;
 }
 
 /* ===== AKADEMIK PAGE - FULL WIDTH ===== */
@@ -2231,7 +2241,11 @@ img {
 .newsroom-list {
   display: flex;
   flex-direction: column;
-  gap: 24px;
+  gap: 28px;
+  justify-content: center;
+  align-items: center;
+  padding: 0 32px;
+  box-sizing: border-box;
 }
 
 .newsroom-item {
