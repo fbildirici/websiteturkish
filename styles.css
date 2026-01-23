@@ -1064,20 +1064,18 @@ img {
 }
 
 .nav-link {
-  font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  font-family: 'DM Sans', -apple-system, BlinkMacSystemFont, sans-serif;
   font-size: 15px;
-  font-weight: 600;
+  font-weight: 500;
   color: #003080;
-  letter-spacing: -0.2px;
+  letter-spacing: 0.3px;
   transition: all 0.2s ease;
   display: flex;
   align-items: center;
-  gap: 4px;
 }
 
 .nav-link:hover {
-  opacity: 0.7;
-  transform: translateY(-1px);
+  color: #0050b3;
 }
 
 .dropdown-icon {
