@@ -3105,7 +3105,7 @@ img {
   align-items: center;
   justify-content: center;
   padding: 14px 32px;
-  background: #e85a3c;
+  background: #003080;
   color: #fff;
   font-size: 15px;
   font-weight: 600;
@@ -3116,8 +3116,20 @@ img {
 }
 
 .btn-submit-contact:hover {
-  background: #d04a2c;
+  background: #002060;
   transform: translateY(-1px);
+}
+
+.contact-link {
+  color: #003080;
+  font-weight: 600;
+  text-decoration: none;
+  transition: color 0.2s;
+}
+
+.contact-link:hover {
+  color: #0050b3;
+  text-decoration: underline;
 }
 
 /* Contact Page Responsive */

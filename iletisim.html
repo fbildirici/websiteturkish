@@ -36,7 +36,8 @@
           <p class="contact-desc">İletişime geçmekten çekinmeyin; mesajlarınız ve geri bildirimleriniz benim için çok değerli.</p>
         </div>
 
-        <form class="contact-form" id="contactForm">
+        <form class="contact-form" id="contactForm" action="https://formspree.io/f/xjkvqpwz" method="POST">
+          <input type="hidden" name="_to" value="fatihbildirici.dev@gmail.com">
           <div class="form-row">
             <div class="form-group">
               <input type="text" name="firstName" placeholder="Adınız" required class="form-input">
@@ -45,11 +46,11 @@
               <input type="text" name="lastName" placeholder="Soyadınız" required class="form-input">
             </div>
           </div>
-          
+
           <div class="form-group">
             <input type="email" name="email" placeholder="E-posta" required class="form-input">
           </div>
-          
+
           <div class="form-group">
             <select name="subject" class="form-input form-select">
               <option value="" disabled selected>Genel iletişim</option>
@@ -60,7 +61,7 @@
               <option value="diger">Diğer</option>
             </select>
           </div>
-          
+
           <div class="form-group">
             <textarea name="message" rows="6" placeholder="Mesajınız" required class="form-input form-textarea"></textarea>
           </div>
@@ -69,13 +70,13 @@
             <label class="checkbox-label">
               <input type="checkbox" name="privacy" required>
               <span class="checkmark"></span>
-              <span class="checkbox-text">Formu göndererek <a href="aydinlatma-metni.html">Aydınlatma Metni</a>'ni okuduğunuzu ve kişisel verilerinizin iletişim amacıyla işlenmesini kabul ettiğinizi beyan etmiş olursunuz.</span>
+              <span class="checkbox-text">Formu göndererek <a href="aydinlatma-metni.html" class="contact-link">Aydınlatma Metni</a>'ni okuduğunuzu ve kişisel verilerinizin iletişim amacıyla işlenmesini kabul ettiğinizi beyan etmiş olursunuz.</span>
             </label>
-            
+
             <label class="checkbox-label">
               <input type="checkbox" name="newsletter">
               <span class="checkmark"></span>
-              <span class="checkbox-text">Son gelişmelere e-posta bülteni üzerinden ulaşmak ve tarafıma ticari elektronik ileti gönderilmesine <a href="acik-riza-metni.html">açık rıza</a> veriyorum.</span>
+              <span class="checkbox-text">Son gelişmelere e-posta bülteni üzerinden ulaşmak ve tarafıma ticari elektronik ileti gönderilmesine <a href="acik-riza-metni.html" class="contact-link">açık rıza</a> veriyorum.</span>
             </label>
           </div>
 
@@ -126,7 +127,7 @@
       <div class="footer-bottom">
         <p class="copyright">Copyright © 2026. Tüm hakları saklıdır.</p>
         <div class="social-links">
-          <a href="mailto:hello@fatihbildirici.com" target="_blank" class="social-icon" aria-label="Mail">
+          <a href="mailto:fatihbildirici.dev@gmail.com" target="_blank" class="social-icon" aria-label="Mail">
             <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 2v.01L12 13 4 6.01V6h16zM4 20v-9.99l8 6.99 8-6.99V20H4z"/></svg>
           </a>
           <a href="https://instagram.com/fatihbildirici" target="_blank" class="social-icon" aria-label="Instagram">
@@ -143,14 +144,6 @@
     </div>
   </footer>
 
-  <script>
-    const form = document.getElementById('contactForm');
-    form.addEventListener('submit', (e) => {
-      e.preventDefault();
-      alert('Mesajınız alındı. Teşekkürler!');
-      form.reset();
-    });
-  </script>
   <script src="script.js"></script>
 </body>
 </html>
