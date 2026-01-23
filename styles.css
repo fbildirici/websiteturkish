@@ -1064,16 +1064,20 @@ img {
 }
 
 .nav-link {
-  font-size: 14px;
-  font-weight: 500;
-  transition: opacity 0.2s;
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  font-size: 15px;
+  font-weight: 600;
+  color: #003080;
+  letter-spacing: -0.2px;
+  transition: all 0.2s ease;
   display: flex;
   align-items: center;
   gap: 4px;
 }
 
 .nav-link:hover {
-  opacity: 0.6;
+  opacity: 0.7;
+  transform: translateY(-1px);
 }
 
 .dropdown-icon {
@@ -1246,6 +1250,7 @@ img {
 
 .partner-logo-anlam {
   height: 65px;
+  filter: brightness(0) invert(1);
 }
 
 /* ===== POSTS SECTION ===== */
