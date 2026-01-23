@@ -52,47 +52,8 @@
       </div>
 
       <!-- Yazılar Grid -->
-      <div class="yazilar-grid">
-
-        <!-- Yazı 1 - Newsroom -->
-        <article class="yazi-card" data-category="newsroom">
-          <a href="yazi-1.html" class="yazi-card-image">
-            <span class="yazi-badge">Newsroom</span>
-            <img src="https://images.unsplash.com/photo-1677442136019-21780ecad995?w=400&h=300&fit=crop" alt="Responsible AI">
-          </a>
-          <div class="yazi-card-body">
-            <span class="yazi-date">05 ARA 2025 · 1 DK. OKUMA SÜRESİ</span>
-            <h3 class="yazi-title">Responsible AI Institute Research Fellow Oldum</h3>
-            <p class="yazi-excerpt">Sorumlu yapay zeka geliştirme alanında araştırma bursu aldım. Şeffaflık ve etik AI sistemleri üzerine çalışmalar yapacağım.</p>
-          </div>
-        </article>
-
-        <!-- Yazı 2 - Deneme -->
-        <article class="yazi-card" data-category="deneme">
-          <a href="yazi-2.html" class="yazi-card-image">
-            <span class="yazi-badge badge-deneme">Deneme</span>
-            <img src="https://images.unsplash.com/photo-1620712943543-bcc4688e7485?w=400&h=300&fit=crop" alt="AI and Consciousness">
-          </a>
-          <div class="yazi-card-body">
-            <span class="yazi-date">12 KAS 2025 · 5 DK. OKUMA SÜRESİ</span>
-            <h3 class="yazi-title">Yapay Zeka ve İnsan Bilinci Üzerine</h3>
-            <p class="yazi-excerpt">Bilişsel bilimler ve yapay zeka kesişiminde en derin sorulardan biri: Makineler bilinçli olabilir mi?</p>
-          </div>
-        </article>
-
-        <!-- Yazı 3 - Makale -->
-        <article class="yazi-card" data-category="makale">
-          <a href="yazi-3.html" class="yazi-card-image">
-            <span class="yazi-badge badge-makale">Makale</span>
-            <img src="https://images.unsplash.com/photo-1555949963-aa79dcee981c?w=400&h=300&fit=crop" alt="Explainable AI">
-          </a>
-          <div class="yazi-card-body">
-            <span class="yazi-date">28 EKİ 2025 · 8 DK. OKUMA SÜRESİ</span>
-            <h3 class="yazi-title">Açıklanabilir Yapay Zeka: Kara Kutuyu Aydınlatmak</h3>
-            <p class="yazi-excerpt">Yapay zeka sistemleri hayatımızın kritik alanlarında karar verirken, bu kararların "neden" verildiğini anlamak artık bir zorunluluk.</p>
-          </div>
-        </article>
-
+      <div class="yazilar-grid" id="yazilarGrid">
+        <!-- Articles will be rendered dynamically -->
       </div>
 
       <!-- Load More -->
@@ -160,10 +121,31 @@
     </div>
   </footer>
 
+  <script src="articles.js"></script>
   <script>
+    // Render articles from shared data
+    function renderArticles(articles) {
+      const grid = document.getElementById('yazilarGrid');
+      grid.innerHTML = articles.map(article => `
+        <article class="yazi-card" data-category="${article.category}">
+          <a href="${article.link}" class="yazi-card-image">
+            <span class="yazi-badge ${article.badgeClass}">${article.badge}</span>
+            <img src="${article.image}" alt="${article.title}">
+          </a>
+          <div class="yazi-card-body">
+            <span class="yazi-date">${article.date} · ${article.readTime}</span>
+            <h3 class="yazi-title">${article.title}</h3>
+            <p class="yazi-excerpt">${article.excerpt}</p>
+          </div>
+        </article>
+      `).join('');
+    }
+
+    // Initial render
+    renderArticles(articlesData);
+
     // Filter functionality
     const filterTags = document.querySelectorAll('.yazi-tag');
-    const articles = document.querySelectorAll('.yazi-card');
 
     filterTags.forEach(tag => {
       tag.addEventListener('click', () => {
@@ -173,14 +155,8 @@
         tag.classList.add('active');
 
         const filter = tag.dataset.filter;
-
-        articles.forEach(article => {
-          if (filter === 'all' || article.dataset.category === filter) {
-            article.style.display = 'block';
-          } else {
-            article.style.display = 'none';
-          }
-        });
+        const filteredArticles = getArticlesByCategory(filter);
+        renderArticles(filteredArticles);
       });
     });
   </script>
