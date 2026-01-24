@@ -44,7 +44,7 @@ const articlesData = [
     category: "newsroom",
     badge: "Newsroom",
     badgeClass: "",
-    image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRg1nxlHGVy_CT_VBo64qsJe5rzb9wcHPwZ3g&s",
+    image: "assets/images/podcast.jpeg",
     date: "15 OCA 2025",
     readTime: "2 DK. OKUMA SÜRESİ",
     title: "PowerFM Podcast Ödülleri - En İyi Bilim-Teknoloji Podcasti Adayı",
