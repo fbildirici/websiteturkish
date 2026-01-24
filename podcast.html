@@ -120,247 +120,272 @@
   </footer>
 
   <script>
-    // RSS Feed'den Podcast Bölümlerini Çek
-    const RSS_URL = 'https://anchor.fm/s/101fc0074/podcast/rss';
-    const MAX_EPISODES = 12;
-    const DEFAULT_IMAGE = 'https://d3t3ozftmdmh3i.cloudfront.net/staging/podcast_uploaded_nologo/43182597/43182597-1762802752790-6f397aa01c377.jpg';
-    const CACHE_KEY = 'podcast_rss_cache';
-    const CACHE_DURATION = 30 * 60 * 1000; // 30 dakika
+    // Podcast Yükleme Sistemi - Optimized v2
+    const CONFIG = {
+      RSS_URL: 'https://anchor.fm/s/101fc0074/podcast/rss',
+      MAX_EPISODES: 12,
+      DEFAULT_IMAGE: 'https://d3t3ozftmdmh3i.cloudfront.net/staging/podcast_uploaded_nologo/43182597/43182597-1762802752790-6f397aa01c377.jpg',
+      CACHE_KEY: 'podcast_rss_cache_v2',
+      CACHE_DURATION: 60 * 60 * 1000, // 1 saat
+      TIMEOUT: 8000
+    };
 
-    async function loadPodcastEpisodes() {
-      const grid = document.getElementById('podcast-grid');
+    // CORS Proxy'leri - paralel olarak denenecek
+    const CORS_PROXIES = [
+      { url: 'https://api.allorigins.win/raw?url=', type: 'raw' },
+      { url: 'https://corsproxy.io/?', type: 'raw' },
+      { url: 'https://api.codetabs.com/v1/proxy?quest=', type: 'raw' }
+    ];
 
-      // Cache'i kontrol et
-      const cached = localStorage.getItem(CACHE_KEY);
-      let xmlText = null;
-
-      if (cached) {
-        try {
-          const { data, timestamp } = JSON.parse(cached);
-          if (Date.now() - timestamp < CACHE_DURATION) {
-            xmlText = data;
-            console.log('RSS cache\'den yüklendi');
-          }
-        } catch (e) {
-          localStorage.removeItem(CACHE_KEY);
-        }
-      }
-
-      // Cache yoksa veya eskiyse fetch et
-      if (!xmlText) {
-        // Birden fazla CORS proxy dene
-        const corsProxies = [
-          'https://api.allorigins.win/get?url=',
-          'https://api.allorigins.win/raw?url=',
-          'https://corsproxy.io/?'
-        ];
-
-        for (const proxy of corsProxies) {
-          try {
-            const controller = new AbortController();
-            const timeout = setTimeout(() => controller.abort(), 5000);
-
-            const response = await fetch(proxy + encodeURIComponent(RSS_URL), {
-              signal: controller.signal
-            });
-            clearTimeout(timeout);
-
-            if (response.ok) {
-              // JSON wrapper mı yoksa raw mı kontrol et
-              if (proxy.includes('/get?url=')) {
-                const data = await response.json();
-                xmlText = data.contents;
-              } else {
-                xmlText = await response.text();
-              }
-
-              if (xmlText && xmlText.includes('<item>')) {
-                // Cache'e kaydet
-                localStorage.setItem(CACHE_KEY, JSON.stringify({
-                  data: xmlText,
-                  timestamp: Date.now()
-                }));
-                console.log('RSS başarıyla yüklendi:', proxy);
-                break;
-              }
-            }
-          } catch (e) {
-            console.log('Proxy failed:', proxy, e);
-          }
-        }
-      }
-
-      if (!xmlText || !xmlText.includes('<item>')) {
-        grid.innerHTML = `
-          <div style="grid-column: 1 / -1; text-align: center; padding: 60px;">
-            <p style="color: #666;">Bölümler yüklenirken bir hata oluştu. Lütfen sayfayı yenileyin.</p>
-          </div>
-        `;
-        return;
-      }
-      
-      try {
-        const parser = new DOMParser();
-        const xml = parser.parseFromString(xmlText, 'text/xml');
-        
-        const items = xml.querySelectorAll('item');
-        let html = '';
-        
-        const episodes = Array.from(items).slice(0, MAX_EPISODES);
-        
-        episodes.forEach((item) => {
-          const title = item.querySelector('title')?.textContent || 'Başlıksız Bölüm';
-          const description = item.querySelector('description')?.textContent || '';
-          const pubDate = item.querySelector('pubDate')?.textContent || '';
-          const link = item.querySelector('link')?.textContent || '#';
-          
-          // Bölüme özel kapak resmini al - farklı yöntemler dene
-          let itunesImage = DEFAULT_IMAGE;
-          
-          // Yöntem 1: Namespace ile
-          const itunesImageNS = item.getElementsByTagNameNS('http://www.itunes.com/dtds/podcast-1.0.dtd', 'image');
-          if (itunesImageNS.length > 0 && itunesImageNS[0].getAttribute('href')) {
-            itunesImage = itunesImageNS[0].getAttribute('href');
-          } else {
-            // Yöntem 2: Regex ile XML'den çıkar
-            const itemXml = new XMLSerializer().serializeToString(item);
-            const imageMatch = itemXml.match(/itunes:image[^>]*href=["']([^"']+)["']/i);
-            if (imageMatch && imageMatch[1]) {
-              itunesImage = imageMatch[1];
-            }
-          }
-          
-          // Tarihi formatla
-          const date = new Date(pubDate);
-          const formattedDate = date.toLocaleDateString('tr-TR', { 
-            day: 'numeric', 
-            month: 'short', 
-            year: 'numeric' 
-          });
-          
-          // Açıklamayı temizle ve kısalt
-          let cleanDesc = description
-            .replace(/<[^>]*>/g, '')
-            .replace(/&nbsp;/g, ' ')
-            .replace(/&amp;/g, '&')
-            .replace(/&#39;/g, "'")
-            .replace(/&quot;/g, '"')
-            .trim();
-          cleanDesc = cleanDesc.length > 120 ? cleanDesc.substring(0, 120) + '...' : cleanDesc;
-          
-          // Başlıktan özel karakterleri temizle
-          const cleanTitle = title.replace(/</g, '&lt;').replace(/>/g, '&gt;');
-          
-          html += `
-            <div class="podcast-card">
-              <a href="${link}" target="_blank" class="podcast-card-image">
-                <img src="${itunesImage}" alt="${cleanTitle}" loading="lazy" onerror="this.src='${DEFAULT_IMAGE}'">
-              </a>
-              <div class="podcast-card-body">
-                <div class="podcast-card-meta">
-                  <span class="podcast-card-tag">Podcast</span>
-                  <span class="podcast-card-date">${formattedDate}</span>
-                </div>
-                <h3 class="podcast-card-title">${cleanTitle}</h3>
-                <p class="podcast-card-desc">${cleanDesc}</p>
-                <div class="podcast-card-links">
-                  <a href="https://podcasts.apple.com/tr/podcast/otostop%C3%A7unun-yapay-zeka-rehberi/id1801285722" target="_blank" title="Apple Podcasts">
-                    <img src="https://upload.wikimedia.org/wikipedia/commons/e/e7/Podcasts_%28iOS%29.svg" alt="Apple Podcasts">
-                  </a>
-                  <a href="https://open.spotify.com/show/4wJPUBJcqQsnoLxWqEMCjJ" target="_blank" title="Spotify">
-                    <img src="https://upload.wikimedia.org/wikipedia/commons/8/84/Spotify_icon.svg" alt="Spotify">
-                  </a>
-                  <a href="https://www.youtube.com/@otostopcununyzrehberipodcast" target="_blank" title="YouTube">
-                    <img src="https://upload.wikimedia.org/wikipedia/commons/0/09/YouTube_full-color_icon_%282017%29.svg" alt="YouTube">
-                  </a>
-                </div>
-              </div>
+    // Podcast kartı HTML oluştur
+    function createPodcastCard(episode) {
+      return `
+        <div class="podcast-card">
+          <a href="${episode.link}" target="_blank" class="podcast-card-image">
+            <img src="${episode.image}" alt="${episode.title}" loading="lazy" onerror="this.src='${CONFIG.DEFAULT_IMAGE}'">
+          </a>
+          <div class="podcast-card-body">
+            <div class="podcast-card-meta">
+              <span class="podcast-card-tag">Podcast</span>
+              <span class="podcast-card-date">${episode.date}</span>
             </div>
-          `;
-        });
-        
-        grid.innerHTML = html;
-        
-      } catch (error) {
-        console.error('Podcast parse hatası:', error);
-        grid.innerHTML = `
-          <div style="grid-column: 1 / -1; text-align: center; padding: 60px;">
-            <p style="color: #666;">Bölümler yüklenirken bir hata oluştu. Lütfen sayfayı yenileyin.</p>
+            <h3 class="podcast-card-title">${episode.title}</h3>
+            <p class="podcast-card-desc">${episode.desc}</p>
+            <div class="podcast-card-links">
+              <a href="https://podcasts.apple.com/tr/podcast/otostop%C3%A7unun-yapay-zeka-rehberi/id1801285722" target="_blank" title="Apple Podcasts">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/e/e7/Podcasts_%28iOS%29.svg" alt="Apple Podcasts">
+              </a>
+              <a href="https://open.spotify.com/show/4wJPUBJcqQsnoLxWqEMCjJ" target="_blank" title="Spotify">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/8/84/Spotify_icon.svg" alt="Spotify">
+              </a>
+              <a href="https://www.youtube.com/@otostopcununyzrehberipodcast" target="_blank" title="YouTube">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/0/09/YouTube_full-color_icon_%282017%29.svg" alt="YouTube">
+              </a>
+            </div>
           </div>
-        `;
+        </div>
+      `;
+    }
+
+    // XML'den bölümleri parse et
+    function parseEpisodes(xmlText) {
+      const parser = new DOMParser();
+      const xml = parser.parseFromString(xmlText, 'text/xml');
+      const items = xml.querySelectorAll('item');
+      const episodes = [];
+
+      Array.from(items).slice(0, CONFIG.MAX_EPISODES).forEach(item => {
+        const title = item.querySelector('title')?.textContent || 'Başlıksız Bölüm';
+        const description = item.querySelector('description')?.textContent || '';
+        const pubDate = item.querySelector('pubDate')?.textContent || '';
+        const link = item.querySelector('link')?.textContent || '#';
+
+        // Kapak resmini al
+        let image = CONFIG.DEFAULT_IMAGE;
+        const itemXml = new XMLSerializer().serializeToString(item);
+        const imageMatch = itemXml.match(/itunes:image[^>]*href=["']([^"']+)["']/i);
+        if (imageMatch && imageMatch[1]) {
+          image = imageMatch[1];
+        }
+
+        // Tarihi formatla
+        const date = new Date(pubDate);
+        const formattedDate = date.toLocaleDateString('tr-TR', {
+          day: 'numeric',
+          month: 'short',
+          year: 'numeric'
+        });
+
+        // Açıklamayı temizle
+        let cleanDesc = description
+          .replace(/<[^>]*>/g, '')
+          .replace(/&nbsp;/g, ' ')
+          .replace(/&amp;/g, '&')
+          .replace(/&#39;/g, "'")
+          .replace(/&quot;/g, '"')
+          .trim();
+        cleanDesc = cleanDesc.length > 120 ? cleanDesc.substring(0, 120) + '...' : cleanDesc;
+
+        episodes.push({
+          title: title.replace(/</g, '&lt;').replace(/>/g, '&gt;'),
+          desc: cleanDesc,
+          date: formattedDate,
+          link: link,
+          image: image
+        });
+      });
+
+      return episodes;
+    }
+
+    // Tek proxy'den fetch et
+    async function fetchWithProxy(proxy) {
+      const controller = new AbortController();
+      const timeoutId = setTimeout(() => controller.abort(), CONFIG.TIMEOUT);
+
+      try {
+        const response = await fetch(proxy.url + encodeURIComponent(CONFIG.RSS_URL), {
+          signal: controller.signal
+        });
+        clearTimeout(timeoutId);
+
+        if (!response.ok) throw new Error('Response not OK');
+
+        const text = await response.text();
+        if (!text.includes('<item>')) throw new Error('Invalid RSS');
+
+        return text;
+      } catch (e) {
+        clearTimeout(timeoutId);
+        throw e;
       }
     }
 
-    // Sayfa yüklendiğinde çalıştır
-    document.addEventListener('DOMContentLoaded', loadPodcastEpisodes);
+    // Tüm proxy'leri paralel dene - ilk başarılı olanı al
+    async function fetchRSSParallel() {
+      const promises = CORS_PROXIES.map(proxy =>
+        fetchWithProxy(proxy).catch(() => null)
+      );
 
-    // Podcast Arama Fonksiyonu
-    document.addEventListener('DOMContentLoaded', function() {
-      const searchForm = document.getElementById('podcastSearchForm');
-      const searchInput = document.getElementById('podcastSearchInput');
-      const podcastGrid = document.getElementById('podcast-grid');
+      // Promise.any gibi çalışır - ilk başarılı sonucu döndürür
+      const results = await Promise.all(promises);
+      return results.find(r => r !== null) || null;
+    }
 
-      let allPodcasts = [];
+    // Cache'den oku
+    function getFromCache() {
+      try {
+        const cached = localStorage.getItem(CONFIG.CACHE_KEY);
+        if (cached) {
+          const { episodes, timestamp } = JSON.parse(cached);
+          if (Date.now() - timestamp < CONFIG.CACHE_DURATION) {
+            return episodes;
+          }
+        }
+      } catch (e) {
+        localStorage.removeItem(CONFIG.CACHE_KEY);
+      }
+      return null;
+    }
 
-      // Podcast'ler yüklendikten sonra listeyi sakla
-      const originalLoadPodcastEpisodes = loadPodcastEpisodes;
-      loadPodcastEpisodes = async function() {
-        await originalLoadPodcastEpisodes();
-        // Yüklenen kartları sakla
-        allPodcasts = Array.from(podcastGrid.querySelectorAll('.podcast-card')).map(card => ({
-          element: card.cloneNode(true),
-          title: card.querySelector('.podcast-card-title')?.textContent.toLowerCase() || '',
-          desc: card.querySelector('.podcast-card-desc')?.textContent.toLowerCase() || ''
+    // Cache'e yaz
+    function saveToCache(episodes) {
+      try {
+        localStorage.setItem(CONFIG.CACHE_KEY, JSON.stringify({
+          episodes: episodes,
+          timestamp: Date.now()
         }));
-      };
+      } catch (e) {
+        console.warn('Cache yazılamadı');
+      }
+    }
 
-      // Arama fonksiyonu
-      function searchPodcasts(query) {
-        const lowerQuery = query.toLowerCase().trim();
+    // Ana yükleme fonksiyonu
+    async function loadPodcastEpisodes() {
+      const grid = document.getElementById('podcast-grid');
+      let episodes = null;
 
-        if (!lowerQuery) {
-          // Tüm podcast'leri göster
-          podcastGrid.innerHTML = '';
-          allPodcasts.forEach(podcast => {
-            podcastGrid.appendChild(podcast.element.cloneNode(true));
-          });
-          return;
-        }
+      // 1. Önce cache'den dene
+      episodes = getFromCache();
+      if (episodes && episodes.length > 0) {
+        console.log('Cache\'den yüklendi');
+        grid.innerHTML = episodes.map(createPodcastCard).join('');
+        initSearch(episodes);
 
-        // Filtreleme
-        const filtered = allPodcasts.filter(podcast =>
-          podcast.title.includes(lowerQuery) || podcast.desc.includes(lowerQuery)
-        );
+        // Arka planda güncelle
+        fetchRSSParallel().then(xmlText => {
+          if (xmlText) {
+            const newEpisodes = parseEpisodes(xmlText);
+            if (newEpisodes.length > 0) {
+              saveToCache(newEpisodes);
+            }
+          }
+        }).catch(() => {});
 
-        // Sonuçları göster
-        if (filtered.length === 0) {
-          podcastGrid.innerHTML = `
-            <div style="grid-column: 1 / -1; text-align: center; padding: 60px;">
-              <p style="color: #666; font-size: 14px;">
-                <strong>"${query}"</strong> için sonuç bulunamadı.
-              </p>
-            </div>
-          `;
-        } else {
-          podcastGrid.innerHTML = '';
-          filtered.forEach(podcast => {
-            podcastGrid.appendChild(podcast.element.cloneNode(true));
-          });
-        }
+        return;
       }
 
-      // Form submit
+      // 2. Cache yoksa RSS'den çek
+      try {
+        const xmlText = await fetchRSSParallel();
+
+        if (xmlText) {
+          episodes = parseEpisodes(xmlText);
+          if (episodes.length > 0) {
+            saveToCache(episodes);
+            grid.innerHTML = episodes.map(createPodcastCard).join('');
+            initSearch(episodes);
+            return;
+          }
+        }
+      } catch (e) {
+        console.error('RSS yüklenemedi:', e);
+      }
+
+      // 3. Hiçbiri çalışmazsa hata göster
+      grid.innerHTML = `
+        <div style="grid-column: 1 / -1; text-align: center; padding: 60px;">
+          <p style="color: #666; margin-bottom: 16px;">Bölümler yüklenirken bir sorun oluştu.</p>
+          <button onclick="location.reload()" style="padding: 10px 20px; background: #003080; color: white; border: none; border-radius: 6px; cursor: pointer;">Tekrar Dene</button>
+          <p style="margin-top: 16px;">
+            <a href="https://open.spotify.com/show/4wJPUBJcqQsnoLxWqEMCjJ" target="_blank" style="color: #003080;">Spotify'da Dinle</a> |
+            <a href="https://podcasts.apple.com/tr/podcast/otostop%C3%A7unun-yapay-zeka-rehberi/id1801285722" target="_blank" style="color: #003080;">Apple Podcasts</a>
+          </p>
+        </div>
+      `;
+    }
+
+    // Arama fonksiyonu
+    let allEpisodes = [];
+
+    function initSearch(episodes) {
+      allEpisodes = episodes;
+    }
+
+    function searchPodcasts(query) {
+      const grid = document.getElementById('podcast-grid');
+      const lowerQuery = query.toLowerCase().trim();
+
+      if (!lowerQuery) {
+        grid.innerHTML = allEpisodes.map(createPodcastCard).join('');
+        return;
+      }
+
+      const filtered = allEpisodes.filter(ep =>
+        ep.title.toLowerCase().includes(lowerQuery) ||
+        ep.desc.toLowerCase().includes(lowerQuery)
+      );
+
+      if (filtered.length === 0) {
+        grid.innerHTML = `
+          <div style="grid-column: 1 / -1; text-align: center; padding: 60px;">
+            <p style="color: #666;"><strong>"${query}"</strong> için sonuç bulunamadı.</p>
+          </div>
+        `;
+      } else {
+        grid.innerHTML = filtered.map(createPodcastCard).join('');
+      }
+    }
+
+    // Event listeners
+    document.addEventListener('DOMContentLoaded', function() {
+      loadPodcastEpisodes();
+
+      const searchForm = document.getElementById('podcastSearchForm');
+      const searchInput = document.getElementById('podcastSearchInput');
+
       if (searchForm) {
-        searchForm.addEventListener('submit', function(e) {
+        searchForm.addEventListener('submit', e => {
           e.preventDefault();
           searchPodcasts(searchInput.value);
         });
       }
 
-      // Gerçek zamanlı arama (opsiyonel)
       if (searchInput) {
+        let debounceTimer;
         searchInput.addEventListener('input', function() {
-          searchPodcasts(this.value);
+          clearTimeout(debounceTimer);
+          debounceTimer = setTimeout(() => searchPodcasts(this.value), 300);
         });
       }
     });
