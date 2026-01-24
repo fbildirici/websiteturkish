@@ -44,26 +44,13 @@ const articlesData = [
     category: "newsroom",
     badge: "Newsroom",
     badgeClass: "",
-    image: "https://images.unsplash.com/photo-1591453089816-0fbb971b454c?w=400&h=250&fit=crop",
-    date: "15 KAS 2024",
+    image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRg1nxlHGVy_CT_VBo64qsJe5rzb9wcHPwZ3g&s",
+    date: "15 OCA 2025",
     readTime: "2 DK. OKUMA SÜRESİ",
-    title: "AICon 0.2 - Açıklanabilir Yapay Zeka Konuşması",
-    excerpt: "Ankara Üniversitesi YazGit'te \"Demystifying Machine Intelligence: The Path to Explainable AI\" başlıklı keynote konuşma yaptım.",
+    title: "PowerFM Podcast Ödülleri - En İyi Bilim-Teknoloji Podcasti Adayı",
+    excerpt: "Otostopçunun Yapay Zeka Rehberi, PowerFM Podcast Ödülleri'nde En İyi Bilim-Teknoloji Podcasti kategorisinde aday gösterildi. Yapay zeka ve teknoloji alanında Türkiye'nin en kapsamlı podcast içeriğiyle ödüle layık görüldük.",
     link: "#",
-    newsroomDate: "KASIM 2024"
-  },
-  {
-    id: 5,
-    category: "newsroom",
-    badge: "Newsroom",
-    badgeClass: "",
-    image: "https://images.unsplash.com/photo-1485827404703-89b55fcc595e?w=400&h=250&fit=crop",
-    date: "20 OCA 2024",
-    readTime: "2 DK. OKUMA SÜRESİ",
-    title: "Otostopçunun Yapay Zeka Rehberi - Türkiye'nin #1 AI Podcasti",
-    excerpt: "Douglas Adams'ın eserine ilham alan podcast, Türkiye'nin en çok dinlenen yapay zeka podcasti oldu.",
-    link: "#",
-    newsroomDate: "OCAK 2024"
+    newsroomDate: "OCAK 2025"
   }
 ];
 
