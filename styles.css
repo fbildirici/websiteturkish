@@ -3693,6 +3693,60 @@ img {
   border-top: none;
 }
 
+/* Academic Talks List */
+.academic-talks-list {
+  list-style: none;
+  padding: 0;
+  margin: 24px 0 0 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+
+.academic-talk-item {
+  display: flex;
+  flex-direction: column;
+  padding: 20px 0;
+  border-bottom: 1px solid #eee;
+  transition: all 0.2s ease;
+}
+
+.academic-talk-item:first-child {
+  padding-top: 0;
+}
+
+.academic-talk-item:last-child {
+  border-bottom: none;
+}
+
+.academic-talk-item:hover {
+  padding-left: 12px;
+}
+
+.academic-talk-item::before {
+  content: none;
+}
+
+.talk-title {
+  font-size: 15px;
+  font-weight: 600;
+  color: #1a1a1a;
+  line-height: 1.5;
+  margin-bottom: 6px;
+  transition: color 0.2s ease;
+}
+
+.academic-talk-item:hover .talk-title {
+  color: #003080;
+}
+
+.talk-meta {
+  font-size: 13px;
+  color: #666;
+  line-height: 1.5;
+  font-style: italic;
+}
+
 /* Talks Modern */
 .talks-modern {
   display: grid;
