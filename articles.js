@@ -49,7 +49,7 @@ const articlesData = [
     readTime: "2 DK. OKUMA SÜRESİ",
     title: "PowerFM Podcast Ödülleri - En İyi Bilim-Teknoloji Podcasti Adayı",
     excerpt: "Otostopçunun Yapay Zeka Rehberi, PowerFM Podcast Ödülleri'nde En İyi Bilim-Teknoloji Podcasti kategorisinde aday gösterildi. Yapay zeka ve teknoloji alanında Türkiye'nin en kapsamlı podcast içeriğiyle ödüle layık görüldük.",
-    link: "#",
+    link: "haber-powerfm.html",
     newsroomDate: "OCAK 2025"
   }
 ];
