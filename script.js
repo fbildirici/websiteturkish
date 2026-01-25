@@ -143,14 +143,11 @@ document.addEventListener('DOMContentLoaded', function() {
 
     try {
       const formData = new FormData(form);
-      const response = await fetch(scriptUrl, {
+      await fetch(scriptUrl, {
         method: 'POST',
-        body: formData
+        body: formData,
+        mode: 'no-cors'
       });
-
-      if (!response.ok) {
-        throw new Error('Form gönderimi başarısız');
-      }
 
       if (statusEl) {
         statusEl.textContent = 'Mesajınız alındı. Teşekkürler.';
