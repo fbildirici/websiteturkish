@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Sora:wght@400;500;600;700&display=swap');
+
 /* ===== NELER YAPIYORUM SECTION ===== */
 .what-i-do-section {
   background: #f5f5f5;
@@ -1074,11 +1076,11 @@ img {
 }
 
 .nav-link {
-  font-family: 'DM Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+  font-family: 'Sora', 'DM Sans', -apple-system, BlinkMacSystemFont, sans-serif;
   font-size: 15px;
-  font-weight: 700;
+  font-weight: 600;
   color: #003080;
-  letter-spacing: 0.2px;
+  letter-spacing: 0.4px;
   transition: all 0.2s ease;
   display: flex;
   align-items: center;
@@ -2268,7 +2270,7 @@ img {
   font-weight: 800;
   color: #1a1a1a;
   margin-bottom: 8px;
-  font-style: italic;
+  font-style: normal;
 }
 
 .about-tagline {
@@ -2600,7 +2602,7 @@ img {
   font-weight: 800;
   color: #1a1a1a;
   margin-bottom: 12px;
-  font-style: italic;
+  font-style: normal;
   letter-spacing: -0.5px;
 }
 
