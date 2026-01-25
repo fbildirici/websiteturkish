@@ -1,4 +1,4 @@
-// Shared articles data for yazilar.html and hakkinda.html
+// Shared articles data for gelismeler.html and hakkinda.html
 const articlesData = [
   {
     id: 1,

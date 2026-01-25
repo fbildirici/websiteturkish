@@ -1767,6 +1767,10 @@ img {
   .container {
     padding: 0 16px;
   }
+
+  .academic-page .container {
+    padding: 0 16px;
+  }
 }
 
 /* ===== ABOUT PAGE STYLES ===== */
@@ -2506,6 +2510,25 @@ img {
   .about-main {
     max-width: 100%;
   }
+
+  .academic-page .container {
+    padding: 0 40px;
+  }
+
+  .academic-page .about-layout {
+    flex-direction: column;
+    gap: 32px;
+  }
+
+  .academic-page .about-sidebar {
+    width: 100%;
+    position: relative;
+    top: 0;
+  }
+
+  .academic-page .about-main {
+    max-width: 100%;
+  }
 }
 
 @media (max-width: 768px) {
@@ -2549,6 +2572,10 @@ img {
   
   .newsletter-form-inline {
     flex-direction: column;
+  }
+
+  .academic-page .container {
+    padding: 0 24px;
   }
 }
 
