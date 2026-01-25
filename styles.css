@@ -3183,6 +3183,21 @@ img {
   transform: translateY(-1px);
 }
 
+.contact-status {
+  margin: 12px 0 0;
+  font-size: 13px;
+  color: #1a1a1a;
+  min-height: 18px;
+}
+
+.contact-status.is-success {
+  color: #1f7a4c;
+}
+
+.contact-status.is-error {
+  color: #b42318;
+}
+
 .contact-link {
   color: #003080;
   font-weight: 600;

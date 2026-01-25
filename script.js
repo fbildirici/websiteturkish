@@ -114,6 +114,61 @@ document.addEventListener('DOMContentLoaded', function() {
   });
 });
 
+// Contact form submission via Google Apps Script
+document.addEventListener('DOMContentLoaded', function() {
+  const form = document.getElementById('contactForm');
+  if (!form) return;
+
+  const statusEl = document.getElementById('contactStatus');
+  const submitButton = form.querySelector('.btn-submit-contact');
+  const scriptUrl = form.dataset.scriptUrl || form.action;
+
+  if (!scriptUrl || scriptUrl.includes('REPLACE_WITH_SCRIPT_ID')) {
+    if (statusEl) {
+      statusEl.textContent = 'Form endpointi ayarlanmadı.';
+      statusEl.classList.add('is-error');
+    }
+    return;
+  }
+
+  form.addEventListener('submit', async function(e) {
+    e.preventDefault();
+
+    if (statusEl) {
+      statusEl.textContent = 'Gönderiliyor...';
+      statusEl.className = 'contact-status';
+    }
+
+    if (submitButton) submitButton.disabled = true;
+
+    try {
+      const formData = new FormData(form);
+      const response = await fetch(scriptUrl, {
+        method: 'POST',
+        body: formData
+      });
+
+      if (!response.ok) {
+        throw new Error('Form gönderimi başarısız');
+      }
+
+      if (statusEl) {
+        statusEl.textContent = 'Mesajınız alındı. Teşekkürler.';
+        statusEl.classList.add('is-success');
+      }
+
+      form.reset();
+    } catch (err) {
+      if (statusEl) {
+        statusEl.textContent = 'Gönderim başarısız oldu. Lütfen tekrar deneyin.';
+        statusEl.classList.add('is-error');
+      }
+    } finally {
+      if (submitButton) submitButton.disabled = false;
+    }
+  });
+});
+
 function openPodcastModal(platform, url) {
   const modal = document.getElementById('podcastModal');
   const modalBody = document.getElementById('podcastModalBody');
