@@ -3155,12 +3155,12 @@ img {
 }
 
 .checkbox-text a {
-  color: #e85a3c;
+  color: #003080;
   text-decoration: underline;
 }
 
 .checkbox-text a:hover {
-  color: #d04a2c;
+  color: #0050b3;
 }
 
 .btn-submit-contact {
@@ -3765,38 +3765,51 @@ img {
   margin: 24px 0 0 0;
   display: flex;
   flex-direction: column;
-  gap: 0;
+  gap: 12px;
 }
 
 .academic-talk-item {
+  position: relative;
   display: flex;
   flex-direction: column;
-  padding: 20px 0;
-  border-bottom: 1px solid #eee;
-  transition: all 0.2s ease;
+  padding: 16px 18px 16px 22px;
+  border: 1px solid #ececec;
+  border-radius: 12px;
+  background: #fff;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease, transform 0.2s ease;
 }
 
 .academic-talk-item:first-child {
-  padding-top: 0;
+  padding-top: 16px;
 }
 
 .academic-talk-item:last-child {
-  border-bottom: none;
+  border-bottom: 1px solid #ececec;
 }
 
 .academic-talk-item:hover {
-  padding-left: 12px;
+  border-color: rgba(0, 48, 128, 0.25);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.06);
+  transform: translateY(-1px);
 }
 
 .academic-talk-item::before {
-  content: none;
+  content: '';
+  position: absolute;
+  left: 10px;
+  top: 18px;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: #003080;
+  box-shadow: 0 0 0 4px rgba(0, 48, 128, 0.08);
 }
 
 .talk-title {
   font-size: 15px;
   font-weight: 600;
   color: #1a1a1a;
-  line-height: 1.5;
+  line-height: 1.45;
   margin-bottom: 6px;
   transition: color 0.2s ease;
 }
@@ -3806,10 +3819,10 @@ img {
 }
 
 .talk-meta {
-  font-size: 13px;
-  color: #666;
+  font-size: 12px;
+  color: #667085;
   line-height: 1.5;
-  font-style: italic;
+  font-style: normal;
 }
 
 /* Talks Modern */
