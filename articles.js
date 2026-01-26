@@ -1,6 +1,18 @@
 // Shared articles data for gelismeler.html and hakkinda.html
 const articlesData = [
   {
+    id: 2,
+    category: "deneme",
+    badge: "Deneme",
+    badgeClass: "badge-deneme",
+    image: "assets/images/deeptech.jpeg",
+    date: "26 OCA 2026",
+    readTime: "8 DK. OKUMA SÜRESİ",
+    title: "Yapay Zeka Hakkında En Sevdiğim Kitaplar",
+    excerpt: "Yapay zekayı hem mühendislik hem de toplumsal yönleriyle anlamama katkı sağlayan 15 kitap. Kısa, net ve kişisel notlarla derlediğim bir okuma listesi.",
+    link: "yazi-kitaplar.html"
+  },
+  {
     id: 1,
     category: "newsroom",
     badge: "Newsroom",
