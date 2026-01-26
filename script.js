@@ -239,6 +239,23 @@ function closePodcastModal() {
   }, 300);
 }
 
+function shareArticle(platform) {
+  const titleEl = document.querySelector('.article-title');
+  const title = titleEl ? titleEl.innerText : document.title;
+  const url = window.location.href;
+  const text = encodeURIComponent(title + ' - ' + url);
+
+  if (platform === 'whatsapp') {
+    window.open('https://wa.me/?text=' + text, '_blank');
+  } else if (platform === 'facebook') {
+    window.open('https://www.facebook.com/sharer/sharer.php?u=' + encodeURIComponent(url), '_blank');
+  } else if (platform === 'linkedin') {
+    window.open('https://www.linkedin.com/shareArticle?mini=true&url=' + encodeURIComponent(url) + '&title=' + encodeURIComponent(title), '_blank');
+  } else if (platform === 'x') {
+    window.open('https://x.com/intent/tweet?text=' + text, '_blank');
+  }
+}
+
 // Smooth scroll for academic page navigation
 document.addEventListener('DOMContentLoaded', function() {
   const aboutNavLinks = document.querySelectorAll('.about-nav-link');
