@@ -3119,9 +3119,28 @@ img {
 
 /* ===== BOOK LIST ===== */
 .book-list {
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+  margin-top: 24px;
+}
+
+.book-group {
+  display: grid;
+  gap: 16px;
+}
+
+.book-group-title {
+  font-family: var(--font-display);
+  font-size: 20px;
+  font-weight: 700;
+  color: var(--navy-strong);
+  margin: 0;
+}
+
+.book-group-list {
   display: grid;
   gap: 18px;
-  margin-top: 24px;
 }
 
 .book-card {
@@ -3204,6 +3223,21 @@ img {
   stroke: currentColor;
   fill: none;
   stroke-width: 2;
+}
+
+.book-order-chip.beginner {
+  background: rgba(0, 48, 128, 0.08);
+  color: var(--navy-strong);
+}
+
+.book-order-chip.intermediate {
+  background: rgba(10, 43, 109, 0.12);
+  color: #0a2b6d;
+}
+
+.book-order-chip.advanced {
+  background: rgba(0, 48, 128, 0.16);
+  color: #081f4d;
 }
 
 @media (max-width: 768px) {
