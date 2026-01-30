@@ -1,4 +1,14 @@
-@import url('https://fonts.googleapis.com/css2?family=Sora:wght@400;500;600;700&display=swap');
+/* ===== THEME ===== */
+:root {
+  --ink: #141824;
+  --muted: #4b5563;
+  --navy: #0a2b6d;
+  --navy-strong: #003080;
+  --accent: #ff6b35;
+  --bg: #f3f5f7;
+  --font-sans: 'Manrope', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  --font-display: 'Fraunces', 'Times New Roman', serif;
+}
 
 /* ===== NELER YAPIYORUM SECTION ===== */
 .what-i-do-section {
@@ -7,9 +17,10 @@
 }
 
 .section-title-main {
-  font-size: 28px;
+  font-family: var(--font-display);
+  font-size: 30px;
   font-weight: 700;
-  color: #1a1a1a;
+  color: var(--ink);
   text-align: center;
   margin-bottom: 32px;
   letter-spacing: -0.5px;
@@ -41,9 +52,10 @@
 }
 
 .section-title-hl {
+  font-family: var(--font-display);
   font-size: 28px;
   font-weight: 700;
-  color: #1a1a1a;
+  color: var(--ink);
   text-align: center;
   margin-bottom: 40px;
   letter-spacing: -0.5px;
@@ -317,11 +329,6 @@
     font-size: 24px;
     margin-bottom: 24px;
   }
-
-  .section-title-main {
-    font-size: 22px;
-    margin-bottom: 20px;
-  }
 }
 /* Kompakt Slider ve Oklar */
 .posts-compact-slider {
@@ -375,20 +382,6 @@
   display: block;
   background: #fff;
 }
-.compact-card-title {
-  font-family: 'Inter', sans-serif;
-  font-size: 16px;
-  font-weight: 700;
-  color: #fff;
-  margin-bottom: 6px;
-  line-height: 1.2;
-}
-.compact-card-desc {
-  font-family: 'Inter', sans-serif;
-  font-size: 13px;
-  color: #e6e4ea;
-  line-height: 1.4;
-}
 /* Son Paylaşımlar Kompakt Lacivert Kartlar */
 
 
@@ -398,10 +391,10 @@
   padding: 80px 0 80px 0;
 }
 .posts-compact-title {
-  font-family: 'Inter', 'Montserrat', 'Segoe UI', Arial, sans-serif;
+  font-family: var(--font-display);
   font-size: 32px;
   font-weight: 700;
-  color: #003080;
+  color: var(--navy-strong);
   text-align: center;
   margin-bottom: 28px;
   letter-spacing: -0.5px;
@@ -484,6 +477,7 @@
 }
 .compact-card-title,
 .vc-blog-main-card-h4 {
+  font-family: var(--font-display);
   font-size: 22px;
   font-weight: 700;
   color: #1a1a1a;
@@ -638,28 +632,6 @@
 .posts-compact-swiper .swiper-button-disabled {
   opacity: 0.3;
   cursor: not-allowed;
-}
-
-.slider-arrow {
-  background: #fff;
-  color: #18151c;
-  border: none;
-  border-radius: 50%;
-  width: 40px;
-  height: 40px;
-  font-size: 24px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.08);
-  cursor: pointer;
-  transition: background 0.2s, color 0.2s;
-  margin-left: 10px;
-}
-
-.slider-arrow:hover {
-  background: #18151c;
-  color: #fff;
 }
 
 /* Modal Styles for Podcast Player */
@@ -853,31 +825,13 @@
     max-width: 400px;
   }
 }
-.compact-card-content {
-  padding: 18px 16px 16px 16px;
-  display: flex;
-  flex-direction: column;
-  flex: 1;
-}
-.compact-card-title {
-  font-size: 18px;
-  font-weight: 700;
-  color: #fff;
-  margin-bottom: 8px;
-  line-height: 1.2;
-}
-.compact-card-desc {
-  font-size: 14px;
-  color: #e6e4ea;
-  line-height: 1.4;
-}
 /* Son Paylaşımlar (YouTube tarzı) */
 .posts-section-youtube {
   background: #e6e4ea;
   padding: 60px 0 40px 0;
 }
 .posts-youtube-title {
-  font-family: 'Inter', serif;
+  font-family: var(--font-display);
   font-size: 64px;
   font-weight: 800;
   color: #18151c;
@@ -980,9 +934,12 @@
 }
 
 body {
-  font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
-  background: #f5f5f5;
-  color: #1a1a1a;
+  font-family: var(--font-sans);
+  background:
+    radial-gradient(1200px 600px at 15% -10%, rgba(255, 107, 53, 0.12), transparent 60%),
+    radial-gradient(900px 500px at 85% 10%, rgba(10, 43, 109, 0.12), transparent 55%),
+    var(--bg);
+  color: var(--ink);
   line-height: 1.6;
 }
 
@@ -1064,10 +1021,11 @@ img {
 }
 
 .logo {
-  font-weight: 800;
-  font-size: 14px;
-  letter-spacing: 3px;
-  color: #003080;
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 16px;
+  letter-spacing: 2px;
+  color: var(--navy-strong);
 }
 
 .nav {
@@ -1076,10 +1034,10 @@ img {
 }
 
 .nav-link {
-  font-family: 'Sora', 'DM Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+  font-family: var(--font-sans);
   font-size: 15px;
   font-weight: 600;
-  color: #003080;
+  color: var(--navy-strong);
   letter-spacing: 0.4px;
   transition: all 0.2s ease;
   display: flex;
@@ -1099,18 +1057,20 @@ img {
 .btn-primary {
   display: inline-block;
   padding: 12px 24px;
-  background: #003080;
+  background: var(--navy-strong);
   color: #fff;
   font-size: 14px;
-  font-weight: 600;
+  font-weight: 700;
   border-radius: 50px;
   border: none;
   cursor: pointer;
-  transition: background 0.2s;
+  transition: transform 0.2s, box-shadow 0.2s, background 0.2s;
+  box-shadow: 0 10px 24px rgba(0, 48, 128, 0.2);
 }
 
 .btn-primary:hover {
-  background: #002060;
+  background: #061f52;
+  transform: translateY(-1px);
 }
 
 .btn-substack {
@@ -1130,9 +1090,30 @@ img {
   min-height: auto;
   display: flex;
   align-items: flex-end;
-  padding: 120px 0 0;
+  padding: 140px 0 0;
   position: relative;
   overflow: hidden;
+  background: linear-gradient(135deg, rgba(10, 43, 109, 0.08), rgba(255, 107, 53, 0.08));
+}
+
+.hero::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(700px 360px at 10% 10%, rgba(10, 43, 109, 0.18), transparent 60%);
+  pointer-events: none;
+  z-index: 0;
+}
+
+.hero::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image: radial-gradient(rgba(20, 24, 36, 0.08) 1px, transparent 1px);
+  background-size: 26px 26px;
+  opacity: 0.25;
+  pointer-events: none;
+  z-index: 0;
 }
 
 .hero-inner {
@@ -1144,23 +1125,32 @@ img {
 }
 
 .hero-content {
-  flex: 0 0 38%;
-  max-width: 440px;
+  flex: 0 0 42%;
+  max-width: 520px;
   z-index: 2;
   padding-bottom: 160px;
 }
 
 .hero-title {
-  font-size: 20px;
-  font-weight: 400;
-  line-height: 1.6;
-  color: #1a1a1a;
-  margin-bottom: 28px;
+  font-family: var(--font-display);
+  font-size: 40px;
+  font-weight: 700;
+  line-height: 1.15;
+  color: var(--ink);
+  margin-bottom: 18px;
+  letter-spacing: -0.6px;
 }
 
 .hero-greeting {
-  color: #003080;
-  font-weight: 600;
+  color: var(--navy-strong);
+  font-weight: 700;
+}
+
+.hero-subtitle {
+  font-size: 16px;
+  color: var(--muted);
+  line-height: 1.7;
+  margin-bottom: 28px;
 }
 
 .btn-hero {
@@ -1202,18 +1192,33 @@ img {
 }
 
 .hero-image {
-  flex: 0 0 60%;
+  flex: 0 0 56%;
   display: flex;
   justify-content: flex-end;
   align-items: flex-end;
   position: relative;
   margin-bottom: -5px;
+  z-index: 1;
+}
+
+.hero-image::before {
+  content: '';
+  position: absolute;
+  width: 360px;
+  height: 360px;
+  right: 12%;
+  bottom: 8%;
+  background: radial-gradient(circle, rgba(255, 107, 53, 0.25), transparent 70%);
+  filter: blur(10px);
+  z-index: 0;
 }
 
 .hero-image img {
   max-height: 82vh;
   width: 100%;
   object-fit: contain;
+  position: relative;
+  z-index: 1;
 }
 
 /* ===== LOGO BAR ===== */
@@ -1308,14 +1313,17 @@ img {
   font-weight: 700;
   text-align: center;
   margin-bottom: 40px;
-  color: #003080;
+  color: var(--navy-strong);
+  font-family: var(--font-display);
+}
 
 .section-title-blue {
   font-size: 26px;
-  color: #003080;
+  color: var(--navy-strong);
   font-weight: 700;
   text-align: center;
   margin-bottom: 40px;
+  font-family: var(--font-display);
 }
 /* Yeni Son Paylaşımlar kartları */
 .post-card-podcast .post-card-image img {
@@ -1354,7 +1362,6 @@ img {
   color: #1a1a1a;
   text-align: center;
   margin-bottom: 4px;
-}
 }
 
 .posts-slider {
@@ -1696,6 +1703,14 @@ img {
     max-width: 100%;
     padding-bottom: 40px;
   }
+
+  .hero-title {
+    font-size: 34px;
+  }
+
+  .hero-subtitle {
+    font-size: 16px;
+  }
   
   .hero-image {
     flex: none;
@@ -1743,7 +1758,11 @@ img {
   }
   
   .hero-title {
-    font-size: 18px;
+    font-size: 30px;
+  }
+
+  .hero-subtitle {
+    font-size: 15px;
   }
 
   .hero-socials {
@@ -2365,7 +2384,7 @@ img {
 }
 
 .section-heading {
-  font-family: 'DM Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+  font-family: var(--font-display);
   font-size: 28px;
   font-weight: 700;
   color: #1a1a1a;
@@ -2641,7 +2660,7 @@ img {
 }
 
 .yazilar-header h1 {
-  font-family: 'DM Sans', sans-serif;
+  font-family: var(--font-display);
   font-size: 42px;
   font-weight: 800;
   color: #1a1a1a;
@@ -3200,7 +3219,7 @@ img {
   width: 100%;
   padding: 16px 20px;
   font-size: 15px;
-  font-family: 'Inter', sans-serif;
+  font-family: var(--font-sans);
   border: 1px solid #e0e0e0;
   border-radius: 8px;
   background: #fff;
