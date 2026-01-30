@@ -6,8 +6,8 @@
   --navy-strong: #003080;
   --accent: #ff6b35;
   --bg: #f3f5f7;
-  --font-sans: 'Source Serif 4', 'Times New Roman', serif;
-  --font-display: 'Source Serif 4', 'Times New Roman', serif;
+  --font-sans: 'Playfair Display', 'Times New Roman', serif;
+  --font-display: 'Playfair Display', 'Times New Roman', serif;
 }
 
 /* ===== NELER YAPIYORUM SECTION ===== */
@@ -19,7 +19,7 @@
 .section-title-main {
   font-family: var(--font-display);
   font-size: 30px;
-  font-weight: 700;
+  font-weight: 600;
   color: var(--ink);
   text-align: center;
   margin-bottom: 32px;
@@ -54,7 +54,7 @@
 .section-title-hl {
   font-family: var(--font-display);
   font-size: 28px;
-  font-weight: 700;
+  font-weight: 600;
   color: var(--ink);
   text-align: center;
   margin-bottom: 40px;
@@ -393,7 +393,7 @@
 .posts-compact-title {
   font-family: var(--font-display);
   font-size: 32px;
-  font-weight: 700;
+  font-weight: 600;
   color: var(--navy-strong);
   text-align: center;
   margin-bottom: 28px;
@@ -479,7 +479,7 @@
 .vc-blog-main-card-h4 {
   font-family: var(--font-display);
   font-size: 22px;
-  font-weight: 700;
+  font-weight: 600;
   color: #1a1a1a;
   margin-bottom: 0;
   line-height: 1.4;
@@ -833,7 +833,7 @@
 .posts-youtube-title {
   font-family: var(--font-display);
   font-size: 64px;
-  font-weight: 800;
+  font-weight: 600;
   color: #18151c;
   text-align: center;
   margin-bottom: 32px;
@@ -935,6 +935,7 @@
 
 body {
   font-family: var(--font-sans);
+  font-weight: 400;
   background:
     radial-gradient(1200px 600px at 15% -10%, rgba(255, 107, 53, 0.08), transparent 60%),
     radial-gradient(900px 500px at 85% 10%, rgba(10, 43, 109, 0.08), transparent 55%),
@@ -1022,7 +1023,7 @@ img {
 
 .logo {
   font-family: var(--font-display);
-  font-weight: 700;
+  font-weight: 600;
   font-size: 16px;
   letter-spacing: 2px;
   color: var(--navy-strong);
@@ -1036,7 +1037,7 @@ img {
 .nav-link {
   font-family: var(--font-sans);
   font-size: 15px;
-  font-weight: 600;
+  font-weight: 500;
   color: var(--navy-strong);
   letter-spacing: 0.4px;
   transition: all 0.2s ease;
@@ -1060,7 +1061,7 @@ img {
   background: var(--navy-strong);
   color: #fff;
   font-size: 14px;
-  font-weight: 700;
+  font-weight: 600;
   border-radius: 50px;
   border: none;
   cursor: pointer;
@@ -1133,8 +1134,8 @@ img {
 
 .hero-title {
   font-family: var(--font-display);
-  font-size: 40px;
-  font-weight: 700;
+  font-size: 34px;
+  font-weight: 600;
   line-height: 1.15;
   color: var(--ink);
   margin-bottom: 18px;
@@ -1143,7 +1144,7 @@ img {
 
 .hero-greeting {
   color: var(--navy-strong);
-  font-weight: 700;
+  font-weight: 600;
 }
 
 .hero-subtitle {
@@ -1192,7 +1193,7 @@ img {
 }
 
 .hero-image {
-  flex: 0 0 56%;
+  flex: 0 0 62%;
   display: flex;
   justify-content: flex-end;
   align-items: flex-end;
@@ -1214,7 +1215,7 @@ img {
 }
 
 .hero-image img {
-  max-height: 82vh;
+  max-height: 88vh;
   width: 100%;
   object-fit: contain;
   position: relative;
@@ -1310,7 +1311,7 @@ img {
 
 .section-title {
   font-size: 26px;
-  font-weight: 700;
+  font-weight: 600;
   text-align: center;
   margin-bottom: 40px;
   color: var(--navy-strong);
@@ -1320,7 +1321,7 @@ img {
 .section-title-blue {
   font-size: 26px;
   color: var(--navy-strong);
-  font-weight: 700;
+  font-weight: 600;
   text-align: center;
   margin-bottom: 40px;
   font-family: var(--font-display);
@@ -1566,7 +1567,7 @@ img {
 
 .footer-title {
   font-size: 28px;
-  font-weight: 700;
+  font-weight: 600;
   margin-bottom: 12px;
 }
 
@@ -1705,7 +1706,7 @@ img {
   }
 
   .hero-title {
-    font-size: 34px;
+    font-size: 30px;
   }
 
   .hero-subtitle {
@@ -1758,7 +1759,7 @@ img {
   }
   
   .hero-title {
-    font-size: 30px;
+    font-size: 26px;
   }
 
   .hero-subtitle {
@@ -1850,7 +1851,7 @@ img {
 
 .sidebar-name {
   font-size: 32px;
-  font-weight: 800;
+  font-weight: 600;
   color: #1a1a1a;
   margin-bottom: 8px;
 }
@@ -3171,7 +3172,7 @@ img {
 .book-title {
   margin: 0 0 6px 0;
   font-size: 18px;
-  font-weight: 700;
+  font-weight: 600;
   color: #1a1a1a;
   display: flex;
   flex-wrap: wrap;
