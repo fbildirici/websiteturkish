@@ -1134,7 +1134,7 @@ img {
 
 .hero-title {
   font-family: var(--font-display);
-  font-size: 34px;
+  font-size: 38px;
   font-weight: 600;
   line-height: 1.15;
   color: var(--ink);
@@ -1148,7 +1148,7 @@ img {
 }
 
 .hero-subtitle {
-  font-size: 16px;
+  font-size: 18px;
   color: var(--muted);
   line-height: 1.7;
   margin-bottom: 28px;
@@ -1706,11 +1706,11 @@ img {
   }
 
   .hero-title {
-    font-size: 30px;
+    font-size: 32px;
   }
 
   .hero-subtitle {
-    font-size: 16px;
+    font-size: 17px;
   }
   
   .hero-image {
@@ -1759,7 +1759,7 @@ img {
   }
   
   .hero-title {
-    font-size: 26px;
+    font-size: 28px;
   }
 
   .hero-subtitle {
