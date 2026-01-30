@@ -3156,10 +3156,11 @@ img {
 .book-cover {
   width: 120px;
   height: 160px;
-  object-fit: cover;
+  object-fit: contain;
   border-radius: 10px;
   border: 1px solid #e6e6e6;
-  background: #f5f5f5;
+  background: #fff;
+  padding: 6px;
 }
 
 .book-title {
@@ -3225,19 +3226,9 @@ img {
   stroke-width: 2;
 }
 
-.book-order-chip.beginner {
+.book-order-chip.textbook {
   background: rgba(0, 48, 128, 0.08);
   color: var(--navy-strong);
-}
-
-.book-order-chip.intermediate {
-  background: rgba(10, 43, 109, 0.12);
-  color: #0a2b6d;
-}
-
-.book-order-chip.advanced {
-  background: rgba(0, 48, 128, 0.16);
-  color: #081f4d;
 }
 
 @media (max-width: 768px) {
