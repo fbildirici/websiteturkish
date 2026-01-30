@@ -1024,7 +1024,7 @@ img {
 .logo {
   font-family: var(--font-display);
   font-weight: 600;
-  font-size: 16px;
+  font-size: 18px;
   letter-spacing: 2px;
   color: var(--navy-strong);
 }
@@ -1036,7 +1036,7 @@ img {
 
 .nav-link {
   font-family: var(--font-sans);
-  font-size: 15px;
+  font-size: 16px;
   font-weight: 500;
   color: var(--navy-strong);
   letter-spacing: 0.4px;
