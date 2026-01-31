@@ -1034,6 +1034,34 @@ img {
   gap: 32px;
 }
 
+.lang-toggle {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 12px;
+  border-radius: 999px;
+  border: 1px solid rgba(0, 48, 128, 0.2);
+  background: #fff;
+  color: var(--navy-strong);
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.6px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.lang-toggle svg {
+  width: 16px;
+  height: 16px;
+  fill: currentColor;
+}
+
+.lang-toggle:hover {
+  border-color: rgba(0, 48, 128, 0.45);
+  box-shadow: 0 6px 16px rgba(0, 48, 128, 0.12);
+  transform: translateY(-1px);
+}
+
 .nav-link {
   font-family: var(--font-sans);
   font-size: 16px;
@@ -2944,8 +2972,8 @@ img {
   border-radius: 16px;
   overflow: hidden;
   box-shadow: 0 8px 30px rgba(0,0,0,0.1);
-  width: 420px;
-  height: 300px;
+  width: 480px;
+  height: 320px;
   background: #f4f5f7;
 }
 
@@ -3151,7 +3179,7 @@ img {
 
 .book-card {
   display: grid;
-  grid-template-columns: 120px 1fr;
+  grid-template-columns: 140px 1fr;
   gap: 18px;
   padding: 16px;
   border: 1px solid #ececec;
@@ -3160,8 +3188,8 @@ img {
 }
 
 .book-cover {
-  width: 120px;
-  height: 160px;
+  width: 140px;
+  height: 190px;
   object-fit: contain;
   border-radius: 10px;
   border: 1px solid #e6e6e6;
@@ -3196,6 +3224,7 @@ img {
 .book-badge {
   display: inline-flex;
   align-items: center;
+  gap: 6px;
   height: 22px;
   padding: 0 10px;
   border-radius: 999px;
@@ -3208,7 +3237,15 @@ img {
   border: 1px solid rgba(0, 48, 128, 0.2);
 }
 
-.book-order-chip {
+.book-badge svg {
+  width: 12px;
+  height: 12px;
+  stroke: currentColor;
+  fill: none;
+  stroke-width: 2;
+}
+
+.book-level-chip {
   display: inline-flex;
   align-items: center;
   gap: 6px;
@@ -3224,17 +3261,27 @@ img {
   margin-bottom: 8px;
 }
 
-.book-order-chip svg {
-  width: 12px;
-  height: 12px;
-  stroke: currentColor;
-  fill: none;
-  stroke-width: 2;
+.book-level-chip svg {
+  width: 14px;
+  height: 14px;
 }
 
-.book-order-chip.textbook {
-  background: rgba(0, 48, 128, 0.08);
-  color: var(--navy-strong);
+.book-level-chip rect {
+  fill: currentColor;
+  opacity: 0.25;
+}
+
+.book-level-chip.level-beginner rect:nth-child(1) {
+  opacity: 1;
+}
+
+.book-level-chip.level-intermediate rect:nth-child(1),
+.book-level-chip.level-intermediate rect:nth-child(2) {
+  opacity: 1;
+}
+
+.book-level-chip.level-advanced rect {
+  opacity: 1;
 }
 
 @media (max-width: 768px) {

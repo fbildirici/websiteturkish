@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>İletişim - Fatih Bildirici</title>
+  <title data-i18n-en="Contact - Fatih Bildirici">İletişim - Fatih Bildirici</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -15,14 +15,18 @@
   <header class="header">
     <div class="container">
       <div class="header-inner">
-        <a href="index.html" class="logo">FATİH BİLDİRİCİ</a>
+        <a href="index.html" class="logo" data-i18n-en="FATIH BILDIRICI">FATİH BİLDİRİCİ</a>
         <nav class="nav">
-          <a href="hakkinda.html" class="nav-link">Hakkımda</a>
-          <a href="gelismeler.html" class="nav-link">Gelişmeler</a>
+          <a href="hakkinda.html" class="nav-link" data-i18n-en="About">Hakkımda</a>
+          <a href="gelismeler.html" class="nav-link" data-i18n-en="Updates">Gelişmeler</a>
           <a href="podcast.html" class="nav-link">Podcast</a>
-          <a href="akademik.html" class="nav-link">Akademik</a>
+          <a href="akademik.html" class="nav-link" data-i18n-en="Academic">Akademik</a>
         </nav>
-        <a href="https://otostopcununyzrehberi.substack.com" class="btn-primary">Bültene Kaydol</a>
+        <button class="lang-toggle" type="button" data-lang-toggle aria-label="Switch language">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2a10 10 0 1 0 0 20 10 10 0 0 0 0-20Zm7.93 9h-3.16a15.9 15.9 0 0 0-1.22-5.04A8.02 8.02 0 0 1 19.93 11ZM12 4c1.12 0 2.68 2.16 3.36 7H8.64C9.32 6.16 10.88 4 12 4Zm-7.55 7h3.16A15.9 15.9 0 0 0 8.83 16a8.02 8.02 0 0 1-4.38-5Zm3.16 2h7.78A15.9 15.9 0 0 1 12 20c-1.12 0-2.68-2.16-3.36-7Zm8.56 3a15.9 15.9 0 0 0 1.22-5h3.16a8.02 8.02 0 0 1-4.38 5Z"/></svg>
+          <span class="lang-toggle-text">EN</span>
+        </button>
+        <a href="https://otostopcununyzrehberi.substack.com" class="btn-primary" data-i18n-en="Subscribe">Bültene Kaydol</a>
       </div>
     </div>
   </header>
@@ -32,55 +36,55 @@
     <div class="container">
       <div class="contact-wrapper">
         <div class="contact-header">
-          <h1>İletişim</h1>
-          <p class="contact-desc">İletişime geçmekten çekinmeyin; mesajlarınız ve geri bildirimleriniz benim için çok değerli.</p>
+          <h1 data-i18n-en="Contact">İletişim</h1>
+          <p class="contact-desc" data-i18n-en="Feel free to get in touch; your messages and feedback are very valuable to me.">İletişime geçmekten çekinmeyin; mesajlarınız ve geri bildirimleriniz benim için çok değerli.</p>
         </div>
 
         <form class="contact-form" id="contactForm" action="https://script.google.com/macros/s/AKfycbwt7tgr-22qrCudmVVhPd89uol0Tdu7_Qj42x7I_nfx-xaB1fJfJddHDG2inbycnQgk/exec" method="POST" target="contactFrame" data-script-url="https://script.google.com/macros/s/AKfycbwt7tgr-22qrCudmVVhPd89uol0Tdu7_Qj42x7I_nfx-xaB1fJfJddHDG2inbycnQgk/exec">
           <input type="hidden" name="_to" value="fatihbildirici.dev@gmail.com">
           <div class="form-row">
             <div class="form-group">
-              <input type="text" name="firstName" placeholder="Adınız" required class="form-input">
+              <input type="text" name="firstName" placeholder="Adınız" required class="form-input" data-i18n-placeholder-en="First name">
             </div>
             <div class="form-group">
-              <input type="text" name="lastName" placeholder="Soyadınız" required class="form-input">
+              <input type="text" name="lastName" placeholder="Soyadınız" required class="form-input" data-i18n-placeholder-en="Last name">
             </div>
           </div>
 
           <div class="form-group">
-            <input type="email" name="email" placeholder="E-posta" required class="form-input">
+            <input type="email" name="email" placeholder="E-posta" required class="form-input" data-i18n-placeholder-en="Email">
           </div>
 
           <div class="form-group">
             <select name="subject" class="form-input form-select">
-              <option value="" disabled selected>Genel iletişim</option>
-              <option value="genel">Genel iletişim</option>
-              <option value="isbirligi">İş birliği</option>
-              <option value="danismanlik">Danışmanlık</option>
-              <option value="konusma">Konuşma daveti</option>
-              <option value="diger">Diğer</option>
+              <option value="" disabled selected data-i18n-en="General inquiry">Genel iletişim</option>
+              <option value="genel" data-i18n-en="General inquiry">Genel iletişim</option>
+              <option value="isbirligi" data-i18n-en="Collaboration">İş birliği</option>
+              <option value="danismanlik" data-i18n-en="Consulting">Danışmanlık</option>
+              <option value="konusma" data-i18n-en="Speaking invitation">Konuşma daveti</option>
+              <option value="diger" data-i18n-en="Other">Diğer</option>
             </select>
           </div>
 
           <div class="form-group">
-            <textarea name="message" rows="6" placeholder="Mesajınız" required class="form-input form-textarea"></textarea>
+            <textarea name="message" rows="6" placeholder="Mesajınız" required class="form-input form-textarea" data-i18n-placeholder-en="Your message"></textarea>
           </div>
 
           <div class="form-checkboxes">
             <label class="checkbox-label">
               <input type="checkbox" name="privacy" required>
               <span class="checkmark"></span>
-              <span class="checkbox-text">Formu göndererek <a href="aydinlatma-metni.html" class="contact-link">Aydınlatma Metni</a>'ni okuduğunuzu ve kişisel verilerinizin iletişim amacıyla işlenmesini kabul ettiğinizi beyan etmiş olursunuz.</span>
+              <span class="checkbox-text" data-i18n-en="By submitting the form, you confirm that you have read the <a href=&quot;aydinlatma-metni.html&quot; class=&quot;contact-link&quot;>Privacy Notice</a> and consent to processing of your personal data for communication purposes.">Formu göndererek <a href="aydinlatma-metni.html" class="contact-link">Aydınlatma Metni</a>'ni okuduğunuzu ve kişisel verilerinizin iletişim amacıyla işlenmesini kabul ettiğinizi beyan etmiş olursunuz.</span>
             </label>
 
             <label class="checkbox-label">
               <input type="checkbox" name="newsletter">
               <span class="checkmark"></span>
-              <span class="checkbox-text">Son gelişmelere e-posta bülteni üzerinden ulaşmak ve tarafıma ticari elektronik ileti gönderilmesine <a href="acik-riza-metni.html" class="contact-link">açık rıza</a> veriyorum.</span>
-            </label>
-          </div>
+              <span class="checkbox-text" data-i18n-en="I consent to receiving updates via email newsletter and to receiving commercial electronic communications via <a href=&quot;acik-riza-metni.html&quot; class=&quot;contact-link&quot;>explicit consent</a>.">Son gelişmelere e-posta bülteni üzerinden ulaşmak ve tarafıma ticari elektronik ileti gönderilmesine <a href="acik-riza-metni.html" class="contact-link">açık rıza</a> veriyorum.</span>
+          </label>
+        </div>
 
-          <button type="submit" class="btn-submit-contact">Gönder</button>
+          <button type="submit" class="btn-submit-contact" data-i18n-en="Send">Gönder</button>
           <p class="contact-status" id="contactStatus" role="status" aria-live="polite"></p>
         </form>
         <iframe name="contactFrame" id="contactFrame" title="Contact form submit" style="display: none;"></iframe>
@@ -94,40 +98,40 @@
       <div class="footer-inner">
         <!-- Newsletter -->
         <div class="footer-newsletter">
-          <h3 class="footer-title">Bültenime kaydol</h3>
-          <p class="footer-desc">Kaydolarak son gelişmelere, podcast ve yazılı içeriklere e-posta bülteni üzerinden ulaşabilirsiniz.</p>
+          <h3 class="footer-title" data-i18n-en="Subscribe to my newsletter">Bültenime kaydol</h3>
+          <p class="footer-desc" data-i18n-en="Subscribe to receive the latest updates, podcast episodes, and written content via email.">Kaydolarak son gelişmelere, podcast ve yazılı içeriklere e-posta bülteni üzerinden ulaşabilirsiniz.</p>
           <div class="newsletter-form" onclick="window.open('https://otostopcununyzrehberi.substack.com/subscribe', '_blank')" style="cursor: pointer;">
-            <input type="text" placeholder="Ad Soyad" class="input-field input-name" readonly style="cursor: pointer;">
-            <input type="email" placeholder="E-posta" class="input-field" readonly style="cursor: pointer;">
-            <button type="button" class="btn-primary btn-submit">Kaydol</button>
+            <input type="text" placeholder="Ad Soyad" class="input-field input-name" readonly style="cursor: pointer;" data-i18n-placeholder-en="Full name">
+            <input type="email" placeholder="E-posta" class="input-field" readonly style="cursor: pointer;" data-i18n-placeholder-en="Email">
+            <button type="button" class="btn-primary btn-submit" data-i18n-en="Subscribe">Kaydol</button>
           </div>
-          <p class="newsletter-legal"><a href="aydinlatma-metni.html">Aydınlatma metnini</a> okudum, kişisel verilerimin işlenmesine ve tarafıma ticari elektronik ileti gönderilmesine <a href="acik-riza-metni.html">açık rıza</a> veriyorum.</p>
+          <p class="newsletter-legal" data-i18n-en="I have read the <a href=&quot;aydinlatma-metni.html&quot;>privacy notice</a>, and I consent to the processing of my personal data and to receiving commercial electronic communications via the <a href=&quot;acik-riza-metni.html&quot;>explicit consent</a>."><a href="aydinlatma-metni.html">Aydınlatma metnini</a> okudum, kişisel verilerimin işlenmesine ve tarafıma ticari elektronik ileti gönderilmesine <a href="acik-riza-metni.html">açık rıza</a> veriyorum.</p>
         </div>
 
         <!-- Footer Links -->
         <div class="footer-links">
           <div class="footer-col">
-            <h4>İçerikler</h4>
-            <a href="hakkinda.html">Hakkımda</a>
-            <a href="gelismeler.html">Gelişmeler</a>
+            <h4 data-i18n-en="Content">İçerikler</h4>
+            <a href="hakkinda.html" data-i18n-en="About">Hakkımda</a>
+            <a href="gelismeler.html" data-i18n-en="Updates">Gelişmeler</a>
             <a href="podcast.html">Podcast</a>
           </div>
           <div class="footer-col">
-            <h4>Sözleşmeler</h4>
-            <a href="aydinlatma-metni.html">Aydınlatma Metni</a>
-            <a href="acik-riza-metni.html">Açık Rıza Metni</a>
-            <a href="gizlilik-politikasi.html">Gizlilik Politikası</a>
+            <h4 data-i18n-en="Legal">Sözleşmeler</h4>
+            <a href="aydinlatma-metni.html" data-i18n-en="Privacy Notice">Aydınlatma Metni</a>
+            <a href="acik-riza-metni.html" data-i18n-en="Explicit Consent Notice">Açık Rıza Metni</a>
+            <a href="gizlilik-politikasi.html" data-i18n-en="Privacy Policy">Gizlilik Politikası</a>
           </div>
           <div class="footer-col">
-            <h4>İletişim</h4>
-            <a href="iletisim.html">İletişim</a>
+            <h4 data-i18n-en="Contact">İletişim</h4>
+            <a href="iletisim.html" data-i18n-en="Contact">İletişim</a>
           </div>
         </div>
       </div>
 
       <!-- Footer Bottom -->
       <div class="footer-bottom">
-        <p class="copyright">Copyright © 2026. Tüm hakları saklıdır.</p>
+        <p class="copyright" data-i18n-en="Copyright © 2026. All rights reserved.">Copyright © 2026. Tüm hakları saklıdır.</p>
         <div class="social-links">
           <a href="mailto:fatihbildirici.dev@gmail.com" target="_blank" class="social-icon" aria-label="Mail">
             <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 2v.01L12 13 4 6.01V6h16zM4 20v-9.99l8 6.99 8-6.99V20H4z"/></svg>

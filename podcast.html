@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Podcast - Fatih Bildirici</title>
+  <title data-i18n-en="Podcast - Fatih Bildirici">Podcast - Fatih Bildirici</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -14,14 +14,18 @@
   <header class="header">
     <div class="container">
       <div class="header-inner">
-        <a href="index.html" class="logo">FATİH BİLDİRİCİ</a>
+        <a href="index.html" class="logo" data-i18n-en="FATIH BILDIRICI">FATİH BİLDİRİCİ</a>
         <nav class="nav">
-          <a href="hakkinda.html" class="nav-link">Hakkımda</a>
-          <a href="gelismeler.html" class="nav-link">Gelişmeler</a>
+          <a href="hakkinda.html" class="nav-link" data-i18n-en="About">Hakkımda</a>
+          <a href="gelismeler.html" class="nav-link" data-i18n-en="Updates">Gelişmeler</a>
           <a href="podcast.html" class="nav-link active">Podcast</a>
-          <a href="akademik.html" class="nav-link">Akademik</a>
+          <a href="akademik.html" class="nav-link" data-i18n-en="Academic">Akademik</a>
         </nav>
-        <a href="https://otostopcununyzrehberi.substack.com" class="btn-primary">Bültene Kaydol</a>
+        <button class="lang-toggle" type="button" data-lang-toggle aria-label="Switch language">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2a10 10 0 1 0 0 20 10 10 0 0 0 0-20Zm7.93 9h-3.16a15.9 15.9 0 0 0-1.22-5.04A8.02 8.02 0 0 1 19.93 11ZM12 4c1.12 0 2.68 2.16 3.36 7H8.64C9.32 6.16 10.88 4 12 4Zm-7.55 7h3.16A15.9 15.9 0 0 0 8.83 16a8.02 8.02 0 0 1-4.38-5Zm3.16 2h7.78A15.9 15.9 0 0 1 12 20c-1.12 0-2.68-2.16-3.36-7Zm8.56 3a15.9 15.9 0 0 0 1.22-5h3.16a8.02 8.02 0 0 1-4.38 5Z"/></svg>
+          <span class="lang-toggle-text">EN</span>
+        </button>
+        <a href="https://otostopcununyzrehberi.substack.com" class="btn-primary" data-i18n-en="Subscribe">Bültene Kaydol</a>
       </div>
     </div>
   </header>
@@ -32,15 +36,15 @@
       <!-- Podcast Header -->
       <div class="podcast-header">
         <div class="podcast-header-left">
-          <h1>Podcast</h1>
-          <p class="podcast-desc">"Otostopçunun Yapay Zeka Rehberi" ile Douglas Adams'ın eserinden ilham alarak, yapay zekanın karmaşık dünyasını anlaşılır kılıyoruz. Makine öğrenmesinden etik tartışmalara, nöral ağlardan pratik uygulamalara kadar Türkiye'nin en çok dinlenen yapay zeka podcast'i.</p>
+          <h1 data-i18n-en="Podcast">Podcast</h1>
+          <p class="podcast-desc" data-i18n-en="Inspired by Douglas Adams, we make the complex world of AI accessible with the &quot;Hitchhiker's Guide to AI.&quot; From machine learning to ethics, from neural networks to real-world applications—Turkey's most listened AI podcast.">"Otostopçunun Yapay Zeka Rehberi" ile Douglas Adams'ın eserinden ilham alarak, yapay zekanın karmaşık dünyasını anlaşılır kılıyoruz. Makine öğrenmesinden etik tartışmalara, nöral ağlardan pratik uygulamalara kadar Türkiye'nin en çok dinlenen yapay zeka podcast'i.</p>
           <div class="podcast-tags">
-            <span class="podcast-tag active">Otostopçunun YZ Rehberi</span>
+            <span class="podcast-tag active" data-i18n-en="Hitchhiker's Guide to AI">Otostopçunun YZ Rehberi</span>
           </div>
         </div>
         <div class="podcast-header-right">
           <form class="search-form" id="podcastSearchForm">
-            <input type="text" placeholder="Podcast ara..." class="search-input" id="podcastSearchInput">
+            <input type="text" placeholder="Podcast ara..." class="search-input" id="podcastSearchInput" data-i18n-placeholder-en="Search podcast...">
             <button type="submit" class="search-btn">
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                 <circle cx="11" cy="11" r="8"></circle>
@@ -55,13 +59,13 @@
       <div class="podcast-grid" id="podcast-grid">
         <!-- Bölümler RSS'den dinamik olarak yüklenecek -->
         <div class="loading-spinner" style="grid-column: 1 / -1; text-align: center; padding: 60px;">
-          <p style="color: #666;">Bölümler yükleniyor...</p>
+          <p style="color: #666;" data-i18n-en="Loading episodes...">Bölümler yükleniyor...</p>
         </div>
       </div>
 
       <!-- Load More -->
       <div class="load-more">
-        <a href="https://podcasts.apple.com/tr/podcast/otostop%C3%A7unun-yapay-zeka-rehberi/id1801285722" target="_blank" class="btn-outline">Devamını gör →</a>
+        <a href="https://podcasts.apple.com/tr/podcast/otostop%C3%A7unun-yapay-zeka-rehberi/id1801285722" target="_blank" class="btn-outline" data-i18n-en="See more →">Devamını gör →</a>
       </div>
 
     </div>
@@ -72,35 +76,35 @@
     <div class="container">
       <div class="footer-top">
         <div class="footer-newsletter">
-          <h3>Bültenime kaydol</h3>
-          <p>Kaydolarak son gelişmelere, podcast ve yazılı içeriklere e-posta bülteni üzerinden ulaşabilirsiniz.</p>
+          <h3 data-i18n-en="Subscribe to my newsletter">Bültenime kaydol</h3>
+          <p data-i18n-en="Subscribe to receive the latest updates, podcast episodes, and written content via email.">Kaydolarak son gelişmelere, podcast ve yazılı içeriklere e-posta bülteni üzerinden ulaşabilirsiniz.</p>
           <div class="newsletter-form-inline" onclick="window.open('https://otostopcununyzrehberi.substack.com/subscribe', '_blank')" style="cursor: pointer;">
-            <input type="email" placeholder="E-posta adresiniz" readonly style="cursor: pointer;">
-            <button type="button" class="btn-primary">Kaydol</button>
+            <input type="email" placeholder="E-posta adresiniz" readonly style="cursor: pointer;" data-i18n-placeholder-en="Your email address">
+            <button type="button" class="btn-primary" data-i18n-en="Subscribe">Kaydol</button>
           </div>
-          <p class="newsletter-legal"><a href="aydinlatma-metni.html">Aydınlatma metnini</a> okudum, kişisel verilerimin işlenmesine ve tarafıma ticari elektronik ileti gönderilmesine <a href="acik-riza-metni.html">açık rıza</a> veriyorum.</p>
+          <p class="newsletter-legal" data-i18n-en="I have read the <a href=&quot;aydinlatma-metni.html&quot;>privacy notice</a>, and I consent to the processing of my personal data and to receiving commercial electronic communications via the <a href=&quot;acik-riza-metni.html&quot;>explicit consent</a>."><a href="aydinlatma-metni.html">Aydınlatma metnini</a> okudum, kişisel verilerimin işlenmesine ve tarafıma ticari elektronik ileti gönderilmesine <a href="acik-riza-metni.html">açık rıza</a> veriyorum.</p>
         </div>
         <div class="footer-links">
           <div class="footer-col">
-            <h4>İçerikler</h4>
-            <a href="hakkinda.html">Hakkımda</a>
-            <a href="gelismeler.html">Gelişmeler</a>
+            <h4 data-i18n-en="Content">İçerikler</h4>
+            <a href="hakkinda.html" data-i18n-en="About">Hakkımda</a>
+            <a href="gelismeler.html" data-i18n-en="Updates">Gelişmeler</a>
             <a href="podcast.html">Podcast</a>
           </div>
           <div class="footer-col">
-            <h4>Sözleşmeler</h4>
-            <a href="aydinlatma-metni.html">Aydınlatma Metni</a>
-            <a href="acik-riza-metni.html">Açık Rıza Metni</a>
-            <a href="gizlilik-politikasi.html">Gizlilik Politikası</a>
+            <h4 data-i18n-en="Legal">Sözleşmeler</h4>
+            <a href="aydinlatma-metni.html" data-i18n-en="Privacy Notice">Aydınlatma Metni</a>
+            <a href="acik-riza-metni.html" data-i18n-en="Explicit Consent Notice">Açık Rıza Metni</a>
+            <a href="gizlilik-politikasi.html" data-i18n-en="Privacy Policy">Gizlilik Politikası</a>
           </div>
           <div class="footer-col">
-            <h4>İletişim</h4>
-            <a href="iletisim.html">İletişim</a>
+            <h4 data-i18n-en="Contact">İletişim</h4>
+            <a href="iletisim.html" data-i18n-en="Contact">İletişim</a>
           </div>
         </div>
       </div>
       <div class="footer-bottom">
-          <p>© 2026. Tüm hakları saklıdır.</p>
+          <p data-i18n-en="© 2026. All rights reserved.">© 2026. Tüm hakları saklıdır.</p>
           <div class="social-links">
             <a href="mailto:fatihbildirici.dev@gmail.com" target="_blank" class="social-icon" aria-label="Mail">
               <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 2v.01L12 13 4 6.01V6h16zM4 20v-9.99l8 6.99 8-6.99V20H4z"/></svg>
@@ -139,6 +143,7 @@
 
     // Podcast kartı HTML oluştur
     function createPodcastCard(episode) {
+      const isEn = document.documentElement.getAttribute('lang') === 'en';
       return `
         <div class="podcast-card">
           <a href="${episode.link}" target="_blank" class="podcast-card-image">
@@ -147,7 +152,7 @@
           <div class="podcast-card-body">
             <div class="podcast-card-meta">
               <span class="podcast-card-tag">Podcast</span>
-              <span class="podcast-card-date">${episode.date}</span>
+              <span class="podcast-card-date">${isEn ? episode.dateEn : episode.date}</span>
             </div>
             <h3 class="podcast-card-title">${episode.title}</h3>
             <p class="podcast-card-desc">${episode.desc}</p>
@@ -190,7 +195,12 @@
 
         // Tarihi formatla
         const date = new Date(pubDate);
-        const formattedDate = date.toLocaleDateString('tr-TR', {
+        const formattedDateTr = date.toLocaleDateString('tr-TR', {
+          day: 'numeric',
+          month: 'short',
+          year: 'numeric'
+        });
+        const formattedDateEn = date.toLocaleDateString('en-US', {
           day: 'numeric',
           month: 'short',
           year: 'numeric'
@@ -209,7 +219,8 @@
         episodes.push({
           title: title.replace(/</g, '&lt;').replace(/>/g, '&gt;'),
           desc: cleanDesc,
-          date: formattedDate,
+          date: formattedDateTr,
+          dateEn: formattedDateEn,
           link: link,
           image: image
         });
@@ -323,12 +334,13 @@
       }
 
       // 3. Hiçbiri çalışmazsa hata göster
+      const isEn = document.documentElement.getAttribute('lang') === 'en';
       grid.innerHTML = `
         <div style="grid-column: 1 / -1; text-align: center; padding: 60px;">
-          <p style="color: #666; margin-bottom: 16px;">Bölümler yüklenirken bir sorun oluştu.</p>
-          <button onclick="location.reload()" style="padding: 10px 20px; background: #003080; color: white; border: none; border-radius: 6px; cursor: pointer;">Tekrar Dene</button>
+          <p style="color: #666; margin-bottom: 16px;">${isEn ? 'Something went wrong while loading episodes.' : 'Bölümler yüklenirken bir sorun oluştu.'}</p>
+          <button onclick="location.reload()" style="padding: 10px 20px; background: #003080; color: white; border: none; border-radius: 6px; cursor: pointer;">${isEn ? 'Try Again' : 'Tekrar Dene'}</button>
           <p style="margin-top: 16px;">
-            <a href="https://open.spotify.com/show/4wJPUBJcqQsnoLxWqEMCjJ" target="_blank" style="color: #003080;">Spotify'da Dinle</a> |
+            <a href="https://open.spotify.com/show/4wJPUBJcqQsnoLxWqEMCjJ" target="_blank" style="color: #003080;">${isEn ? 'Listen on Spotify' : 'Spotify\\'da Dinle'}</a> |
             <a href="https://podcasts.apple.com/tr/podcast/otostop%C3%A7unun-yapay-zeka-rehberi/id1801285722" target="_blank" style="color: #003080;">Apple Podcasts</a>
           </p>
         </div>
@@ -388,8 +400,19 @@
           debounceTimer = setTimeout(() => searchPodcasts(this.value), 300);
         });
       }
+      // Re-render on language toggle
+      document.querySelectorAll('[data-lang-toggle]').forEach(btn => {
+        btn.addEventListener('click', () => {
+          const grid = document.getElementById('podcast-grid');
+          const cached = getFromCache();
+          if (cached && cached.length > 0) {
+            grid.innerHTML = cached.map(createPodcastCard).join('');
+          }
+        });
+      });
     });
   </script>
 
+  <script src="script.js"></script>
 </body>
 </html>

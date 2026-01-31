@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Akademik - Fatih Bildirici</title>
+  <title data-i18n-en="Academic - Fatih Bildirici">Akademik - Fatih Bildirici</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -14,14 +14,18 @@
   <header class="header">
     <div class="container">
       <div class="header-inner">
-        <a href="index.html" class="logo">FATİH BİLDİRİCİ</a>
+        <a href="index.html" class="logo" data-i18n-en="FATIH BILDIRICI">FATİH BİLDİRİCİ</a>
         <nav class="nav">
-          <a href="hakkinda.html" class="nav-link">Hakkımda</a>
-          <a href="gelismeler.html" class="nav-link">Gelişmeler</a>
+          <a href="hakkinda.html" class="nav-link" data-i18n-en="About">Hakkımda</a>
+          <a href="gelismeler.html" class="nav-link" data-i18n-en="Updates">Gelişmeler</a>
           <a href="podcast.html" class="nav-link">Podcast</a>
-          <a href="akademik.html" class="nav-link active">Akademik</a>
+          <a href="akademik.html" class="nav-link active" data-i18n-en="Academic">Akademik</a>
         </nav>
-        <a href="https://otostopcununyzrehberi.substack.com" class="btn-primary">Bültene Kaydol</a>
+        <button class="lang-toggle" type="button" data-lang-toggle aria-label="Switch language">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2a10 10 0 1 0 0 20 10 10 0 0 0 0-20Zm7.93 9h-3.16a15.9 15.9 0 0 0-1.22-5.04A8.02 8.02 0 0 1 19.93 11ZM12 4c1.12 0 2.68 2.16 3.36 7H8.64C9.32 6.16 10.88 4 12 4Zm-7.55 7h3.16A15.9 15.9 0 0 0 8.83 16a8.02 8.02 0 0 1-4.38-5Zm3.16 2h7.78A15.9 15.9 0 0 1 12 20c-1.12 0-2.68-2.16-3.36-7Zm8.56 3a15.9 15.9 0 0 0 1.22-5h3.16a8.02 8.02 0 0 1-4.38 5Z"/></svg>
+          <span class="lang-toggle-text">EN</span>
+        </button>
+        <a href="https://otostopcununyzrehberi.substack.com" class="btn-primary" data-i18n-en="Subscribe">Bültene Kaydol</a>
       </div>
     </div>
   </header>
@@ -32,14 +36,14 @@
         
         <!-- Sol Kolon - Sticky -->
         <aside class="about-sidebar">
-          <h1 class="about-name">Akademik</h1>
-          <p class="about-tagline">Araştırma ve Eğitim</p>
+          <h1 class="about-name" data-i18n-en="Academic">Akademik</h1>
+          <p class="about-tagline" data-i18n-en="Research and Teaching">Araştırma ve Eğitim</p>
           <nav class="about-nav">
-            <a href="#kaynaklar" class="about-nav-link active">Kaynaklar & Biyografi</a>
-            <a href="#egitim" class="about-nav-link">Eğitim</a>
-            <a href="#yayinlar" class="about-nav-link">Yayınlar</a>
-            <a href="#seminerler" class="about-nav-link">Seminer & Konferans</a>
-            <a href="#konusmalar" class="about-nav-link">Konuşmalar</a>
+            <a href="#kaynaklar" class="about-nav-link active" data-i18n-en="Resources & Bio">Kaynaklar & Biyografi</a>
+            <a href="#egitim" class="about-nav-link" data-i18n-en="Education">Eğitim</a>
+            <a href="#yayinlar" class="about-nav-link" data-i18n-en="Publications">Yayınlar</a>
+            <a href="#seminerler" class="about-nav-link" data-i18n-en="Seminars & Conferences">Seminer & Konferans</a>
+            <a href="#konusmalar" class="about-nav-link" data-i18n-en="Talks">Konuşmalar</a>
           </nav>
         </aside>
 
@@ -48,8 +52,8 @@
           
           <!-- Kaynaklar & Biyografi Section -->
           <section id="kaynaklar" class="about-section">
-            <h2 class="section-heading">Önerilen Kaynaklar</h2>
-            <p class="section-subheading">Okumaktan, izlemekten, dinlemekten keyif aldığım akademik merak kaynaklarım, yol haritaları</p>
+            <h2 class="section-heading" data-i18n-en="Recommended Resources">Önerilen Kaynaklar</h2>
+            <p class="section-subheading" data-i18n-en="Resources and roadmaps I enjoy reading, watching, and listening to.">Okumaktan, izlemekten, dinlemekten keyif aldığım akademik merak kaynaklarım, yol haritaları</p>
 
             <div class="resources-grid">
               <div class="resource-card">
@@ -57,10 +61,10 @@
                   <div class="resource-icon">
                     <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="23 7 16 12 23 17 23 7"></polygon><rect x="1" y="5" width="15" height="14" rx="2" ry="2"></rect></svg>
                   </div>
-                  <span class="resource-badge">3 Video</span>
+                  <span class="resource-badge" data-i18n-en="3 Videos">3 Video</span>
                 </div>
-                <h3 class="resource-card-title">Konuşmalar & Videolar</h3>
-                <p class="resource-card-desc">Alanın önde gelen isimlerinden derinlemesine görüşler</p>
+                <h3 class="resource-card-title" data-i18n-en="Talks & Videos">Konuşmalar & Videolar</h3>
+                <p class="resource-card-desc" data-i18n-en="In-depth insights from leading voices in the field">Alanın önde gelen isimlerinden derinlemesine görüşler</p>
                 <ul class="resource-card-list">
                   <li>
                     <a href="https://www.youtube.com/watch?v=VMj-3S1tku0&list=PLAqhIrjkxbuWI23v9cThsA9GvCAUhRvKZ" target="_blank">
@@ -88,10 +92,10 @@
                   <div class="resource-icon">
                     <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path></svg>
                   </div>
-                  <span class="resource-badge">3 Kitap</span>
+                  <span class="resource-badge" data-i18n-en="3 Books">3 Kitap</span>
                 </div>
-                <h3 class="resource-card-title">Kitaplar</h3>
-                <p class="resource-card-desc">Temel ve ileri seviye başvuru kaynakları</p>
+                <h3 class="resource-card-title" data-i18n-en="Books">Kitaplar</h3>
+                <p class="resource-card-desc" data-i18n-en="Essential and advanced references">Temel ve ileri seviye başvuru kaynakları</p>
                 <ul class="resource-card-list">
                   <li>
                     <a href="https://www.deeplearningbook.org" target="_blank">
@@ -119,10 +123,10 @@
                   <div class="resource-icon">
                     <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"></circle><path d="m21 21-4.35-4.35"></path></svg>
                   </div>
-                  <span class="resource-badge">4 Araç</span>
+                  <span class="resource-badge" data-i18n-en="4 Tools">4 Araç</span>
                 </div>
-                <h3 class="resource-card-title">Araştırma Araçları</h3>
-                <p class="resource-card-desc">Akademik çalışmalarınızı hızlandıracak platformlar</p>
+                <h3 class="resource-card-title" data-i18n-en="Research Tools">Araştırma Araçları</h3>
+                <p class="resource-card-desc" data-i18n-en="Platforms that speed up academic work">Akademik çalışmalarınızı hızlandıracak platformlar</p>
                 <ul class="resource-card-list">
                   <li>
                     <a href="https://paperswithcode.com/" target="_blank">
@@ -153,49 +157,49 @@
             </div>
 
             <div class="bio-section">
-              <h2 class="section-heading">Akademik Biyografi</h2>
+              <h2 class="section-heading" data-i18n-en="Academic Bio">Akademik Biyografi</h2>
               <div class="bio-content">
-                <p>Doktora çalışmalarımda <strong>Açıklanabilir Yapay Zeka (XAI)</strong> ve sorumlu AI sistemlerine odaklanıyorum. Feynman tekniğinden ilhamla geliştirdiğim katmanlı açıklanabilirlik yaklaşımıyla, AI çıktılarının insan-merkezli biçimde anlaşılabilirliğini artırmayı hedefliyorum.</p>
-                <p>ASELSAN'da Kıdemli Konu Uzmanı olarak savunma sanayi ve kritik sistemlerde yapay zeka entegrasyonu üzerine çalışıyorum. ANLAM Lab'da araştırma görevlisi olarak doğal dil işleme ve multimodal AI araştırmaları yürütüyorum.</p>
-                <p><strong>Araştırma odaklarım:</strong> Explainable AI, Responsible AI Development, Human-AI Interaction, Cognitive Science, Natural Language Processing</p>
+                <p data-i18n-en="In my PhD, I focus on <strong>Explainable AI (XAI)</strong> and responsible AI systems. Inspired by the Feynman technique, I develop a layered explainability approach to improve human-centered understanding of AI outputs.">Doktora çalışmalarımda <strong>Açıklanabilir Yapay Zeka (XAI)</strong> ve sorumlu AI sistemlerine odaklanıyorum. Feynman tekniğinden ilhamla geliştirdiğim katmanlı açıklanabilirlik yaklaşımıyla, AI çıktılarının insan-merkezli biçimde anlaşılabilirliğini artırmayı hedefliyorum.</p>
+                <p data-i18n-en="At ASELSAN, I work on AI integration in defense and critical systems as a Senior Subject Matter Expert. At ANLAM Lab, I conduct research in NLP and multimodal AI.">ASELSAN'da Kıdemli Konu Uzmanı olarak savunma sanayi ve kritik sistemlerde yapay zeka entegrasyonu üzerine çalışıyorum. ANLAM Lab'da araştırma görevlisi olarak doğal dil işleme ve multimodal AI araştırmaları yürütüyorum.</p>
+                <p data-i18n-en="<strong>Research interests:</strong> Explainable AI, Responsible AI Development, Human-AI Interaction, Cognitive Science, Natural Language Processing"><strong>Araştırma odaklarım:</strong> Explainable AI, Responsible AI Development, Human-AI Interaction, Cognitive Science, Natural Language Processing</p>
               </div>
             </div>
           </section>
 
           <!-- Eğitim Section -->
           <section id="egitim" class="about-section">
-            <h2 class="section-heading">Eğitim</h2>
+            <h2 class="section-heading" data-i18n-en="Education">Eğitim</h2>
             
             <div class="education-compact">
               <div class="education-card">
                 <div class="edu-header">
                   <img src="assets/images/ankarauni.png" alt="Ankara Üniversitesi" loading="lazy" decoding="async">
                   <div class="edu-info">
-                    <h3>Doktora — Yapay Zeka</h3>
-                    <p class="edu-institution">Ankara Üniversitesi</p>
-                    <p class="edu-period">2024 - Devam Ediyor</p>
+                    <h3 data-i18n-en="PhD — Artificial Intelligence">Doktora — Yapay Zeka</h3>
+                    <p class="edu-institution" data-i18n-en="Ankara University">Ankara Üniversitesi</p>
+                    <p class="edu-period" data-i18n-en="2024 - Ongoing">2024 - Devam Ediyor</p>
                   </div>
                 </div>
-                <p class="edu-description">Açıklanabilir Yapay Zeka (XAI), Feynman-tabanlı katmanlı açıklanabilirlik ve insan-merkezli AI sistemleri üzerine çalışmalar</p>
+                <p class="edu-description" data-i18n-en="Explainable AI (XAI), Feynman-based layered explainability, and human-centered AI systems">Açıklanabilir Yapay Zeka (XAI), Feynman-tabanlı katmanlı açıklanabilirlik ve insan-merkezli AI sistemleri üzerine çalışmalar</p>
               </div>
 
               <div class="education-card">
                 <div class="edu-header">
                   <img src="assets/images/odtu.png" alt="ODTÜ" loading="lazy" decoding="async">
                   <div class="edu-info">
-                    <h3>Yüksek Lisans — Bilişsel Bilimler</h3>
-                    <p class="edu-institution">Orta Doğu Teknik Üniversitesi</p>
-                    <p class="edu-period">2025 - Devam Ediyor</p>
+                    <h3 data-i18n-en="Master's — Cognitive Science">Yüksek Lisans — Bilişsel Bilimler</h3>
+                    <p class="edu-institution" data-i18n-en="Middle East Technical University">Orta Doğu Teknik Üniversitesi</p>
+                    <p class="edu-period" data-i18n-en="2025 - Ongoing">2025 - Devam Ediyor</p>
                   </div>
                 </div>
-                <p class="edu-description">İnsan bilişi, yapay zeka ve disiplinlerarası bilişsel bilimler araştırmaları</p>
+                <p class="edu-description" data-i18n-en="Human cognition, AI, and interdisciplinary cognitive science research">İnsan bilişi, yapay zeka ve disiplinlerarası bilişsel bilimler araştırmaları</p>
               </div>
             </div>
           </section>
 
           <!-- Yayınlar Section -->
           <section id="yayinlar" class="about-section">
-            <h2 class="section-heading">Akademik Yayınlar</h2>
+            <h2 class="section-heading" data-i18n-en="Publications">Akademik Yayınlar</h2>
             
             <div class="publications-list">
               <div class="pub-year-group">
@@ -213,12 +217,12 @@
               </div>
 
               <div class="pub-year-group">
-                <h3 class="pub-year">2024</h3>
+                <h3 class="pub-year" data-i18n-en="2024">2024</h3>
                 <div class="pub-item spotlight">
                   <div class="pub-main">
                     <h4 class="pub-title">Open-source AI: An Approach to Responsible Artificial Intelligence Development</h4>
                     <p class="pub-authors">Fatih Bildirici</p>
-                    <p class="pub-venue">Jurnal Sosiologi Reflektif (JSR) <span class="spotlight-badge">Spotlight</span></p>
+                    <p class="pub-venue" data-i18n-en="Jurnal Sosiologi Reflektif (JSR) <span class=&quot;spotlight-badge&quot;>Spotlight</span>">Jurnal Sosiologi Reflektif (JSR) <span class="spotlight-badge">Spotlight</span></p>
                   </div>
                   <div class="pub-actions">
                     <a href="https://avesis.aybu.edu.tr/yayin/501c3950-584a-4926-98ee-ca7bb3392520/open-source-ai-an-approach-to-responsible-artificial-intelligence-development" target="_blank" class="pub-btn">Journal</a>
@@ -239,45 +243,45 @@
             </div>
 
             <div class="view-all-link">
-              <a href="https://scholar.google.com/citations?user=2NZptscAAAAJ" target="_blank" class="btn-outline">Tüm Yayınları Görüntüle →</a>
+              <a href="https://scholar.google.com/citations?user=2NZptscAAAAJ" target="_blank" class="btn-outline" data-i18n-en="View all publications →">Tüm Yayınları Görüntüle →</a>
             </div>
           </section>
 
           <!-- Seminer & Konferans Section -->
           <section id="seminerler" class="about-section">
-            <h2 class="section-heading">Seminer & Konferans</h2>
+            <h2 class="section-heading" data-i18n-en="Seminars & Conferences">Seminer & Konferans</h2>
 
             <ul class="academic-talks-list">
               <li class="academic-talk-item">
                 <span class="talk-title">Integration of Artificial Intelligence and Explainable Artificial Intelligence in Software Development Life Cycle</span>
-                <span class="talk-meta">Twenty-Fourth Global Information Technology Management (GITMA) World Conference, Sakarya Üniversitesi, Sakarya, 2–4 Haziran 2025</span>
+                <span class="talk-meta" data-i18n-en="Twenty-Fourth Global Information Technology Management (GITMA) World Conference, Sakarya University, Sakarya, June 2–4, 2025">Twenty-Fourth Global Information Technology Management (GITMA) World Conference, Sakarya Üniversitesi, Sakarya, 2–4 Haziran 2025</span>
               </li>
               <li class="academic-talk-item">
                 <span class="talk-title">FLUXAI: Layered Explainability for Human-Centered Understanding via Feynman’s Approach</span>
-                <span class="talk-meta">HCI-E 2025, 4th Eurasian Conference on Human-Computer Interaction, Bakü, Azerbaycan, 2025</span>
+                <span class="talk-meta" data-i18n-en="HCI-E 2025, 4th Eurasian Conference on Human-Computer Interaction, Baku, Azerbaijan, 2025">HCI-E 2025, 4th Eurasian Conference on Human-Computer Interaction, Bakü, Azerbaycan, 2025</span>
               </li>
               <li class="academic-talk-item">
                 <span class="talk-title">Artificial Intelligence Supported Career Platform Model: A Proposal for Adaptive Development in Companies and Talents</span>
-                <span class="talk-meta">12. Uluslararası Yönetim Bilişim Sistemleri Konferansı “IMISC2024”, Konya, 24–26 Ekim 2024</span>
+                <span class="talk-meta" data-i18n-en="12th International Management Information Systems Conference “IMISC2024”, Konya, Oct 24–26, 2024">12. Uluslararası Yönetim Bilişim Sistemleri Konferansı “IMISC2024”, Konya, 24–26 Ekim 2024</span>
               </li>
               <li class="academic-talk-item">
                 <span class="talk-title">Using Agile Story Points and Game Theory Together: Better Software Planning and Development in Agile Software Development</span>
-                <span class="talk-meta">IMISC 2023, Yeditepe Üniversitesi, İstanbul, 18–20 Ekim 2023</span>
+                <span class="talk-meta" data-i18n-en="IMISC 2023, Yeditepe University, Istanbul, Oct 18–20, 2023">IMISC 2023, Yeditepe Üniversitesi, İstanbul, 18–20 Ekim 2023</span>
               </li>
               <li class="academic-talk-item">
                 <span class="talk-title">A White-Box Benchmark for Intrinsic Hallucination Detection in Turkish LLMs</span>
-                <span class="talk-meta">TBD IISEC Conference, 2026</span>
+                <span class="talk-meta" data-i18n-en="TBD IISEC Conference, 2026">TBD IISEC Conference, 2026</span>
               </li>
               <li class="academic-talk-item">
                 <span class="talk-title">From Black-Box to Glass-Box: Explainable Artificial Intelligence (XAI) for Trustworthy Network Autonomy</span>
-                <span class="talk-meta">IEEE/IFIP Network Operations and Management Symposium 2026, Rome, Italy, 18–22 May 2026</span>
+                <span class="talk-meta" data-i18n-en="IEEE/IFIP Network Operations and Management Symposium 2026, Rome, Italy, May 18–22, 2026">IEEE/IFIP Network Operations and Management Symposium 2026, Rome, Italy, 18–22 May 2026</span>
               </li>
             </ul>
           </section>
 
           <!-- Konuşmalar Section -->
           <section id="konusmalar" class="about-section">
-            <h2 class="section-heading">Konuşmalar & Sunumlar</h2>
+            <h2 class="section-heading" data-i18n-en="Talks & Presentations">Konuşmalar & Sunumlar</h2>
             
             <div class="talks-modern">
               <div class="talk-card">
@@ -382,36 +386,36 @@
     <div class="container">
       <div class="footer-top">
         <div class="footer-newsletter">
-          <h3>Bültenime kaydol</h3>
-          <p>Kaydolarak son gelişmelere, podcast ve yazılı içeriklere e-posta bülteni üzerinden ulaşabilirsiniz.</p>
+          <h3 data-i18n-en="Subscribe to my newsletter">Bültenime kaydol</h3>
+          <p data-i18n-en="Subscribe to receive the latest updates, podcast episodes, and written content via email.">Kaydolarak son gelişmelere, podcast ve yazılı içeriklere e-posta bülteni üzerinden ulaşabilirsiniz.</p>
           <div class="newsletter-form-inline" onclick="window.open('https://otostopcununyzrehberi.substack.com/subscribe', '_blank')" style="cursor: pointer;">
-            <input type="email" placeholder="E-posta adresiniz" readonly style="cursor: pointer;">
-            <button type="button" class="btn-primary">Kaydol</button>
+            <input type="email" placeholder="E-posta adresiniz" readonly style="cursor: pointer;" data-i18n-placeholder-en="Your email address">
+            <button type="button" class="btn-primary" data-i18n-en="Subscribe">Kaydol</button>
           </div>
-          <p class="newsletter-legal"><a href="aydinlatma-metni.html">Aydınlatma metnini</a> okudum, kişisel verilerimin işlenmesine ve tarafıma ticari elektronik ileti gönderilmesine <a href="acik-riza-metni.html">açık rıza</a> veriyorum.</p>
+          <p class="newsletter-legal" data-i18n-en="I have read the <a href=&quot;aydinlatma-metni.html&quot;>privacy notice</a>, and I consent to the processing of my personal data and to receiving commercial electronic communications via the <a href=&quot;acik-riza-metni.html&quot;>explicit consent</a>."><a href="aydinlatma-metni.html">Aydınlatma metnini</a> okudum, kişisel verilerimin işlenmesine ve tarafıma ticari elektronik ileti gönderilmesine <a href="acik-riza-metni.html">açık rıza</a> veriyorum.</p>
         </div>
         <div class="footer-links">
           <div class="footer-col">
-            <h4>İçerikler</h4>
-            <a href="hakkinda.html">Hakkımda</a>
-            <a href="gelismeler.html">Gelişmeler</a>
+            <h4 data-i18n-en="Content">İçerikler</h4>
+            <a href="hakkinda.html" data-i18n-en="About">Hakkımda</a>
+            <a href="gelismeler.html" data-i18n-en="Updates">Gelişmeler</a>
             <a href="podcast.html">Podcast</a>
-            <a href="akademik.html">Akademik</a>
+            <a href="akademik.html" data-i18n-en="Academic">Akademik</a>
           </div>
           <div class="footer-col">
-            <h4>Sözleşmeler</h4>
-            <a href="aydinlatma-metni.html">Aydınlatma Metni</a>
-            <a href="acik-riza-metni.html">Açık Rıza Metni</a>
-            <a href="gizlilik-politikasi.html">Gizlilik Politikası</a>
+            <h4 data-i18n-en="Legal">Sözleşmeler</h4>
+            <a href="aydinlatma-metni.html" data-i18n-en="Privacy Notice">Aydınlatma Metni</a>
+            <a href="acik-riza-metni.html" data-i18n-en="Explicit Consent Notice">Açık Rıza Metni</a>
+            <a href="gizlilik-politikasi.html" data-i18n-en="Privacy Policy">Gizlilik Politikası</a>
           </div>
           <div class="footer-col">
-            <h4>İletişim</h4>
-            <a href="iletisim.html">İletişim</a>
+            <h4 data-i18n-en="Contact">İletişim</h4>
+            <a href="iletisim.html" data-i18n-en="Contact">İletişim</a>
           </div>
         </div>
       </div>
       <div class="footer-bottom">
-          <p>© 2026. Tüm hakları saklıdır.</p>
+          <p data-i18n-en="© 2026. All rights reserved.">© 2026. Tüm hakları saklıdır.</p>
           <div class="social-links">
             <a href="mailto:fatihbildirici.dev@gmail.com" target="_blank" class="social-icon" aria-label="Mail">
               <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 2v.01L12 13 4 6.01V6h16zM4 20v-9.99l8 6.99 8-6.99V20H4z"/></svg>
@@ -430,5 +434,6 @@
     </div>
   </footer>
 
+  <script src="script.js"></script>
 </body>
 </html>

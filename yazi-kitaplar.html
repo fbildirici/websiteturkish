@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Yapay Zeka Hakkında En Sevdiğim Kitaplar - Fatih Bildirici</title>
+  <title data-i18n-en="My Favorite Books About AI - Fatih Bildirici">Yapay Zeka Hakkında En Sevdiğim Kitaplar - Fatih Bildirici</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -13,14 +13,18 @@
   <header class="header">
     <div class="container">
       <div class="header-inner">
-        <a href="index.html" class="logo">FATİH BİLDİRİCİ</a>
+        <a href="index.html" class="logo" data-i18n-en="FATIH BILDIRICI">FATİH BİLDİRİCİ</a>
         <nav class="nav">
-          <a href="hakkinda.html" class="nav-link">Hakkımda</a>
-          <a href="gelismeler.html" class="nav-link active">Gelişmeler</a>
+          <a href="hakkinda.html" class="nav-link" data-i18n-en="About">Hakkımda</a>
+          <a href="gelismeler.html" class="nav-link active" data-i18n-en="Updates">Gelişmeler</a>
           <a href="podcast.html" class="nav-link">Podcast</a>
-          <a href="akademik.html" class="nav-link">Akademik</a>
+          <a href="akademik.html" class="nav-link" data-i18n-en="Academic">Akademik</a>
         </nav>
-        <a href="https://otostopcununyzrehberi.substack.com" class="btn-primary">Bültene Kaydol</a>
+        <button class="lang-toggle" type="button" data-lang-toggle aria-label="Switch language">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2a10 10 0 1 0 0 20 10 10 0 0 0 0-20Zm7.93 9h-3.16a15.9 15.9 0 0 0-1.22-5.04A8.02 8.02 0 0 1 19.93 11ZM12 4c1.12 0 2.68 2.16 3.36 7H8.64C9.32 6.16 10.88 4 12 4Zm-7.55 7h3.16A15.9 15.9 0 0 0 8.83 16a8.02 8.02 0 0 1-4.38-5Zm3.16 2h7.78A15.9 15.9 0 0 1 12 20c-1.12 0-2.68-2.16-3.36-7Zm8.56 3a15.9 15.9 0 0 0 1.22-5h3.16a8.02 8.02 0 0 1-4.38 5Z"/></svg>
+          <span class="lang-toggle-text">EN</span>
+        </button>
+        <a href="https://otostopcununyzrehberi.substack.com" class="btn-primary" data-i18n-en="Subscribe">Bültene Kaydol</a>
       </div>
     </div>
   </header>
@@ -29,12 +33,12 @@
     <div class="container">
       <div class="article-header">
         <div class="article-header-content">
-          <span class="article-badge">Deneme</span>
-          <h1 class="article-title">Yapay Zeka Hakkında En Sevdiğim Kitaplar</h1>
+          <span class="article-badge" data-i18n-en="Essay">Deneme</span>
+          <h1 class="article-title" data-i18n-en="My Favorite Books About AI">Yapay Zeka Hakkında En Sevdiğim Kitaplar</h1>
           <div class="article-meta">
-            <span class="article-date">26 OCA 2026</span>
+            <span class="article-date" data-i18n-en="JAN 26, 2026">26 OCA 2026</span>
             <span class="article-separator">·</span>
-            <span class="article-read-time">8 DK. OKUMA SÜRESİ</span>
+            <span class="article-read-time" data-i18n-en="8 MIN READ">8 DK. OKUMA SÜRESİ</span>
           </div>
           <div class="article-author">
             <img src="assets/images/fatih-hero.png" alt="Fatih Bildirici" class="article-author-img">
@@ -65,173 +69,238 @@
       </div>
 
       <div class="article-content">
-        <div class="article-lead">
-          Yapay zekayı sadece model doğruluğu üzerinden değil; veri, ürün, ekip ve etik katmanlarıyla anlamaya çalışan bir okuma listesi. Aşağıdaki 18 kitap, hem mühendislik pratikleri hem de kavramsal çerçeve açısından bana en çok katkı sağlayanlar; önce temel textbook’lar, sonra bonus pratik ve perspektif kaynakları var.
-        </div>
+        <div class="article-lead" data-i18n-en="A reading list that looks at AI beyond model accuracy—through data, product, team, and ethics layers. This selection includes the books that contributed most to me in both engineering practice and conceptual framing. I suggest starting with the core textbooks, then moving to the bonus practice and perspective sources.">Yapay zekayı sadece model doğruluğu üzerinden değil; veri, ürün, ekip ve etik katmanlarıyla anlamaya çalışan bir okuma listesi. Bu seçki, hem mühendislik pratikleri hem de kavramsal çerçeve açısından bana en çok katkı sağlayan kitaplardan oluşuyor. Önce temel textbook’larla zemini kurup, sonra bonus pratik ve perspektif kaynaklarına geçmeni öneririm.</div>
 
-        <h2>Kitap Listesi</h2>
+        <h2 data-i18n-en="Book List">Kitap Listesi</h2>
 
         <div class="book-list">
   <div class="book-group">
-    <h3 class="book-group-title">Temel Textbook’lar</h3>
+    <h3 class="book-group-title" data-i18n-en="Core Textbooks">Temel Textbook’lar</h3>
     <div class="book-group-list">
       <article class="book-card">
             <img src="https://aima.cs.berkeley.edu/cover2.jpg" alt="Artificial Intelligence: A Modern Approach kapak" class="book-cover" loading="lazy" decoding="async">
             <div class="book-info">
-              <div class="book-order-chip textbook"><svg viewBox="0 0 24 24" aria-hidden="true"><line x1="6" y1="7" x2="18" y2="7"></line><line x1="6" y1="12" x2="18" y2="12"></line><line x1="6" y1="17" x2="14" y2="17"></line></svg><span>Textbook · 1</span></div>
-              <h3 class="book-title"><a href="https://aima.cs.berkeley.edu" target="_blank" rel="noopener noreferrer">Artificial Intelligence: A Modern Approach (4th US ed.)</a> <span class="book-badge">Textbook</span></h3>
-              <p class="book-author">Yazarlar: Stuart Russell, Peter Norvig</p>
-              <p class="book-desc">AI’a nereden girileceği konusunda öğrenciler için en sağlam iskelet bu kitap. Konuları ders akışı gibi sıralıyor: arama, mantık, olasılık, planlama, öğrenme… Ben bunu ‘genel çerçeveyi oturtmak’ için öneriyorum; bu temeli kurunca diğer her şey daha kolay yerli yerine oturuyor.</p>
+              <div class="book-level-chip level-beginner">
+                <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="13" width="4" height="8" rx="1"></rect><rect x="10" y="9" width="4" height="12" rx="1"></rect><rect x="17" y="5" width="4" height="16" rx="1"></rect></svg>
+                <span data-i18n-en="Beginner">Başlangıç</span>
+              </div>
+              <h3 class="book-title"><a href="https://aima.cs.berkeley.edu" target="_blank" rel="noopener noreferrer">Artificial Intelligence: A Modern Approach (4th US ed.)</a> <span class="book-badge"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 4h9a3 3 0 0 1 3 3v12a2 2 0 0 0-2-2H6a2 2 0 0 0-2 2V6a2 2 0 0 1 2-2z"></path><path d="M6 4v13"></path></svg><span>Textbook</span></span></h3>
+              <p class="book-author" data-i18n-en="Authors: Stuart Russell, Peter Norvig">Yazarlar: Stuart Russell, Peter Norvig</p>
+              <p class="book-desc" data-i18n-en="This is the most reliable starting framework for students. It lays out topics like a full course—search, logic, probability, planning, learning. I recommend it to set the big picture; once that foundation is in place, everything else clicks faster.">AI’a nereden girileceği konusunda öğrenciler için en sağlam iskelet bu kitap. Konuları ders akışı gibi sıralıyor: arama, mantık, olasılık, planlama, öğrenme. Ben bunu büyük resmi kurmak için öneriyorum; bu temel oturduğunda diğer kitaplar çok daha hızlı anlaşılır.</p>
             </div>
           </article>
       <article class="book-card">
             <img src="https://covers.openlibrary.org/b/isbn/9780262035613-L.jpg" alt="Deep Learning kapak" class="book-cover" loading="lazy" decoding="async">
             <div class="book-info">
-              <div class="book-order-chip textbook"><svg viewBox="0 0 24 24" aria-hidden="true"><line x1="6" y1="7" x2="18" y2="7"></line><line x1="6" y1="12" x2="18" y2="12"></line><line x1="6" y1="17" x2="14" y2="17"></line></svg><span>Textbook · 2</span></div>
-              <h3 class="book-title"><a href="https://www.deeplearningbook.org" target="_blank" rel="noopener noreferrer">Deep Learning</a> <span class="book-badge">Textbook</span></h3>
-              <p class="book-author">Yazarlar: Ian Goodfellow, Yoshua Bengio, Aaron Courville</p>
-              <p class="book-desc">Derin öğrenmenin matematiksel omurgası. İlk okumada ağır gelebilir ama akademik temeli kurmak için en sağlam kaynak. Tez ve makale okurken sürekli geri dönüp referans aldığım kitaplardan.</p>
+              <div class="book-level-chip level-advanced">
+                <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="13" width="4" height="8" rx="1"></rect><rect x="10" y="9" width="4" height="12" rx="1"></rect><rect x="17" y="5" width="4" height="16" rx="1"></rect></svg>
+                <span data-i18n-en="Advanced">İleri</span>
+              </div>
+              <h3 class="book-title"><a href="https://www.deeplearningbook.org" target="_blank" rel="noopener noreferrer">Deep Learning</a> <span class="book-badge"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 4h9a3 3 0 0 1 3 3v12a2 2 0 0 0-2-2H6a2 2 0 0 0-2 2V6a2 2 0 0 1 2-2z"></path><path d="M6 4v13"></path></svg><span>Textbook</span></span></h3>
+              <p class="book-author" data-i18n-en="Authors: Ian Goodfellow, Yoshua Bengio, Aaron Courville">Yazarlar: Ian Goodfellow, Yoshua Bengio, Aaron Courville</p>
+              <p class="book-desc" data-i18n-en="The mathematical backbone of deep learning. It can feel heavy at first, but it’s the most dependable source for building academic foundations. I still return to it when I read papers or write.">Derin öğrenmenin matematik omurgası. İlk okumada ağır gelebilir ama akademik temeli kurmak için en güvenilir kaynak. Makale okurken ve yazarken hâlâ dönüp baktığım kitap.</p>
             </div>
           </article>
       <article class="book-card">
             <img src="https://www.bishopbook.com/assets/images/deep-learning-book-cover.jpg" alt="Deep Learning Foundations and Concepts kapak" class="book-cover" loading="lazy" decoding="async">
             <div class="book-info">
-              <div class="book-order-chip textbook"><svg viewBox="0 0 24 24" aria-hidden="true"><line x1="6" y1="7" x2="18" y2="7"></line><line x1="6" y1="12" x2="18" y2="12"></line><line x1="6" y1="17" x2="14" y2="17"></line></svg><span>Textbook · 3</span></div>
-              <h3 class="book-title"><a href="https://www.bishopbook.com" target="_blank" rel="noopener noreferrer">Deep Learning Foundations and Concepts</a> <span class="book-badge">Textbook</span></h3>
-              <p class="book-author">Yazar: Christopher M. Bishop</p>
-              <p class="book-desc">Bishop’un güncel ve modern anlatımı. ‘Neden böyle çalışıyor?’ sorusunu sade bir yapıda kuruyor; kavramlar arasında bağ kurmayı çok iyi sağlıyor. Temeli sağlamlaştırmak isteyen öğrenciler için harika.</p>
+              <div class="book-level-chip level-intermediate">
+                <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="13" width="4" height="8" rx="1"></rect><rect x="10" y="9" width="4" height="12" rx="1"></rect><rect x="17" y="5" width="4" height="16" rx="1"></rect></svg>
+                <span data-i18n-en="Intermediate">Orta</span>
+              </div>
+              <h3 class="book-title"><a href="https://www.bishopbook.com" target="_blank" rel="noopener noreferrer">Deep Learning Foundations and Concepts</a> <span class="book-badge"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 4h9a3 3 0 0 1 3 3v12a2 2 0 0 0-2-2H6a2 2 0 0 0-2 2V6a2 2 0 0 1 2-2z"></path><path d="M6 4v13"></path></svg><span>Textbook</span></span></h3>
+              <p class="book-author" data-i18n-en="Author: Christopher M. Bishop">Yazar: Christopher M. Bishop</p>
+              <p class="book-desc" data-i18n-en="Bishop’s modern, clean narrative. It answers the “why does this work?” question and builds strong conceptual connections. Great if you want a clearer middle step into deep learning.">Bishop’un daha güncel ve temiz anlatımı. “Neden böyle çalışıyor?” sorusunu sade bir yapı içinde kuruyor; kavramlar arasındaki bağları iyi kurduruyor. Derin öğrenmeye orta seviyeden girmek isteyenler için çok iyi.</p>
             </div>
           </article>
       <article class="book-card">
             <img src="https://covers.openlibrary.org/b/isbn/9780387310732-L.jpg" alt="Pattern Recognition and Machine Learning kapak" class="book-cover" loading="lazy" decoding="async">
             <div class="book-info">
-              <div class="book-order-chip textbook"><svg viewBox="0 0 24 24" aria-hidden="true"><line x1="6" y1="7" x2="18" y2="7"></line><line x1="6" y1="12" x2="18" y2="12"></line><line x1="6" y1="17" x2="14" y2="17"></line></svg><span>Textbook · 4</span></div>
-              <h3 class="book-title"><a href="https://www.microsoft.com/en-us/research/wp-content/uploads/2006/01/Bishop-Pattern-Recognition-and-Machine-Learning-2006.pdf" target="_blank" rel="noopener noreferrer">Pattern Recognition and Machine Learning</a> <span class="book-badge">Textbook</span></h3>
-              <p class="book-author">Yazar: Christopher M. Bishop</p>
-              <p class="book-desc">Olasılıksal düşünmenin klasiği. Matematik temeli güçlendirmek isteyen ve modelleme tarafına ciddi girmek isteyen öğrenciler için vazgeçilmez. Sabır isteyen ama çok şey kazandıran bir kitap.</p>
+              <div class="book-level-chip level-advanced">
+                <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="13" width="4" height="8" rx="1"></rect><rect x="10" y="9" width="4" height="12" rx="1"></rect><rect x="17" y="5" width="4" height="16" rx="1"></rect></svg>
+                <span data-i18n-en="Advanced">İleri</span>
+              </div>
+              <h3 class="book-title"><a href="https://www.microsoft.com/en-us/research/wp-content/uploads/2006/01/Bishop-Pattern-Recognition-and-Machine-Learning-2006.pdf" target="_blank" rel="noopener noreferrer">Pattern Recognition and Machine Learning</a> <span class="book-badge"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 4h9a3 3 0 0 1 3 3v12a2 2 0 0 0-2-2H6a2 2 0 0 0-2 2V6a2 2 0 0 1 2-2z"></path><path d="M6 4v13"></path></svg><span>Textbook</span></span></h3>
+              <p class="book-author" data-i18n-en="Author: Christopher M. Bishop">Yazar: Christopher M. Bishop</p>
+              <p class="book-desc" data-i18n-en="The classic for probabilistic modeling. Essential if you want to strengthen the math and go deeper into modeling. It’s demanding, but the payoff is huge.">Olasılıksal modellemenin klasiği. Matematiği güçlendirmek ve modelleme tarafına ciddi girmek isteyen öğrenciler için vazgeçilmez. Sabır istiyor ama karşılığı yüksek.</p>
             </div>
           </article>
       <article class="book-card">
             <img src="https://probml.github.io/pml-book/cover1.jpg" alt="Probabilistic Machine Learning kapak" class="book-cover" loading="lazy" decoding="async">
             <div class="book-info">
-              <div class="book-order-chip textbook"><svg viewBox="0 0 24 24" aria-hidden="true"><line x1="6" y1="7" x2="18" y2="7"></line><line x1="6" y1="12" x2="18" y2="12"></line><line x1="6" y1="17" x2="14" y2="17"></line></svg><span>Textbook · 5</span></div>
-              <h3 class="book-title"><a href="https://probml.github.io/pml-book/" target="_blank" rel="noopener noreferrer">Probabilistic Machine Learning: An Introduction</a> <span class="book-badge">Textbook</span></h3>
-              <p class="book-author">Yazar: Kevin P. Murphy</p>
-              <p class="book-desc">Murphy’nin modern textbook’u. Belirsizlik, çıkarım ve olasılıksal düşünmeye sistemli bir giriş veriyor. İstatistiksel temelini büyütmek isteyen öğrencilere net bir yol haritası sağlar.</p>
+              <div class="book-level-chip level-intermediate">
+                <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="13" width="4" height="8" rx="1"></rect><rect x="10" y="9" width="4" height="12" rx="1"></rect><rect x="17" y="5" width="4" height="16" rx="1"></rect></svg>
+                <span data-i18n-en="Intermediate">Orta</span>
+              </div>
+              <h3 class="book-title"><a href="https://probml.github.io/pml-book/" target="_blank" rel="noopener noreferrer">Probabilistic Machine Learning: An Introduction</a> <span class="book-badge"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 4h9a3 3 0 0 1 3 3v12a2 2 0 0 0-2-2H6a2 2 0 0 0-2 2V6a2 2 0 0 1 2-2z"></path><path d="M6 4v13"></path></svg><span>Textbook</span></span></h3>
+              <p class="book-author" data-i18n-en="Author: Kevin P. Murphy">Yazar: Kevin P. Murphy</p>
+              <p class="book-desc" data-i18n-en="Murphy’s modern textbook. It gives a systematic entry into uncertainty, inference, and probabilistic thinking. A clear roadmap for students who want a stronger statistical foundation.">Murphy’nin modern textbook’u. Belirsizlik, çıkarım ve olasılıksal düşünmeye sistemli bir giriş veriyor. İstatistiksel temelini büyütmek isteyen öğrenciler için net bir yol haritası.</p>
             </div>
           </article>
     </div>
   </div>
   <div class="book-group">
-    <h3 class="book-group-title">Bonus / Pratik + Perspektif</h3>
+    <h3 class="book-group-title" data-i18n-en="Bonus / Practice + Perspective">Bonus / Pratik + Perspektif</h3>
     <div class="book-group-list">
       <article class="book-card">
             <img src="https://covers.openlibrary.org/b/isbn/9781492032649-L.jpg" alt="Hands-On Machine Learning kapak" class="book-cover" loading="lazy" decoding="async">
             <div class="book-info">
+              <div class="book-level-chip level-beginner">
+                <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="13" width="4" height="8" rx="1"></rect><rect x="10" y="9" width="4" height="12" rx="1"></rect><rect x="17" y="5" width="4" height="16" rx="1"></rect></svg>
+                <span data-i18n-en="Beginner">Başlangıç</span>
+              </div>
               <h3 class="book-title">Hands-On Machine Learning with Scikit-Learn, Keras &amp; TensorFlow</h3>
-              <p class="book-author">Yazar: Aurélien Géron</p>
-              <p class="book-desc">Sıfırdan uygulama yapmak isteyenler için en hızlı yol. Kod çalıştırarak öğrenme yaklaşımıyla kısa sürede momentum kazandırıyor; projeye başlamak isteyen öğrenciler için ideal.</p>
+              <p class="book-author" data-i18n-en="Author: Aurélien Géron">Yazar: Aurélien Géron</p>
+              <p class="book-desc" data-i18n-en="The fastest way to get from zero to working code. Its learn-by-doing approach builds momentum quickly—perfect for students who want confidence through small projects.">Sıfırdan uygulama yapmak isteyenler için en hızlı yol. Kod çalıştırarak öğrenme yaklaşımıyla kısa sürede momentum kazandırıyor; küçük projelerle özgüven kazanmak için ideal.</p>
             </div>
           </article>
       <article class="book-card">
             <img src="https://deeplearningwithpython.io/images/cover.3ccb2df8.png" alt="Deep Learning with Python kapak" class="book-cover" loading="lazy" decoding="async">
             <div class="book-info">
+              <div class="book-level-chip level-intermediate">
+                <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="13" width="4" height="8" rx="1"></rect><rect x="10" y="9" width="4" height="12" rx="1"></rect><rect x="17" y="5" width="4" height="16" rx="1"></rect></svg>
+                <span data-i18n-en="Intermediate">Orta</span>
+              </div>
               <h3 class="book-title"><a href="https://deeplearningwithpython.io" target="_blank" rel="noopener noreferrer">Deep Learning with Python (3rd Edition)</a></h3>
-              <p class="book-author">Yazarlar: François Chollet, Matthew Watson</p>
-              <p class="book-desc">Keras’ın yaratıcısından, uygulama üzerinden sezgi kazandıran bir kitap. Bölüm bölüm ilerleyip kendi mini projeni çıkarabileceğin, öğrenerek yapmayı sevenler için çok güçlü bir kaynak.</p>
+              <p class="book-author" data-i18n-en="Authors: François Chollet, Matthew Watson">Yazarlar: François Chollet, Matthew Watson</p>
+              <p class="book-desc" data-i18n-en="From the creator of Keras, this book builds intuition through practice. Step-by-step chapters make it easy to extract mini-projects and learn by doing.">Keras’ın yaratıcısından, uygulama üzerinden sezgi kazandıran bir kitap. Bölüm bölüm ilerleyip kendi mini projelerini çıkarabileceğin, öğrenerek yapmayı sevenler için çok güçlü bir kaynak.</p>
             </div>
           </article>
       <article class="book-card">
             <img src="https://m.media-amazon.com/images/S/compressed.photo.goodreads.com/books/1653945265i/60715378.jpg" alt="Designing Machine Learning Systems kapak" class="book-cover" loading="lazy" decoding="async">
             <div class="book-info">
+              <div class="book-level-chip level-intermediate">
+                <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="13" width="4" height="8" rx="1"></rect><rect x="10" y="9" width="4" height="12" rx="1"></rect><rect x="17" y="5" width="4" height="16" rx="1"></rect></svg>
+                <span data-i18n-en="Intermediate">Orta</span>
+              </div>
               <h3 class="book-title"><a href="https://www.goodreads.com/book/show/60715378-designing-machine-learning-systems" target="_blank" rel="noopener noreferrer">Designing Machine Learning Systems</a></h3>
-              <p class="book-author">Yazar: Chip Huyen</p>
-              <p class="book-desc">Bir şirkette ML projesi nasıl tasarlanır sorusuna en net cevaplardan biri. Süreç, ekip rolleri, veri kalitesi, dağıtım ve bakım döngüsünü sade bir dille toparlıyor. Ben bunu ‘iş dünyasında ML nasıl yürür’ sorusunun kitabı olarak görüyorum.</p>
+              <p class="book-author" data-i18n-en="Author: Chip Huyen">Yazar: Chip Huyen</p>
+              <p class="book-desc" data-i18n-en="One of the clearest answers to how ML projects are designed in companies. It summarizes process, team roles, data quality, deployment, and maintenance in a simple, product-minded way.">Bir şirkette ML projesi nasıl tasarlanır sorusuna en net cevaplardan biri. Süreç, ekip rolleri, veri kalitesi, dağıtım ve bakım döngüsünü sade bir dille toparlıyor.</p>
             </div>
           </article>
       <article class="book-card">
             <img src="https://covers.openlibrary.org/b/isbn/9781098166304-L.jpg" alt="AI Engineering kapak" class="book-cover" loading="lazy" decoding="async">
             <div class="book-info">
+              <div class="book-level-chip level-intermediate">
+                <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="13" width="4" height="8" rx="1"></rect><rect x="10" y="9" width="4" height="12" rx="1"></rect><rect x="17" y="5" width="4" height="16" rx="1"></rect></svg>
+                <span data-i18n-en="Intermediate">Orta</span>
+              </div>
               <h3 class="book-title"><a href="https://www.goodreads.com/book/show/216848047-ai-engineering" target="_blank" rel="noopener noreferrer">AI Engineering</a></h3>
-              <p class="book-author">Yazar: Chip Huyen</p>
-              <p class="book-desc">Bu kitabı özellikle üretime çıkmak isteyen öğrencilere öneriyorum. Sadece model değil; veri boru hatları, izleme, maliyet ve güvenlik gibi gerçek dünya detaylarını anlatıyor. Laboratuvardan ürüne geçişte net bir rota çiziyor.</p>
+              <p class="book-author" data-i18n-en="Author: Chip Huyen">Yazar: Chip Huyen</p>
+              <p class="book-desc" data-i18n-en="A practical guide for shipping products with foundation models. It covers prompting, evaluation, cost-quality tradeoffs, and real-world productization challenges.">Foundation modelleriyle ürün geliştirmek isteyenler için çok pratik bir rehber. Prompting’den değerlendirmeye, maliyet-kalite dengesinden ürünleştirmeye kadar güncel gerçekleri anlatıyor.</p>
             </div>
           </article>
       <article class="book-card">
             <img src="https://covers.openlibrary.org/b/isbn/9781999579579-L.jpg" alt="Machine Learning Engineering kapak" class="book-cover" loading="lazy" decoding="async">
             <div class="book-info">
+              <div class="book-level-chip level-intermediate">
+                <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="13" width="4" height="8" rx="1"></rect><rect x="10" y="9" width="4" height="12" rx="1"></rect><rect x="17" y="5" width="4" height="16" rx="1"></rect></svg>
+                <span data-i18n-en="Intermediate">Orta</span>
+              </div>
               <h3 class="book-title">Machine Learning Engineering</h3>
-              <p class="book-author">Yazar: Andriy Burkov</p>
-              <p class="book-desc">Mühendislik disiplinini ML projelerine taşır. Deney yönetimi, metrikler, veri boru hatları gibi pratik konuları kısa ve net anlatıyor. Öğrenciler için ‘projeyi ciddileştirme’ kitabı.</p>
+              <p class="book-author" data-i18n-en="Author: Andriy Burkov">Yazar: Andriy Burkov</p>
+              <p class="book-desc" data-i18n-en="Brings engineering discipline into ML projects. Short and clear on experiments, metrics, and data pipelines. A great “make the project serious” book for students.">Mühendislik disiplinini ML projelerine taşır. Deney yönetimi, metrikler, veri boru hatları gibi pratik konuları kısa ve net anlatıyor. Öğrenciler için “projeyi ciddileştirme” kitabı.</p>
             </div>
           </article>
       <article class="book-card">
             <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRhohpBOLEQHDjbzPS5i_WqHHr3T8vNeYfwqw&s" alt="Interpretable Machine Learning kapak" class="book-cover" loading="lazy" decoding="async">
             <div class="book-info">
+              <div class="book-level-chip level-intermediate">
+                <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="13" width="4" height="8" rx="1"></rect><rect x="10" y="9" width="4" height="12" rx="1"></rect><rect x="17" y="5" width="4" height="16" rx="1"></rect></svg>
+                <span data-i18n-en="Intermediate">Orta</span>
+              </div>
               <h3 class="book-title">Interpretable Machine Learning</h3>
-              <p class="book-author">Yazar: Christoph Molnar</p>
-              <p class="book-desc">XAI yöntemlerini karşılaştırmalı anlatır. Hangi yöntem neyi açıklar, nerede yanılır gibi sorulara net cevap veriyor. Açıklanabilirlik çalışmak isteyen öğrenciler için müthiş bir başvuru.</p>
+              <p class="book-author" data-i18n-en="Author: Christoph Molnar">Yazar: Christoph Molnar</p>
+              <p class="book-desc" data-i18n-en="A comparative guide to XAI methods—what each method explains and where it fails. A strong reference for students working on explainability.">XAI yöntemlerini karşılaştırmalı anlatır: hangi yöntem neyi açıklar, nerede yanılır? Açıklanabilirlik çalışmak isteyen öğrenciler için müthiş bir başvuru.</p>
             </div>
           </article>
       <article class="book-card">
             <img src="https://covers.openlibrary.org/b/isbn/9780465097609-L.jpg" alt="The Book of Why kapak" class="book-cover" loading="lazy" decoding="async">
             <div class="book-info">
+              <div class="book-level-chip level-intermediate">
+                <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="13" width="4" height="8" rx="1"></rect><rect x="10" y="9" width="4" height="12" rx="1"></rect><rect x="17" y="5" width="4" height="16" rx="1"></rect></svg>
+                <span data-i18n-en="Intermediate">Orta</span>
+              </div>
               <h3 class="book-title">The Book of Why</h3>
-              <p class="book-author">Yazarlar: Judea Pearl, Dana Mackenzie</p>
-              <p class="book-desc">Nedensellik düşüncesini sade bir dille oturtuyor. XAI ve güvenilirlik tartışmalarına teorik derinlik kazandırmak için çok iyi bir tamamlayıcı. ‘Korelasyon yetmez’ dediğin yerde devreye giriyor.</p>
+              <p class="book-author" data-i18n-en="Authors: Judea Pearl, Dana Mackenzie">Yazarlar: Judea Pearl, Dana Mackenzie</p>
+              <p class="book-desc" data-i18n-en="Builds causal thinking in a clear way. A strong complement for XAI and trust discussions—perfect when you realize correlation isn’t enough.">Nedensellik düşüncesini sade bir dille oturtuyor. XAI ve güvenilirlik tartışmalarına teorik derinlik kazandırmak için çok iyi bir tamamlayıcı; “korelasyon yetmez” dediğin yerde devreye girer.</p>
             </div>
           </article>
       <article class="book-card">
             <img src="https://covers.openlibrary.org/b/isbn/9780525558613-L.jpg" alt="Human Compatible kapak" class="book-cover" loading="lazy" decoding="async">
             <div class="book-info">
+              <div class="book-level-chip level-beginner">
+                <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="13" width="4" height="8" rx="1"></rect><rect x="10" y="9" width="4" height="12" rx="1"></rect><rect x="17" y="5" width="4" height="16" rx="1"></rect></svg>
+                <span data-i18n-en="Beginner">Başlangıç</span>
+              </div>
               <h3 class="book-title">Human Compatible</h3>
-              <p class="book-author">Yazar: Stuart Russell</p>
-              <p class="book-desc">AI güvenliği ve hedef uyumu konularında büyük resmi görmeni sağlar. Teknik detaydan çok düşünsel çerçeve isteyen öğrenciler için iyi bir perspektif kitabı.</p>
+              <p class="book-author" data-i18n-en="Author: Stuart Russell">Yazar: Stuart Russell</p>
+              <p class="book-desc" data-i18n-en="Helps you see the big picture of AI safety and alignment. A good perspective book if you want the conceptual frame more than technical detail.">AI güvenliği ve hedef uyumu konularında büyük resmi görmeni sağlar. Teknik detaydan çok düşünsel çerçeve isteyen öğrenciler için iyi bir perspektif.</p>
             </div>
           </article>
       <article class="book-card">
             <img src="https://covers.openlibrary.org/b/isbn/9781633695672-L.jpg" alt="Prediction Machines kapak" class="book-cover" loading="lazy" decoding="async">
             <div class="book-info">
+              <div class="book-level-chip level-beginner">
+                <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="13" width="4" height="8" rx="1"></rect><rect x="10" y="9" width="4" height="12" rx="1"></rect><rect x="17" y="5" width="4" height="16" rx="1"></rect></svg>
+                <span data-i18n-en="Beginner">Başlangıç</span>
+              </div>
               <h3 class="book-title">Prediction Machines</h3>
-              <p class="book-author">Yazarlar: Ajay Agrawal, Joshua Gans, Avi Goldfarb</p>
-              <p class="book-desc">AI’ı ekonomik bir mercekten anlatır: tahmin ucuzladığında karar süreçleri nasıl değişir? Ürün ve iş tarafına bakan öğrenciler için çok değerli bir perspektif.</p>
+              <p class="book-author" data-i18n-en="Authors: Ajay Agrawal, Joshua Gans, Avi Goldfarb">Yazarlar: Ajay Agrawal, Joshua Gans, Avi Goldfarb</p>
+              <p class="book-desc" data-i18n-en="Explains AI through an economic lens: how decision-making changes when prediction becomes cheap. Very valuable for product and business-oriented students.">AI’ı ekonomik bir mercekten anlatır: tahmin ucuzladığında karar süreçleri nasıl değişir? Ürün ve iş tarafına bakan öğrenciler için çok değerli bir perspektif.</p>
             </div>
           </article>
       <article class="book-card">
             <img src="https://covers.openlibrary.org/b/isbn/9781633697621-L.jpg" alt="Competing in the Age of AI kapak" class="book-cover" loading="lazy" decoding="async">
             <div class="book-info">
+              <div class="book-level-chip level-beginner">
+                <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="13" width="4" height="8" rx="1"></rect><rect x="10" y="9" width="4" height="12" rx="1"></rect><rect x="17" y="5" width="4" height="16" rx="1"></rect></svg>
+                <span data-i18n-en="Beginner">Başlangıç</span>
+              </div>
               <h3 class="book-title">Competing in the Age of AI</h3>
-              <p class="book-author">Yazarlar: Marco Iansiti, Karim R. Lakhani</p>
-              <p class="book-desc">Kurumsal dönüşüm ve veri stratejisini yönetim perspektifiyle ele alır. Teknik öğrencinin iş dünyasının diliyle konuşmasını sağlar; strateji tarafını güçlendirir.</p>
+              <p class="book-author" data-i18n-en="Authors: Marco Iansiti, Karim R. Lakhani">Yazarlar: Marco Iansiti, Karim R. Lakhani</p>
+              <p class="book-desc" data-i18n-en="Looks at organizational transformation and data strategy from a management perspective. Helps technical students speak the language of business and strategy.">Kurumsal dönüşüm ve veri stratejisini yönetim perspektifiyle ele alır. Teknik öğrencinin iş dünyasının diliyle konuşmasını sağlar; strateji tarafını güçlendirir.</p>
             </div>
           </article>
       <article class="book-card">
             <img src="https://covers.openlibrary.org/b/isbn/9780553418811-L.jpg" alt="Weapons of Math Destruction kapak" class="book-cover" loading="lazy" decoding="async">
             <div class="book-info">
+              <div class="book-level-chip level-beginner">
+                <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="13" width="4" height="8" rx="1"></rect><rect x="10" y="9" width="4" height="12" rx="1"></rect><rect x="17" y="5" width="4" height="16" rx="1"></rect></svg>
+                <span data-i18n-en="Beginner">Başlangıç</span>
+              </div>
               <h3 class="book-title">Weapons of Math Destruction</h3>
-              <p class="book-author">Yazar: Cathy O’Neil</p>
-              <p class="book-desc">Algoritmaların toplumsal etkisini gerçek örneklerle gösteriyor. Teknik çalışan herkesin, ürettiği modelin ‘yan etkilerini’ görmesi için önemli.</p>
+              <p class="book-author" data-i18n-en="Author: Cathy O’Neil">Yazar: Cathy O’Neil</p>
+              <p class="book-desc" data-i18n-en="Shows the social impact of algorithms through real examples. Important for anyone building models to see the unintended side effects.">Algoritmaların toplumsal etkisini gerçek örneklerle gösteriyor. Teknik çalışan herkesin, ürettiği modelin “yan etkilerini” görmesi için önemli.</p>
             </div>
           </article>
       <article class="book-card">
             <img src="https://covers.openlibrary.org/b/isbn/9780671657130-L.jpg" alt="The Society of Mind kapak" class="book-cover" loading="lazy" decoding="async">
             <div class="book-info">
+              <div class="book-level-chip level-intermediate">
+                <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="13" width="4" height="8" rx="1"></rect><rect x="10" y="9" width="4" height="12" rx="1"></rect><rect x="17" y="5" width="4" height="16" rx="1"></rect></svg>
+                <span data-i18n-en="Intermediate">Orta</span>
+              </div>
               <h3 class="book-title">The Society of Mind (Zihin Toplumu)</h3>
-              <p class="book-author">Yazar: Marvin Minsky</p>
-              <p class="book-desc">Zihin ve zekayı modüler parçalarla düşünmeyi öğretir. Açıklanabilirlik ve bilişsel mimari konularına ilham veren, ufuk açıcı bir metin.</p>
+              <p class="book-author" data-i18n-en="Author: Marvin Minsky">Yazar: Marvin Minsky</p>
+              <p class="book-desc" data-i18n-en="Teaches you to think of mind and intelligence as modular systems. A horizon-expanding text that inspires work on explainability and cognitive architectures.">Zihin ve zekayı modüler parçalarla düşünmeyi öğretir. Açıklanabilirlik ve bilişsel mimari konularına ilham veren, ufuk açıcı bir metin.</p>
             </div>
           </article>
       <article class="book-card">
             <img src="https://covers.openlibrary.org/b/isbn/9780393316049-L.jpg" alt="Surely You're Joking, Mr. Feynman! kapak" class="book-cover" loading="lazy" decoding="async">
             <div class="book-info">
+              <div class="book-level-chip level-beginner">
+                <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="13" width="4" height="8" rx="1"></rect><rect x="10" y="9" width="4" height="12" rx="1"></rect><rect x="17" y="5" width="4" height="16" rx="1"></rect></svg>
+                <span data-i18n-en="Beginner">Başlangıç</span>
+              </div>
               <h3 class="book-title">Surely You're Joking, Mr. Feynman!</h3>
-              <p class="book-author">Yazarlar: Richard P. Feynman, Ralph Leighton</p>
-              <p class="book-desc">Bilimsel merak ve problem çözme kültürü için şahane bir motivasyon kitabı. Öğrenciye araştırmacı zihniyetini ve oyunla öğrenmeyi hatırlatıyor.</p>
+              <p class="book-author" data-i18n-en="Authors: Richard P. Feynman, Ralph Leighton">Yazarlar: Richard P. Feynman, Ralph Leighton</p>
+              <p class="book-desc" data-i18n-en="A joyful reminder of scientific curiosity and problem-solving culture. It puts you back into the mindset of a researcher who learns through play.">Bilimsel merak ve problem çözme kültürü için şahane bir motivasyon kitabı. Öğrenciye araştırmacı zihniyetini ve oyunla öğrenmeyi hatırlatıyor.</p>
             </div>
           </article>
     </div>
   </div>
-</div>
+</div></div>
       </div>
       </div>
     </div>
@@ -241,35 +310,35 @@
     <div class="container">
       <div class="footer-inner">
         <div class="footer-newsletter">
-          <h3 class="footer-title">Bültenime kaydol</h3>
-          <p class="footer-desc">Kaydolarak son gelişmelere, podcast ve yazılı içeriklere e-posta bülteni üzerinden ulaşabilirsiniz.</p>
+          <h3 class="footer-title" data-i18n-en="Subscribe to my newsletter">Bültenime kaydol</h3>
+          <p class="footer-desc" data-i18n-en="Subscribe to receive the latest updates, podcast episodes, and written content via email.">Kaydolarak son gelişmelere, podcast ve yazılı içeriklere e-posta bülteni üzerinden ulaşabilirsiniz.</p>
           <div class="newsletter-form" onclick="window.open('https://otostopcununyzrehberi.substack.com/subscribe', '_blank')" style="cursor: pointer;">
-            <input type="email" placeholder="E-posta adresiniz" class="input-field" readonly style="cursor: pointer;">
-            <button type="button" class="btn-primary btn-submit">Kaydol</button>
+            <input type="email" placeholder="E-posta adresiniz" data-i18n-placeholder-en="Your email address" class="input-field" readonly style="cursor: pointer;">
+            <button type="button" class="btn-primary btn-submit" data-i18n-en="Subscribe">Kaydol</button>
           </div>
-          <p class="newsletter-legal"><a href="aydinlatma-metni.html">Aydınlatma metnini</a> okudum, kişisel verilerimin işlenmesine ve tarafıma ticari elektronik ileti gönderilmesine <a href="acik-riza-metni.html">açık rıza</a> veriyorum.</p>
+          <p class="newsletter-legal" data-i18n-en="I have read the <a href="aydinlatma-metni.html">privacy notice</a>, and I consent to the processing of my personal data and to receiving commercial electronic communications via the <a href="acik-riza-metni.html">explicit consent</a>."><a href="aydinlatma-metni.html">Aydınlatma metnini</a> okudum, kişisel verilerimin işlenmesine ve tarafıma ticari elektronik ileti gönderilmesine <a href="acik-riza-metni.html">açık rıza</a> veriyorum.</p>
         </div>
         <div class="footer-links">
           <div class="footer-col">
-            <h4 class="footer-col-title">İçerikler</h4>
-            <a href="hakkinda.html">Hakkımda</a>
-            <a href="gelismeler.html">Gelişmeler</a>
+            <h4 class="footer-col-title" data-i18n-en="Content">İçerikler</h4>
+            <a href="hakkinda.html" data-i18n-en="About">Hakkımda</a>
+            <a href="gelismeler.html" data-i18n-en="Updates">Gelişmeler</a>
             <a href="podcast.html">Podcast</a>
           </div>
           <div class="footer-col">
-            <h4 class="footer-col-title">Sözleşmeler</h4>
-            <a href="aydinlatma-metni.html">Aydınlatma Metni</a>
-            <a href="acik-riza-metni.html">Açık Rıza Metni</a>
-            <a href="gizlilik-politikasi.html">Gizlilik Politikası</a>
+            <h4 class="footer-col-title" data-i18n-en="Legal">Sözleşmeler</h4>
+            <a href="aydinlatma-metni.html" data-i18n-en="Privacy Notice">Aydınlatma Metni</a>
+            <a href="acik-riza-metni.html" data-i18n-en="Explicit Consent Notice">Açık Rıza Metni</a>
+            <a href="gizlilik-politikasi.html" data-i18n-en="Privacy Policy">Gizlilik Politikası</a>
           </div>
           <div class="footer-col">
-            <h4 class="footer-col-title">İletişim</h4>
-            <a href="iletisim.html">İletişim</a>
+            <h4 class="footer-col-title" data-i18n-en="Contact">İletişim</h4>
+            <a href="iletisim.html" data-i18n-en="Contact">İletişim</a>
           </div>
         </div>
       </div>
       <div class="footer-bottom">
-        <p class="copyright">Copyright © 2026. Tüm hakları saklıdır.</p>
+        <p class="copyright" data-i18n-en="Copyright © 2026. All rights reserved.">Copyright © 2026. Tüm hakları saklıdır.</p>
         <div class="social-links">
           <a href="mailto:fatihbildirici.dev@gmail.com" target="_blank" class="social-icon" aria-label="Mail">
             <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 2v.01L12 13 4 6.01V6h16zM4 20v-9.99l8 6.99 8-6.99V20H4z"/></svg>

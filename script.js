@@ -310,3 +310,55 @@ document.addEventListener('DOMContentLoaded', function() {
     });
   });
 });
+
+// Language toggle (TR/EN) with persistence
+document.addEventListener('DOMContentLoaded', function() {
+  const toggleButtons = document.querySelectorAll('[data-lang-toggle]');
+  const i18nElements = document.querySelectorAll('[data-i18n-en]');
+  const i18nPlaceholders = document.querySelectorAll('[data-i18n-placeholder-en]');
+
+  if (!i18nElements.length && !i18nPlaceholders.length) return;
+
+  i18nElements.forEach(el => {
+    if (!el.dataset.i18nTr) {
+      el.dataset.i18nTr = el.innerHTML;
+    }
+  });
+
+  i18nPlaceholders.forEach(el => {
+    if (!el.dataset.i18nPlaceholderTr) {
+      el.dataset.i18nPlaceholderTr = el.getAttribute('placeholder') || '';
+    }
+  });
+
+  function applyLanguage(lang) {
+    document.documentElement.setAttribute('lang', lang);
+    document.body.setAttribute('data-lang', lang);
+
+    i18nElements.forEach(el => {
+      el.innerHTML = lang === 'en' ? el.dataset.i18nEn : el.dataset.i18nTr;
+    });
+
+    i18nPlaceholders.forEach(el => {
+      const value = lang === 'en' ? el.dataset.i18nPlaceholderEn : el.dataset.i18nPlaceholderTr;
+      el.setAttribute('placeholder', value || '');
+    });
+
+    toggleButtons.forEach(btn => {
+      const label = btn.querySelector('.lang-toggle-text');
+      if (label) label.textContent = lang === 'en' ? 'TR' : 'EN';
+      btn.setAttribute('aria-label', lang === 'en' ? 'Switch to Turkish' : 'Switch to English');
+    });
+  }
+
+  const saved = localStorage.getItem('siteLang') || 'tr';
+  applyLanguage(saved);
+
+  toggleButtons.forEach(btn => {
+    btn.addEventListener('click', () => {
+      const next = document.documentElement.getAttribute('lang') === 'en' ? 'tr' : 'en';
+      localStorage.setItem('siteLang', next);
+      applyLanguage(next);
+    });
+  });
+});
