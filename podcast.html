@@ -120,26 +120,27 @@
   </footer>
 
   <script>
-    // Podcast Yükleme Sistemi - Optimized v2
+    // Podcast Yükleme Sistemi - Optimized v3
     const CONFIG = {
       RSS_URL: 'https://anchor.fm/s/101fc0074/podcast/rss',
       MAX_EPISODES: 12,
       DEFAULT_IMAGE: 'https://d3t3ozftmdmh3i.cloudfront.net/staging/podcast_uploaded_nologo/43182597/43182597-1762802752790-6f397aa01c377.jpg',
       CACHE_KEY: 'podcast_rss_cache_v2',
       CACHE_DURATION: 60 * 60 * 1000, // 1 saat
-      TIMEOUT: 8000
+      TIMEOUT: 6500,
+      SKELETON_COUNT: 8
     };
 
     // CORS Proxy'leri - paralel olarak denenecek
     const CORS_PROXIES = [
       { url: 'https://api.allorigins.win/raw?url=', type: 'raw' },
+      { url: 'https://api.allorigins.win/get?url=', type: 'json' },
       { url: 'https://corsproxy.io/?', type: 'raw' },
       { url: 'https://api.codetabs.com/v1/proxy?quest=', type: 'raw' }
     ];
 
     // Podcast kartı HTML oluştur
     function createPodcastCard(episode) {
-      const isEn = document.documentElement.getAttribute('lang') === 'en';
       return `
         <div class="podcast-card">
           <a href="${episode.link}" target="_blank" class="podcast-card-image">
@@ -148,7 +149,7 @@
           <div class="podcast-card-body">
             <div class="podcast-card-meta">
               <span class="podcast-card-tag">Podcast</span>
-              <span class="podcast-card-date">${isEn ? episode.dateEn : episode.date}</span>
+              <span class="podcast-card-date">${episode.date}</span>
             </div>
             <h3 class="podcast-card-title">${episode.title}</h3>
             <p class="podcast-card-desc">${episode.desc}</p>
@@ -196,11 +197,6 @@
           month: 'short',
           year: 'numeric'
         });
-        const formattedDateEn = date.toLocaleDateString('en-US', {
-          day: 'numeric',
-          month: 'short',
-          year: 'numeric'
-        });
 
         // Açıklamayı temizle
         let cleanDesc = description
@@ -216,7 +212,6 @@
           title: title.replace(/</g, '&lt;').replace(/>/g, '&gt;'),
           desc: cleanDesc,
           date: formattedDateTr,
-          dateEn: formattedDateEn,
           link: link,
           image: image
         });
@@ -238,8 +233,14 @@
 
         if (!response.ok) throw new Error('Response not OK');
 
-        const text = await response.text();
-        if (!text.includes('<item>')) throw new Error('Invalid RSS');
+        let text = '';
+        if (proxy.type === 'json') {
+          const data = await response.json();
+          text = data && data.contents ? data.contents : '';
+        } else {
+          text = await response.text();
+        }
+        if (!text || !text.includes('<item>')) throw new Error('Invalid RSS');
 
         return text;
       } catch (e) {
@@ -254,7 +255,6 @@
         fetchWithProxy(proxy).catch(() => null)
       );
 
-      // Promise.any gibi çalışır - ilk başarılı sonucu döndürür
       const results = await Promise.all(promises);
       return results.find(r => r !== null) || null;
     }
@@ -287,6 +287,28 @@
       }
     }
 
+    function renderSkeletons() {
+      const grid = document.getElementById('podcast-grid');
+      grid.innerHTML = Array.from({ length: CONFIG.SKELETON_COUNT }).map(() => `
+        <div class="podcast-card is-loading">
+          <div class="podcast-card-image"></div>
+          <div class="podcast-card-body">
+            <div class="podcast-card-meta">
+              <span class="podcast-card-tag"></span>
+              <span class="podcast-card-date"></span>
+            </div>
+            <h3 class="podcast-card-title"></h3>
+            <p class="podcast-card-desc"></p>
+            <div class="podcast-card-links">
+              <span class="podcast-card-link-dot"></span>
+              <span class="podcast-card-link-dot"></span>
+              <span class="podcast-card-link-dot"></span>
+            </div>
+          </div>
+        </div>
+      `).join('');
+    }
+
     // Ana yükleme fonksiyonu
     async function loadPodcastEpisodes() {
       const grid = document.getElementById('podcast-grid');
@@ -295,7 +317,6 @@
       // 1. Önce cache'den dene
       episodes = getFromCache();
       if (episodes && episodes.length > 0) {
-        console.log('Cache\'den yüklendi');
         grid.innerHTML = episodes.map(createPodcastCard).join('');
         initSearch(episodes);
 
@@ -311,6 +332,9 @@
 
         return;
       }
+
+      // Cache yoksa skeleton göster
+      renderSkeletons();
 
       // 2. Cache yoksa RSS'den çek
       try {
@@ -330,13 +354,12 @@
       }
 
       // 3. Hiçbiri çalışmazsa hata göster
-      const isEn = document.documentElement.getAttribute('lang') === 'en';
       grid.innerHTML = `
         <div style="grid-column: 1 / -1; text-align: center; padding: 60px;">
-          <p style="color: #666; margin-bottom: 16px;">${isEn ? 'Something went wrong while loading episodes.' : 'Bölümler yüklenirken bir sorun oluştu.'}</p>
-          <button onclick="location.reload()" style="padding: 10px 20px; background: #003080; color: white; border: none; border-radius: 6px; cursor: pointer;">${isEn ? 'Try Again' : 'Tekrar Dene'}</button>
+          <p style="color: #666; margin-bottom: 16px;">Bölümler yüklenirken bir sorun oluştu.</p>
+          <button onclick="location.reload()" style="padding: 10px 20px; background: #003080; color: white; border: none; border-radius: 6px; cursor: pointer;">Tekrar Dene</button>
           <p style="margin-top: 16px;">
-            <a href="https://open.spotify.com/show/4wJPUBJcqQsnoLxWqEMCjJ" target="_blank" style="color: #003080;">${isEn ? 'Listen on Spotify' : 'Spotify\\'da Dinle'}</a> |
+            <a href="https://open.spotify.com/show/4wJPUBJcqQsnoLxWqEMCjJ" target="_blank" style="color: #003080;">Spotify'da Dinle</a> |
             <a href="https://podcasts.apple.com/tr/podcast/otostop%C3%A7unun-yapay-zeka-rehberi/id1801285722" target="_blank" style="color: #003080;">Apple Podcasts</a>
           </p>
         </div>
@@ -396,18 +419,9 @@
           debounceTimer = setTimeout(() => searchPodcasts(this.value), 300);
         });
       }
-      // Re-render on language toggle
-      document.querySelectorAll('[data-lang-toggle]').forEach(btn => {
-        btn.addEventListener('click', () => {
-          const grid = document.getElementById('podcast-grid');
-          const cached = getFromCache();
-          if (cached && cached.length > 0) {
-            grid.innerHTML = cached.map(createPodcastCard).join('');
-          }
-        });
-      });
     });
   </script>
+>
 
   <script src="script.js"></script>
 </body>

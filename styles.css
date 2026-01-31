@@ -2296,6 +2296,59 @@ img {
   transition: filter 0.2s;
 }
 
+.podcast-card.is-loading {
+  box-shadow: none;
+  border: 1px solid #efefef;
+}
+
+.podcast-card.is-loading .podcast-card-image,
+.podcast-card.is-loading .podcast-card-tag,
+.podcast-card.is-loading .podcast-card-date,
+.podcast-card.is-loading .podcast-card-title,
+.podcast-card.is-loading .podcast-card-desc,
+.podcast-card.is-loading .podcast-card-link-dot {
+  background: linear-gradient(90deg, #f1f3f5 25%, #e9ecef 37%, #f1f3f5 63%);
+  background-size: 400% 100%;
+  animation: shimmer 1.2s ease infinite;
+  border-radius: 8px;
+}
+
+.podcast-card.is-loading .podcast-card-tag {
+  width: 64px;
+  height: 14px;
+}
+
+.podcast-card.is-loading .podcast-card-date {
+  width: 72px;
+  height: 12px;
+}
+
+.podcast-card.is-loading .podcast-card-title {
+  width: 100%;
+  height: 16px;
+  margin: 4px 0 8px;
+}
+
+.podcast-card.is-loading .podcast-card-desc {
+  width: 100%;
+  height: 36px;
+}
+
+.podcast-card-link-dot {
+  width: 26px;
+  height: 26px;
+  border-radius: 50%;
+}
+
+@keyframes shimmer {
+  0% {
+    background-position: 0% 0%;
+  }
+  100% {
+    background-position: -135% 0%;
+  }
+}
+
 /* Load More Button */
 .load-more {
   text-align: center;
