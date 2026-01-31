@@ -1678,6 +1678,17 @@ img {
   color: #fff;
 }
 
+.footer .btn-primary {
+  background: #fff;
+  color: #003080;
+  box-shadow: 0 10px 24px rgba(0, 0, 0, 0.18);
+}
+
+.footer .btn-primary:hover {
+  background: #e7efff;
+  color: #002766;
+}
+
 /* Footer Bottom */
 .footer-bottom {
   display: flex;
