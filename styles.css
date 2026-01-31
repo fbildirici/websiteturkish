@@ -1782,7 +1782,7 @@ img {
   }
   
   .hero {
-    padding: 140px 0 60px;
+    padding: 140px 0 0;
     min-height: auto;
   }
   
@@ -1801,6 +1801,10 @@ img {
   .hero-image img {
     max-height: 55vh;
     width: min(100%, 520px);
+  }
+
+  .hero-image {
+    margin-bottom: -10px;
   }
   
   .section-title {
