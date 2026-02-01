@@ -309,6 +309,10 @@
       `).join('');
     }
 
+    function getEpisodesSignature(episodes) {
+      return episodes.slice(0, 5).map(ep => `${ep.title}|${ep.date}|${ep.link}`).join('::');
+    }
+
     // Ana yükleme fonksiyonu
     async function loadPodcastEpisodes() {
       const grid = document.getElementById('podcast-grid');
@@ -320,12 +324,18 @@
         grid.innerHTML = episodes.map(createPodcastCard).join('');
         initSearch(episodes);
 
-        // Arka planda güncelle
+        // Arka planda güncelle ve gerekiyorsa UI'yi tazele
         fetchRSSParallel().then(xmlText => {
           if (xmlText) {
             const newEpisodes = parseEpisodes(xmlText);
             if (newEpisodes.length > 0) {
+              const cachedSig = getEpisodesSignature(episodes);
+              const newSig = getEpisodesSignature(newEpisodes);
               saveToCache(newEpisodes);
+              if (cachedSig !== newSig) {
+                grid.innerHTML = newEpisodes.map(createPodcastCard).join('');
+                initSearch(newEpisodes);
+              }
             }
           }
         }).catch(() => {});
