@@ -2390,15 +2390,14 @@ img {
 }
 
 .quick-notes-header {
-  margin-bottom: 24px;
+  margin-bottom: 20px;
 }
 
 .quick-notes-header h2 {
   font-family: var(--font-display);
-  font-size: 20px;
+  font-size: 18px;
   font-weight: 600;
   color: #1a1a1a;
-  letter-spacing: -0.3px;
 }
 
 .quick-notes-list {
@@ -2409,27 +2408,15 @@ img {
 
 .quick-note-item {
   display: flex;
-  align-items: flex-start;
-  gap: 14px;
-  padding: 16px 0;
+  align-items: center;
+  gap: 12px;
+  padding: 12px 0;
   border-bottom: 1px solid #f0f0f0;
-  transition: background 0.2s ease;
 }
 
-.quick-note-item:first-child {
-  padding-top: 0;
-}
-
-.quick-note-item:last-child {
+.quick-note-item:last-child,
+.quick-note-item.hidden-note:last-child {
   border-bottom: none;
-}
-
-.quick-note-item:hover {
-  background: #fafafa;
-  margin: 0 -16px;
-  padding-left: 16px;
-  padding-right: 16px;
-  border-radius: 8px;
 }
 
 .quick-note-item.hidden-note {
@@ -2441,115 +2428,91 @@ img {
 }
 
 .quick-note-icon {
-  width: 32px;
-  height: 32px;
-  min-width: 32px;
-  background: #f5f5f5;
-  border-radius: 8px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  margin-top: 2px;
+  width: 8px;
+  height: 8px;
+  min-width: 8px;
+  border-radius: 50%;
+  background: #ccc;
 }
 
 .quick-note-icon svg {
-  width: 16px;
-  height: 16px;
-  color: #666;
+  display: none;
 }
 
 .quick-note-icon.podcast {
-  background: #fee2e2;
-}
-.quick-note-icon.podcast svg {
-  color: #dc2626;
+  background: #dc2626;
 }
 
 .quick-note-icon.milestone {
-  background: #fef3c7;
-}
-.quick-note-icon.milestone svg {
-  color: #d97706;
+  background: #d97706;
 }
 
 .quick-note-icon.event {
-  background: #ede9fe;
-}
-.quick-note-icon.event svg {
-  color: #7c3aed;
+  background: #7c3aed;
 }
 
 .quick-note-icon.update {
-  background: #d1fae5;
-}
-.quick-note-icon.update svg {
-  color: #059669;
+  background: #059669;
 }
 
 .quick-note-icon.share {
-  background: #dbeafe;
-}
-.quick-note-icon.share svg {
-  color: #2563eb;
-}
-
-.quick-note-content {
-  flex: 1;
-  min-width: 0;
-}
-
-.quick-note-content h4 {
-  font-size: 14px;
-  font-weight: 600;
-  color: #1a1a1a;
-  margin: 0 0 4px 0;
-  line-height: 1.4;
-}
-
-.quick-note-content p {
-  font-size: 13px;
-  color: #666;
-  margin: 0;
-  line-height: 1.5;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  white-space: nowrap;
+  background: #2563eb;
 }
 
 .quick-note-date {
   font-size: 12px;
   color: #999;
   white-space: nowrap;
-  margin-top: 2px;
+  min-width: 50px;
+}
+
+.quick-note-content {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  align-items: baseline;
+  gap: 8px;
+}
+
+.quick-note-content h4 {
+  font-size: 14px;
+  font-weight: 500;
+  color: #1a1a1a;
+  margin: 0;
+  white-space: nowrap;
+}
+
+.quick-note-content p {
+  font-size: 13px;
+  color: #888;
+  margin: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }
 
 .quick-notes-toggle {
-  display: flex;
+  display: inline-flex;
   align-items: center;
-  justify-content: center;
-  gap: 6px;
-  width: 100%;
-  padding: 12px;
-  margin-top: 8px;
+  gap: 4px;
+  padding: 8px 0;
+  margin-top: 4px;
   background: transparent;
-  border: 1px solid #e5e5e5;
-  border-radius: 8px;
+  border: none;
   font-size: 13px;
   font-weight: 500;
   color: #666;
   cursor: pointer;
-  transition: all 0.2s ease;
+  transition: color 0.2s ease;
 }
 
 .quick-notes-toggle:hover {
-  background: #f5f5f5;
-  border-color: #ddd;
   color: #1a1a1a;
 }
 
 .quick-notes-toggle svg {
-  width: 16px;
-  height: 16px;
+  width: 14px;
+  height: 14px;
   transition: transform 0.2s ease;
 }
 
@@ -2558,6 +2521,18 @@ img {
 }
 
 /* Quick Notes Responsive */
+@media (max-width: 768px) {
+  .quick-note-content {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 2px;
+  }
+
+  .quick-note-content h4 {
+    white-space: normal;
+  }
+}
+
 @media (max-width: 768px) {
   .quick-notes-section {
     margin-top: 48px;
