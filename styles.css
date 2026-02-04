@@ -2382,6 +2382,244 @@ img {
   color: #fff;
 }
 
+/* ===== ANNOUNCEMENTS SECTION ===== */
+.announcements-section {
+  margin-top: 80px;
+  padding-top: 60px;
+  border-top: 1px solid #e5e5e5;
+}
+
+.announcements-header {
+  text-align: center;
+  margin-bottom: 48px;
+}
+
+.announcements-header h2 {
+  font-family: var(--font-display);
+  font-size: 32px;
+  font-weight: 700;
+  color: #1a1a1a;
+  margin-bottom: 12px;
+  letter-spacing: -0.5px;
+}
+
+.announcements-header p {
+  font-size: 15px;
+  color: #666;
+  max-width: 400px;
+  margin: 0 auto;
+}
+
+.announcements-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+}
+
+.announcement-card {
+  position: relative;
+  background: #fff;
+  border: 1px solid #e8e8e8;
+  border-radius: 16px;
+  padding: 24px;
+  transition: all 0.3s ease;
+  overflow: hidden;
+}
+
+.announcement-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 4px;
+  background: linear-gradient(90deg, #1a1a1a, #444);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.announcement-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.08);
+  border-color: #ddd;
+}
+
+.announcement-card:hover::before {
+  opacity: 1;
+}
+
+.announcement-card[data-type="milestone"]::before {
+  background: linear-gradient(90deg, #f59e0b, #fbbf24);
+}
+
+.announcement-card[data-type="event"]::before {
+  background: linear-gradient(90deg, #8b5cf6, #a78bfa);
+}
+
+.announcement-card[data-type="update"]::before {
+  background: linear-gradient(90deg, #10b981, #34d399);
+}
+
+.announcement-card[data-type="share"]::before {
+  background: linear-gradient(90deg, #3b82f6, #60a5fa);
+}
+
+.announcement-icon {
+  width: 44px;
+  height: 44px;
+  background: #f5f5f5;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 16px;
+  transition: all 0.3s ease;
+}
+
+.announcement-icon svg {
+  width: 22px;
+  height: 22px;
+  color: #1a1a1a;
+}
+
+.announcement-icon.milestone {
+  background: #fef3c7;
+}
+
+.announcement-icon.milestone svg {
+  color: #f59e0b;
+}
+
+.announcement-icon.event {
+  background: #ede9fe;
+}
+
+.announcement-icon.event svg {
+  color: #8b5cf6;
+}
+
+.announcement-icon.update {
+  background: #d1fae5;
+}
+
+.announcement-icon.update svg {
+  color: #10b981;
+}
+
+.announcement-icon.share {
+  background: #dbeafe;
+}
+
+.announcement-icon.share svg {
+  color: #3b82f6;
+}
+
+.announcement-content {
+  flex: 1;
+}
+
+.announcement-date {
+  display: block;
+  font-size: 12px;
+  color: #999;
+  margin-bottom: 8px;
+  font-weight: 500;
+}
+
+.announcement-content h4 {
+  font-size: 15px;
+  font-weight: 600;
+  color: #1a1a1a;
+  margin-bottom: 8px;
+  line-height: 1.4;
+}
+
+.announcement-content p {
+  font-size: 13px;
+  color: #666;
+  line-height: 1.6;
+  margin: 0;
+}
+
+.announcement-badge {
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  font-size: 10px;
+  font-weight: 600;
+  padding: 4px 10px;
+  border-radius: 20px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.badge-new {
+  background: #fef2f2;
+  color: #ef4444;
+}
+
+.badge-milestone {
+  background: #fef3c7;
+  color: #d97706;
+}
+
+.badge-event {
+  background: #ede9fe;
+  color: #7c3aed;
+}
+
+.badge-update {
+  background: #d1fae5;
+  color: #059669;
+}
+
+.badge-share {
+  background: #dbeafe;
+  color: #2563eb;
+}
+
+/* Announcements Responsive */
+@media (max-width: 1024px) {
+  .announcements-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+  }
+}
+
+@media (max-width: 768px) {
+  .announcements-section {
+    margin-top: 60px;
+    padding-top: 40px;
+  }
+
+  .announcements-header h2 {
+    font-size: 26px;
+  }
+
+  .announcements-header {
+    margin-bottom: 32px;
+  }
+
+  .announcements-grid {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+
+  .announcement-card {
+    padding: 20px;
+  }
+
+  .announcement-icon {
+    width: 40px;
+    height: 40px;
+  }
+
+  .announcement-icon svg {
+    width: 20px;
+    height: 20px;
+  }
+}
+
 /* Podcast Page Responsive */
 @media (max-width: 1024px) {
   .podcast-grid {
