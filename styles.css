@@ -1293,9 +1293,9 @@ img {
 }
 
 .partner-logo {
-  height: 54px;
+  height: 66px;
   width: auto;
-  max-width: 210px;
+  max-width: 240px;
   object-fit: contain;
   opacity: 0.9;
   transition: opacity 0.2s;
@@ -1307,27 +1307,27 @@ img {
 }
 
 .partner-logo-aselsan {
-  height: 120px;
+  height: 140px;
 }
 
 .partner-logo-fil {
-  height: 90px;
+  height: 120px;
 }
 
 .partner-logo-hamdi {
-  height: 75px;
+  height: 102px;
 }
 
 .partner-logo-ankara {
-  height: 75px;
+  height: 90px;
 }
 
 .partner-logo-deep {
-  height: 70px;
+  height: 120px;
 }
 
 .partner-logo-anlam {
-  height: 65px;
+  height: 78px;
   filter: brightness(0) invert(1);
 }
 
@@ -1840,7 +1840,7 @@ img {
   }
   
   .partner-logo {
-    height: 22px;
+    height: 28px;
   }
   
   .newsletter-form {
