@@ -208,11 +208,11 @@ function openPodcastModal(platform, url) {
   let iframeHTML = '';
 
   if (platform.includes('Spotify')) {
-    iframeHTML = `<iframe src="https://open.spotify.com/embed/show/your-show-id" height="380" frameborder="0" allowtransparency="true" allow="encrypted-media"></iframe>`;
+    iframeHTML = `<iframe src="https://open.spotify.com/embed/show/1rCeqPdviUG61ucnpFDl6n" height="380" frameborder="0" allowtransparency="true" allow="encrypted-media"></iframe>`;
   } else if (platform.includes('Apple')) {
     iframeHTML = `<iframe src="${url}" height="450" frameborder="0" sandbox="allow-forms allow-popups allow-same-origin allow-scripts allow-top-navigation-by-user-activation" allow="autoplay *; encrypted-media *;"></iframe>`;
   } else if (platform.includes('YouTube')) {
-    iframeHTML = `<iframe src="https://www.youtube.com/embed/videoseries?list=your-playlist-id" height="450" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>`;
+    iframeHTML = `<iframe src="https://www.youtube.com/embed/videoseries?list=PLjX32lVkbYlFv2dBFkg-Eqclad9ga5E0T" height="450" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>`;
   } else {
     // Default: open in new tab
     window.open(url, '_blank');

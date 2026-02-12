@@ -4,6 +4,18 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title data-i18n-en="Updates - Fatih Bildirici">Gelişmeler - Fatih Bildirici</title>
+  <meta name="description" content="Fatih Bildirici'nin güncellemeleri, yazılar ve duyurular.">
+  <link rel="canonical" href="https://fatihbildirici.com/gelismeler.html">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Fatih Bildirici">
+  <meta property="og:title" content="Gelişmeler - Fatih Bildirici">
+  <meta property="og:description" content="Fatih Bildirici'nin güncellemeleri, yazılar ve duyurular.">
+  <meta property="og:url" content="https://fatihbildirici.com/gelismeler.html">
+  <meta property="og:image" content="https://fatihbildirici.com/assets/images/fatih-hero.png">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Gelişmeler - Fatih Bildirici">
+  <meta name="twitter:description" content="Fatih Bildirici'nin güncellemeleri, yazılar ve duyurular.">
+  <meta name="twitter:image" content="https://fatihbildirici.com/assets/images/fatih-hero.png">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -36,6 +48,7 @@
         <div class="yazilar-header-left">
           <h1 data-i18n-en="Updates">Gelişmeler</h1>
           <p class="yazilar-desc" data-i18n-en="I examine developments in the AI world from technical and societal perspectives. I share my thoughts with trustworthy sources and references.">Yapay zeka dünyasında yaşanan gelişmeleri, teknik ve toplumsal yönleriyle inceliyorum. Düşüncelerimi ve paylaşmak istediklerimi, gerçek güvenilir, kaynaklarla ve bilgilerle paylaşıyorum.</p>
+          <p class="last-updated" data-i18n-en="Last updated: February 12, 2026">Son güncelleme: 12 Şubat 2026</p>
           <div class="yazilar-tags">
             <span class="yazi-tag active" data-filter="all" data-i18n-en="All">Tümü</span>
             <span class="yazi-tag" data-filter="deneme" data-i18n-en="Essay">Deneme</span>
@@ -45,7 +58,8 @@
         </div>
         <div class="yazilar-header-right">
           <form class="search-form">
-            <input type="text" placeholder="Arama" class="search-input" data-i18n-placeholder-en="Search">
+            <label class="sr-only" for="updatesSearch">Arama</label>
+            <input id="updatesSearch" type="text" placeholder="Arama" class="search-input" data-i18n-placeholder-en="Search">
             <button type="submit" class="search-btn" aria-label="Ara">
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
                 <circle cx="11" cy="11" r="8"></circle>
@@ -131,10 +145,11 @@
         <div class="footer-newsletter">
           <h3 class="footer-title" data-i18n-en="Subscribe to my newsletter">Bültenime kaydol</h3>
           <p class="footer-desc" data-i18n-en="Subscribe to receive the latest updates, podcast episodes, and written content via email.">Kaydolarak son gelişmelere, podcast ve yazılı içeriklere e-posta bülteni üzerinden ulaşabilirsiniz.</p>
-          <div class="newsletter-form" onclick="window.open('https://otostopcununyzrehberi.substack.com/subscribe', '_blank')" style="cursor: pointer;">
-            <input type="email" placeholder="E-posta adresiniz" class="input-field" readonly style="cursor: pointer;" data-i18n-placeholder-en="Your email address">
-            <button type="button" class="btn-primary btn-submit" data-i18n-en="Subscribe">Kaydol</button>
-          </div>
+          <form class="newsletter-form" action="https://otostopcununyzrehberi.substack.com/subscribe" method="get" target="_blank" aria-label="Bültene kaydol">
+            <label class="sr-only" for="newsletterEmail">E-posta adresiniz</label>
+            <input id="newsletterEmail" name="email" type="email" placeholder="E-posta adresiniz" class="input-field" autocomplete="email" required data-i18n-placeholder-en="Your email address">
+            <button type="submit" class="btn-primary btn-submit" data-i18n-en="Subscribe">Kaydol</button>
+          </form>
           <p class="newsletter-legal" data-i18n-en="I have read the <a href=&quot;aydinlatma-metni.html&quot;>privacy notice</a>, and I consent to the processing of my personal data and to receiving commercial electronic communications via the <a href=&quot;acik-riza-metni.html&quot;>explicit consent</a>."><a href="aydinlatma-metni.html">Aydınlatma metnini</a> okudum, kişisel verilerimin işlenmesine ve tarafıma ticari elektronik ileti gönderilmesine <a href="acik-riza-metni.html">açık rıza</a> veriyorum.</p>
         </div>
 

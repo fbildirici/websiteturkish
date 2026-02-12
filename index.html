@@ -4,6 +4,19 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Fatih Bildirici - Yapay Zeka Araştırmacısı</title>
+  <meta name="description" content="Yapay zeka araştırmacısı Fatih Bildirici'nin web sitesi. Yapay zeka, bilim ve teknoloji içerikleri; podcast, bülten, konuşmalar ve danışmanlık.">
+  <link rel="canonical" href="https://fatihbildirici.com/">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Fatih Bildirici">
+  <meta property="og:title" content="Fatih Bildirici - Yapay Zeka Araştırmacısı">
+  <meta property="og:description" content="Yapay zeka araştırmacısı Fatih Bildirici'nin web sitesi. Yapay zeka, bilim ve teknoloji içerikleri; podcast, bülten, konuşmalar ve danışmanlık.">
+  <meta property="og:url" content="https://fatihbildirici.com/">
+  <meta property="og:image" content="https://fatihbildirici.com/assets/images/fatih-hero.png">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Fatih Bildirici - Yapay Zeka Araştırmacısı">
+  <meta name="twitter:description" content="Yapay zeka araştırmacısı Fatih Bildirici'nin web sitesi. Yapay zeka, bilim ve teknoloji içerikleri; podcast, bülten, konuşmalar ve danışmanlık.">
+  <meta name="twitter:image" content="https://fatihbildirici.com/assets/images/fatih-hero.png">
+  <link rel="preload" as="image" href="assets/images/fatih-hero.png" imagesrcset="assets/images/fatih-hero-480.png 480w, assets/images/fatih-hero.png 612w" imagesizes="(max-width: 768px) 90vw, 612px">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -38,7 +51,10 @@
           <p class="hero-subtitle" data-i18n-en="I am a PhD researcher creating content on AI, science, and technology. I host the <strong>Hitchhiker's Guide to AI</strong> podcast and work on talks, consulting, and research in AI, especially explainability.">
             Yapay zeka, bilim ve teknoloji üzerine içerik üreten bir doktora araştırmacısıyım. <strong>Otostopçunun Yapay Zeka Rehberi</strong> podcastini yapıyor, açıklanabilirlik başta yapay zeka üzerine konuşmalar, danışmanlıklar, araştırmalar yapıyorum.
           </p>
-          <a href="https://otostopcununyzrehberi.substack.com" class="btn-primary btn-hero" data-i18n-en="Subscribe">Bültene Kaydol</a>
+          <div class="hero-actions">
+            <a href="https://otostopcununyzrehberi.substack.com" class="btn-primary btn-hero" data-i18n-en="Subscribe">Bültene Kaydol</a>
+            <a href="iletisim.html" class="btn-secondary btn-hero" data-i18n-en="Get Consulting">Danışmanlık Al</a>
+          </div>
           <div class="hero-socials" aria-label="Sosyal bağlantılar">
             <a class="hero-social-link" href="https://www.instagram.com/otostopcununyzrehberipodcast/" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
               <svg viewBox="0 0 24 24" aria-hidden="true">
@@ -64,7 +80,7 @@
           </div>
         </div>
         <div class="hero-image">
-          <img src="assets/images/fatih-hero.png" alt="Fatih Bildirici" width="612" height="408" decoding="async" fetchpriority="high">
+          <img src="assets/images/fatih-hero.png" srcset="assets/images/fatih-hero-480.png 480w, assets/images/fatih-hero.png 612w" sizes="(max-width: 768px) 90vw, 612px" alt="Fatih Bildirici" width="612" height="408" decoding="async" fetchpriority="high">
         </div>
       </div>
     </div>
@@ -94,6 +110,26 @@
         <img src="assets/images/hamdiulukaya.png" alt="Hamdi Ulukaya Girişimi" class="partner-logo partner-logo-hamdi" loading="lazy" decoding="async">
         <img src="assets/images/fillogo.png" alt="FIL" class="partner-logo partner-logo-fil" loading="lazy" decoding="async">
         <img src="assets/images/anlam.png" alt="ANLAM Lab" class="partner-logo partner-logo-anlam" loading="lazy" decoding="async">
+      </div>
+    </div>
+  </section>
+
+  <!-- Social Proof -->
+  <section class="social-proof">
+    <div class="container">
+      <div class="social-proof-grid">
+        <div class="social-proof-card">
+          <p class="social-proof-value">10K+</p>
+          <p class="social-proof-label">Aylık Podcast Görüntülenmesi</p>
+        </div>
+        <div class="social-proof-card">
+          <p class="social-proof-value">7000+</p>
+          <p class="social-proof-label">Bülten Abonesi</p>
+        </div>
+        <div class="social-proof-card">
+          <p class="social-proof-value">50+</p>
+          <p class="social-proof-label">Podcast Bölümü</p>
+        </div>
       </div>
     </div>
   </section>
@@ -215,7 +251,7 @@
             <p class="hl-card-text" data-i18n-en="ASELSAN, Senior Subject Matter Expert<br>Artificial Intelligence, Explainable AI<br>AI Applications in Software Engineering">ASELSAN, Kıdemli Alan Uzmanı<br>Yapay Zeka, Açıklanabilir Yapay Zeka<br>Yazılım Mühendisliğinde AI Uygulamaları</p>
           </div>
           <div class="hl-img-card">
-            <img src="assets/images/deeptech.jpeg" alt="DeepTech'26" loading="lazy" decoding="async">
+            <img src="assets/images/deeptech.jpeg" srcset="assets/images/deeptech-640.jpeg 640w, assets/images/deeptech-960.jpeg 960w, assets/images/deeptech.jpeg 1248w" sizes="(max-width: 768px) 90vw, 300px" alt="DeepTech'26" loading="lazy" decoding="async">
           </div>
           <div class="hl-img-card">
             <img src="https://fbildirici.github.io/assets/images/etc/fb4.jpg" alt="Future Innovation Leaders" loading="lazy" decoding="async">
@@ -233,10 +269,11 @@
         <div class="footer-newsletter">
           <h3 class="footer-title" data-i18n-en="Subscribe to my newsletter">Bültenime kaydol</h3>
           <p class="footer-desc" data-i18n-en="Subscribe to receive the latest updates, podcast episodes, and written content via email.">Kaydolarak son gelişmelere, podcast ve yazılı içeriklere e-posta bülteni üzerinden ulaşabilirsiniz.</p>
-          <div class="newsletter-form" onclick="window.open('https://otostopcununyzrehberi.substack.com/subscribe', '_blank')" style="cursor: pointer;">
-            <input type="email" placeholder="E-posta adresiniz" class="input-field" readonly style="cursor: pointer;" data-i18n-placeholder-en="Your email address">
-            <button type="button" class="btn-primary btn-submit" data-i18n-en="Subscribe">Kaydol</button>
-          </div>
+          <form class="newsletter-form" action="https://otostopcununyzrehberi.substack.com/subscribe" method="get" target="_blank" aria-label="Bültene kaydol">
+            <label class="sr-only" for="newsletterEmail">E-posta adresiniz</label>
+            <input id="newsletterEmail" name="email" type="email" placeholder="E-posta adresiniz" class="input-field" autocomplete="email" required data-i18n-placeholder-en="Your email address">
+            <button type="submit" class="btn-primary btn-submit" data-i18n-en="Subscribe">Kaydol</button>
+          </form>
           <p class="newsletter-legal" data-i18n-en="I have read the <a href=&quot;aydinlatma-metni.html&quot;>privacy notice</a>, and I consent to the processing of my personal data and to receiving commercial electronic communications via the <a href=&quot;acik-riza-metni.html&quot;>explicit consent</a>."><a href="aydinlatma-metni.html">Aydınlatma metnini</a> okudum, kişisel verilerimin işlenmesine ve tarafıma ticari elektronik ileti gönderilmesine <a href="acik-riza-metni.html">açık rıza</a> veriyorum.</p>
         </div>
 

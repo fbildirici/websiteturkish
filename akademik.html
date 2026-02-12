@@ -4,6 +4,18 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title data-i18n-en="Academic - Fatih Bildirici">Akademik - Fatih Bildirici</title>
+  <meta name="description" content="Akademik çalışmalar, araştırmalar ve yayınlar.">
+  <link rel="canonical" href="https://fatihbildirici.com/akademik.html">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Fatih Bildirici">
+  <meta property="og:title" content="Akademik - Fatih Bildirici">
+  <meta property="og:description" content="Akademik çalışmalar, araştırmalar ve yayınlar.">
+  <meta property="og:url" content="https://fatihbildirici.com/akademik.html">
+  <meta property="og:image" content="https://fatihbildirici.com/assets/images/fatih-hero.png">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Akademik - Fatih Bildirici">
+  <meta name="twitter:description" content="Akademik çalışmalar, araştırmalar ve yayınlar.">
+  <meta name="twitter:image" content="https://fatihbildirici.com/assets/images/fatih-hero.png">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -384,10 +396,11 @@
         <div class="footer-newsletter">
           <h3 data-i18n-en="Subscribe to my newsletter">Bültenime kaydol</h3>
           <p data-i18n-en="Subscribe to receive the latest updates, podcast episodes, and written content via email.">Kaydolarak son gelişmelere, podcast ve yazılı içeriklere e-posta bülteni üzerinden ulaşabilirsiniz.</p>
-          <div class="newsletter-form-inline" onclick="window.open('https://otostopcununyzrehberi.substack.com/subscribe', '_blank')" style="cursor: pointer;">
-            <input type="email" placeholder="E-posta adresiniz" readonly style="cursor: pointer;" data-i18n-placeholder-en="Your email address">
-            <button type="button" class="btn-primary" data-i18n-en="Subscribe">Kaydol</button>
-          </div>
+          <form class="newsletter-form-inline" action="https://otostopcununyzrehberi.substack.com/subscribe" method="get" target="_blank" aria-label="Bültene kaydol">
+            <label class="sr-only" for="newsletterInlineEmail">E-posta adresiniz</label>
+            <input id="newsletterInlineEmail" name="email" type="email" placeholder="E-posta adresiniz" autocomplete="email" required data-i18n-placeholder-en="Your email address">
+            <button type="submit" class="btn-primary" data-i18n-en="Subscribe">Kaydol</button>
+          </form>
           <p class="newsletter-legal" data-i18n-en="I have read the <a href=&quot;aydinlatma-metni.html&quot;>privacy notice</a>, and I consent to the processing of my personal data and to receiving commercial electronic communications via the <a href=&quot;acik-riza-metni.html&quot;>explicit consent</a>."><a href="aydinlatma-metni.html">Aydınlatma metnini</a> okudum, kişisel verilerimin işlenmesine ve tarafıma ticari elektronik ileti gönderilmesine <a href="acik-riza-metni.html">açık rıza</a> veriyorum.</p>
         </div>
         <div class="footer-links">
