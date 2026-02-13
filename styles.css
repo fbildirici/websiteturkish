@@ -2966,9 +2966,25 @@ a:focus-visible {
 }
 
 .last-updated {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 6px 10px;
+  border-radius: 999px;
+  border: 1px solid #e5e7eb;
+  background: #f8fafc;
+  color: #6b7280;
   font-size: 12px;
-  color: #7a7a7a;
   margin-bottom: 16px;
+}
+
+.last-updated-label {
+  font-weight: 600;
+  color: #374151;
+}
+
+.last-updated-date {
+  font-weight: 500;
 }
 
 .yazilar-tags {
@@ -3594,6 +3610,41 @@ a:focus-visible {
   color: #4b5563;
   line-height: 1.6;
   margin-top: 12px;
+}
+
+.contact-info {
+  margin-top: 18px;
+  display: grid;
+  gap: 14px;
+}
+
+.contact-info-block {
+  border: 1px solid #e5e7eb;
+  border-radius: 12px;
+  padding: 14px 16px;
+  background: #ffffff;
+}
+
+.contact-info-title {
+  font-size: 14px;
+  font-weight: 700;
+  color: #1a1a1a;
+  margin: 0 0 8px 0;
+}
+
+.contact-info-list {
+  margin: 0;
+  padding-left: 18px;
+  color: #4b5563;
+  font-size: 13px;
+  line-height: 1.6;
+}
+
+.contact-info-text {
+  margin: 0;
+  font-size: 13px;
+  color: #4b5563;
+  line-height: 1.6;
 }
 
 .contact-form {
