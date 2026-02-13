@@ -1,6 +1,25 @@
 // Shared articles data for gelismeler.html and hakkinda.html
 const articlesData = [
   {
+    id: 3,
+    category: "newsroom",
+    badge: "Newsroom",
+    badgeEn: "Newsroom",
+    badgeClass: "",
+    image: "https://img.youtube.com/vi/bQeOfERu1Fo/hqdefault.jpg",
+    date: "ŞUB 2026",
+    dateEn: "FEB 2026",
+    readTime: "VİDEO",
+    readTimeEn: "VIDEO",
+    title: "Fatih Bildirici - Neden Yapay Zekayı Tam Olarak Anlamıyoruz?",
+    titleEn: "Why Don't We Fully Understand Artificial Intelligence?",
+    excerpt: "EN-X sahnesinde yaptığım bu konuşmada, yapay zekayı neden tam olarak anlayamadığımızı, açıklanabilirlik yaklaşımlarını ve gerçek dünyadaki kararlarımıza etkisini kendi bakış açımla anlatıyorum.",
+    excerptEn: "In this EN-X stage talk, I share my perspective on why we don't fully understand AI, how explainability helps, and what it means for real-world decisions.",
+    link: "haber-enx.html",
+    newsroomDate: "ŞUBAT 2026",
+    newsroomDateEn: "FEBRUARY 2026"
+  },
+  {
     id: 2,
     category: "deneme",
     badge: "Deneme",
