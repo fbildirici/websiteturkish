@@ -3613,42 +3613,6 @@ a:focus-visible {
   margin: 0;
 }
 
-.contact-guidance {
-  font-size: 13px;
-  color: #4b5563;
-  line-height: 1.6;
-  margin-top: 12px;
-}
-
-.contact-notes {
-  margin-top: 18px;
-}
-
-.contact-notes-title {
-  font-size: 14px;
-  font-weight: 700;
-  color: #1a1a1a;
-  margin: 16px 0 8px 0;
-}
-
-.contact-notes-title:first-child {
-  margin-top: 0;
-}
-
-.contact-notes-list {
-  margin: 0 0 10px 0;
-  padding-left: 18px;
-  color: #4b5563;
-  font-size: 13px;
-  line-height: 1.6;
-}
-
-.contact-notes-text {
-  margin: 0 0 6px 0;
-  font-size: 13px;
-  color: #4b5563;
-  line-height: 1.6;
-}
 
 .contact-form {
   background: transparent;
