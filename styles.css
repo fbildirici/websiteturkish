@@ -192,18 +192,6 @@
   }
 }
 
-@media (max-width: 900px) {
-  .social-proof-grid {
-    grid-template-columns: repeat(2, 1fr);
-  }
-}
-
-@media (max-width: 640px) {
-  .social-proof-grid {
-    grid-template-columns: 1fr;
-  }
-}
-
 @media (max-width: 480px) {
   .highlights-section {
     padding: 40px 0;
@@ -1339,84 +1327,6 @@ img {
 }
 
 /* ===== SOCIAL PROOF ===== */
-.social-proof {
-  background: #ffffff;
-  padding: 10px 0 50px;
-}
-
-.social-proof-grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 16px;
-  max-width: 860px;
-  margin: 0 auto;
-}
-
-.social-proof-card {
-  border: 1px solid #e8edf5;
-  border-radius: 14px;
-  padding: 18px 20px;
-  background: linear-gradient(180deg, #ffffff 0%, #f7f9fc 100%);
-  box-shadow: 0 10px 24px rgba(0, 48, 128, 0.08);
-  text-align: center;
-}
-
-.social-proof-value {
-  font-size: 22px;
-  font-weight: 700;
-  color: var(--navy-strong);
-  margin-bottom: 6px;
-}
-
-.social-proof-label {
-  font-size: 12px;
-  color: var(--muted);
-  line-height: 1.4;
-}
-
-.logo-slider:hover .logo-slider-track {
-  animation-play-state: paused;
-}
-
-.partner-logo {
-  height: 66px;
-  width: auto;
-  max-width: 240px;
-  object-fit: contain;
-  opacity: 0.9;
-  transition: opacity 0.2s;
-  flex-shrink: 0;
-}
-
-.partner-logo:hover {
-  opacity: 1;
-}
-
-.partner-logo-aselsan {
-  height: 140px;
-}
-
-.partner-logo-fil {
-  height: 120px;
-}
-
-.partner-logo-hamdi {
-  height: 102px;
-}
-
-.partner-logo-ankara {
-  height: 90px;
-}
-
-.partner-logo-deep {
-  height: 120px;
-}
-
-.partner-logo-anlam {
-  height: 78px;
-  filter: brightness(0) invert(1);
-}
-
 /* ===== POSTS SECTION ===== */
 .posts-section {
   padding: 80px 0;
