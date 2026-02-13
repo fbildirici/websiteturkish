@@ -1317,6 +1317,14 @@ img {
   width: max-content;
 }
 
+.partner-logo {
+  height: 44px;
+  width: auto;
+  object-fit: contain;
+  opacity: 0.9;
+  filter: saturate(0.9);
+}
+
 @keyframes slide {
   0% {
     transform: translateX(0);
