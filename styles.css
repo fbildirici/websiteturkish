@@ -3612,36 +3612,31 @@ a:focus-visible {
   margin-top: 12px;
 }
 
-.contact-info {
+.contact-notes {
   margin-top: 18px;
-  display: grid;
-  gap: 14px;
 }
 
-.contact-info-block {
-  border: 1px solid #e5e7eb;
-  border-radius: 12px;
-  padding: 14px 16px;
-  background: #ffffff;
-}
-
-.contact-info-title {
+.contact-notes-title {
   font-size: 14px;
   font-weight: 700;
   color: #1a1a1a;
-  margin: 0 0 8px 0;
+  margin: 16px 0 8px 0;
 }
 
-.contact-info-list {
-  margin: 0;
+.contact-notes-title:first-child {
+  margin-top: 0;
+}
+
+.contact-notes-list {
+  margin: 0 0 10px 0;
   padding-left: 18px;
   color: #4b5563;
   font-size: 13px;
   line-height: 1.6;
 }
 
-.contact-info-text {
-  margin: 0;
+.contact-notes-text {
+  margin: 0 0 6px 0;
   font-size: 13px;
   color: #4b5563;
   line-height: 1.6;
