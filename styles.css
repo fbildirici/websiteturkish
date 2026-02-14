@@ -1335,12 +1335,20 @@ img {
 }
 
 .partner-logo-aselsan {
-  height: 84px;
+  height: 104px;
 }
 
 .partner-logo-fil,
 .partner-logo-deep,
 .partner-logo-anlam {
+  height: 88px;
+}
+
+.partner-logo-deep {
+  height: 92px;
+}
+
+.partner-logo-hamdi {
   height: 80px;
 }
 
