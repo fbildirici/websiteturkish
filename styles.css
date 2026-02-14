@@ -1325,6 +1325,15 @@ img {
   filter: saturate(0.9);
 }
 
+.partner-logo-aselsan,
+.partner-logo-deep,
+.partner-logo-ankara,
+.partner-logo-hamdi,
+.partner-logo-fil,
+.partner-logo-odtu {
+  height: 64px;
+}
+
 @keyframes slide {
   0% {
     transform: translateX(0);
