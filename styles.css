@@ -1331,11 +1331,17 @@ img {
 .partner-logo-hamdi,
 .partner-logo-fil,
 .partner-logo-odtu {
-  height: 64px;
+  height: 72px;
 }
 
 .partner-logo-aselsan {
-  height: 72px;
+  height: 84px;
+}
+
+.partner-logo-fil,
+.partner-logo-deep,
+.partner-logo-anlam {
+  height: 80px;
 }
 
 @keyframes slide {
