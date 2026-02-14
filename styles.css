@@ -1334,6 +1334,10 @@ img {
   height: 64px;
 }
 
+.partner-logo-aselsan {
+  height: 72px;
+}
+
 @keyframes slide {
   0% {
     transform: translateX(0);
