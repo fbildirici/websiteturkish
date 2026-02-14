@@ -68,19 +68,6 @@
         </div>
       </div>
 
-      <!-- Top Episodes -->
-      <section class="podcast-highlights">
-        <div class="podcast-highlights-header">
-          <h2 data-i18n-en="Top Episodes">Öne Çıkan 3 Bölüm</h2>
-          <p data-i18n-en="Selected from recent episodes">Son bölümlerden seçtiklerim</p>
-        </div>
-        <div class="podcast-highlights-grid" id="podcastHighlightsGrid">
-          <div class="podcast-highlight-card is-loading"></div>
-          <div class="podcast-highlight-card is-loading"></div>
-          <div class="podcast-highlight-card is-loading"></div>
-        </div>
-      </section>
-
       <!-- Podcast Grid -->
       <div class="podcast-grid" id="podcast-grid">
         <!-- Bölümler RSS'den dinamik olarak yüklenecek -->
@@ -197,23 +184,6 @@
             </div>
           </div>
         </div>
-      `;
-    }
-
-    function createHighlightCard(episode) {
-      return `
-        <article class="podcast-highlight-card">
-          <a href="${episode.link}" target="_blank" class="podcast-highlight-image">
-            <img src="${episode.image}" alt="${episode.title}" loading="lazy" onerror="this.src='${CONFIG.DEFAULT_IMAGE}'">
-            <span class="podcast-highlight-badge">Bölüm</span>
-          </a>
-          <div class="podcast-highlight-body">
-            <span class="podcast-highlight-date">${episode.date}</span>
-            <h3 class="podcast-highlight-title">${episode.title}</h3>
-            <p class="podcast-highlight-desc">${episode.desc}</p>
-            <a class="podcast-highlight-link" href="${episode.link}" target="_blank">Dinle →</a>
-          </div>
-        </article>
       `;
     }
 
@@ -364,17 +334,12 @@
     // Ana yükleme fonksiyonu
     async function loadPodcastEpisodes() {
       const grid = document.getElementById('podcast-grid');
-      const highlightsGrid = document.getElementById('podcastHighlightsGrid');
       let episodes = null;
 
       // 1. Önce cache'den dene
       episodes = getFromCache();
       if (episodes && episodes.length > 0) {
         grid.innerHTML = episodes.map(createPodcastCard).join('');
-        if (highlightsGrid) {
-          const topEpisodes = episodes.slice(0, 3);
-          highlightsGrid.innerHTML = topEpisodes.map(createHighlightCard).join('');
-        }
         initSearch(episodes);
 
         // Arka planda güncelle ve gerekiyorsa UI'yi tazele
@@ -387,10 +352,6 @@
               saveToCache(newEpisodes);
               if (cachedSig !== newSig) {
                 grid.innerHTML = newEpisodes.map(createPodcastCard).join('');
-                if (highlightsGrid) {
-                  const topEpisodes = newEpisodes.slice(0, 3);
-                  highlightsGrid.innerHTML = topEpisodes.map(createHighlightCard).join('');
-                }
                 initSearch(newEpisodes);
               }
             }
@@ -412,10 +373,6 @@
           if (episodes.length > 0) {
             saveToCache(episodes);
             grid.innerHTML = episodes.map(createPodcastCard).join('');
-            if (highlightsGrid) {
-              const topEpisodes = episodes.slice(0, 3);
-              highlightsGrid.innerHTML = topEpisodes.map(createHighlightCard).join('');
-            }
             initSearch(episodes);
             return;
           }
