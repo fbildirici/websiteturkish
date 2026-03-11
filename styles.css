@@ -100,12 +100,12 @@
 
 .hl-row {
   display: grid;
-  grid-template-columns: 1.4fr 1fr;
+  grid-template-columns: repeat(3, 1fr);
   gap: 16px;
 }
 
-.hl-row.hl-row-3 {
-  grid-template-columns: repeat(3, 1fr);
+.hl-row:first-child .hl-img-card {
+  grid-column: span 2;
 }
 
 .hl-img-card {
@@ -116,7 +116,7 @@
 }
 
 .hl-img-card.hl-wide {
-  height: 200px;
+  height: 180px;
 }
 
 .hl-img-card img {
@@ -194,8 +194,8 @@
     grid-template-columns: 1fr;
   }
 
-  .hl-row.hl-row-3 {
-    grid-template-columns: 1fr;
+  .hl-row:first-child .hl-img-card {
+    grid-column: span 1;
   }
 
   .hl-img-card,
