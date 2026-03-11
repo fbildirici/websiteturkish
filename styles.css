@@ -8,6 +8,23 @@
   --bg: #f3f5f7;
   --font-sans: 'IBM Plex Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
   --font-display: 'IBM Plex Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+
+  /* Transitions */
+  --transition-fast: all 0.15s ease;
+  --transition-base: all 0.2s ease;
+  --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+
+  /* Shadows */
+  --shadow-xs: 0 1px 3px rgba(0,0,0,0.06);
+  --shadow-sm: 0 2px 8px rgba(0,0,0,0.06);
+  --shadow-md: 0 4px 16px rgba(0,0,0,0.10);
+  --shadow-lg: 0 8px 24px rgba(0,0,0,0.13);
+
+  /* Border radius */
+  --radius-sm: 8px;
+  --radius-md: 12px;
+  --radius-lg: 16px;
+  --radius-full: 999px;
 }
 
 .sr-only {
@@ -49,12 +66,12 @@
 .wid-card {
   background: #fff;
   border: 1px solid #e5e5e5;
-  border-radius: 14px;
+  border-radius: var(--radius-lg);
   padding: 28px 24px;
   display: flex;
   flex-direction: column;
-  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-  box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+  transition: var(--transition-smooth);
+  box-shadow: var(--shadow-xs);
 }
 
 /* ===== ÇALIŞMALARIMDAN KESİTLER ===== */
@@ -207,9 +224,9 @@
 }
 
 .wid-card:hover {
-  transform: translateY(-6px);
+  transform: translateY(-4px);
   border-color: rgba(0,48,128,0.2);
-  box-shadow: 0 12px 32px rgba(0,48,128,0.12);
+  box-shadow: var(--shadow-lg);
 }
 
 .wid-card-icon {
@@ -1022,9 +1039,12 @@ img {
   left: 0;
   right: 0;
   z-index: 1000;
-  background: rgba(245, 245, 245, 0.95);
-  backdrop-filter: blur(10px);
+  background: rgba(245, 245, 245, 0.96);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
   padding: 16px 0;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.06);
+  box-shadow: var(--shadow-xs);
 }
 
 .header-inner {
@@ -1087,7 +1107,13 @@ img {
 
 .nav-link:hover {
   color: #0050b3;
-  opacity: 0.85;
+}
+
+.nav-link.active {
+  color: var(--navy-strong);
+  font-weight: 600;
+  border-bottom: 2px solid var(--navy-strong);
+  padding-bottom: 2px;
 }
 
 .dropdown-icon {
@@ -1647,10 +1673,17 @@ img {
   padding: 12px 16px;
   background: rgba(255, 255, 255, 0.1);
   border: 1px solid rgba(255, 255, 255, 0.2);
-  border-radius: 8px;
+  border-radius: var(--radius-sm);
   color: #fff;
   font-size: 14px;
   flex: 1;
+  transition: var(--transition-base);
+}
+
+.input-field:focus {
+  outline: none;
+  background: rgba(255, 255, 255, 0.18);
+  border-color: rgba(255, 255, 255, 0.5);
 }
 
 .input-field::placeholder {
@@ -2556,7 +2589,7 @@ a:focus-visible {
 }
 
 .quick-note-content h4 a:hover {
-  color: #666;
+  color: var(--navy-strong);
 }
 
 .quick-note-content p {
@@ -3077,15 +3110,16 @@ a:focus-visible {
 
 .yazi-card {
   background: #fff;
-  border-radius: 16px;
+  border-radius: var(--radius-lg);
   overflow: hidden;
-  transition: transform 0.3s, box-shadow 0.3s;
-  box-shadow: 0 4px 20px rgba(0,0,0,0.06);
+  transition: var(--transition-smooth);
+  box-shadow: var(--shadow-sm);
+  border: 1px solid rgba(0,0,0,0.05);
 }
 
 .yazi-card:hover {
-  transform: translateY(-6px);
-  box-shadow: 0 20px 50px rgba(0,0,0,0.12);
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-lg);
 }
 
 .yazi-card-image {
