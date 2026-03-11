@@ -1,6 +1,25 @@
 // Shared articles data for gelismeler.html and hakkinda.html
 const articlesData = [
   {
+    id: 4,
+    category: "newsroom",
+    badge: "Newsroom",
+    badgeEn: "Newsroom",
+    badgeClass: "",
+    image: "assets/images/ssakariyer.jpeg",
+    date: "MAR 2026",
+    dateEn: "MAR 2026",
+    readTime: "VİDEO",
+    readTimeEn: "VIDEO",
+    title: "5. Nesil Mühendislik: Yapay Zeka ile Sınırları Aşmak — SSA Kariyer ve Yetkinlik Buluşmaları",
+    titleEn: "5th Generation Engineering: Pushing Boundaries with AI — SSA Career & Competency Meetings",
+    excerpt: "Milli Yetkinlik Hamlesi kapsamında üniversite öğrencilerine yönelik düzenlenen SSA Kariyer ve Yetkinlik Buluşmaları-3'te \"5. Nesil Mühendislik: Yapay Zeka ile Sınırları Aşmak\" başlıklı sunumla yer aldım.",
+    excerptEn: "I participated in SSA Career & Competency Meetings-3, organized for university students under the National Competency Initiative, with a talk titled '5th Generation Engineering: Pushing Boundaries with AI'.",
+    link: "haber-ssakariyer.html",
+    newsroomDate: "MART 2026",
+    newsroomDateEn: "MARCH 2026"
+  },
+  {
     id: 3,
     category: "newsroom",
     badge: "Newsroom",
