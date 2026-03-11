@@ -106,6 +106,8 @@
 
 .hl-row:first-child .hl-img-card {
   grid-column: span 2;
+  height: 100%;
+  min-height: 180px;
 }
 
 .hl-img-card {
