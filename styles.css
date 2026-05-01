@@ -1279,34 +1279,31 @@ img {
 }
 
 .hero-proof {
-  display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
+  display: flex;
+  flex-wrap: wrap;
   gap: 12px;
   margin-bottom: 24px;
 }
 
 .hero-proof-item {
-  display: flex;
-  flex-direction: column;
-  gap: 6px;
-  padding: 16px 14px;
-  border-radius: var(--radius-md);
-  background: rgba(255, 255, 255, 0.72);
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 9px 12px;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.82);
   border: 1px solid rgba(0, 48, 128, 0.1);
   box-shadow: var(--shadow-xs);
   backdrop-filter: blur(10px);
+  color: var(--muted);
+  font-size: 13px;
+  line-height: 1.2;
 }
 
 .hero-proof-item strong {
   color: var(--navy-strong);
-  font-size: 18px;
-  line-height: 1.1;
-}
-
-.hero-proof-item span {
-  color: var(--muted);
-  font-size: 13px;
-  line-height: 1.45;
+  font-size: 14px;
+  line-height: 1;
 }
 
 .hero-actions {
@@ -1898,9 +1895,7 @@ img {
   }
 
   .hero-proof {
-    max-width: 760px;
-    margin-left: auto;
-    margin-right: auto;
+    justify-content: center;
   }
   
   .hero-image {
@@ -1957,11 +1952,11 @@ img {
   }
 
   .hero-proof {
-    grid-template-columns: 1fr;
+    justify-content: center;
   }
 
   .hero-proof-item {
-    text-align: left;
+    width: auto;
   }
 
   .hero-actions {
@@ -4865,12 +4860,31 @@ a:focus-visible {
   transition: all 0.2s;
   height: 100%;
   box-shadow: 0 12px 28px rgba(15, 23, 42, 0.05);
+  overflow: hidden;
 }
 
 .talk-card:hover {
   border-color: #003080;
   box-shadow: 0 8px 24px rgba(0,48,128,0.08);
   transform: translateY(-2px);
+}
+
+.talk-img {
+  width: 100%;
+  height: 220px;
+  overflow: hidden;
+  background: linear-gradient(135deg, #dbe7ff 0%, #f4f7fc 100%);
+}
+
+.talk-img img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.35s ease;
+}
+
+.talk-card:hover .talk-img img {
+  transform: scale(1.04);
 }
 
 .talk-info {
