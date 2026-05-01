@@ -1,3 +1,37 @@
+// Animated counter for hero proof items
+document.addEventListener('DOMContentLoaded', function () {
+  const proofItems = document.querySelectorAll('[data-count-target]');
+  if (!proofItems.length) return;
+
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (!entry.isIntersecting) return;
+      const el = entry.target;
+      const target = parseInt(el.dataset.countTarget, 10);
+      const suffix = el.dataset.countSuffix || '';
+      const numberEl = el.querySelector('.hero-proof-number');
+      if (!numberEl) return;
+
+      const duration = 1400;
+      const start = performance.now();
+
+      function update(now) {
+        const elapsed = now - start;
+        const progress = Math.min(elapsed / duration, 1);
+        const eased = 1 - Math.pow(1 - progress, 3);
+        const current = Math.round(eased * target);
+        numberEl.textContent = current.toLocaleString('tr-TR') + suffix;
+        if (progress < 1) requestAnimationFrame(update);
+      }
+
+      requestAnimationFrame(update);
+      observer.unobserve(el);
+    });
+  }, { threshold: 0.6 });
+
+  proofItems.forEach(item => observer.observe(item));
+});
+
 // Podcast RSS'ten kartları dinamik oluşturma
 
 // Podcast kartlarının içeriğini RSS ile güncelle (tasarım bozulmaz)
