@@ -1236,8 +1236,8 @@ img {
 }
 
 .hero-content {
-  flex: 0 0 46%;
-  max-width: 580px;
+  flex: 0 0 49%;
+  max-width: 620px;
   z-index: 2;
   padding-bottom: 160px;
 }
