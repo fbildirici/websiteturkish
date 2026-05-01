@@ -41,37 +41,67 @@
 
 /* ===== NELER YAPIYORUM SECTION ===== */
 .what-i-do-section {
-  background: #f5f5f5;
-  padding: 50px 0 40px;
+  background: linear-gradient(180deg, #f5f5f5 0%, #eef3fb 100%);
+  padding: 64px 0 56px;
+}
+
+.section-eyebrow {
+  text-align: center;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--navy-strong);
+  margin-bottom: 14px;
 }
 
 .section-title-main {
   font-family: var(--font-display);
-  font-size: 30px;
+  font-size: 34px;
   font-weight: 600;
   color: var(--ink);
   text-align: center;
-  margin-bottom: 32px;
+  margin-bottom: 14px;
   letter-spacing: -0.5px;
+}
+
+.section-subtitle-main {
+  max-width: 760px;
+  margin: 0 auto 36px;
+  text-align: center;
+  color: #596579;
+  font-size: 16px;
+  line-height: 1.75;
 }
 
 .what-i-do-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: 20px;
+  gap: 24px;
   max-width: 1040px;
   margin: 0 auto;
 }
 
 .wid-card {
-  background: #fff;
-  border: 1px solid #e5e5e5;
-  border-radius: var(--radius-lg);
-  padding: 28px 24px;
+  position: relative;
+  background: rgba(255, 255, 255, 0.92);
+  border: 1px solid #e6ebf2;
+  border-radius: 20px;
+  padding: 28px 24px 24px;
   display: flex;
   flex-direction: column;
   transition: var(--transition-smooth);
-  box-shadow: var(--shadow-xs);
+  box-shadow: 0 16px 32px rgba(15, 23, 42, 0.05);
+  overflow: hidden;
+}
+
+.wid-card::before {
+  content: '';
+  position: absolute;
+  inset: 0 0 auto 0;
+  height: 4px;
+  background: linear-gradient(90deg, #003080 0%, #4f8dfd 55%, #ff6b35 100%);
+  opacity: 0.9;
 }
 
 /* ===== ÇALIŞMALARIMDAN KESİTLER ===== */
@@ -249,16 +279,31 @@
 }
 
 .wid-card:hover {
-  transform: translateY(-4px);
-  border-color: rgba(0,48,128,0.2);
-  box-shadow: var(--shadow-lg);
+  transform: translateY(-6px);
+  border-color: rgba(0,48,128,0.16);
+  box-shadow: 0 20px 40px rgba(15, 23, 42, 0.09);
+}
+
+.wid-card-badge {
+  display: inline-flex;
+  align-items: center;
+  align-self: flex-start;
+  margin-bottom: 18px;
+  padding: 6px 10px;
+  border-radius: 999px;
+  background: rgba(0, 48, 128, 0.07);
+  color: var(--navy-strong);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
 }
 
 .wid-card-icon {
-  width: 50px;
-  height: 50px;
+  width: 56px;
+  height: 56px;
   background: linear-gradient(135deg, #003080 0%, #0050b3 100%);
-  border-radius: 12px;
+  border-radius: 16px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -284,35 +329,35 @@
 }
 
 .wid-card-title {
-  font-size: 17px;
+  font-size: 19px;
   font-weight: 700;
   color: #1a1a1a;
-  margin-bottom: 10px;
+  margin-bottom: 12px;
   line-height: 1.3;
-  letter-spacing: -0.3px;
+  letter-spacing: -0.4px;
 }
 
 .wid-card-desc {
   font-size: 14px;
-  color: #555;
-  line-height: 1.6;
-  margin-bottom: 14px;
+  color: #4f5d73;
+  line-height: 1.75;
+  margin-bottom: 16px;
 }
 
 .wid-card-list {
   list-style: none;
   padding: 0;
-  margin: 0 0 18px 0;
+  margin: 0 0 20px 0;
   flex: 1;
 }
 
 .wid-card-list li {
   font-size: 13px;
-  color: #555;
+  color: #4b5563;
   line-height: 1.7;
-  padding-left: 18px;
+  padding-left: 20px;
   position: relative;
-  margin-bottom: 6px;
+  margin-bottom: 8px;
 }
 
 .wid-card-list li::before {
@@ -337,9 +382,9 @@
   color: #003080;
   text-decoration: none;
   margin-top: auto;
-  padding: 10px 18px;
-  background: rgba(0,48,128,0.06);
-  border-radius: 8px;
+  padding: 11px 18px;
+  background: rgba(0,48,128,0.07);
+  border-radius: 10px;
   transition: all 0.25s ease;
   align-self: flex-start;
 }
@@ -365,7 +410,7 @@
 
 @media (max-width: 768px) {
   .what-i-do-section {
-    padding: 40px 0 32px;
+    padding: 48px 0 36px;
   }
 
   .what-i-do-grid {
@@ -380,8 +425,14 @@
   }
 
   .section-title-main {
-    font-size: 24px;
+    font-size: 28px;
     margin-bottom: 24px;
+  }
+
+  .section-subtitle-main {
+    font-size: 15px;
+    margin-bottom: 28px;
+    padding: 0 10px;
   }
 }
 /* Kompakt Slider ve Oklar */
