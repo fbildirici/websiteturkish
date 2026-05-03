@@ -76,8 +76,8 @@
 
 .what-i-do-grid {
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 20px;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
   max-width: 1040px;
   margin: 0 auto;
 }
@@ -86,10 +86,12 @@
   position: relative;
   background: rgba(255, 255, 255, 0.92);
   border: 1px solid #e6ebf2;
-  border-radius: 20px;
-  padding: 28px 24px 24px;
+  border-radius: 24px;
+  padding: 32px 28px 28px;
   display: flex;
   flex-direction: column;
+  align-items: center;
+  text-align: center;
   transition: var(--transition-smooth);
   box-shadow: 0 16px 32px rgba(15, 23, 42, 0.05);
   overflow: hidden;
@@ -395,7 +397,6 @@
 .wid-card-badge {
   display: inline-flex;
   align-items: center;
-  align-self: flex-start;
   margin-bottom: 18px;
   padding: 6px 10px;
   border-radius: 999px;
@@ -415,7 +416,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  margin-bottom: 18px;
+  margin: 0 auto 18px;
   color: #fff;
   transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   box-shadow: 0 4px 12px rgba(0,48,128,0.25);
@@ -463,15 +464,15 @@
   font-size: 13px;
   color: #4b5563;
   line-height: 1.7;
-  padding-left: 20px;
+  padding-left: 0;
   position: relative;
   margin-bottom: 8px;
 }
 
 .wid-card-list li::before {
   content: '→';
-  position: absolute;
-  left: 0;
+  display: inline-block;
+  margin-right: 6px;
   color: #003080;
   font-weight: 600;
   transition: transform 0.2s ease;
@@ -494,7 +495,6 @@
   background: rgba(0,48,128,0.07);
   border-radius: 10px;
   transition: all 0.25s ease;
-  align-self: flex-start;
 }
 
 .wid-card-link:hover {
