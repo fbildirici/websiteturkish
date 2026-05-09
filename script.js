@@ -32,6 +32,14 @@ document.addEventListener('DOMContentLoaded', function () {
   proofItems.forEach(item => observer.observe(item));
 });
 
+// Dynamic copyright year
+document.addEventListener('DOMContentLoaded', function () {
+  const year = new Date().getFullYear();
+  document.querySelectorAll('.copyright').forEach(el => {
+    el.innerHTML = el.innerHTML.replace(/\d{4}/, year);
+  });
+});
+
 // Podcast RSS'ten kartları dinamik oluşturma
 
 // Podcast kartlarının içeriğini RSS ile güncelle (tasarım bozulmaz)
