@@ -34,13 +34,12 @@
         <a href="index.html" class="logo" data-i18n-en="FATIH BILDIRICI">FATİH BİLDİRİCİ</a>
         <nav class="nav">
           <a href="hakkinda.html" class="nav-link" data-i18n-en="About">Hakkımda</a>
-          <a href="konusmaci.html" class="nav-link" data-i18n-en="Speaker">Konuşmacı</a>
-          <a href="hizmetler.html" class="nav-link" data-i18n-en="Training &amp; Consulting">Eğitim &amp; Danışmanlık</a>
-          <a href="gelismeler.html" class="nav-link" data-i18n-en="Notes">Notlar</a>
+          <a href="hizmetler.html" class="nav-link" data-i18n-en="Services">Hizmetler</a>
+          <a href="gelismeler.html" class="nav-link" data-i18n-en="Updates">Gelişmeler</a>
           <a href="podcast.html" class="nav-link">Podcast</a>
           <a href="akademik.html" class="nav-link" data-i18n-en="Academic">Akademik</a>
         </nav>
-        <a href="iletisim.html?konu=konusma#contactForm" class="btn-primary" data-i18n-en="Speaking Invite">Konuşma Daveti Al</a>
+        <a href="https://otostopcununyzrehberi.substack.com" class="btn-primary" data-i18n-en="Subscribe">Bültene Kaydol</a>
       </div>
     </div>
   </header>
@@ -51,24 +50,8 @@
       <div class="contact-wrapper">
         <div class="contact-header">
           <h1 data-i18n-en="Contact">İletişim</h1>
-          <p class="contact-desc" data-i18n-en="Choose the closest reason for your message; I will route the details accordingly.">Mesajınızın nedenini seçin; konuşma, eğitim, danışmanlık, basın veya akademik iş birliği detaylarını buna göre netleştirelim.</p>
+          <p class="contact-desc" data-i18n-en="Feel free to get in touch; your messages and feedback are very valuable to me.">İletişime geçmekten çekinmeyin; mesajlarınız ve geri bildirimleriniz benim için çok değerli.</p>
         </div>
-
-        <section class="contact-intent-panel" aria-labelledby="contactIntentTitle">
-          <h2 id="contactIntentTitle" data-i18n-en="What are you writing about?">Ne için yazıyorsunuz?</h2>
-          <div class="contact-intent-options" role="list">
-            <a href="?konu=konusma#contactForm" class="contact-intent-option" data-contact-intent="konusma" role="listitem" data-i18n-en="Speaking invitation">Konuşma daveti</a>
-            <a href="?konu=egitim#contactForm" class="contact-intent-option" data-contact-intent="egitim" role="listitem" data-i18n-en="Corporate training">Kurumsal eğitim</a>
-            <a href="?konu=danismanlik#contactForm" class="contact-intent-option" data-contact-intent="danismanlik" role="listitem" data-i18n-en="Consulting">Danışmanlık</a>
-            <a href="?konu=podcast#contactForm" class="contact-intent-option" data-contact-intent="podcast" role="listitem" data-i18n-en="Podcast / press">Podcast / basın</a>
-            <a href="?konu=akademik#contactForm" class="contact-intent-option" data-contact-intent="akademik" role="listitem" data-i18n-en="Academic collaboration">Akademik iş birliği</a>
-          </div>
-          <div class="contact-direct">
-            <span data-i18n-en="Direct email">Direkt e-posta</span>
-            <a href="mailto:fatihbildirici.dev@gmail.com">fatihbildirici.dev@gmail.com</a>
-            <span data-i18n-en="Typical response: 1–2 business days">Genelde 1–2 iş günü içinde dönüş yapıyorum.</span>
-          </div>
-        </section>
 
         <form class="contact-form" id="contactForm" action="https://script.google.com/macros/s/AKfycbwt7tgr-22qrCudmVVhPd89uol0Tdu7_Qj42x7I_nfx-xaB1fJfJddHDG2inbycnQgk/exec" method="POST" target="contactFrame" data-script-url="https://script.google.com/macros/s/AKfycbwt7tgr-22qrCudmVVhPd89uol0Tdu7_Qj42x7I_nfx-xaB1fJfJddHDG2inbycnQgk/exec">
           <input type="hidden" name="_to" value="fatihbildirici.dev@gmail.com">
@@ -90,17 +73,14 @@
 
           <div class="form-group">
             <label class="sr-only" for="contactSubject">Konu</label>
-              <select id="contactSubject" name="subject" class="form-input form-select">
-                <option value="" disabled selected data-i18n-en="General inquiry">Genel iletişim</option>
-                <option value="genel" data-i18n-en="General inquiry">Genel iletişim</option>
-                <option value="isbirligi" data-i18n-en="Collaboration">İş birliği</option>
-                <option value="egitim" data-i18n-en="Corporate training">Kurumsal eğitim</option>
-                <option value="danismanlik" data-i18n-en="Consulting">Danışmanlık</option>
-                <option value="konusma" data-i18n-en="Speaking invitation">Konuşma daveti</option>
-                <option value="podcast" data-i18n-en="Podcast / press">Podcast / basın</option>
-                <option value="akademik" data-i18n-en="Academic collaboration">Akademik iş birliği</option>
-                <option value="diger" data-i18n-en="Other">Diğer</option>
-              </select>
+            <select id="contactSubject" name="subject" class="form-input form-select">
+              <option value="" disabled selected data-i18n-en="General inquiry">Genel iletişim</option>
+              <option value="genel" data-i18n-en="General inquiry">Genel iletişim</option>
+              <option value="isbirligi" data-i18n-en="Collaboration">İş birliği</option>
+              <option value="danismanlik" data-i18n-en="Consulting">Danışmanlık</option>
+              <option value="konusma" data-i18n-en="Speaking invitation">Konuşma daveti</option>
+              <option value="diger" data-i18n-en="Other">Diğer</option>
+            </select>
           </div>
 
           <div class="form-group">
@@ -137,13 +117,12 @@
         <!-- Newsletter -->
         <div class="footer-newsletter">
           <h3 class="footer-title" data-i18n-en="Subscribe to my newsletter">Bültenime kaydol</h3>
-          <p class="footer-desc" data-i18n-en="Weekly AI notes, podcast summaries, and actionable AI frameworks. Follow technical developments in a clear, critical, and practical way.">Haftalık AI notları, podcast özetleri ve uygulanabilir yapay zeka çerçeveleri. Teknik gelişmeleri sade, eleştirel ve uygulanabilir şekilde takip et.</p>
+          <p class="footer-desc" data-i18n-en="Subscribe to receive the latest updates, podcast episodes, and written content via email.">Kaydolarak son gelişmelere, podcast ve yazılı içeriklere e-posta bülteni üzerinden ulaşabilirsiniz.</p>
           <form class="newsletter-form" action="https://otostopcununyzrehberi.substack.com/subscribe" method="get" target="_blank" aria-label="Bültene kaydol">
             <label class="sr-only" for="newsletterEmail">E-posta adresiniz</label>
             <input id="newsletterEmail" name="email" type="email" placeholder="E-posta adresiniz" class="input-field" autocomplete="email" required data-i18n-placeholder-en="Your email address">
             <button type="submit" class="btn-primary btn-submit" data-i18n-en="Subscribe">Kaydol</button>
           </form>
-          <p class="newsletter-proof" data-i18n-en="Read with 7,000+ people.">7.000+ kişiyle birlikte okuyun.</p>
           <p class="newsletter-legal" data-i18n-en="I have read the <a href=&quot;aydinlatma-metni.html&quot;>privacy notice</a>, and I consent to the processing of my personal data and to receiving commercial electronic communications via the <a href=&quot;acik-riza-metni.html&quot;>explicit consent</a>."><a href="aydinlatma-metni.html">Aydınlatma metnini</a> okudum, kişisel verilerimin işlenmesine ve tarafıma ticari elektronik ileti gönderilmesine <a href="acik-riza-metni.html">açık rıza</a> veriyorum.</p>
         </div>
 
@@ -152,9 +131,8 @@
           <div class="footer-col">
             <h4 data-i18n-en="Content">İçerikler</h4>
             <a href="hakkinda.html" data-i18n-en="About">Hakkımda</a>
-            <a href="konusmaci.html" data-i18n-en="Speaker">Konuşmacı</a>
-            <a href="hizmetler.html" data-i18n-en="Training &amp; Consulting">Eğitim &amp; Danışmanlık</a>
-            <a href="gelismeler.html" data-i18n-en="Notes">Notlar</a>
+            <a href="hizmetler.html" data-i18n-en="Services">Hizmetler</a>
+            <a href="gelismeler.html" data-i18n-en="Updates">Gelişmeler</a>
             <a href="podcast.html">Podcast</a>
           </div>
           <div class="footer-col">

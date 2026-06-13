@@ -135,71 +135,10 @@ function initLanguageToggle() {
   });
 }
 
-function initContactIntent() {
-  const form = document.getElementById('contactForm');
-  const subject = document.getElementById('contactSubject');
-  if (!form || !subject) return;
-
-  const allowedSubjects = new Set(Array.from(subject.options).map(option => option.value).filter(Boolean));
-  const params = new URLSearchParams(window.location.search);
-  const requestedSubject = params.get('konu');
-  const message = document.getElementById('contactMessage');
-
-  const placeholders = {
-    tr: {
-      konusma: 'Etkinlik tarihi, şehir/online bilgisi, kitle profili ve beklenen süreyi paylaşabilirsiniz.',
-      egitim: 'Eğitim hedefi, katılımcı profili, tercih edilen süre ve formatı paylaşabilirsiniz.',
-      danismanlik: 'Üzerinde çalıştığınız problem, mevcut ekip/kapsam ve beklenen çıktıyı paylaşabilirsiniz.',
-      podcast: 'Podcast, basın veya medya talebinizin kapsamını ve hedef tarihini paylaşabilirsiniz.',
-      akademik: 'Araştırma konusu, iş birliği fikri ve beklenen katkı alanını paylaşabilirsiniz.'
-    },
-    en: {
-      konusma: 'Please share the event date, city/online format, audience profile, and expected duration.',
-      egitim: 'Please share the training goal, participant profile, preferred duration, and format.',
-      danismanlik: 'Please share the problem, current scope/team, and expected outcome.',
-      podcast: 'Please share the podcast, press, or media request scope and target date.',
-      akademik: 'Please share the research topic, collaboration idea, and expected contribution.'
-    }
-  };
-
-  function setMessagePlaceholder(value) {
-    if (!message || !value) return;
-    const lang = document.documentElement.getAttribute('lang') === 'en' ? 'en' : 'tr';
-    const nextPlaceholder = placeholders[lang][value];
-    if (nextPlaceholder) {
-      message.setAttribute('placeholder', nextPlaceholder);
-    }
-  }
-
-  if (requestedSubject && allowedSubjects.has(requestedSubject)) {
-    subject.value = requestedSubject;
-    setMessagePlaceholder(requestedSubject);
-  }
-
-  document.querySelectorAll('[data-contact-intent]').forEach(option => {
-    const isActive = option.dataset.contactIntent === subject.value;
-    option.classList.toggle('is-active', isActive);
-    option.setAttribute('aria-current', isActive ? 'true' : 'false');
-  });
-
-  subject.addEventListener('change', () => {
-    const nextValue = subject.value;
-    setMessagePlaceholder(nextValue);
-    document.querySelectorAll('[data-contact-intent]').forEach(option => {
-      const isActive = option.dataset.contactIntent === nextValue;
-      option.classList.toggle('is-active', isActive);
-      option.setAttribute('aria-current', isActive ? 'true' : 'false');
-    });
-  });
-
-  document.addEventListener('site-language-change', () => setMessagePlaceholder(subject.value));
-}
-
 document.addEventListener('DOMContentLoaded', function () {
   ensureSafeExternalLinks();
   initMobileNavigation();
   initLanguageToggle();
-  initContactIntent();
 });
 
 // Podcast RSS'ten kartları dinamik oluşturma
