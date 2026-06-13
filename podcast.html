@@ -144,6 +144,7 @@
     </div>
   </footer>
 
+  <script src="podcast-episodes.js"></script>
   <script>
     // Podcast Yükleme Sistemi - Optimized v3
     const CONFIG = {
@@ -452,11 +453,34 @@
       return episodes.slice(0, 5).map(ep => `${ep.title}|${ep.date}|${ep.link}`).join('::');
     }
 
+    function getFallbackEpisodes() {
+      return Array.isArray(window.PODCAST_FALLBACK_EPISODES)
+        ? window.PODCAST_FALLBACK_EPISODES.slice(0, CONFIG.MAX_EPISODES)
+        : [];
+    }
+
+    async function refreshEpisodesFromRSS(grid, currentEpisodes) {
+      const xmlText = await fetchRSSParallel();
+      if (!xmlText) return false;
+
+      const newEpisodes = parseEpisodes(xmlText);
+      if (!newEpisodes.length) return false;
+
+      saveToCache(newEpisodes);
+      if (getEpisodesSignature(currentEpisodes) !== getEpisodesSignature(newEpisodes)) {
+        renderEpisodes(grid, newEpisodes);
+        initSearch(newEpisodes);
+      }
+
+      return true;
+    }
+
     // Ana yükleme fonksiyonu
     async function loadPodcastEpisodes() {
       const grid = document.getElementById('podcast-grid');
       if (!grid) return;
       let episodes = null;
+      const fallbackEpisodes = getFallbackEpisodes();
 
       // 1. Önce cache'den dene
       episodes = getFromCache();
@@ -465,45 +489,31 @@
         initSearch(episodes);
 
         // Arka planda güncelle ve gerekiyorsa UI'yi tazele
-        fetchRSSParallel().then(xmlText => {
-          if (xmlText) {
-            const newEpisodes = parseEpisodes(xmlText);
-            if (newEpisodes.length > 0) {
-              const cachedSig = getEpisodesSignature(episodes);
-              const newSig = getEpisodesSignature(newEpisodes);
-              saveToCache(newEpisodes);
-              if (cachedSig !== newSig) {
-                renderEpisodes(grid, newEpisodes);
-                initSearch(newEpisodes);
-              }
-            }
-          }
-        }).catch(() => {});
+        refreshEpisodesFromRSS(grid, episodes).catch(() => {});
 
         return;
       }
 
-      // Cache yoksa skeleton göster
+      // 2. Cache yoksa güvenilir statik fallback'i hemen göster
+      if (fallbackEpisodes.length > 0) {
+        renderEpisodes(grid, fallbackEpisodes);
+        initSearch(fallbackEpisodes);
+        refreshEpisodesFromRSS(grid, fallbackEpisodes).catch(() => {});
+        return;
+      }
+
+      // 3. Fallback yoksa skeleton göster
       renderSkeletons();
 
-      // 2. Cache yoksa RSS'den çek
+      // 4. Son çare olarak RSS'den çek
       try {
-        const xmlText = await fetchRSSParallel();
-
-        if (xmlText) {
-          episodes = parseEpisodes(xmlText);
-          if (episodes.length > 0) {
-            saveToCache(episodes);
-            renderEpisodes(grid, episodes);
-            initSearch(episodes);
-            return;
-          }
-        }
+        const didRefresh = await refreshEpisodesFromRSS(grid, []);
+        if (didRefresh) return;
       } catch (e) {
         console.error('RSS yüklenemedi:', e);
       }
 
-      // 3. Hiçbiri çalışmazsa hata göster
+      // 5. Hiçbiri çalışmazsa hata göster
       renderErrorMessage(grid);
     }
 
