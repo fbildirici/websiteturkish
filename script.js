@@ -1,3 +1,5 @@
+document.documentElement.classList.add('js');
+
 // Animated counter for hero proof items
 document.addEventListener('DOMContentLoaded', function () {
   const proofItems = document.querySelectorAll('[data-count-target]');
@@ -40,12 +42,123 @@ document.addEventListener('DOMContentLoaded', function () {
   });
 });
 
+function ensureSafeExternalLinks() {
+  document.querySelectorAll('a[target="_blank"]').forEach(link => {
+    const relValues = new Set((link.getAttribute('rel') || '').split(/\s+/).filter(Boolean));
+    relValues.add('noopener');
+    relValues.add('noreferrer');
+    link.setAttribute('rel', Array.from(relValues).join(' '));
+  });
+}
+
+function initMobileNavigation() {
+  document.querySelectorAll('.header-inner').forEach(header => {
+    const nav = header.querySelector('.nav');
+    if (!nav || header.querySelector('.nav-toggle')) return;
+
+    const toggle = document.createElement('button');
+    toggle.type = 'button';
+    toggle.className = 'nav-toggle';
+    toggle.setAttribute('aria-label', 'Menüyü aç');
+    toggle.setAttribute('aria-expanded', 'false');
+    toggle.innerHTML = '<span></span><span></span><span></span>';
+
+    header.insertBefore(toggle, nav);
+
+    toggle.addEventListener('click', () => {
+      const isOpen = nav.classList.toggle('is-open');
+      toggle.classList.toggle('is-open', isOpen);
+      toggle.setAttribute('aria-expanded', String(isOpen));
+      toggle.setAttribute('aria-label', isOpen ? 'Menüyü kapat' : 'Menüyü aç');
+    });
+
+    nav.querySelectorAll('a').forEach(link => {
+      link.addEventListener('click', () => {
+        nav.classList.remove('is-open');
+        toggle.classList.remove('is-open');
+        toggle.setAttribute('aria-expanded', 'false');
+        toggle.setAttribute('aria-label', 'Menüyü aç');
+      });
+    });
+  });
+}
+
+function setStoredText(el, key, value) {
+  if (!el.dataset[key]) {
+    el.dataset[key] = value;
+  }
+}
+
+function applyLanguage(lang) {
+  const isEnglish = lang === 'en';
+  document.documentElement.setAttribute('lang', isEnglish ? 'en' : 'tr');
+
+  document.querySelectorAll('[data-i18n-en]').forEach(el => {
+    setStoredText(el, 'i18nTr', el.innerHTML);
+    el.innerHTML = isEnglish ? el.dataset.i18nEn : el.dataset.i18nTr;
+  });
+
+  document.querySelectorAll('[data-i18n-placeholder-en]').forEach(el => {
+    setStoredText(el, 'i18nPlaceholderTr', el.getAttribute('placeholder') || '');
+    el.setAttribute('placeholder', isEnglish ? el.dataset.i18nPlaceholderEn : el.dataset.i18nPlaceholderTr);
+  });
+
+  document.querySelectorAll('[data-lang-toggle]').forEach(button => {
+    button.textContent = isEnglish ? 'TR' : 'EN';
+    button.setAttribute('aria-label', isEnglish ? 'Türkçeye geç' : 'Switch to English');
+  });
+
+  document.dispatchEvent(new CustomEvent('site-language-change', { detail: { lang: isEnglish ? 'en' : 'tr' } }));
+}
+
+function initLanguageToggle() {
+  document.querySelectorAll('.header-inner').forEach(header => {
+    if (header.querySelector('[data-lang-toggle]')) return;
+
+    const subscribeLink = header.querySelector(':scope > .btn-primary');
+    const button = document.createElement('button');
+    button.type = 'button';
+    button.className = 'lang-toggle';
+    button.dataset.langToggle = '';
+    header.insertBefore(button, subscribeLink || null);
+  });
+
+  const savedLanguage = localStorage.getItem('site-language') === 'en' ? 'en' : 'tr';
+  applyLanguage(savedLanguage);
+
+  document.querySelectorAll('[data-lang-toggle]').forEach(button => {
+    button.addEventListener('click', () => {
+      const nextLanguage = document.documentElement.getAttribute('lang') === 'en' ? 'tr' : 'en';
+      localStorage.setItem('site-language', nextLanguage);
+      applyLanguage(nextLanguage);
+    });
+  });
+}
+
+document.addEventListener('DOMContentLoaded', function () {
+  ensureSafeExternalLinks();
+  initMobileNavigation();
+  initLanguageToggle();
+});
+
 // Podcast RSS'ten kartları dinamik oluşturma
 
 // Podcast kartlarının içeriğini RSS ile güncelle (tasarım bozulmaz)
 async function loadPodcastCards() {
+  const cards = document.querySelectorAll('.podcast-card:not(.is-loading)');
+  if (!cards.length || document.getElementById('podcast-grid')) return;
+
   const rssUrl = 'https://anchor.fm/s/101fc0074/podcast/rss';
   const proxyUrl = 'https://api.allorigins.win/get?url=' + encodeURIComponent(rssUrl);
+
+  function getSafeUrl(value, fallback = '#') {
+    try {
+      const url = new URL(value, window.location.href);
+      return ['http:', 'https:'].includes(url.protocol) ? url.href : fallback;
+    } catch (e) {
+      return fallback;
+    }
+  }
 
   try {
     const res = await fetch(proxyUrl);
@@ -53,7 +166,6 @@ async function loadPodcastCards() {
     const parser = new DOMParser();
     const xml = parser.parseFromString(data.contents, 'text/xml');
     const items = xml.querySelectorAll('item');
-    const cards = document.querySelectorAll('.podcast-card');
 
     cards.forEach((card, i) => {
       const item = items[i];
@@ -71,7 +183,7 @@ async function loadPodcastCards() {
       // Görseli güncelle
       const imgEl = card.querySelector('.podcast-card-image img');
       if (imgEl) {
-        imgEl.src = imgUrl;
+        imgEl.src = getSafeUrl(imgUrl, imgEl.src);
         imgEl.alt = title;
       }
 
@@ -92,10 +204,10 @@ async function loadPodcastCards() {
       if (linksEl) {
         // Apple Podcasts
         const appleA = linksEl.querySelector('a[title="Apple Podcasts"]');
-        if (appleA) appleA.href = item.querySelector('link')?.textContent || '#';
+        if (appleA) appleA.href = getSafeUrl(item.querySelector('link')?.textContent || '#');
         // Spotify
         const spotifyA = linksEl.querySelector('a[title="Spotify"]');
-        if (spotifyA) spotifyA.href = audioUrl || '#';
+        if (spotifyA) spotifyA.href = getSafeUrl(audioUrl || '#');
         // YouTube
         const youtubeA = linksEl.querySelector('a[title="YouTube"]');
         if (youtubeA) youtubeA.href = 'https://www.youtube.com/@otostopcununyzrehberipodcast';
@@ -190,7 +302,7 @@ document.addEventListener('DOMContentLoaded', function() {
       if (!submitted) return;
 
       if (statusEl) {
-        statusEl.textContent = 'Mesajınız alındı. Teşekkürler.';
+        statusEl.textContent = 'Mesaj gönderimi tamamlandı. Yanıt alamazsanız lütfen e-posta ile ulaşın.';
         statusEl.classList.add('is-success');
       }
 
@@ -221,7 +333,7 @@ document.addEventListener('DOMContentLoaded', function() {
       });
 
       if (statusEl) {
-        statusEl.textContent = 'Mesajınız alındı. Teşekkürler.';
+        statusEl.textContent = 'Mesaj gönderimi tamamlandı. Yanıt alamazsanız lütfen e-posta ile ulaşın.';
         statusEl.classList.add('is-success');
       }
 
@@ -240,24 +352,34 @@ document.addEventListener('DOMContentLoaded', function() {
 function openPodcastModal(platform, url) {
   const modal = document.getElementById('podcastModal');
   const modalBody = document.getElementById('podcastModalBody');
-  const modalTitle = modal.querySelector('.podcast-modal-title');
 
   if (!modal || !modalBody) return;
+
+  const modalTitle = modal.querySelector('.podcast-modal-title');
+  if (!modalTitle) return;
 
   modalTitle.textContent = `${platform} - Podcast`;
 
   // Create iframe based on platform
   let iframeHTML = '';
+  let safeUrl = '#';
+
+  try {
+    const parsedUrl = new URL(url, window.location.href);
+    safeUrl = ['http:', 'https:'].includes(parsedUrl.protocol) ? parsedUrl.href : '#';
+  } catch (e) {
+    safeUrl = '#';
+  }
 
   if (platform.includes('Spotify')) {
     iframeHTML = `<iframe src="https://open.spotify.com/embed/show/1rCeqPdviUG61ucnpFDl6n" height="380" frameborder="0" allowtransparency="true" allow="encrypted-media"></iframe>`;
   } else if (platform.includes('Apple')) {
-    iframeHTML = `<iframe src="${url}" height="450" frameborder="0" sandbox="allow-forms allow-popups allow-same-origin allow-scripts allow-top-navigation-by-user-activation" allow="autoplay *; encrypted-media *;"></iframe>`;
+    iframeHTML = `<iframe src="${safeUrl}" height="450" frameborder="0" sandbox="allow-forms allow-popups allow-same-origin allow-scripts allow-top-navigation-by-user-activation" allow="autoplay *; encrypted-media *;"></iframe>`;
   } else if (platform.includes('YouTube')) {
     iframeHTML = `<iframe src="https://www.youtube.com/embed/videoseries?list=PLjX32lVkbYlFv2dBFkg-Eqclad9ga5E0T" height="450" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>`;
   } else {
     // Default: open in new tab
-    window.open(url, '_blank');
+    window.open(safeUrl, '_blank', 'noopener,noreferrer');
     return;
   }
 
@@ -288,13 +410,13 @@ function shareArticle(platform) {
   const text = encodeURIComponent(title + ' - ' + url);
 
   if (platform === 'whatsapp') {
-    window.open('https://wa.me/?text=' + text, '_blank');
+    window.open('https://wa.me/?text=' + text, '_blank', 'noopener,noreferrer');
   } else if (platform === 'facebook') {
-    window.open('https://www.facebook.com/sharer/sharer.php?u=' + encodeURIComponent(url), '_blank');
+    window.open('https://www.facebook.com/sharer/sharer.php?u=' + encodeURIComponent(url), '_blank', 'noopener,noreferrer');
   } else if (platform === 'linkedin') {
-    window.open('https://www.linkedin.com/shareArticle?mini=true&url=' + encodeURIComponent(url) + '&title=' + encodeURIComponent(title), '_blank');
+    window.open('https://www.linkedin.com/shareArticle?mini=true&url=' + encodeURIComponent(url) + '&title=' + encodeURIComponent(title), '_blank', 'noopener,noreferrer');
   } else if (platform === 'x') {
-    window.open('https://x.com/intent/tweet?text=' + text, '_blank');
+    window.open('https://x.com/intent/tweet?text=' + text, '_blank', 'noopener,noreferrer');
   }
 }
 

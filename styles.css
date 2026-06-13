@@ -39,6 +39,26 @@
   border: 0;
 }
 
+.skip-link {
+  position: fixed;
+  top: 12px;
+  left: 12px;
+  z-index: 2000;
+  transform: translateY(-160%);
+  padding: 10px 14px;
+  border-radius: var(--radius-sm);
+  background: var(--navy-strong);
+  color: #fff;
+  font-size: 14px;
+  font-weight: 700;
+  box-shadow: var(--shadow-md);
+  transition: transform 0.2s ease;
+}
+
+.skip-link:focus {
+  transform: translateY(0);
+}
+
 /* ===== NELER YAPIYORUM SECTION ===== */
 .what-i-do-section {
   background: linear-gradient(180deg, #f5f5f5 0%, #eef3fb 100%);
@@ -1250,6 +1270,41 @@ img {
   gap: 32px;
 }
 
+.nav-toggle {
+  display: none;
+  width: 40px;
+  height: 40px;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  gap: 5px;
+  border: 1px solid rgba(0, 48, 128, 0.18);
+  border-radius: var(--radius-sm);
+  background: #fff;
+  color: var(--navy-strong);
+  cursor: pointer;
+}
+
+.nav-toggle span {
+  width: 18px;
+  height: 2px;
+  border-radius: 999px;
+  background: currentColor;
+  transition: transform 0.2s ease, opacity 0.2s ease;
+}
+
+.nav-toggle.is-open span:nth-child(1) {
+  transform: translateY(7px) rotate(45deg);
+}
+
+.nav-toggle.is-open span:nth-child(2) {
+  opacity: 0;
+}
+
+.nav-toggle.is-open span:nth-child(3) {
+  transform: translateY(-7px) rotate(-45deg);
+}
+
 .lang-toggle {
   display: inline-flex;
   align-items: center;
@@ -2103,14 +2158,46 @@ img {
 @media (max-width: 768px) {
   .header-inner {
     flex-wrap: wrap;
-    gap: 16px;
+    gap: 12px;
   }
-  
-  .nav {
+
+  .nav-toggle {
+    display: inline-flex;
+    order: 2;
+  }
+
+  .header-inner > .btn-primary {
     order: 3;
+    margin-left: auto;
+    padding: 10px 14px;
+    font-size: 13px;
+  }
+
+  .lang-toggle {
+    order: 4;
+  }
+
+  .nav {
+    order: 5;
     width: 100%;
-    justify-content: center;
-    gap: 20px;
+    justify-content: flex-start;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 0;
+    padding-top: 8px;
+    border-top: 1px solid rgba(0, 48, 128, 0.12);
+  }
+
+  .js .nav {
+    display: none;
+  }
+
+  .js .nav.is-open {
+    display: flex;
+  }
+
+  .nav-link {
+    padding: 10px 0;
   }
   
   .hero {
@@ -2709,6 +2796,51 @@ img {
   border-radius: 50%;
 }
 
+.podcast-status {
+  grid-column: 1 / -1;
+  padding: 60px 20px;
+  text-align: center;
+  color: #666;
+}
+
+.podcast-status p {
+  margin: 0 0 16px;
+}
+
+.podcast-retry-btn {
+  padding: 10px 20px;
+  border: 0;
+  border-radius: 6px;
+  background: #003080;
+  color: #fff;
+  font: inherit;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.podcast-status-links {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  margin-top: 16px;
+}
+
+.podcast-status-links a {
+  width: 32px;
+  height: 32px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  background: #f5f5f5;
+}
+
+.podcast-status-links img {
+  width: 16px;
+  height: 16px;
+  object-fit: contain;
+}
+
 @keyframes shimmer {
   0% {
     background-position: 0% 0%;
@@ -2729,10 +2861,13 @@ img {
   padding: 10px 24px;
   border: 1.5px solid #1a1a1a;
   border-radius: 50px;
+  background: transparent;
   font-size: 12px;
+  font-family: inherit;
   font-weight: 600;
   color: #1a1a1a;
   transition: all 0.2s;
+  cursor: pointer;
 }
 
 .btn-outline:hover {
@@ -3607,9 +3742,11 @@ a:focus-visible {
   border: 1px solid #e0e0e0;
   border-radius: 20px;
   font-size: 12px;
+  font-family: inherit;
   color: #666;
   text-decoration: none;
   transition: all 0.2s;
+  cursor: pointer;
 }
 
 .share-btn:hover {
@@ -5825,3 +5962,14 @@ a:focus-visible {
       .spk-stats { gap: 20px; }
       .spk-event-item { flex-wrap: wrap; gap: 8px; }
     }
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    scroll-behavior: auto !important;
+    transition-duration: 0.01ms !important;
+  }
+}

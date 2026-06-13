@@ -1,27 +1,31 @@
-# Kişisel Site (Statik)
+# Fatih Bildirici Kisisel Site
 
-Bu depo, vorgacan.com yapısına benzeyen, tamamen özgün içerik ve yer tutucu görsellerle oluşturulmuş statik bir kişisel site şablonudur.
+Fatih Bildirici'nin yapay zeka arastirmalari, konusmalari, podcast icerikleri, akademik calismalari ve iletisim sayfalarini iceren statik web sitesi.
 
-## Özellikler
-- Hero bölümü, logo ızgarası, son paylaşımlar, kesitler ve bülten kartı
-- Mobil uyumlu, hafif ve hızlı
-- Sade ve modern koyu tema tasarımı
+## Icerik
 
-## Çalıştırma
-Yerel geliştirme için basitçe bir HTTP sunucu kullanın:
+- `index.html`: Ana sayfa
+- `hakkinda.html`: Biyografi ve newsroom akisi
+- `hizmetler.html`: Egitim, konusma ve danismanlik sayfasi
+- `gelismeler.html`: Yazilar, haberler ve dinamik kart listesi
+- `podcast.html`: Podcast RSS uzerinden bolum listesi
+- `akademik.html`: Akademik calismalar ve kaynaklar
+- `iletisim.html`: Iletisim formu
+- `aydinlatma-metni.html`, `acik-riza-metni.html`, `gizlilik-politikasi.html`: Yasal metinler
+
+## Calistirma
+
+Statik dosyalar dogrudan acilabilir; yerel gelistirme icin basit bir HTTP sunucu kullanabilirsiniz:
 
 ```bash
 python3 -m http.server 8080
 ```
 
-Ardından tarayıcıda: http://localhost:8080
-
-## Yapı
-- `index.html`: Sayfa iskeleti
-- `styles.css`: Stil dosyaları
-- `script.js`: Dinamik içerik ve bülten formu
-- `assets/`: Logo ve görsel yer tutucuları
+Ardindan tarayicida `http://localhost:8080` adresini acin.
 
 ## Notlar
-- Metinler özgün ve örnek niteliğindedir; gerçek markaların logoları yerine yer tutucu SVG kullanılmıştır.
-- Gerçek bülten entegrasyonu için bir servis (Buttondown, Mailchimp, Brevo vb.) eklenmelidir.
+
+- Site saf HTML, CSS ve JavaScript ile calisir; build adimi yoktur.
+- Podcast bolumleri RSS kaynagindan ve tarayici cache'inden yuklenir.
+- Bulten formlari Substack abonelik endpoint'ine gider.
+- Ortak header/footer bloklari su an HTML dosyalarinda tekrar eder; site buyurse basit bir static generator veya partial sistemi onerilir.
