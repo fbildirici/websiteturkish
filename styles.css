@@ -1261,7 +1261,7 @@ img {
   font-family: var(--font-display);
   font-weight: 600;
   font-size: 18px;
-  letter-spacing: 2px;
+  letter-spacing: 0.04em;
   color: var(--navy-strong);
 }
 
@@ -5972,4 +5972,31 @@ a:focus-visible {
     scroll-behavior: auto !important;
     transition-duration: 0.01ms !important;
   }
+}
+
+/* Keep visible UI labels in natural casing. */
+.section-eyebrow,
+.section-eyebrow-hl,
+.hl-media-tag,
+.wid-card-badge,
+.logo-bar-label,
+.about-section-title,
+.news-card-source,
+.podcast-card-tag,
+.yazi-date,
+.article-meta,
+.book-badge,
+.book-level-chip,
+.academic-hero-eyebrow,
+.snapshot-label,
+.pub-year,
+.spotlight-badge,
+.talk-card-kicker,
+.srv-hero-eyebrow,
+.srv-section-label,
+.srv-card-badge,
+.srv-card-persona strong,
+.spk-info-card-title {
+  text-transform: none;
+  letter-spacing: 0.04em;
 }
