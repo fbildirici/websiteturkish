@@ -1308,23 +1308,23 @@ img {
 .lang-toggle {
   display: inline-flex;
   align-items: center;
-  gap: 8px;
-  padding: 8px 12px;
+  justify-content: center;
+  width: 46px;
+  height: 38px;
+  padding: 0;
   border-radius: 999px;
   border: 1px solid rgba(0, 48, 128, 0.2);
   background: #fff;
   color: var(--navy-strong);
-  font-size: 12px;
-  font-weight: 600;
-  letter-spacing: 0.6px;
+  font-size: 21px;
+  line-height: 1;
   cursor: pointer;
   transition: all 0.2s ease;
 }
 
-.lang-toggle svg {
-  width: 16px;
-  height: 16px;
-  fill: currentColor;
+.lang-toggle-flag {
+  display: block;
+  transform: translateY(1px);
 }
 
 .lang-toggle:hover {

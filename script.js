@@ -104,8 +104,12 @@ function applyLanguage(lang) {
   });
 
   document.querySelectorAll('[data-lang-toggle]').forEach(button => {
-    button.textContent = isEnglish ? 'TR' : 'EN';
-    button.setAttribute('aria-label', isEnglish ? 'Türkçeye geç' : 'Switch to English');
+    const nextLanguageLabel = isEnglish ? 'Türkçeye geç' : 'Switch to English';
+    button.innerHTML = `
+      <span class="lang-toggle-flag" aria-hidden="true">${isEnglish ? '🇹🇷' : '🇬🇧'}</span>
+      <span class="sr-only">${nextLanguageLabel}</span>
+    `;
+    button.setAttribute('aria-label', nextLanguageLabel);
   });
 
   document.dispatchEvent(new CustomEvent('site-language-change', { detail: { lang: isEnglish ? 'en' : 'tr' } }));
