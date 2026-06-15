@@ -83,66 +83,9 @@ function initMobileNavigation() {
   });
 }
 
-function setStoredText(el, key, value) {
-  if (!el.dataset[key]) {
-    el.dataset[key] = value;
-  }
-}
-
-function applyLanguage(lang) {
-  const isEnglish = lang === 'en';
-  document.documentElement.setAttribute('lang', isEnglish ? 'en' : 'tr');
-
-  document.querySelectorAll('[data-i18n-en]').forEach(el => {
-    setStoredText(el, 'i18nTr', el.innerHTML);
-    el.innerHTML = isEnglish ? el.dataset.i18nEn : el.dataset.i18nTr;
-  });
-
-  document.querySelectorAll('[data-i18n-placeholder-en]').forEach(el => {
-    setStoredText(el, 'i18nPlaceholderTr', el.getAttribute('placeholder') || '');
-    el.setAttribute('placeholder', isEnglish ? el.dataset.i18nPlaceholderEn : el.dataset.i18nPlaceholderTr);
-  });
-
-  document.querySelectorAll('[data-lang-toggle]').forEach(button => {
-    const nextLanguageLabel = isEnglish ? 'Türkçeye geç' : 'Switch to English';
-    button.innerHTML = `
-      <span class="lang-toggle-flag" aria-hidden="true">${isEnglish ? '🇹🇷' : '🇬🇧'}</span>
-      <span class="sr-only">${nextLanguageLabel}</span>
-    `;
-    button.setAttribute('aria-label', nextLanguageLabel);
-  });
-
-  document.dispatchEvent(new CustomEvent('site-language-change', { detail: { lang: isEnglish ? 'en' : 'tr' } }));
-}
-
-function initLanguageToggle() {
-  document.querySelectorAll('.header-inner').forEach(header => {
-    if (header.querySelector('[data-lang-toggle]')) return;
-
-    const subscribeLink = header.querySelector(':scope > .btn-primary');
-    const button = document.createElement('button');
-    button.type = 'button';
-    button.className = 'lang-toggle';
-    button.dataset.langToggle = '';
-    header.insertBefore(button, subscribeLink || null);
-  });
-
-  const savedLanguage = localStorage.getItem('site-language') === 'en' ? 'en' : 'tr';
-  applyLanguage(savedLanguage);
-
-  document.querySelectorAll('[data-lang-toggle]').forEach(button => {
-    button.addEventListener('click', () => {
-      const nextLanguage = document.documentElement.getAttribute('lang') === 'en' ? 'tr' : 'en';
-      localStorage.setItem('site-language', nextLanguage);
-      applyLanguage(nextLanguage);
-    });
-  });
-}
-
 document.addEventListener('DOMContentLoaded', function () {
   ensureSafeExternalLinks();
   initMobileNavigation();
-  initLanguageToggle();
 });
 
 // Podcast RSS'ten kartları dinamik oluşturma

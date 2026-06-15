@@ -275,13 +275,6 @@
       });
     }
 
-    // Re-render dynamic cards when the global language toggle changes
-    document.addEventListener('site-language-change', () => {
-      const activeTag = document.querySelector('.yazi-tag.active');
-      const filter = activeTag ? activeTag.dataset.filter : 'all';
-      renderArticles(getArticlesByCategory(filter));
-    });
-
     // Quick Notes toggle functionality
     const quickNotesToggle = document.getElementById('quickNotesToggle');
     const hiddenNotes = document.querySelectorAll('.hidden-note');
