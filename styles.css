@@ -2770,6 +2770,63 @@ img {
   object-fit: contain;
   transition: filter 0.2s;
 }
+.podcast-platform-button {
+  min-height: 34px;
+  padding: 0 10px;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  border-radius: 999px;
+  border: 1px solid rgba(15, 23, 42, 0.08);
+  background: #f6f8fb;
+  color: #172133;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.01em;
+  line-height: 1;
+  transition: transform 0.2s ease, box-shadow 0.2s ease, background 0.2s ease, color 0.2s ease;
+}
+.podcast-platform-button:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 6px 14px rgba(15, 23, 42, 0.12);
+}
+.podcast-platform-button--spotify {
+  background: rgba(30, 215, 96, 0.12);
+  border-color: rgba(30, 215, 96, 0.24);
+}
+.podcast-platform-button--spotify:hover {
+  background: rgba(30, 215, 96, 0.18);
+}
+.podcast-platform-button--apple {
+  background: rgba(0, 0, 0, 0.06);
+  border-color: rgba(0, 0, 0, 0.1);
+}
+.podcast-platform-button--apple:hover {
+  background: rgba(0, 0, 0, 0.1);
+}
+.podcast-platform-button--youtube {
+  background: rgba(255, 0, 0, 0.08);
+  border-color: rgba(255, 0, 0, 0.18);
+}
+.podcast-platform-button--youtube:hover {
+  background: rgba(255, 0, 0, 0.12);
+}
+.podcast-platform-button-icon {
+  width: 14px;
+  height: 14px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex: 0 0 auto;
+}
+.podcast-platform-button-icon svg {
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+.podcast-platform-button-text {
+  white-space: nowrap;
+}
 
 .podcast-card.is-loading {
   box-shadow: none;
@@ -3116,9 +3173,10 @@ a:focus-visible {
 
 .about-layout {
   display: flex;
-  gap: 60px;
+  gap: 8px;
   padding: 60px 0;
 }
+  flex-wrap: wrap;
 
 .about-sidebar {
   width: 160px;

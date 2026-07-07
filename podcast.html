@@ -151,10 +151,11 @@
       RSS_URL: 'https://anchor.fm/s/101fc0074/podcast/rss',
       MAX_EPISODES: 12,
       DEFAULT_IMAGE: 'https://d3t3ozftmdmh3i.cloudfront.net/staging/podcast_uploaded_nologo/43182597/43182597-1762802752790-6f397aa01c377.jpg',
-      CACHE_KEY: 'podcast_rss_cache_v3',
+      CACHE_KEY: 'podcast_rss_cache_v4',
       CACHE_DURATION: 60 * 60 * 1000, // 1 saat
       TIMEOUT: 6500,
-      SKELETON_COUNT: 8
+      SKELETON_COUNT: 8,
+      AUTO_REFRESH_INTERVAL: 10 * 60 * 1000
     };
 
     // CORS Proxy'leri - paralel olarak denenecek
@@ -198,10 +199,82 @@
       return link;
     }
 
+    function normalizeEpisodeKey(value) {
+      return String(value || '')
+        .toLowerCase()
+        .normalize('NFD')
+        .replace(/[\u0300-\u036f]/g, '')
+        .replace(/ı/g, 'i')
+        .replace(/ğ/g, 'g')
+        .replace(/ş/g, 's')
+        .replace(/ç/g, 'c')
+        .replace(/ö/g, 'o')
+        .replace(/ü/g, 'u')
+        .replace(/&amp;|&/g, 'and')
+        .replace(/[^a-z0-9]+/g, ' ')
+        .trim();
+    }
+
+    function buildPodcastSearchUrl(platform, title) {
+      const query = encodeURIComponent(`Otostopçunun Yapay Zeka Rehberi ${title || ''}`.trim());
+      if (platform === 'apple') {
+        return `https://podcasts.apple.com/search?term=${query}`;
+      }
+
+      if (platform === 'youtube') {
+        return `https://www.youtube.com/results?search_query=${query}`;
+      }
+
+      return '#';
+    }
+
+    function resolveEpisodePlatformLinks(episode) {
+      const explicitLinks = episode.platformLinks || {};
+      const spotify = explicitLinks.spotify || episode.link || '#';
+
+      return {
+        spotify,
+        apple: explicitLinks.apple || buildPodcastSearchUrl('apple', episode.title),
+        youtube: explicitLinks.youtube || buildPodcastSearchUrl('youtube', episode.title)
+      };
+    }
+
+    function createPlatformButton(href, platform, label) {
+      if (!href || href === '#') return null;
+
+      const link = document.createElement('a');
+      link.href = getSafeUrl(href);
+      link.target = '_blank';
+      link.rel = 'noopener noreferrer';
+      link.className = `podcast-platform-button podcast-platform-button--${platform}`;
+      link.title = label;
+      link.setAttribute('aria-label', `${label} üzerinde aç`);
+
+      const icon = document.createElement('span');
+      icon.className = 'podcast-platform-button-icon';
+      icon.setAttribute('aria-hidden', 'true');
+
+      if (platform === 'spotify') {
+        icon.innerHTML = '<svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 1.8A10.2 10.2 0 1 0 22.2 12 10.21 10.21 0 0 0 12 1.8Zm4.68 14.73a.73.73 0 0 1-1 .27 12.3 12.3 0 0 0-6.63-1.76 12.8 12.8 0 0 0-2.39.21.74.74 0 0 1-.27-1.45 14.35 14.35 0 0 1 2.66-.24 13.78 13.78 0 0 1 7.36 2 .74.74 0 0 1 .27 1.01Zm1.17-2.58a.91.91 0 0 1-1.25.33A15.45 15.45 0 0 0 11 12.1a15.91 15.91 0 0 0-3 .29.9.9 0 1 1-.33-1.76 17.67 17.67 0 0 1 3.31-.32 17.12 17.12 0 0 1 9.11 2.5.9.9 0 0 1 .33 1.24Zm1.29-2.86a1.08 1.08 0 0 1-1.47.39 19.56 19.56 0 0 0-10.28-2.78 20.08 20.08 0 0 0-3.6.35 1.09 1.09 0 0 1-.4-2.14A22.18 22.18 0 0 1 11.7 7a21.69 21.69 0 0 1 11.62 3.18 1.08 1.08 0 0 1 .32 1.5Z"/></svg>';
+      } else if (platform === 'apple') {
+        icon.innerHTML = '<svg viewBox="0 0 24 24" fill="currentColor"><path d="M16.2 1.8c0 1.02-.4 1.98-1.02 2.76-.76.94-1.98 1.66-3.18 1.56-.14-1-.58-2.08-1.25-2.8-.7-.77-1.92-1.36-2.92-1.32-.12.99.34 2.07.95 2.84.62.77 1.8 1.43 2.77 1.48-.35 1.28-1.26 2.96-2.3 4.1-.82.9-2.04 1.84-3.32 1.88-1.18.04-1.56-.67-2.9-.67-1.37 0-1.78.66-2.9.7-1.31.04-2.32-1.02-3.16-1.94C.97 8.55-.1 5.12 1.72 2.9c1.15-1.4 2.96-2.23 4.71-2.26 1.3-.02 2.53.72 3.28.72.75 0 2.22-.88 3.74-.76 1.24.09 2.42.61 2.75 1.2Z"/></svg>';
+      } else {
+        icon.innerHTML = '<svg viewBox="0 0 24 24" fill="currentColor"><path d="M23 7.2a3 3 0 0 0-2.12-2.12C18.98 4.5 12 4.5 12 4.5s-6.98 0-8.88.58A3 3 0 0 0 1 7.2 31.8 31.8 0 0 0 1 12a31.8 31.8 0 0 0 .12 4.8 3 3 0 0 0 2.12 2.12C5.02 19.5 12 19.5 12 19.5s6.98 0 8.88-.58A3 3 0 0 0 23 16.8 31.8 31.8 0 0 0 23 12a31.8 31.8 0 0 0 0-4.8ZM10 15.5v-7l6 3.5-6 3.5Z"/></svg>';
+      }
+
+      const text = document.createElement('span');
+      text.className = 'podcast-platform-button-text';
+      text.textContent = label;
+
+      link.append(icon, text);
+      return link;
+    }
+
     // Podcast kartı güvenli DOM node'u olarak oluştur
     function createPodcastCard(episode) {
       const card = document.createElement('div');
       card.className = 'podcast-card';
+      const platformLinks = resolveEpisodePlatformLinks(episode);
 
       const imageLink = document.createElement('a');
       imageLink.href = getSafeUrl(episode.link);
@@ -231,11 +304,12 @@
 
       const links = document.createElement('div');
       links.className = 'podcast-card-links';
-      links.append(
-        createPlatformLink('https://podcasts.apple.com/tr/podcast/otostop%C3%A7unun-yapay-zeka-rehberi/id1801285722', 'Apple Podcasts', 'https://upload.wikimedia.org/wikipedia/commons/e/e7/Podcasts_%28iOS%29.svg', 'Apple Podcasts'),
-        createPlatformLink('https://open.spotify.com/show/4wJPUBJcqQsnoLxWqEMCjJ', 'Spotify', 'https://upload.wikimedia.org/wikipedia/commons/8/84/Spotify_icon.svg', 'Spotify'),
-        createPlatformLink('https://www.youtube.com/@otostopcununyzrehberipodcast', 'YouTube', 'https://upload.wikimedia.org/wikipedia/commons/0/09/YouTube_full-color_icon_%282017%29.svg', 'YouTube')
-      );
+      const youtubeButton = createPlatformButton(platformLinks.youtube, 'youtube', 'YouTube');
+      const spotifyButton = createPlatformButton(platformLinks.spotify, 'spotify', 'Spotify');
+      const appleButton = createPlatformButton(platformLinks.apple, 'apple', 'Apple Podcasts');
+      [youtubeButton, spotifyButton, appleButton].forEach(button => {
+        if (button) links.appendChild(button);
+      });
 
       body.append(
         meta,
@@ -259,6 +333,18 @@
         const doc = parser.parseFromString(value || '', 'text/html');
         return (doc.body.textContent || '').replace(/\s+/g, ' ').trim();
       }
+
+      function buildFallbackIndex() {
+        return getFallbackEpisodes().reduce((index, episode) => {
+          const key = normalizeEpisodeKey(episode.title || '');
+          if (key) {
+            index[key] = episode;
+          }
+          return index;
+        }, {});
+      }
+
+      const fallbackIndex = buildFallbackIndex();
 
       Array.from(items).slice(0, CONFIG.MAX_EPISODES).forEach(item => {
         const title = item.querySelector('title')?.textContent || 'Başlıksız Bölüm';
@@ -286,12 +372,22 @@
         let cleanDesc = stripHtml(description);
         cleanDesc = cleanDesc.length > 120 ? cleanDesc.substring(0, 120) + '...' : cleanDesc;
 
+        const fallbackEpisode = fallbackIndex[normalizeEpisodeKey(title)];
+        const platformLinks = fallbackEpisode && fallbackEpisode.platformLinks
+          ? { ...fallbackEpisode.platformLinks }
+          : {};
+
+        if (!platformLinks.spotify && link && link !== '#') {
+          platformLinks.spotify = link;
+        }
+
         episodes.push({
           title: title.trim(),
           desc: cleanDesc,
           date: formattedDateTr,
           link: link,
-          image: image
+          image: image,
+          platformLinks
         });
       });
 
@@ -450,13 +546,25 @@
     }
 
     function getEpisodesSignature(episodes) {
-      return episodes.slice(0, 5).map(ep => `${ep.title}|${ep.date}|${ep.link}`).join('::');
+      return episodes.slice(0, 5).map(ep => `${ep.title}|${ep.date}|${ep.link}|${ep.image}`).join('::');
     }
 
     function getFallbackEpisodes() {
       return Array.isArray(window.PODCAST_FALLBACK_EPISODES)
         ? window.PODCAST_FALLBACK_EPISODES.slice(0, CONFIG.MAX_EPISODES)
         : [];
+    }
+
+    function setPodcastState(episodes) {
+      window.__podcastEpisodesState = {
+        episodes,
+        signature: getEpisodesSignature(episodes),
+        updatedAt: Date.now()
+      };
+    }
+
+    function getPodcastState() {
+      return window.__podcastEpisodesState || { episodes: [], signature: '' };
     }
 
     async function refreshEpisodesFromRSS(grid, currentEpisodes) {
@@ -468,11 +576,38 @@
 
       saveToCache(newEpisodes);
       if (getEpisodesSignature(currentEpisodes) !== getEpisodesSignature(newEpisodes)) {
-        renderEpisodes(grid, newEpisodes);
         initSearch(newEpisodes);
+        renderCurrentEpisodes(grid, newEpisodes);
+        setPodcastState(newEpisodes);
       }
 
       return true;
+    }
+
+    let podcastAutoRefreshTimer = null;
+    let podcastVisibilityHandlerInstalled = false;
+
+    function schedulePodcastAutoRefresh(grid) {
+      if (podcastAutoRefreshTimer) {
+        clearInterval(podcastAutoRefreshTimer);
+      }
+
+      podcastAutoRefreshTimer = setInterval(() => {
+        if (document.hidden) return;
+        const { episodes } = getPodcastState();
+        refreshEpisodesFromRSS(grid, episodes).catch(() => {});
+      }, CONFIG.AUTO_REFRESH_INTERVAL);
+
+      if (!podcastVisibilityHandlerInstalled) {
+        document.addEventListener('visibilitychange', () => {
+          if (document.hidden) return;
+          const gridElement = document.getElementById('podcast-grid');
+          if (!gridElement) return;
+          const { episodes } = getPodcastState();
+          refreshEpisodesFromRSS(gridElement, episodes).catch(() => {});
+        });
+        podcastVisibilityHandlerInstalled = true;
+      }
     }
 
     // Ana yükleme fonksiyonu
@@ -487,9 +622,11 @@
       if (episodes && episodes.length > 0) {
         renderEpisodes(grid, episodes);
         initSearch(episodes);
+        setPodcastState(episodes);
 
         // Arka planda güncelle ve gerekiyorsa UI'yi tazele
         refreshEpisodesFromRSS(grid, episodes).catch(() => {});
+        schedulePodcastAutoRefresh(grid);
 
         return;
       }
@@ -498,7 +635,9 @@
       if (fallbackEpisodes.length > 0) {
         renderEpisodes(grid, fallbackEpisodes);
         initSearch(fallbackEpisodes);
+        setPodcastState(fallbackEpisodes);
         refreshEpisodesFromRSS(grid, fallbackEpisodes).catch(() => {});
+        schedulePodcastAutoRefresh(grid);
         return;
       }
 
@@ -508,7 +647,10 @@
       // 4. Son çare olarak RSS'den çek
       try {
         const didRefresh = await refreshEpisodesFromRSS(grid, []);
-        if (didRefresh) return;
+        if (didRefresh) {
+          schedulePodcastAutoRefresh(grid);
+          return;
+        }
       } catch (e) {
         console.error('RSS yüklenemedi:', e);
       }
@@ -519,6 +661,7 @@
 
     // Arama fonksiyonu
     let allEpisodes = [];
+    let currentSearchQuery = '';
 
     function initSearch(episodes) {
       allEpisodes = episodes;
@@ -527,6 +670,7 @@
     function searchPodcasts(query) {
       const grid = document.getElementById('podcast-grid');
       if (!grid) return;
+      currentSearchQuery = query || '';
       const lowerQuery = query.toLowerCase().trim();
 
       if (!lowerQuery) {
@@ -544,6 +688,15 @@
       } else {
         renderEpisodes(grid, filtered);
       }
+    }
+
+    function renderCurrentEpisodes(grid, episodes) {
+      if (currentSearchQuery.trim()) {
+        searchPodcasts(currentSearchQuery);
+        return;
+      }
+
+      renderEpisodes(grid, episodes);
     }
 
     // Event listeners
