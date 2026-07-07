@@ -1,6 +1,25 @@
 // Shared articles data for gelismeler.html and hakkinda.html
 const articlesData = [
   {
+    id: 5,
+    category: "newsroom",
+    badge: "Haberler",
+    badgeEn: "Newsroom",
+    badgeClass: "",
+    image: "assets/images/events/noms.jpeg",
+    date: "Tem 2026",
+    dateEn: "Jul 2026",
+    readTime: "Sunum",
+    readTimeEn: "Presentation",
+    title: "Toward Resilient System-Level Explainable AI in Defense System-of-Systems: Gap-Aware Confidence Recalibration",
+    titleEn: "Toward Resilient System-Level Explainable AI in Defense System-of-Systems: Gap-Aware Confidence Recalibration",
+    excerpt: "Fatih Bildirici, PhDc; Keziban Seçkin Codal; Özge Batur ile birlikte yürüttüğümüz Toward Resilient System-Level Explainable AI in Defense System-of-Systems: Gap-Aware Confidence Recalibration başlıklı çalışmayı sundum.",
+    excerptEn: "I presented the work 'Toward Resilient System-Level Explainable AI in Defense System-of-Systems: Gap-Aware Confidence Recalibration' together with Fatih Bildirici, PhDc; Keziban Seçkin Codal; and Özge Batur.",
+    link: "haber-resilient-xai.html",
+    newsroomDate: "Temmuz 2026",
+    newsroomDateEn: "July 2026"
+  },
+  {
     id: 4,
     category: "newsroom",
     badge: "Haberler",
