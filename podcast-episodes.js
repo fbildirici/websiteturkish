@@ -1,5 +1,19 @@
 window.PODCAST_FALLBACK_EPISODES = [
   {
+    title: "Yapay Zeka ve Token Ekonomisi, Yeni Yapay Zeka ve Blockhain Ekonomisi Neye Benziyor?",
+    desc: "Otostopçunun Yapay Zeka Rehberi'nde bu bölümde yapay zekanın, blokzincirin ve tokenizasyonun kesiştiği yeni nesil makine ekonomisini konuşuyoruz.",
+    date: "30 Haz 2026",
+    link: "https://podcasters.spotify.com/pod/show/fatih-bildirici5/episodes/Yapay-Zeka-ve-Token-Ekonomisi--Yeni-Yapay-Zeka-ve-Blockhain-Ekonomisi-Neye-Benziyor-e3lgaoh",
+    image: "https://d3t3ozftmdmh3i.cloudfront.net/staging/podcast_uploaded_episode/43182597/43182597-1782859960011-0317c91ca59d3.jpg"
+  },
+  {
+    title: "Yapay Zeka Destekli İklim Çözümleri: Yapay Zeka İklim Sorununa Çare Olur Mu?",
+    desc: "Otostopçunun Yapay Zeka Rehberi'nde bu bölümde yapay zekanın iklim sürdürülebilirliğiyle ilişkisini; akıllı şebekelerden hassas tarıma uzanan çözüm alanlarını ele alıyoruz.",
+    date: "16 Haz 2026",
+    link: "https://podcasters.spotify.com/pod/show/fatih-bildirici5/episodes/Yapay-Zeka-Destekli-klim-zmleri-Yapay-Zeka-klim-Sorununa-are-Olur-Mu-e3ksljv",
+    image: "https://d3t3ozftmdmh3i.cloudfront.net/staging/podcast_uploaded_episode/43182597/43182597-1781639443036-c304c7b37e76c.jpg"
+  },
+  {
     title: "Kurumsal Yapay Zeka Pazarının Genel Durumu: Yapay Zeka Yatırımları Ne Durumda?",
     desc: "Otostopçunun Yapay Zeka Rehberi'nin bu bölümünde yapay zeka yatırımlarının deneysel aşamalardan çıkıp endüstriyel ölçek...",
     date: "6 Haz 2026",
