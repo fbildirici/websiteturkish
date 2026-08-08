@@ -47,13 +47,12 @@
     <div class="container">
       <div class="about-layout">
         <aside class="about-sidebar curious-sidebar">
-          <div class="curious-brand-block">
+          <div class="curious-brand-card">
             <img src="assets/images/curious-mark-light-transparent.png" alt="The Curious Lab logo" class="curious-logo">
-            <div>
-              <p class="curious-eyebrow" data-i18n-en="Research Company">Araştırma Şirketi</p>
-              <h1 class="about-name curious-name">The Curious Lab Research Company</h1>
-              <p class="about-tagline curious-tagline" data-i18n-en="Research company focused on AI, strategy, and responsible transformation">Yapay zeka, strateji ve sorumlu dönüşüm odaklı araştırma şirketi</p>
-            </div>
+            <span class="curious-badge" data-i18n-en="Research Company">Araştırma Şirketi</span>
+            <h1 class="about-name curious-name">The Curious Lab Research Company</h1>
+            <p class="about-tagline curious-tagline" data-i18n-en="Research-led AI consultancy and learning studio for ambitious teams.">Yapay zeka alanında araştırma odaklı danışmanlık ve öğrenme laboratuvarı.</p>
+            <a class="curious-link-pill" href="#alanlar" data-i18n-en="Explore focus areas">Odak alanlarını keşfet</a>
           </div>
           <nav class="about-nav curious-nav">
             <a href="#hakkinda" class="about-nav-link active" data-i18n-en="About">Hakkında</a>
@@ -65,35 +64,95 @@
         <div class="about-main">
           <section id="hakkinda" class="about-section curious-hero-section">
             <div class="curious-hero-card">
-              <p class="curious-kicker" data-i18n-en="AI research • Strategy • Education">Yapay zeka araştırması • Strateji • Eğitim</p>
-              <h2 class="section-heading curious-section-heading">The Curious Lab, anlamı tartışan, soruları derinleştiren ve sistemleri uygulanabilir kılan bir araştırma alanıdır.</h2>
-              <p data-i18n-en="We work at the intersection of applied AI, research literacy, and organizational transformation. Our work is grounded in scientific curiosity, technical clarity, and real-world relevance.">Uygulamalı yapay zeka, araştırma okuryazarlığı ve kurumsal dönüşüm kesişiminde çalışıyoruz. Çalışmalarımız bilimsel merak, teknik açıklık ve gerçek dünya bağlamı üzerine kuruludur.</p>
-              <p data-i18n-en="We help teams understand emerging technologies, design better questions, and turn complexity into practical decision-making frameworks.">Takımların yeni teknolojileri anlamasına, daha iyi sorular sormasına ve karmaşık alanları uygulanabilir karar çerçevelerine dönüştürmesine yardımcı oluyoruz.</p>
+              <div class="curious-hero-top">
+                <p class="curious-kicker" data-i18n-en="AI research • Strategy • Education">Yapay zeka araştırması • Strateji • Eğitim</p>
+                <div class="curious-chip-row">
+                  <span class="curious-chip">Research-led</span>
+                  <span class="curious-chip">Practical</span>
+                  <span class="curious-chip">Responsible</span>
+                </div>
+              </div>
+              <h2 class="section-heading curious-section-heading" data-i18n-en="We build clear, rigorous, and practical AI thinking for teams shaping the future.">Geleceği şekillendiren ekipler için açık, titiz ve uygulanabilir yapay zeka düşüncesi kuruyoruz.</h2>
+              <p class="curious-hero-copy" data-i18n-en="The Curious Lab works at the intersection of applied AI, research literacy, and organizational transformation. We turn complex ideas into decision frameworks that teams can actually use.">The Curious Lab, uygulamalı yapay zeka, araştırma okuryazarlığı ve kurumsal dönüşüm kesişiminde çalışır. Karmaşık fikirleri, ekiplerin gerçekten kullanabileceği karar çerçevelerine dönüştürürüz.</p>
+              <div class="curious-actions">
+                <a class="btn-primary" href="#alanlar" data-i18n-en="Explore focus areas">Odak alanlarını keşfet</a>
+                <a class="curious-secondary-link" href="https://huggingface.co/thecuriouslab" target="_blank" rel="noopener noreferrer" data-i18n-en="Open Hugging Face">Hugging Face'i aç</a>
+              </div>
             </div>
           </section>
 
+          <section class="curious-stats-grid" aria-label="company highlights">
+            <article class="curious-stat-card">
+              <strong>03</strong>
+              <span data-i18n-en="Core domains">Ana alanlar</span>
+            </article>
+            <article class="curious-stat-card">
+              <strong>100%</strong>
+              <span data-i18n-en="Research-oriented">Araştırma odaklı</span>
+            </article>
+            <article class="curious-stat-card">
+              <strong>∞</strong>
+              <span data-i18n-en="Practical impact">Uygulamalı etki</span>
+            </article>
+          </section>
+
           <section id="alanlar" class="about-section">
-            <h2 class="section-heading" data-i18n-en="Focus Areas">Odak Alanları</h2>
+            <div class="curious-section-header">
+              <p class="section-label" data-i18n-en="What we do">Ne yapıyoruz</p>
+              <h2 class="section-heading" data-i18n-en="Focused on the spaces where AI becomes useful.">Yapay zekanın faydalı hale geldiği alanlara odaklanıyoruz.</h2>
+            </div>
             <div class="curious-grid">
               <article class="curious-card">
+                <div class="curious-card-icon">R</div>
                 <h3 data-i18n-en="Research & Advisory">Araştırma & Danışmanlık</h3>
                 <p data-i18n-en="We support AI strategy, evaluation frameworks, and explainability-oriented research for organizations.">Kuruluşlar için AI stratejisi, değerlendirme çerçeveleri ve açıklanabilirlik odaklı araştırmalar konusunda destek sunuyoruz.</p>
               </article>
               <article class="curious-card">
+                <div class="curious-card-icon">T</div>
                 <h3 data-i18n-en="Training & Workshops">Eğitim & Çalıştaylar</h3>
                 <p data-i18n-en="We design hands-on learning experiences that make AI concepts understandable for technical and non-technical audiences.">Teknik ve teknik olmayan kitleler için yapay zekâ kavramlarını anlaşılır kılan uygulamalı eğitim deneyleri tasarlıyoruz.</p>
               </article>
               <article class="curious-card">
+                <div class="curious-card-icon">A</div>
                 <h3 data-i18n-en="Responsible AI">Sorumlu AI</h3>
                 <p data-i18n-en="We focus on transparent, critical, and responsible deployment of AI in real-world contexts.">AI'nın gerçek dünya bağlamlarında şeffaf, eleştirel ve sorumlu bir biçimde kullanılmasını teşvik ediyoruz.</p>
               </article>
             </div>
           </section>
 
+          <section class="about-section curious-approach-section">
+            <div class="curious-approach-card">
+              <div class="curious-approach-copy">
+                <p class="section-label" data-i18n-en="Approach">Yaklaşım</p>
+                <h3 data-i18n-en="We combine research rigor with executive clarity.">Araştırma titizliğini yönetici netliğiyle birleştiriyoruz.</h3>
+                <p data-i18n-en="Every engagement is designed to move from insight to action, helping teams ask better questions before they invest in technology.">Her proje, teknolojiye yatırım yapmadan önce daha iyi sorular sormayı sağlayacak şekilde insight'tan eyleme ilerler.</p>
+              </div>
+              <div class="curious-list">
+                <div class="curious-list-item">
+                  <span>01</span>
+                  <p data-i18n-en="Map the problem space with context, constraints, and signal.">Sorunu bağlam, kısıt ve veri sinyalleriyle haritalandırıyoruz.</p>
+                </div>
+                <div class="curious-list-item">
+                  <span>02</span>
+                  <p data-i18n-en="Translate complexity into clear recommendations and ready-to-use frameworks.">Karmaşıklığı net önerilere ve kullanıma hazır çerçevelere dönüştürüyoruz.</p>
+                </div>
+                <div class="curious-list-item">
+                  <span>03</span>
+                  <p data-i18n-en="Support adoption with workshops, materials, and long-term guidance.">Çalıştaylar, materyaller ve uzun vadeli rehberlikle benimsenmeyi destekliyoruz.</p>
+                </div>
+              </div>
+            </div>
+          </section>
+
           <section id="hugginface" class="about-section curious-community-section">
-            <h2 class="section-heading" data-i18n-en="Community & Resources">Topluluk & Kaynaklar</h2>
-            <p data-i18n-en="We share research notes, experiments, and public resources with the broader community.">Araştırma notları, deneyimler ve açık kaynaklı katkılarımızı daha geniş toplulukla paylaşmaya özen gösteriyoruz.</p>
-            <a class="curious-hf-link" href="https://huggingface.co/thecuriouslab" target="_blank" rel="noopener noreferrer">huggingface.co/thecuriouslab</a>
+            <div class="curious-community-inner">
+              <div>
+                <p class="section-label" data-i18n-en="Community & Resources">Topluluk & Kaynaklar</p>
+                <h2 class="section-heading" data-i18n-en="Research notes, public experiments, and thoughtful resources.">Araştırma notları, açık deneyler ve düşünceli kaynaklar.</h2>
+                <p data-i18n-en="We share practical reflections and open resources with the wider community to make AI more understandable and useful.">Yapay zekayı daha anlaşılır ve faydalı kılmak için toplulukla pratik düşünceler ve açık kaynaklar paylaşıyoruz.</p>
+              </div>
+              <a class="curious-hf-link" href="https://huggingface.co/thecuriouslab" target="_blank" rel="noopener noreferrer">huggingface.co/thecuriouslab</a>
+            </div>
           </section>
         </div>
       </div>
