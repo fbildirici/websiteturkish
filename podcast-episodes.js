@@ -7,7 +7,7 @@ window.PODCAST_FALLBACK_EPISODES = [
     platformLinks: {
       spotify: "https://podcasters.spotify.com/pod/show/fatih-bildirici5/episodes/Yapay-Zeka-ve-Token-Ekonomisi--Yeni-Yapay-Zeka-ve-Blockhain-Ekonomisi-Neye-Benziyor-e3lgaoh"
     },
-    image: "https://d3t3ozftmdmh3i.cloudfront.net/staging/podcast_uploaded_episode/43182597/43182597-1782859960011-0317c91ca59d3.jpg"
+    image: "assets/images/podcast.jpeg"
   },
   {
     title: "Yapay Zeka Destekli İklim Çözümleri: Yapay Zeka İklim Sorununa Çare Olur Mu?",
@@ -17,7 +17,7 @@ window.PODCAST_FALLBACK_EPISODES = [
     platformLinks: {
       spotify: "https://podcasters.spotify.com/pod/show/fatih-bildirici5/episodes/Yapay-Zeka-Destekli-klim-zmleri-Yapay-Zeka-klim-Sorununa-are-Olur-Mu-e3ksljv"
     },
-    image: "https://d3t3ozftmdmh3i.cloudfront.net/staging/podcast_uploaded_episode/43182597/43182597-1781639443036-c304c7b37e76c.jpg"
+    image: "assets/images/podcast.jpeg"
   },
   {
     title: "Kurumsal Yapay Zeka Pazarının Genel Durumu: Yapay Zeka Yatırımları Ne Durumda?",
@@ -27,7 +27,7 @@ window.PODCAST_FALLBACK_EPISODES = [
     platformLinks: {
       spotify: "https://podcasters.spotify.com/pod/show/fatih-bildirici5/episodes/Kurumsal-Yapay-Zeka-Pazarnn-Genel-Durumu-Yapay-Zeka-Yatrmlar-Ne-Durumda-e3ke4bk"
     },
-    image: "https://d3t3ozftmdmh3i.cloudfront.net/staging/podcast_uploaded_episode/43182597/43182597-1780773679291-118860f08ce83.jpg"
+    image: "assets/images/podcast.jpeg"
   },
   {
     title: "Çin Yapay Zeka'da Nasıl Süper Güç Oldu: Çin'in ve Çinli Yenilikçilerin Öğrettikleri",
@@ -37,7 +37,7 @@ window.PODCAST_FALLBACK_EPISODES = [
     platformLinks: {
       spotify: "https://podcasters.spotify.com/pod/show/fatih-bildirici5/episodes/in-Yapay-Zekada-Nasl-Sper-G-Oldu-inin-ve-inli-Yenilikilerin-rettikleri-e3iqvua"
     },
-    image: "https://d3t3ozftmdmh3i.cloudfront.net/staging/podcast_uploaded_episode/43182597/43182597-1777837876948-2726b92f8b74d.jpg"
+    image: "assets/images/podcast.jpeg"
   },
   {
     title: "TeknoFeodalizm, Palantir'in Teknoloji Cumhuriyeti Manifestosu, Sam Altman ve Yapay Zeka ile Gelecek Bolluk",
@@ -47,7 +47,7 @@ window.PODCAST_FALLBACK_EPISODES = [
     platformLinks: {
       spotify: "https://podcasters.spotify.com/pod/show/fatih-bildirici5/episodes/TeknoFeodalizm--Palantirin-Teknoloji-Cumhuriyeti-Manifestosu--Sam-Altman-ve-Yapay-Zeka-ile-Gelecek-Bolluk-e3i6lr6"
     },
-    image: "https://d3t3ozftmdmh3i.cloudfront.net/staging/podcast_uploaded_episode/43182597/43182597-1776714327083-8e618e6fd4d19.jpg"
+    image: "assets/images/podcast.jpeg"
   },
   {
     title: "Yapay Zeka, Girişimcilik, Kurumsal Dönüşüm: Nisa Akgün - Dijital İş Geliştirme Yöneticisi / Zorlu Holding",
@@ -57,7 +57,7 @@ window.PODCAST_FALLBACK_EPISODES = [
     platformLinks: {
       spotify: "https://podcasters.spotify.com/pod/show/fatih-bildirici5/episodes/Yapay-Zeka--Giriimcilik--Kurumsal-Dnm-Nisa-Akgn---Dijital--Gelitirme-Yneticisi--Zorlu-Holding-e3hn3ut"
     },
-    image: "https://d3t3ozftmdmh3i.cloudfront.net/staging/podcast_uploaded_episode/43182597/43182597-1775827712725-e7b168003950f.jpg"
+    image: "assets/images/podcast.jpeg"
   },
   {
     title: "Yapay Zeka, Bankacılık ve Finans - Konuk: İlker Kuruöz - Garanti BBVA Genel Müdür Yardımcısı",
@@ -67,7 +67,7 @@ window.PODCAST_FALLBACK_EPISODES = [
     platformLinks: {
       spotify: "https://podcasters.spotify.com/pod/show/fatih-bildirici5/episodes/Yapay-Zeka--Bankaclk-ve-Finans---Konuk-lker-Kuruz---Garanti-BBVA-Genel-Mdr-Yardmcs-e3h38o5"
     },
-    image: "https://d3t3ozftmdmh3i.cloudfront.net/staging/podcast_uploaded_episode/43182597/43182597-1774706723835-d74f740d148aa.jpg"
+    image: "assets/images/podcast.jpeg"
   },
   {
     title: "Yapay Zeka Kansere Çare Bulabilir Mi? Yapay Zeka ve Biyoteknoloji",
@@ -77,7 +77,7 @@ window.PODCAST_FALLBACK_EPISODES = [
     platformLinks: {
       spotify: "https://podcasters.spotify.com/pod/show/fatih-bildirici5/episodes/Yapay-Zeka-Kansere-are-Bulabilir-Mi--Yapay-Zeka-ve-Biyoteknoloji-e3ghkju"
     },
-    image: "https://d3t3ozftmdmh3i.cloudfront.net/staging/podcast_uploaded_episode/43182597/43182597-1773686943601-c055f638b92d7.jpg"
+    image: "assets/images/podcast.jpeg"
   },
   {
     title: "Yapay Zekanın Etik, Güvenli Şirketi, Claude'ın Yaratıcısı: Anthropic ve Pentagon Krizi",
@@ -87,7 +87,7 @@ window.PODCAST_FALLBACK_EPISODES = [
     platformLinks: {
       spotify: "https://podcasters.spotify.com/pod/show/fatih-bildirici5/episodes/Yapay-Zekann-Etik--Gvenli-irketi--Clauden-Yaratcs-Anthropic-ve-Pentagon-Krizi-e3g3tgq"
     },
-    image: "https://d3t3ozftmdmh3i.cloudfront.net/staging/podcast_uploaded_episode/43182597/43182597-1772962723468-5e6191b8da4a9.jpg"
+    image: "assets/images/podcast.jpeg"
   },
   {
     title: "Yapay Zeka, Savunma Sanayii, İstihbarat: Herşeyin Palantirleşmesi",
@@ -97,7 +97,7 @@ window.PODCAST_FALLBACK_EPISODES = [
     platformLinks: {
       spotify: "https://podcasters.spotify.com/pod/show/fatih-bildirici5/episodes/Yapay-Zeka--Savunma-Sanayii--stihbarat-Hereyin-Palantirlemesi-e3fiaiq"
     },
-    image: "https://d3t3ozftmdmh3i.cloudfront.net/staging/podcast_uploaded_episode/43182597/43182597-1771965660640-e1828763cc176.jpg"
+    image: "assets/images/podcast.jpeg"
   },
   {
     title: "50. Bölüm - Açıklanabilir Yapay Zeka (Explainable AI - XAI)",
@@ -107,7 +107,7 @@ window.PODCAST_FALLBACK_EPISODES = [
     platformLinks: {
       spotify: "https://podcasters.spotify.com/pod/show/fatih-bildirici5/episodes/50--Blm---Aklanabilir-Yapay-Zeka-Explainable-AI---XAI-e3eptdi"
     },
-    image: "https://d3t3ozftmdmh3i.cloudfront.net/staging/podcast_uploaded_episode/43182597/43182597-1770542386100-4e9094aad49d2.jpg"
+    image: "assets/images/podcast.jpeg"
   },
   {
     title: "Teknoloji Dünyasının 2026 Davos ve Yapay Zeka Notları - Yapay Zekanın İşgücü ve Ekonomi Etkisi",
@@ -117,7 +117,7 @@ window.PODCAST_FALLBACK_EPISODES = [
     platformLinks: {
       spotify: "https://podcasters.spotify.com/pod/show/fatih-bildirici5/episodes/Teknoloji-Dnyasnn-2026-Davos-ve-Yapay-Zeka-Notlar---Yapay-Zekann-gc-ve-Ekonomi-Etkisi-e3eg3v0"
     },
-    image: "https://d3t3ozftmdmh3i.cloudfront.net/staging/podcast_uploaded_episode/43182597/43182597-1769970583544-d466bcab6cd72.jpg"
+    image: "assets/images/podcast.jpeg"
   },
   {
     title: "Yapay Zeka Araştırmaları Bizi Bu Günlere Nasıl Getirdi: Yeni Araştırma Çağı İhtiyacı",
@@ -127,7 +127,7 @@ window.PODCAST_FALLBACK_EPISODES = [
     platformLinks: {
       spotify: "https://podcasters.spotify.com/pod/show/fatih-bildirici5/episodes/Yapay-Zeka-Aratrmalar-Bizi-Bu-Gnlere-Nasl-Getirdi-Yeni-Aratrma-a-htiyac-e3e1oij"
     },
-    image: "https://d3t3ozftmdmh3i.cloudfront.net/staging/podcast_uploaded_episode/43182597/43182597-1769104868528-85f525fc81c03.jpg"
+    image: "assets/images/podcast.jpeg"
   },
   {
     title: "Yapay Zeka Çağının Süper Yeteneği: High Agency (Yüksek Eylemlilik) Nedir? Nasıl Kazanılır?",
@@ -137,6 +137,6 @@ window.PODCAST_FALLBACK_EPISODES = [
     platformLinks: {
       spotify: "https://podcasters.spotify.com/pod/show/fatih-bildirici5/episodes/Yapay-Zeka-ann-Sper-Yetenei-High-Agency-Yksek-Eylemlilik-Nedir--Nasl-Kazanlr-e3dpejd"
     },
-    image: "https://d3t3ozftmdmh3i.cloudfront.net/staging/podcast_uploaded_episode/43182597/43182597-1768642113453-067ebf047b98.jpg"
+    image: "assets/images/podcast.jpeg"
   }
 ];

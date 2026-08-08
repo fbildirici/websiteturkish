@@ -215,6 +215,32 @@ document.addEventListener('DOMContentLoaded', function() {
   });
 });
 
+// Minimal visual polish: stagger cards as they enter the viewport.
+document.addEventListener('DOMContentLoaded', function () {
+  const elements = document.querySelectorAll('.wid-card, .hl-img-card, .hl-info-card');
+  if (!elements.length) return;
+
+  elements.forEach((element, index) => {
+    element.classList.add('polish-reveal');
+    element.style.setProperty('--polish-delay', `${(index % 3) * 70}ms`);
+  });
+
+  if (!('IntersectionObserver' in window)) {
+    elements.forEach(element => element.classList.add('is-visible'));
+    return;
+  }
+
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (!entry.isIntersecting) return;
+      entry.target.classList.add('is-visible');
+      observer.unobserve(entry.target);
+    });
+  }, { threshold: 0.08, rootMargin: '0px 0px -6% 0px' });
+
+  elements.forEach(element => observer.observe(element));
+});
+
 // Contact form submission via Google Apps Script
 document.addEventListener('DOMContentLoaded', function() {
   const form = document.getElementById('contactForm');
