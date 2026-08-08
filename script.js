@@ -51,6 +51,49 @@ function ensureSafeExternalLinks() {
   });
 }
 
+function normalizeSiteNavigation() {
+  const currentFile = (window.location.pathname.split('/').pop() || 'index.html').toLowerCase();
+
+  document.querySelectorAll('.header-inner').forEach(header => {
+    const nav = header.querySelector('.nav');
+    const logo = header.querySelector('.logo');
+    if (!nav || !logo) return;
+
+    logo.textContent = 'Fatih Bildirici';
+    logo.setAttribute('aria-label', 'Fatih Bildirici ana sayfa');
+    nav.setAttribute('aria-label', 'Ana navigasyon');
+    nav.innerHTML = `
+      <a href="index.html#calismalar" class="nav-link">Çalışmalar</a>
+      <a href="akademik.html" class="nav-link">Araştırmalar</a>
+      <a href="hizmetler.html#konusmaci" class="nav-link">Konuşmalar</a>
+      <a href="podcast.html" class="nav-link">Podcast</a>
+      <a href="gelismeler.html" class="nav-link">Yazılar</a>
+      <a href="hakkinda.html" class="nav-link">Hakkımda</a>
+    `;
+
+    nav.querySelectorAll('a').forEach(link => {
+      const targetFile = link.getAttribute('href').split('#')[0].toLowerCase();
+      const isAcademic = currentFile === 'akademik.html' && targetFile === 'akademik.html';
+      const isSpeaking = currentFile === 'hizmetler.html' && targetFile === 'hizmetler.html';
+      const isDirect = currentFile === targetFile;
+      link.classList.toggle('active', isAcademic || isSpeaking || isDirect);
+      if (link.classList.contains('active')) link.setAttribute('aria-current', 'page');
+    });
+
+    let contact = header.querySelector('.header-contact');
+    const legacyCta = header.querySelector(':scope > .btn-primary');
+    if (!contact && legacyCta) {
+      contact = legacyCta;
+      contact.className = 'header-contact';
+    }
+    if (contact) {
+      contact.href = 'iletisim.html';
+      contact.innerHTML = 'İletişim <span aria-hidden="true">↗</span>';
+    }
+  });
+
+}
+
 function initMobileNavigation() {
   document.querySelectorAll('.header-inner').forEach(header => {
     const nav = header.querySelector('.nav');
@@ -72,18 +115,19 @@ function initMobileNavigation() {
       toggle.setAttribute('aria-label', isOpen ? 'Menüyü kapat' : 'Menüyü aç');
     });
 
-    nav.querySelectorAll('a').forEach(link => {
-      link.addEventListener('click', () => {
+    nav.addEventListener('click', event => {
+      if (event.target.closest('a')) {
         nav.classList.remove('is-open');
         toggle.classList.remove('is-open');
         toggle.setAttribute('aria-expanded', 'false');
         toggle.setAttribute('aria-label', 'Menüyü aç');
-      });
+      }
     });
   });
 }
 
 document.addEventListener('DOMContentLoaded', function () {
+  normalizeSiteNavigation();
   ensureSafeExternalLinks();
   initMobileNavigation();
 });
@@ -349,6 +393,88 @@ function closePodcastModal() {
     if (modalBody) modalBody.innerHTML = '';
   }, 300);
 }
+
+// Editorial redesign: shared motion and interaction layer
+document.addEventListener('DOMContentLoaded', function () {
+  const header = document.querySelector('.header');
+  const updateHeader = () => header?.classList.toggle('is-scrolled', window.scrollY > 24);
+  updateHeader();
+  window.addEventListener('scroll', updateHeader, { passive: true });
+
+  const revealElements = document.querySelectorAll('.reveal-item');
+  if ('IntersectionObserver' in window && revealElements.length) {
+    const revealObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (!entry.isIntersecting) return;
+        entry.target.classList.add('is-visible');
+        revealObserver.unobserve(entry.target);
+      });
+    }, { rootMargin: '0px 0px -8% 0px', threshold: 0.08 });
+
+    revealElements.forEach((element, index) => {
+      element.style.transitionDelay = `${Math.min(index % 4, 3) * 70}ms`;
+      revealObserver.observe(element);
+    });
+  } else {
+    revealElements.forEach(element => element.classList.add('is-visible'));
+  }
+
+  const researchDescriptions = {
+    xai: 'Karmaşık modellerin kararlarını insanlar için okunabilir, sınanabilir ve eyleme dönük açıklamalara dönüştürme yöntemleri.',
+    xrl: 'Pekiştirmeli öğrenme ajanlarının davranışlarını, hedeflerini ve karar dizilerini anlaşılır hale getiren açıklama yaklaşımları.',
+    trust: 'Yapay zeka sistemlerinin güvenlik, dayanıklılık, şeffaflık ve insan denetimi altında çalışmasını sağlayan yöntemler.',
+    human: 'İnsanların yapay zeka ile nasıl düşündüğünü, karar aldığını ve güven ilişkisi kurduğunu inceleyen disiplinlerarası çalışmalar.',
+    engineering: 'Yapay zeka uygulamalarını gerçek yazılım ve iş süreçlerine güvenilir, sürdürülebilir ve ölçülebilir biçimde entegre etme pratiği.',
+    systems: 'Birbirine bağlı karmaşık sistemlerde yapay zekanın davranışı, açıklanabilirliği ve sistem seviyesi güvenilirliği.'
+  };
+
+  const researchDescription = document.getElementById('research-description');
+  document.querySelectorAll('.research-row').forEach(row => {
+    row.addEventListener('click', () => {
+      document.querySelectorAll('.research-row').forEach(item => {
+        item.classList.remove('is-active');
+        item.setAttribute('aria-pressed', 'false');
+      });
+      row.classList.add('is-active');
+      row.setAttribute('aria-pressed', 'true');
+      if (researchDescription) {
+        researchDescription.animate(
+          [{ opacity: 0, transform: 'translateY(8px)' }, { opacity: 1, transform: 'translateY(0)' }],
+          { duration: 380, easing: 'cubic-bezier(0.22, 1, 0.36, 1)' }
+        );
+        researchDescription.textContent = researchDescriptions[row.dataset.research] || researchDescriptions.xai;
+      }
+    });
+  });
+
+  const portrait = document.querySelector('[data-parallax]');
+  const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if (portrait && !reducedMotion && window.matchMedia('(pointer: fine)').matches) {
+    portrait.addEventListener('pointermove', event => {
+      const rect = portrait.getBoundingClientRect();
+      const x = ((event.clientX - rect.left) / rect.width - 0.5) * 12;
+      const y = ((event.clientY - rect.top) / rect.height - 0.5) * 10;
+      portrait.style.setProperty('--portrait-x', `${x}px`);
+      portrait.style.setProperty('--portrait-y', `${y}px`);
+    });
+    portrait.addEventListener('pointerleave', () => {
+      portrait.style.setProperty('--portrait-x', '0px');
+      portrait.style.setProperty('--portrait-y', '0px');
+    });
+  }
+
+  const cursor = document.querySelector('.work-cursor');
+  if (cursor && window.matchMedia('(pointer: fine)').matches && !reducedMotion) {
+    document.addEventListener('pointermove', event => {
+      cursor.style.left = `${event.clientX}px`;
+      cursor.style.top = `${event.clientY}px`;
+    });
+    document.querySelectorAll('.work-media').forEach(media => {
+      media.addEventListener('pointerenter', () => cursor.classList.add('is-active'));
+      media.addEventListener('pointerleave', () => cursor.classList.remove('is-active'));
+    });
+  }
+});
 
 function shareArticle(platform) {
   const titleEl = document.querySelector('.article-title');
