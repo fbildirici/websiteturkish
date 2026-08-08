@@ -25,7 +25,7 @@
   <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600;700&amp;display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles.css">
 </head>
-<body class="podcast-redesign">
+<body>
   <a class="skip-link" href="#main-content">İçeriğe geç</a>
 
   <header class="header">
@@ -44,63 +44,50 @@
     </div>
   </header>
 
-  <main id="main-content" class="podcast-page podcast-page-v2">
-    <section class="podcast-v2-hero">
-      <div class="container podcast-v2-hero-grid">
-        <div class="podcast-v2-copy">
-          <p class="podcast-v2-kicker">Yapay zeka · Bilim · Teknoloji</p>
-          <h1>Otostopçunun<br><em>Yapay Zeka</em><br>Rehberi</h1>
-          <p class="podcast-v2-lead">Douglas Adams'ın eserinden ilhamla, yapay zekanın karmaşık dünyasını teknik doğruluktan ödün vermeden anlaşılır hale getiriyoruz.</p>
-          <div class="podcast-v2-stats" aria-label="Podcast istatistikleri">
-            <div><strong>50+</strong><span>bölüm</span></div>
-            <div><strong>10K+</strong><span>aylık dinlenme</span></div>
+  <main id="main-content" class="podcast-page">
+    <div class="container">
+      
+      <!-- Podcast Header -->
+      <div class="podcast-header">
+        <div class="podcast-header-left">
+          <h1 data-i18n-en="Podcast">Podcast</h1>
+          <p class="podcast-desc" data-i18n-en="Inspired by Douglas Adams, we make the complex world of AI accessible with the &quot;Hitchhiker's Guide to AI.&quot; From machine learning to ethics, from neural networks to real-world applications—Turkey's most listened AI podcast.">"Otostopçunun Yapay Zeka Rehberi" ile Douglas Adams'ın eserinden ilham alarak, yapay zekanın karmaşık dünyasını anlaşılır kılıyoruz. Makine öğrenmesinden etik tartışmalara, nöral ağlardan pratik uygulamalara kadar Türkiye'nin en çok dinlenen yapay zeka podcast'i.</p>
+          <div class="podcast-tags">
+            <span class="podcast-tag active" data-i18n-en="Hitchhiker's Guide to AI">Otostopçunun YZ Rehberi</span>
           </div>
-          <div class="podcast-v2-platforms" aria-label="Podcast platformları">
-            <a href="https://open.spotify.com/show/1rCeqPdviUG61ucnpFDl6n" target="_blank" rel="noopener noreferrer">Spotify'da dinle <span>↗</span></a>
-            <a href="https://podcasts.apple.com/tr/podcast/otostop%C3%A7unun-yapay-zeka-rehberi/id1801285722" target="_blank" rel="noopener noreferrer">Apple Podcasts <span>↗</span></a>
-            <a href="https://www.youtube.com/@otostopcununyzrehberipodcast" target="_blank" rel="noopener noreferrer">YouTube <span>↗</span></a>
+          <div class="podcast-stats">
+            <span class="podcast-stat">50+ bölüm</span>
+            <span class="podcast-stat">10K+ aylık dinlenme</span>
           </div>
         </div>
-        <figure class="podcast-v2-cover">
-          <div class="podcast-v2-cover-frame">
-            <img src="assets/images/podcast.jpeg" alt="Otostopçunun Yapay Zeka Rehberi podcast görseli" width="1080" height="1536" fetchpriority="high" decoding="async">
-            <span class="podcast-v2-signal" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i></span>
-          </div>
-          <figcaption><span>Yeni bölümler</span><span>Spotify · Apple · YouTube</span></figcaption>
-        </figure>
-      </div>
-    </section>
-
-    <section class="podcast-v2-episodes" aria-labelledby="episodes-title">
-      <div class="container">
-        <div class="podcast-v2-toolbar">
-          <div>
-            <p class="podcast-v2-index">Arşiv</p>
-            <h2 id="episodes-title">Son bölümler</h2>
-          </div>
-          <form class="search-form podcast-v2-search" id="podcastSearchForm">
+        <div class="podcast-header-right">
+          <form class="search-form" id="podcastSearchForm">
             <label class="sr-only" for="podcastSearchInput">Podcast ara</label>
-            <input type="search" placeholder="Bölümlerde ara..." class="search-input" id="podcastSearchInput" autocomplete="off">
+            <input type="text" placeholder="Podcast ara..." class="search-input" id="podcastSearchInput" data-i18n-placeholder-en="Search podcast...">
             <button type="submit" class="search-btn" aria-label="Ara">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                <circle cx="11" cy="11" r="7"></circle>
-                <path d="m20 20-4-4"></path>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <circle cx="11" cy="11" r="8"></circle>
+                <path d="m21 21-4.35-4.35"></path>
               </svg>
             </button>
           </form>
         </div>
+      </div>
 
-        <div class="podcast-grid" id="podcast-grid" aria-live="polite">
-          <div class="loading-spinner">
-            <p>Bölümler yükleniyor...</p>
-          </div>
-        </div>
-
-        <div class="load-more podcast-v2-more">
-          <a href="https://podcasts.apple.com/tr/podcast/otostop%C3%A7unun-yapay-zeka-rehberi/id1801285722" target="_blank" class="btn-outline" rel="noopener noreferrer">Tüm bölümleri aç <span>↗</span></a>
+      <!-- Podcast Grid -->
+      <div class="podcast-grid" id="podcast-grid">
+        <!-- Bölümler RSS'den dinamik olarak yüklenecek -->
+        <div class="loading-spinner" style="grid-column: 1 / -1; text-align: center; padding: 60px;">
+          <p style="color: #666;" data-i18n-en="Loading episodes...">Bölümler yükleniyor...</p>
         </div>
       </div>
-    </section>
+
+      <!-- Load More -->
+      <div class="load-more">
+        <a href="https://podcasts.apple.com/tr/podcast/otostop%C3%A7unun-yapay-zeka-rehberi/id1801285722" target="_blank" class="btn-outline" data-i18n-en="See more →" rel="noopener noreferrer">Devamını gör →</a>
+      </div>
+
+    </div>
   </main>
 
   <!-- Footer -->
@@ -164,8 +151,8 @@
     const CONFIG = {
       RSS_URL: 'https://anchor.fm/s/101fc0074/podcast/rss',
       MAX_EPISODES: 12,
-      DEFAULT_IMAGE: 'assets/images/podcast.jpeg',
-      CACHE_KEY: 'podcast_rss_cache_v5',
+      DEFAULT_IMAGE: 'https://d3t3ozftmdmh3i.cloudfront.net/staging/podcast_uploaded_nologo/43182597/43182597-1762802752790-6f397aa01c377.jpg',
+      CACHE_KEY: 'podcast_rss_cache_v4',
       CACHE_DURATION: 60 * 60 * 1000, // 1 saat
       TIMEOUT: 6500,
       SKELETON_COUNT: 8,
