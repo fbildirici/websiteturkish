@@ -94,8 +94,10 @@
       </div>
 
       <!-- Load More -->
-      <div class="load-more">
-        <a href="https://podcasts.apple.com/tr/podcast/otostop%C3%A7unun-yapay-zeka-rehberi/id1801285722" target="_blank" class="btn-outline" data-i18n-en="See more →" rel="noopener noreferrer">Devamını gör →</a>
+      <div class="load-more podcast-load-more" id="podcastLoadMore">
+        <button type="button" class="btn-outline podcast-load-more-button" id="podcastLoadMoreButton">Devamını gör →</button>
+        <p class="podcast-archive-status" id="podcastArchiveStatus" aria-live="polite" hidden></p>
+        <div class="podcast-infinite-sentinel" id="podcastInfiniteSentinel" aria-hidden="true"></div>
       </div>
 
     </div>
@@ -161,11 +163,13 @@
     // Podcast yükleme sistemi: Apple Podcasts + resmi RSS + statik yedek
     const CONFIG = {
       RSS_URL: 'https://anchor.fm/s/101fc0074/podcast/rss',
-      APPLE_LOOKUP_URL: 'https://itunes.apple.com/lookup?id=1801285722&entity=podcastEpisode&limit=20',
+      APPLE_LOOKUP_URL: 'https://itunes.apple.com/lookup?id=1801285722&entity=podcastEpisode&limit=200',
       SPOTIFY_SHOW_URL: 'https://open.spotify.com/show/1rCeqPdviUG61ucnpFDl6n',
-      MAX_EPISODES: 12,
+      MAX_EPISODES: 100,
+      INITIAL_EPISODES: 12,
+      LOAD_BATCH_SIZE: 9,
       DEFAULT_IMAGE: 'assets/images/podcast.jpeg',
-      CACHE_KEY: 'podcast_episodes_cache_v6',
+      CACHE_KEY: 'podcast_episodes_cache_v7',
       CACHE_DURATION: 15 * 60 * 1000,
       TIMEOUT: 6500,
       SKELETON_COUNT: 8,
@@ -269,9 +273,9 @@
       icon.setAttribute('aria-hidden', 'true');
 
       if (platform === 'spotify') {
-        icon.innerHTML = '<svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 1.8A10.2 10.2 0 1 0 22.2 12 10.21 10.21 0 0 0 12 1.8Zm4.68 14.73a.73.73 0 0 1-1 .27 12.3 12.3 0 0 0-6.63-1.76 12.8 12.8 0 0 0-2.39.21.74.74 0 0 1-.27-1.45 14.35 14.35 0 0 1 2.66-.24 13.78 13.78 0 0 1 7.36 2 .74.74 0 0 1 .27 1.01Zm1.17-2.58a.91.91 0 0 1-1.25.33A15.45 15.45 0 0 0 11 12.1a15.91 15.91 0 0 0-3 .29.9.9 0 1 1-.33-1.76 17.67 17.67 0 0 1 3.31-.32 17.12 17.12 0 0 1 9.11 2.5.9.9 0 0 1 .33 1.24Zm1.29-2.86a1.08 1.08 0 0 1-1.47.39 19.56 19.56 0 0 0-10.28-2.78 20.08 20.08 0 0 0-3.6.35 1.09 1.09 0 0 1-.4-2.14A22.18 22.18 0 0 1 11.7 7a21.69 21.69 0 0 1 11.62 3.18 1.08 1.08 0 0 1 .32 1.5Z"/></svg>';
+        icon.innerHTML = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.25" stroke-linecap="round"><path d="M4.8 8.1c4.9-1.45 10.7-.95 14.55 1.25"/><path d="M6.05 12.1c4.05-1.1 8.65-.68 12 1.18"/><path d="M7.05 15.85c3.2-.78 6.75-.43 9.48 1.05"/></svg>';
       } else if (platform === 'apple') {
-        icon.innerHTML = '<svg viewBox="0 0 24 24" fill="currentColor"><path d="M16.2 1.8c0 1.02-.4 1.98-1.02 2.76-.76.94-1.98 1.66-3.18 1.56-.14-1-.58-2.08-1.25-2.8-.7-.77-1.92-1.36-2.92-1.32-.12.99.34 2.07.95 2.84.62.77 1.8 1.43 2.77 1.48-.35 1.28-1.26 2.96-2.3 4.1-.82.9-2.04 1.84-3.32 1.88-1.18.04-1.56-.67-2.9-.67-1.37 0-1.78.66-2.9.7-1.31.04-2.32-1.02-3.16-1.94C.97 8.55-.1 5.12 1.72 2.9c1.15-1.4 2.96-2.23 4.71-2.26 1.3-.02 2.53.72 3.28.72.75 0 2.22-.88 3.74-.76 1.24.09 2.42.61 2.75 1.2Z"/></svg>';
+        icon.innerHTML = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><circle cx="12" cy="9.1" r="2.15" fill="currentColor" stroke="none"/><path d="M9.8 14.15a2.2 2.2 0 0 1 4.4 0l-.62 5.15a1.6 1.6 0 0 1-3.16 0l-.62-5.15Z" fill="currentColor" stroke="none"/><path d="M7.35 13.15a6.1 6.1 0 1 1 9.3 0"/><path d="M4.95 15.65a9.3 9.3 0 1 1 14.1 0"/></svg>';
       } else {
         icon.innerHTML = '<svg viewBox="0 0 24 24" fill="currentColor"><path d="M23 7.2a3 3 0 0 0-2.12-2.12C18.98 4.5 12 4.5 12 4.5s-6.98 0-8.88.58A3 3 0 0 0 1 7.2 31.8 31.8 0 0 0 1 12a31.8 31.8 0 0 0 .12 4.8 3 3 0 0 0 2.12 2.12C5.02 19.5 12 19.5 12 19.5s6.98 0 8.88-.58A3 3 0 0 0 23 16.8 31.8 31.8 0 0 0 23 12a31.8 31.8 0 0 0 0-4.8ZM10 15.5v-7l6 3.5-6 3.5Z"/></svg>';
       }
@@ -598,8 +602,13 @@
       grid.replaceChildren(...skeletons);
     }
 
-    function renderEpisodes(grid, episodes) {
-      grid.replaceChildren(...episodes.map(createPodcastCard));
+    function renderEpisodes(grid, episodes, append = false) {
+      const cards = episodes.map(createPodcastCard);
+      if (append) {
+        grid.append(...cards);
+        return;
+      }
+      grid.replaceChildren(...cards);
     }
 
     function renderErrorMessage(grid) {
@@ -717,8 +726,8 @@
       // 1. Önce cache'den dene
       episodes = getFromCache();
       if (episodes && episodes.length > 0) {
-        renderEpisodes(grid, episodes);
         initSearch(episodes);
+        renderCurrentEpisodes(grid, episodes);
         setPodcastState(episodes);
 
         // Arka planda güncelle ve gerekiyorsa UI'yi tazele
@@ -730,8 +739,8 @@
 
       // 2. Cache yoksa güvenilir statik fallback'i hemen göster
       if (fallbackEpisodes.length > 0) {
-        renderEpisodes(grid, fallbackEpisodes);
         initSearch(fallbackEpisodes);
+        renderCurrentEpisodes(grid, fallbackEpisodes);
         setPodcastState(fallbackEpisodes);
         refreshEpisodesFromSources(grid, fallbackEpisodes).catch(() => {});
         schedulePodcastAutoRefresh(grid);
@@ -759,9 +768,87 @@
     // Arama fonksiyonu
     let allEpisodes = [];
     let currentSearchQuery = '';
+    let visibleEpisodeCount = CONFIG.INITIAL_EPISODES;
+    let infiniteLoadingActive = false;
+    let podcastLoadMoreObserver = null;
+    let isAppendingPodcastBatch = false;
 
     function initSearch(episodes) {
       allEpisodes = episodes;
+    }
+
+    function updatePodcastArchiveControls(totalEpisodes) {
+      const wrapper = document.getElementById('podcastLoadMore');
+      const button = document.getElementById('podcastLoadMoreButton');
+      const status = document.getElementById('podcastArchiveStatus');
+      if (!wrapper || !button || !status) return;
+
+      if (currentSearchQuery.trim()) {
+        wrapper.hidden = true;
+        return;
+      }
+
+      const remaining = Math.max(0, totalEpisodes - visibleEpisodeCount);
+      wrapper.hidden = totalEpisodes <= CONFIG.INITIAL_EPISODES && !infiniteLoadingActive;
+
+      if (!infiniteLoadingActive) {
+        button.hidden = remaining === 0;
+        status.hidden = true;
+        button.textContent = remaining > 0 ? `Devamını gör · ${remaining} bölüm` : 'Devamını gör';
+        return;
+      }
+
+      button.hidden = true;
+      status.hidden = false;
+      status.textContent = remaining > 0
+        ? `${remaining} bölüm daha · aşağı kaydırmaya devam edin`
+        : `Arşivin sonuna ulaştınız · ${totalEpisodes} bölüm`;
+    }
+
+    function appendNextPodcastBatch() {
+      if (!infiniteLoadingActive || currentSearchQuery.trim() || isAppendingPodcastBatch) return;
+      const grid = document.getElementById('podcast-grid');
+      if (!grid || visibleEpisodeCount >= allEpisodes.length) {
+        updatePodcastArchiveControls(allEpisodes.length);
+        return;
+      }
+
+      isAppendingPodcastBatch = true;
+      const previousCount = visibleEpisodeCount;
+      visibleEpisodeCount = Math.min(
+        visibleEpisodeCount + CONFIG.LOAD_BATCH_SIZE,
+        allEpisodes.length
+      );
+      renderEpisodes(grid, allEpisodes.slice(previousCount, visibleEpisodeCount), true);
+      updatePodcastArchiveControls(allEpisodes.length);
+
+      requestAnimationFrame(() => {
+        isAppendingPodcastBatch = false;
+      });
+    }
+
+    function activatePodcastInfiniteLoading() {
+      if (infiniteLoadingActive) return;
+      infiniteLoadingActive = true;
+      appendNextPodcastBatch();
+
+      const sentinel = document.getElementById('podcastInfiniteSentinel');
+      if (!sentinel || !('IntersectionObserver' in window)) {
+        const grid = document.getElementById('podcast-grid');
+        const remainingEpisodes = allEpisodes.slice(visibleEpisodeCount);
+        visibleEpisodeCount = allEpisodes.length;
+        if (grid && remainingEpisodes.length) renderEpisodes(grid, remainingEpisodes, true);
+        updatePodcastArchiveControls(allEpisodes.length);
+        return;
+      }
+
+      podcastLoadMoreObserver = new IntersectionObserver(entries => {
+        if (entries.some(entry => entry.isIntersecting)) appendNextPodcastBatch();
+      }, {
+        rootMargin: '500px 0px',
+        threshold: 0
+      });
+      podcastLoadMoreObserver.observe(sentinel);
     }
 
     function searchPodcasts(query) {
@@ -771,7 +858,7 @@
       const lowerQuery = query.toLowerCase().trim();
 
       if (!lowerQuery) {
-        renderEpisodes(grid, allEpisodes);
+        renderCurrentEpisodes(grid, allEpisodes);
         return;
       }
 
@@ -785,6 +872,7 @@
       } else {
         renderEpisodes(grid, filtered);
       }
+      updatePodcastArchiveControls(allEpisodes.length);
     }
 
     function renderCurrentEpisodes(grid, episodes) {
@@ -793,7 +881,12 @@
         return;
       }
 
-      renderEpisodes(grid, episodes);
+      visibleEpisodeCount = Math.min(visibleEpisodeCount, episodes.length);
+      if (!infiniteLoadingActive) {
+        visibleEpisodeCount = Math.min(CONFIG.INITIAL_EPISODES, episodes.length);
+      }
+      renderEpisodes(grid, episodes.slice(0, visibleEpisodeCount));
+      updatePodcastArchiveControls(episodes.length);
     }
 
     // Event listeners
@@ -802,6 +895,11 @@
 
       const searchForm = document.getElementById('podcastSearchForm');
       const searchInput = document.getElementById('podcastSearchInput');
+      const loadMoreButton = document.getElementById('podcastLoadMoreButton');
+
+      if (loadMoreButton) {
+        loadMoreButton.addEventListener('click', activatePodcastInfiniteLoading);
+      }
 
       if (searchForm) {
         searchForm.addEventListener('submit', e => {
