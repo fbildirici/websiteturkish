@@ -215,6 +215,60 @@ document.addEventListener('DOMContentLoaded', function() {
   });
 });
 
+// Shared, restrained reveal motion for cards and content groups across the site.
+function initSiteRevealMotion() {
+  const targets = document.querySelectorAll([
+    '.wid-card',
+    '.hl-row',
+    '.compact-card',
+    '.youtube-card',
+    '.yazi-card',
+    '.about-section',
+    '.timeline-item',
+    '.newsroom-item',
+    '.academic-hero-panel',
+    '.academic-metric-card',
+    '.education-card',
+    '.pub-item',
+    '.talk-card',
+    '.resource-card',
+    '.srv-card',
+    '.srv-process-step',
+    '.spk-topic-item',
+    '.book-card',
+    '.contact-wrapper',
+    '.curious-company-brand',
+    '.curious-company-values article'
+  ].join(','));
+
+  if (!targets.length) return;
+
+  const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if (reduceMotion || !('IntersectionObserver' in window)) {
+    targets.forEach(target => target.classList.add('is-visible'));
+    return;
+  }
+
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (!entry.isIntersecting) return;
+      entry.target.classList.add('is-visible');
+      observer.unobserve(entry.target);
+    });
+  }, {
+    threshold: 0.12,
+    rootMargin: '0px 0px -7% 0px'
+  });
+
+  targets.forEach((target, index) => {
+    target.classList.add('site-reveal');
+    target.style.setProperty('--reveal-delay', `${(index % 4) * 65}ms`);
+    observer.observe(target);
+  });
+}
+
+document.addEventListener('DOMContentLoaded', initSiteRevealMotion);
+
 // Contact form submission via Google Apps Script
 document.addEventListener('DOMContentLoaded', function() {
   const form = document.getElementById('contactForm');
