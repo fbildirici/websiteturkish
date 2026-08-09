@@ -56,7 +56,7 @@
             <span class="podcast-tag active" data-i18n-en="Hitchhiker's Guide to AI">Otostopçunun YZ Rehberi</span>
           </div>
           <div class="podcast-stats">
-            <span class="podcast-stat">50+ bölüm</span>
+            <span class="podcast-stat">60+ bölüm</span>
             <span class="podcast-stat">10K+ aylık dinlenme</span>
           </div>
         </div>
@@ -72,6 +72,17 @@
             </button>
           </form>
         </div>
+      </div>
+
+      <div class="podcast-toolbar" aria-label="Podcast bölüm listesi">
+        <div>
+          <span class="podcast-toolbar-kicker">Otostopçunun YZ Rehberi</span>
+          <h2>Son bölümler</h2>
+        </div>
+        <a class="podcast-live-link" href="https://open.spotify.com/show/1rCeqPdviUG61ucnpFDl6n" target="_blank" rel="noopener noreferrer">
+          <span aria-hidden="true"></span>
+          Spotify'da takip et
+        </a>
       </div>
 
       <!-- Podcast Grid -->
@@ -147,13 +158,15 @@
 
   <script src="podcast-episodes.js"></script>
   <script>
-    // Podcast Yükleme Sistemi - Optimized v3
+    // Podcast yükleme sistemi: Apple Podcasts + resmi RSS + statik yedek
     const CONFIG = {
       RSS_URL: 'https://anchor.fm/s/101fc0074/podcast/rss',
+      APPLE_LOOKUP_URL: 'https://itunes.apple.com/lookup?id=1801285722&entity=podcastEpisode&limit=20',
+      SPOTIFY_SHOW_URL: 'https://open.spotify.com/show/1rCeqPdviUG61ucnpFDl6n',
       MAX_EPISODES: 12,
-      DEFAULT_IMAGE: 'https://d3t3ozftmdmh3i.cloudfront.net/staging/podcast_uploaded_nologo/43182597/43182597-1762802752790-6f397aa01c377.jpg',
-      CACHE_KEY: 'podcast_rss_cache_v4',
-      CACHE_DURATION: 60 * 60 * 1000, // 1 saat
+      DEFAULT_IMAGE: 'assets/images/podcast.jpeg',
+      CACHE_KEY: 'podcast_episodes_cache_v6',
+      CACHE_DURATION: 15 * 60 * 1000,
       TIMEOUT: 6500,
       SKELETON_COUNT: 8,
       AUTO_REFRESH_INTERVAL: 10 * 60 * 1000
@@ -231,7 +244,7 @@
 
     function resolveEpisodePlatformLinks(episode) {
       const explicitLinks = episode.platformLinks || {};
-      const spotify = explicitLinks.spotify || episode.link || '#';
+      const spotify = explicitLinks.spotify || CONFIG.SPOTIFY_SHOW_URL;
 
       return {
         spotify,
@@ -278,7 +291,7 @@
       const platformLinks = resolveEpisodePlatformLinks(episode);
 
       const imageLink = document.createElement('a');
-      imageLink.href = getSafeUrl(episode.link);
+      imageLink.href = getSafeUrl(platformLinks.spotify || episode.link);
       imageLink.target = '_blank';
       imageLink.rel = 'noopener noreferrer';
       imageLink.className = 'podcast-card-image';
@@ -305,10 +318,10 @@
 
       const links = document.createElement('div');
       links.className = 'podcast-card-links';
-      const youtubeButton = createPlatformButton(platformLinks.youtube, 'youtube', 'YouTube');
-      const spotifyButton = createPlatformButton(platformLinks.spotify, 'spotify', 'Spotify');
+      const spotifyButton = createPlatformButton(platformLinks.spotify, 'spotify', "Spotify'da dinle");
       const appleButton = createPlatformButton(platformLinks.apple, 'apple', 'Apple Podcasts');
-      [youtubeButton, spotifyButton, appleButton].forEach(button => {
+      const youtubeButton = createPlatformButton(platformLinks.youtube, 'youtube', 'YouTube');
+      [spotifyButton, appleButton, youtubeButton].forEach(button => {
         if (button) links.appendChild(button);
       });
 
@@ -393,6 +406,84 @@
       });
 
       return episodes;
+    }
+
+    function parseAppleEpisodes(data) {
+      if (!data || !Array.isArray(data.results)) return [];
+      const fallbackIndex = getFallbackEpisodes().reduce((index, episode) => {
+        const key = normalizeEpisodeKey(episode.title);
+        if (key) index[key] = episode;
+        return index;
+      }, {});
+
+      return data.results
+        .filter(item => item.wrapperType === 'podcastEpisode' && item.trackName)
+        .sort((a, b) => new Date(b.releaseDate) - new Date(a.releaseDate))
+        .slice(0, CONFIG.MAX_EPISODES)
+        .map(item => {
+          const releaseDate = new Date(item.releaseDate);
+          const description = String(item.shortDescription || item.description || '')
+            .replace(/\s+/g, ' ')
+            .trim();
+          const appleLink = item.trackViewUrl || item.collectionViewUrl || '#';
+          const fallbackEpisode = fallbackIndex[normalizeEpisodeKey(item.trackName)];
+          const spotifyLink = fallbackEpisode?.platformLinks?.spotify || CONFIG.SPOTIFY_SHOW_URL;
+
+          return {
+            title: String(item.trackName).trim(),
+            desc: description.length > 150 ? `${description.slice(0, 150).trim()}...` : description,
+            date: Number.isNaN(releaseDate.getTime()) ? '' : releaseDate.toLocaleDateString('tr-TR', {
+              day: 'numeric',
+              month: 'short',
+              year: 'numeric'
+            }),
+            link: appleLink,
+            image: item.artworkUrl600 || item.artworkUrl160 || CONFIG.DEFAULT_IMAGE,
+            platformLinks: {
+              spotify: spotifyLink,
+              apple: appleLink,
+              youtube: buildPodcastSearchUrl('youtube', item.trackName)
+            }
+          };
+        });
+    }
+
+    function fetchEpisodesFromApple() {
+      return new Promise((resolve, reject) => {
+        const callbackName = `__podcastAppleCallback_${Date.now()}`;
+        const script = document.createElement('script');
+        let timeoutId;
+
+        const cleanup = () => {
+          clearTimeout(timeoutId);
+          script.remove();
+          try {
+            delete window[callbackName];
+          } catch (e) {
+            window[callbackName] = undefined;
+          }
+        };
+
+        window[callbackName] = data => {
+          const episodes = parseAppleEpisodes(data);
+          cleanup();
+          episodes.length ? resolve(episodes) : reject(new Error('Apple Podcasts verisi boş'));
+        };
+
+        script.async = true;
+        script.src = `${CONFIG.APPLE_LOOKUP_URL}&callback=${encodeURIComponent(callbackName)}`;
+        script.addEventListener('error', () => {
+          cleanup();
+          reject(new Error('Apple Podcasts verisi yüklenemedi'));
+        }, { once: true });
+
+        timeoutId = setTimeout(() => {
+          cleanup();
+          reject(new Error('Apple Podcasts isteği zaman aşımına uğradı'));
+        }, CONFIG.TIMEOUT);
+
+        document.head.appendChild(script);
+      });
     }
 
     // Tek proxy'den fetch et
@@ -525,7 +616,7 @@
       const links = document.createElement('p');
       links.className = 'podcast-status-links';
       links.append(
-        createPlatformLink('https://open.spotify.com/show/4wJPUBJcqQsnoLxWqEMCjJ', 'Spotify', 'https://upload.wikimedia.org/wikipedia/commons/8/84/Spotify_icon.svg', 'Spotify'),
+        createPlatformLink(CONFIG.SPOTIFY_SHOW_URL, 'Spotify', 'https://upload.wikimedia.org/wikipedia/commons/8/84/Spotify_icon.svg', 'Spotify'),
         createPlatformLink('https://podcasts.apple.com/tr/podcast/otostop%C3%A7unun-yapay-zeka-rehberi/id1801285722', 'Apple Podcasts', 'https://upload.wikimedia.org/wikipedia/commons/e/e7/Podcasts_%28iOS%29.svg', 'Apple Podcasts')
       );
 
@@ -568,11 +659,16 @@
       return window.__podcastEpisodesState || { episodes: [], signature: '' };
     }
 
-    async function refreshEpisodesFromRSS(grid, currentEpisodes) {
-      const xmlText = await fetchRSSParallel();
-      if (!xmlText) return false;
+    async function refreshEpisodesFromSources(grid, currentEpisodes) {
+      let newEpisodes = [];
 
-      const newEpisodes = parseEpisodes(xmlText);
+      try {
+        newEpisodes = await fetchEpisodesFromApple();
+      } catch (appleError) {
+        const xmlText = await fetchRSSParallel();
+        if (xmlText) newEpisodes = parseEpisodes(xmlText);
+      }
+
       if (!newEpisodes.length) return false;
 
       saveToCache(newEpisodes);
@@ -596,7 +692,7 @@
       podcastAutoRefreshTimer = setInterval(() => {
         if (document.hidden) return;
         const { episodes } = getPodcastState();
-        refreshEpisodesFromRSS(grid, episodes).catch(() => {});
+        refreshEpisodesFromSources(grid, episodes).catch(() => {});
       }, CONFIG.AUTO_REFRESH_INTERVAL);
 
       if (!podcastVisibilityHandlerInstalled) {
@@ -605,7 +701,7 @@
           const gridElement = document.getElementById('podcast-grid');
           if (!gridElement) return;
           const { episodes } = getPodcastState();
-          refreshEpisodesFromRSS(gridElement, episodes).catch(() => {});
+          refreshEpisodesFromSources(gridElement, episodes).catch(() => {});
         });
         podcastVisibilityHandlerInstalled = true;
       }
@@ -626,7 +722,7 @@
         setPodcastState(episodes);
 
         // Arka planda güncelle ve gerekiyorsa UI'yi tazele
-        refreshEpisodesFromRSS(grid, episodes).catch(() => {});
+        refreshEpisodesFromSources(grid, episodes).catch(() => {});
         schedulePodcastAutoRefresh(grid);
 
         return;
@@ -637,7 +733,7 @@
         renderEpisodes(grid, fallbackEpisodes);
         initSearch(fallbackEpisodes);
         setPodcastState(fallbackEpisodes);
-        refreshEpisodesFromRSS(grid, fallbackEpisodes).catch(() => {});
+        refreshEpisodesFromSources(grid, fallbackEpisodes).catch(() => {});
         schedulePodcastAutoRefresh(grid);
         return;
       }
@@ -647,7 +743,7 @@
 
       // 4. Son çare olarak RSS'den çek
       try {
-        const didRefresh = await refreshEpisodesFromRSS(grid, []);
+        const didRefresh = await refreshEpisodesFromSources(grid, []);
         if (didRefresh) {
           schedulePodcastAutoRefresh(grid);
           return;

@@ -1,5 +1,49 @@
 window.PODCAST_FALLBACK_EPISODES = [
   {
+    title: "Yapay Zeka ve Girişimcilik: YC Startup School 2026 Notları",
+    desc: "Y Combinator Startup School 2026'dan Jensen Huang, Sam Altman ve Boris Cherny'nin yapay zeka ile girişimcilik üzerine öne çıkan fikirleri.",
+    date: "6 Ağu 2026",
+    link: "https://podcasters.spotify.com/pod/show/fatih-bildirici5/episodes/Yapay-Zeka-ve-Giriimcilik-YC-Startup-School-2026-Notlar-e3n2ua9",
+    platformLinks: {
+      spotify: "https://podcasters.spotify.com/pod/show/fatih-bildirici5/episodes/Yapay-Zeka-ve-Giriimcilik-YC-Startup-School-2026-Notlar-e3n2ua9",
+      apple: "https://podcasts.apple.com/us/podcast/yapay-zeka-ve-giri%C5%9Fimcilik-yc-startup-school-2026-notlar%C4%B1/id1801285722?i=1000780313891"
+    },
+    image: "https://d3t3ozftmdmh3i.cloudfront.net/staging/podcast_uploaded_episode/43182597/43182597-1786048546971-db82316eff3b3.jpg"
+  },
+  {
+    title: "Yapay Zekayı Nasıl Daha İyi Kullanırız?",
+    desc: "Yapay zekayı günlük hayatın içinde daha eleştirel, güvenli ve bize ait bir düşünme sürecinin parçası olarak kullanmanın yolları.",
+    date: "20 Tem 2026",
+    link: "https://podcasters.spotify.com/pod/show/fatih-bildirici5/episodes/Yapay-Zekay-Nasl-Daha-yi-Kullanrz-e3mb1kb",
+    platformLinks: {
+      spotify: "https://podcasters.spotify.com/pod/show/fatih-bildirici5/episodes/Yapay-Zekay-Nasl-Daha-yi-Kullanrz-e3mb1kb",
+      apple: "https://podcasts.apple.com/us/podcast/yapay-zekay%C4%B1-nas%C4%B1l-daha-i-yi-kullan%C4%B1r%C4%B1z/id1801285722?i=1000777627997"
+    },
+    image: "https://d3t3ozftmdmh3i.cloudfront.net/staging/podcast_uploaded_episode/43182597/43182597-1784585019362-81646f701e9d2.jpg"
+  },
+  {
+    title: "ÖZEL BÖLÜM: Future Innovation Leaders - Tam Olarak Öyle Değil: Yapay Zeka Tiyatrosu",
+    desc: "Yapay zekanın şirketlerde yarattığı gerçek değeri, üretkenlik vaatlerini ve teknoloji yarışının gösteri tarafını konuşuyoruz.",
+    date: "18 Tem 2026",
+    link: "https://podcasters.spotify.com/pod/show/fatih-bildirici5/episodes/ZEL-BLM-Future-Innovation-Leaders---Tam-Olarak-yle-Deil--Yapay-Zeka-Tiyatrosu-e3m87in",
+    platformLinks: {
+      spotify: "https://podcasters.spotify.com/pod/show/fatih-bildirici5/episodes/ZEL-BLM-Future-Innovation-Leaders---Tam-Olarak-yle-Deil--Yapay-Zeka-Tiyatrosu-e3m87in",
+      apple: "https://podcasts.apple.com/us/podcast/%C3%B6zel-b%C3%B6l%C3%BCm-future-innovation-leaders-tam-olarak-%C3%B6yle/id1801285722?i=1000777342833"
+    },
+    image: "https://d3t3ozftmdmh3i.cloudfront.net/staging/podcast_uploaded_episode/43182597/43182597-1784386157742-a8cb7edd58e53.jpg"
+  },
+  {
+    title: "Küçük Dil Modelleri (Small Language Model) Nasıl Gelişiyor? Nerelerde Kullanıyoruz?",
+    desc: "Büyük dil modellerinden küçük, cihaz üzerinde çalışan modellere geçişi; mahremiyet, hız ve kurumsal kullanım açısından inceliyoruz.",
+    date: "7 Tem 2026",
+    link: "https://podcasters.spotify.com/pod/show/fatih-bildirici5/episodes/Kk-Dil-Modelleri-Small-Language-Model-Nasl-Geliiyor--Nerelerde-Kullanyoruz-e3lplgi",
+    platformLinks: {
+      spotify: "https://podcasters.spotify.com/pod/show/fatih-bildirici5/episodes/Kk-Dil-Modelleri-Small-Language-Model-Nasl-Geliiyor--Nerelerde-Kullanyoruz-e3lplgi",
+      apple: "https://podcasts.apple.com/us/podcast/k%C3%BC%C3%A7%C3%BCk-dil-modelleri-small-language-model-nas%C4%B1l-geli%C5%9Fiyor/id1801285722?i=1000775858799"
+    },
+    image: "https://d3t3ozftmdmh3i.cloudfront.net/staging/podcast_uploaded_episode/43182597/43182597-1783456462296-20936626c49d7.jpg"
+  },
+  {
     title: "Yapay Zeka ve Token Ekonomisi, Yeni Yapay Zeka ve Blockhain Ekonomisi Neye Benziyor?",
     desc: "Otostopçunun Yapay Zeka Rehberi'nde bu bölümde yapay zekanın, blokzincirin ve tokenizasyonun kesiştiği yeni nesil makine ekonomisini konuşuyoruz.",
     date: "30 Haz 2026",
