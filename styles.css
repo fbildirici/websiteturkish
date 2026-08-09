@@ -6678,16 +6678,15 @@ a:focus-visible {
 }
 
 .research-lab-mark img {
-  width: min(100%, 390px);
+  width: min(100%, 420px);
   height: auto;
   object-fit: contain;
 }
 
 .research-lab-mark blockquote {
   max-width: 410px;
-  margin: 28px 0 0;
-  padding: 24px 8px 0;
-  border-top: 1px solid rgba(0, 48, 128, 0.18);
+  margin: 22px 0 0;
+  padding: 0 8px;
   text-align: center;
 }
 
