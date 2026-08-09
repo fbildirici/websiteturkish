@@ -238,7 +238,17 @@ function initSiteRevealMotion() {
     '.book-card',
     '.contact-wrapper',
     '.curious-company-brand',
-    '.curious-company-values article'
+    '.curious-company-values article',
+    '.lab-startup-copy',
+    '.lab-research-console',
+    '.lab-signal-band .container > div',
+    '.lab-positioning-grid > div',
+    '.lab-focus-card',
+    '.lab-model-steps li',
+    '.lab-output-panel',
+    '.lab-partner-grid article',
+    '.lab-open-grid > div',
+    '.lab-final-cta .container'
   ].join(','));
 
   if (!targets.length) return;
