@@ -88,6 +88,29 @@ document.addEventListener('DOMContentLoaded', function () {
   initMobileNavigation();
 });
 
+function initYouTubeEmbeds() {
+  document.querySelectorAll('.video-embed-poster[data-youtube-id]').forEach(container => {
+    const playButton = container.querySelector('.video-poster-button');
+    const videoId = container.dataset.youtubeId || '';
+
+    if (!playButton || !/^[a-zA-Z0-9_-]{11}$/.test(videoId)) return;
+
+    playButton.addEventListener('click', () => {
+      const iframe = document.createElement('iframe');
+      iframe.src = `https://www.youtube-nocookie.com/embed/${videoId}?autoplay=1&rel=0`;
+      iframe.title = playButton.getAttribute('aria-label') || 'YouTube video player';
+      iframe.allow = 'accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share';
+      iframe.referrerPolicy = 'strict-origin-when-cross-origin';
+      iframe.allowFullscreen = true;
+
+      container.classList.remove('video-embed-poster');
+      container.replaceChildren(iframe);
+    }, { once: true });
+  });
+}
+
+document.addEventListener('DOMContentLoaded', initYouTubeEmbeds);
+
 // Podcast RSS'ten kartları dinamik oluşturma
 
 // Podcast kartlarının içeriğini RSS ile güncelle (tasarım bozulmaz)

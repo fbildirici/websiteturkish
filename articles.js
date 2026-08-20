@@ -44,7 +44,7 @@ const articlesData = [
     badge: "Haberler",
     badgeEn: "Newsroom",
     badgeClass: "",
-    image: "https://img.youtube.com/vi/bQeOfERu1Fo/hqdefault.jpg",
+    image: "assets/images/etc/enx2.jpeg",
     date: "Şub 2026",
     dateEn: "Feb 2026",
     readTime: "Video",
