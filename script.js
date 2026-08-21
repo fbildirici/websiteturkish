@@ -88,6 +88,54 @@ document.addEventListener('DOMContentLoaded', function () {
   initMobileNavigation();
 });
 
+function initCommitLastUpdated() {
+  const container = document.querySelector('[data-commit-last-updated]');
+  const dateElement = container?.querySelector('.last-updated-date');
+
+  if (!container || !dateElement) return;
+
+  function renderDate(value) {
+    const date = new Date(value);
+    if (Number.isNaN(date.getTime())) return false;
+
+    const isEnglish = document.documentElement.lang.toLowerCase().startsWith('en');
+    const locale = isEnglish ? 'en-GB' : 'tr-TR';
+    dateElement.textContent = new Intl.DateTimeFormat(locale, {
+      day: 'numeric',
+      month: 'long',
+      year: 'numeric',
+      timeZone: 'Europe/Istanbul'
+    }).format(date);
+    dateElement.dateTime = date.toISOString();
+    return true;
+  }
+
+  renderDate(document.lastModified);
+
+  const controller = new AbortController();
+  const requestTimeout = window.setTimeout(() => controller.abort(), 5000);
+
+  fetch('https://api.github.com/repos/fbildirici/websiteturkish/commits/main', {
+    headers: { Accept: 'application/vnd.github+json' },
+    referrerPolicy: 'no-referrer',
+    signal: controller.signal
+  })
+    .then(response => {
+      if (!response.ok) throw new Error(`Commit date request failed: ${response.status}`);
+      return response.json();
+    })
+    .then(data => {
+      const commitDate = data?.commit?.committer?.date || data?.commit?.author?.date;
+      if (commitDate) renderDate(commitDate);
+    })
+    .catch(() => {
+      // document.lastModified remains as the local, server-provided fallback.
+    })
+    .finally(() => window.clearTimeout(requestTimeout));
+}
+
+document.addEventListener('DOMContentLoaded', initCommitLastUpdated);
+
 function initYouTubeEmbeds() {
   document.querySelectorAll('.video-embed-poster[data-youtube-id]').forEach(container => {
     const playButton = container.querySelector('.video-poster-button');
