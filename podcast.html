@@ -11,11 +11,11 @@
   <meta property="og:title" content="Podcast - Fatih Bildirici">
   <meta property="og:description" content="Otostopçunun Yapay Zeka Rehberi podcast bölümleri ve dinleme platformları.">
   <meta property="og:url" content="https://fatihbildirici.com/podcast.html">
-  <meta property="og:image" content="https://fatihbildirici.com/assets/images/fatih-hero.png">
+  <meta property="og:image" content="https://fatihbildirici.com/assets/images/podcast-hero.jpg">
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="Podcast - Fatih Bildirici">
   <meta name="twitter:description" content="Otostopçunun Yapay Zeka Rehberi podcast bölümleri ve dinleme platformları.">
-  <meta name="twitter:image" content="https://fatihbildirici.com/assets/images/fatih-hero.png">
+  <meta name="twitter:image" content="https://fatihbildirici.com/assets/images/podcast-hero.jpg">
   <meta name="theme-color" content="#003080">
   <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
   <link rel="alternate" type="application/rss+xml" title="Otostopçunun Yapay Zeka Rehberi Podcast RSS" href="https://anchor.fm/s/101fc0074/podcast/rss">
@@ -45,35 +45,48 @@
   </header>
 
   <main id="main-content" class="podcast-page">
-    <div class="container">
-      
-      <!-- Podcast Header -->
-      <div class="podcast-header">
-        <div class="podcast-header-left">
-          <h1 data-i18n-en="Podcast">Podcast</h1>
-          <p class="podcast-desc" data-i18n-en="Inspired by Douglas Adams, we make the complex world of AI accessible with the &quot;Hitchhiker's Guide to AI.&quot; From machine learning to ethics, from neural networks to real-world applications—Turkey's most listened AI podcast.">"Otostopçunun Yapay Zeka Rehberi" ile Douglas Adams'ın eserinden ilham alarak, yapay zekanın karmaşık dünyasını anlaşılır kılıyoruz. Makine öğrenmesinden etik tartışmalara, nöral ağlardan pratik uygulamalara kadar Türkiye'nin en çok dinlenen yapay zeka podcast'i.</p>
-          <div class="podcast-tags">
-            <span class="podcast-tag active" data-i18n-en="Hitchhiker's Guide to AI">Otostopçunun YZ Rehberi</span>
+    <!-- Podcast Hero -->
+    <section class="podcast-showcase" aria-labelledby="podcast-showcase-title">
+      <div class="container podcast-showcase-inner">
+        <div class="podcast-showcase-copy">
+          <h1 id="podcast-showcase-title" class="podcast-showcase-title-logo">
+            <img src="assets/images/podcast-show-logo.png" alt="Otostopçunun Yapay Zeka Rehberi" width="500" height="500" decoding="async">
+          </h1>
+          <p class="podcast-showcase-desc" data-i18n-en="A clear and curious guide to the complex world of artificial intelligence—from machine learning and neural networks to ethics and real-world applications.">Yapay zekanın karmaşık dünyasına anlaşılır ve meraklı bir rehber. Makine öğrenmesinden etik tartışmalara, sinir ağlarından gerçek hayattaki uygulamalara uzanan samimi bir keşif yolculuğu.</p>
+
+          <div class="podcast-showcase-actions">
+            <a class="podcast-showcase-button podcast-showcase-button-primary" href="https://open.spotify.com/show/1rCeqPdviUG61ucnpFDl6n" target="_blank" rel="noopener noreferrer">
+              <span class="podcast-button-play" aria-hidden="true"></span>
+              <span data-i18n-en="Listen on Spotify">Spotify'da dinle</span>
+            </a>
+            <a class="podcast-showcase-button podcast-showcase-button-secondary" href="#podcast-grid" data-i18n-en="Browse episodes">Bölümlere göz at</a>
           </div>
-          <div class="podcast-stats">
-            <span class="podcast-stat">60+ bölüm</span>
-            <span class="podcast-stat">10K+ aylık dinlenme</span>
+
+          <div class="podcast-showcase-meta" aria-label="Podcast istatistikleri">
+            <span><strong>60+</strong> bölüm</span>
+            <span><strong>10K+</strong> aylık dinlenme</span>
+            <span><strong>Her hafta</strong> yeni bölüm</span>
           </div>
-        </div>
-        <div class="podcast-header-right">
-          <form class="search-form" id="podcastSearchForm">
+
+          <form class="search-form podcast-showcase-search" id="podcastSearchForm">
             <label class="sr-only" for="podcastSearchInput">Podcast ara</label>
-            <input type="text" placeholder="Podcast ara..." class="search-input" id="podcastSearchInput" data-i18n-placeholder-en="Search podcast...">
+            <input type="text" placeholder="Bölümlerde ara..." class="search-input" id="podcastSearchInput" data-i18n-placeholder-en="Search episodes...">
             <button type="submit" class="search-btn" aria-label="Ara">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
                 <circle cx="11" cy="11" r="8"></circle>
                 <path d="m21 21-4.35-4.35"></path>
               </svg>
             </button>
           </form>
         </div>
-      </div>
 
+        <div class="podcast-showcase-visual" aria-hidden="true">
+          <img class="podcast-showcase-image" src="assets/images/podcast-hero.jpg" alt="" width="1200" height="1200" decoding="async" fetchpriority="high">
+        </div>
+      </div>
+    </section>
+
+    <div class="container">
       <div class="podcast-toolbar" aria-label="Podcast bölüm listesi">
         <div>
           <span class="podcast-toolbar-kicker">Otostopçunun YZ Rehberi</span>
