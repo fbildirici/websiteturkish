@@ -6608,6 +6608,7 @@ a:focus-visible {
 }
 
 .podcast-showcase-inner {
+  position: relative;
   display: grid;
   grid-template-columns: minmax(0, 1.02fr) minmax(430px, 0.9fr);
   align-items: center;
@@ -6618,6 +6619,9 @@ a:focus-visible {
 .podcast-showcase-copy {
   position: relative;
   z-index: 3;
+  grid-column: 2;
+  justify-self: end;
+  width: 100%;
   max-width: 700px;
   padding: 12px 0;
 }
@@ -6798,11 +6802,6 @@ a:focus-visible {
   backdrop-filter: blur(16px);
 }
 
-.podcast-showcase-search:focus-within {
-  border-color: rgba(142, 186, 255, 0.64);
-  box-shadow: none;
-}
-
 .podcast-showcase-search .search-input {
   width: 100%;
   color: #fff;
@@ -6827,11 +6826,47 @@ a:focus-visible {
   color: #003080;
 }
 
+/* Focused bar turns white, so its contents flip to navy */
+.podcast-showcase-search:focus-within {
+  border-color: rgba(0, 48, 128, 0.24);
+  background: #fff;
+  box-shadow: 0 12px 28px rgba(0, 12, 40, 0.26);
+  outline: 3px solid rgba(255, 107, 53, 0.9);
+  outline-offset: 3px;
+}
+
+.podcast-showcase-search .search-input:focus-visible {
+  outline: none;
+}
+
+.podcast-showcase-search:focus-within .search-input {
+  color: #002566;
+}
+
+.podcast-showcase-search:focus-within .search-input::placeholder {
+  color: rgba(0, 37, 102, 0.52);
+}
+
+.podcast-showcase-search:focus-within .search-btn {
+  background: #003080;
+  color: #fff;
+}
+
+.podcast-showcase-search:focus-within .search-btn:hover {
+  background: #002566;
+  color: #fff;
+}
+
 .podcast-showcase-visual {
-  position: relative;
-  align-self: stretch;
-  min-height: 430px;
-  margin-right: -32px;
+  position: absolute;
+  top: auto;
+  right: auto;
+  bottom: -34px;
+  left: min(0px, calc(740px - 50vw));
+  width: min(54vw, 650px);
+  height: 550px;
+  min-height: 0;
+  margin: 0;
   background: #003080;
 }
 
@@ -6843,11 +6878,15 @@ a:focus-visible {
 .podcast-showcase-image {
   position: absolute;
   z-index: 1;
-  right: 0;
-  bottom: -8px;
-  width: min(100%, 520px);
-  height: auto;
+  top: 0;
+  right: auto;
+  bottom: 0;
+  left: 0;
+  width: auto;
+  max-width: none;
+  height: 100%;
   object-fit: contain;
+  object-position: left bottom;
 }
 
 .podcast-showcase-watermark {
@@ -6903,7 +6942,7 @@ a:focus-visible {
   }
 
   .podcast-showcase-visual {
-    margin-right: -50px;
+    left: min(0px, calc(740px - 50vw));
   }
 }
 
@@ -6919,6 +6958,8 @@ a:focus-visible {
   }
 
   .podcast-showcase-copy {
+    grid-column: 1;
+    justify-self: stretch;
     max-width: 680px;
     padding-bottom: 10px;
   }
@@ -6929,13 +6970,23 @@ a:focus-visible {
   }
 
   .podcast-showcase-visual {
+    position: relative;
+    top: auto;
+    right: auto;
+    bottom: auto;
+    left: auto;
+    width: auto;
+    height: auto;
     min-height: 420px;
     margin: 0 -24px;
   }
 
   .podcast-showcase-image {
-    right: 2%;
-    width: min(78vw, 500px);
+    right: auto;
+    left: 0;
+    width: auto;
+    max-width: 100%;
+    height: 100%;
   }
 
   .podcast-showcase-visual::before {
@@ -7011,8 +7062,11 @@ a:focus-visible {
   }
 
   .podcast-showcase-image {
-    right: -4%;
-    width: min(100%, 430px);
+    right: auto;
+    left: -4%;
+    width: auto;
+    max-width: 108%;
+    height: 100%;
   }
 
   .podcast-showcase-wordmark {
