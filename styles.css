@@ -10125,3 +10125,197 @@ body {
     white-space: nowrap;
   }
 }
+
+/* ===== CONTACT PAGE — REFINED FORM CARD ===== */
+.contact-page {
+  padding: 128px 0 96px;
+  background:
+    radial-gradient(880px 420px at 10% -8%, rgba(0, 48, 128, 0.10), transparent 62%),
+    radial-gradient(720px 380px at 94% 6%, rgba(15, 118, 110, 0.07), transparent 60%),
+    linear-gradient(180deg, #f6f8fc 0%, #eef1f7 100%);
+}
+
+.contact-wrapper {
+  max-width: 640px;
+}
+
+.contact-header {
+  margin-bottom: 34px;
+}
+
+.contact-header h1 {
+  margin: 0 0 14px;
+  color: var(--navy-strong);
+  font-size: clamp(38px, 5vw, 50px);
+  font-weight: 800;
+  letter-spacing: -0.045em;
+}
+
+.contact-desc {
+  max-width: 34em;
+  color: #55617a;
+  font-size: 16.5px;
+  line-height: 1.65;
+}
+
+.contact-form {
+  padding: 36px;
+  border: 1px solid rgba(0, 48, 128, 0.07);
+  border-radius: 24px;
+  background: #fff;
+  box-shadow:
+    0 1px 2px rgba(15, 23, 42, 0.04),
+    0 12px 28px rgba(15, 23, 42, 0.06),
+    0 40px 80px -32px rgba(0, 48, 128, 0.18);
+}
+
+.contact-form .form-group {
+  margin-bottom: 14px;
+}
+
+.contact-form .form-input {
+  padding: 15px 18px;
+  border: 1.5px solid #e4e9f2;
+  border-radius: 14px;
+  background: #f8fafd;
+  color: var(--ink);
+  font-size: 15px;
+  box-shadow: none;
+  transition: border-color 0.18s ease, background 0.18s ease, box-shadow 0.18s ease;
+}
+
+.contact-form .form-input:hover {
+  border-color: #d3dced;
+}
+
+.contact-form .form-input::placeholder {
+  color: #9aa6bd;
+}
+
+.contact-form .form-input:focus {
+  border-color: var(--navy);
+  background: #fff;
+  box-shadow: 0 0 0 4px rgba(0, 48, 128, 0.10);
+}
+
+/* the navy ring is the focus indicator here */
+.contact-form .form-input:focus-visible {
+  outline: none;
+}
+
+.contact-form .form-select {
+  background-repeat: no-repeat;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23003080' stroke-width='1.8' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='m6.5 9.75 5.5 5.5 5.5-5.5'/%3E%3C/svg%3E");
+  background-size: 18px 18px;
+  background-position: right 16px center;
+  padding-right: 46px;
+}
+
+.contact-form .form-textarea {
+  min-height: 152px;
+  line-height: 1.6;
+}
+
+.contact-form .form-checkboxes {
+  display: grid;
+  gap: 14px;
+  margin: 24px 0 26px;
+  padding-top: 22px;
+  border-top: 1px solid #edf1f7;
+}
+
+.contact-form .checkbox-label {
+  align-items: flex-start;
+  gap: 12px;
+  margin: 0;
+}
+
+/* kept at the box's size and position so native validation anchors on it */
+.contact-form .checkbox-label input[type="checkbox"] {
+  position: absolute;
+  width: 20px;
+  height: 20px;
+  margin: 1px 0 0;
+  opacity: 0;
+}
+
+.contact-form .checkmark {
+  position: relative;
+  flex: 0 0 20px;
+  width: 20px;
+  height: 20px;
+  margin-top: 1px;
+  border: 1.5px solid #d5ddeb;
+  border-radius: 7px;
+  background: #fff;
+  transition: background 0.18s ease, border-color 0.18s ease;
+}
+
+.contact-form .checkmark::after {
+  content: '';
+  position: absolute;
+  top: 3.5px;
+  left: 6.75px;
+  width: 4.5px;
+  height: 9px;
+  border: solid #fff;
+  border-width: 0 2px 2px 0;
+  opacity: 0;
+  transform: rotate(45deg) scale(0.4);
+  transition: transform 0.18s ease, opacity 0.18s ease;
+}
+
+.contact-form .checkbox-label:hover .checkmark {
+  border-color: #b9c6dd;
+}
+
+.contact-form .checkbox-label input:checked ~ .checkmark {
+  border-color: var(--navy);
+  background: var(--navy);
+}
+
+.contact-form .checkbox-label input:checked ~ .checkmark::after {
+  opacity: 1;
+  transform: rotate(45deg) scale(1);
+}
+
+.contact-form .checkbox-label input:focus-visible ~ .checkmark {
+  outline: 3px solid rgba(255, 107, 53, 0.9);
+  outline-offset: 3px;
+}
+
+.contact-form .checkbox-text {
+  color: #5b667d;
+  font-size: 13.5px;
+  line-height: 1.6;
+}
+
+.contact-form .btn-submit-contact {
+  width: 100%;
+  padding: 16px 32px;
+  border-radius: 14px;
+  background: linear-gradient(135deg, #0a3f9e 0%, #003080 55%, #00265f 100%);
+  font-size: 15.5px;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+  box-shadow: 0 12px 26px rgba(0, 48, 128, 0.24);
+  transition: transform 0.2s ease, box-shadow 0.2s ease, filter 0.2s ease;
+}
+
+.contact-form .btn-submit-contact:hover {
+  transform: translateY(-2px);
+  filter: brightness(1.08);
+  box-shadow: 0 18px 34px rgba(0, 48, 128, 0.30);
+}
+
+.contact-form .btn-submit-contact:active {
+  transform: translateY(0);
+  box-shadow: 0 8px 16px rgba(0, 48, 128, 0.26);
+}
+
+@media (max-width: 640px) {
+  .contact-form {
+    padding: 24px 20px;
+    border-radius: 20px;
+  }
+}
