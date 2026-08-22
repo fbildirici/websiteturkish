@@ -83,9 +83,84 @@ function initMobileNavigation() {
   });
 }
 
+function initNavDot() {
+  const nav = document.querySelector('.header .nav');
+  if (!nav) return;
+
+  const links = Array.from(nav.querySelectorAll('.nav-link'));
+  if (!links.length) return;
+
+  const dot = document.createElement('span');
+  dot.className = 'nav-dot';
+  dot.setAttribute('aria-hidden', 'true');
+  nav.appendChild(dot);
+  nav.classList.add('has-dot');
+
+  const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  let currentX = null;
+  let settleTimer;
+
+  function moveTo(link, instant) {
+    if (!link) return;
+    const x = link.offsetLeft + link.offsetWidth / 2;
+    const distance = currentX === null ? 0 : Math.abs(x - currentX);
+    currentX = x;
+    clearTimeout(settleTimer);
+
+    if (instant) {
+      dot.style.transition = 'none';
+      dot.style.transform = 'translateX(' + x + 'px)';
+      requestAnimationFrame(() => { dot.style.transition = ''; });
+    } else if (reduceMotion || !distance) {
+      dot.style.transform = 'translateX(' + x + 'px)';
+    } else {
+      // stretch while travelling, then settle back into a dot
+      const stretch = Math.min(1 + distance / 90, 2.6);
+      dot.style.transform = 'translateX(' + x + 'px) scaleX(' + stretch + ')';
+      settleTimer = setTimeout(() => {
+        dot.style.transform = 'translateX(' + x + 'px) scaleX(1)';
+      }, 180);
+    }
+
+    dot.classList.add('is-on');
+  }
+
+  function settleOnActive(instant) {
+    const active = nav.querySelector('.nav-link.active');
+    if (active) moveTo(active, instant);
+    else dot.classList.remove('is-on');
+  }
+
+  links.forEach(link => {
+    link.addEventListener('mouseenter', () => moveTo(link));
+    link.addEventListener('focus', () => moveTo(link));
+  });
+
+  nav.addEventListener('mouseleave', () => settleOnActive(false));
+  nav.addEventListener('focusout', event => {
+    if (!nav.contains(event.relatedTarget)) settleOnActive(false);
+  });
+
+  window.addEventListener('resize', () => {
+    currentX = null;
+    settleOnActive(true);
+  });
+
+  settleOnActive(true);
+
+  // Link widths shift once the webfont lands
+  if (document.fonts && document.fonts.ready) {
+    document.fonts.ready.then(() => {
+      currentX = null;
+      settleOnActive(true);
+    });
+  }
+}
+
 document.addEventListener('DOMContentLoaded', function () {
   ensureSafeExternalLinks();
   initMobileNavigation();
+  initNavDot();
 });
 
 function initCommitLastUpdated() {
