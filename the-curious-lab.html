@@ -41,92 +41,170 @@
     </div>
   </header>
 
-  <main id="main-content" class="research-lab-page">
-    <section class="research-lab-hero" aria-labelledby="research-lab-title">
-      <div class="container">
-        <div class="research-lab-brand">
-          <a href="the-curious-lab.html" aria-label="The Curious Lab ana sayfa">
-            <img src="assets/images/curious-mark-light-transparent.png" alt="The Curious Lab logosu" width="1254" height="1254">
-            <span lang="en"><strong>The Curious Lab</strong><small>Independent AI Research Lab</small></span>
+  <main id="main-content" class="tcl-page">
+
+    <!-- 01 — HERO -->
+    <section class="tcl-hero" aria-labelledby="tcl-title">
+      <div class="container tcl-hero-grid">
+        <div class="tcl-hero-copy">
+          <p class="tcl-kicker" lang="en">Artificial Intelligence · Organizations · Society</p>
+          <h1 id="tcl-title" lang="en">The Curious Lab</h1>
+          <p class="tcl-hero-role" lang="en">Independent AI Research Lab</p>
+          <p class="tcl-hero-lead">Yapay zeka, kurumlar ve toplum kesişimindeki soruları araştıran bağımsız bir laboratuvar.</p>
+          <a class="tcl-scroll-cta" href="#manifesto" lang="en">
+            <span>Explore the Lab</span>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 4.5v15"/><path d="M6 13.5 12 19.5l6-6"/></svg>
           </a>
-          <span class="research-lab-status" lang="en"><i aria-hidden="true"></i> Independent research</span>
+          <p class="tcl-hero-status" lang="en"><i aria-hidden="true"></i> Independent research</p>
         </div>
 
-        <div class="research-lab-hero-grid">
-          <div class="research-lab-intro">
-            <p class="research-lab-kicker" lang="en">Artificial Intelligence · Organizations · Society</p>
-            <h1 id="research-lab-title">Yapay zeka sistemlerini ve bu sistemlerin kurumlarda nasıl kullanıldığını araştırıyoruz.</h1>
-            <p>The Curious Lab; model değerlendirme, açıklanabilirlik, yapay zeka okuryazarlığı ve kurumsal kullanım üzerine çalışan bağımsız bir araştırma laboratuvarıdır.</p>
-            <div class="research-lab-links">
-              <a href="#research">Araştırma alanları <span>↓</span></a>
-              <a href="https://huggingface.co/thecuriouslab" target="_blank" rel="noopener noreferrer" lang="en">Hugging Face <span>↗</span></a>
+        <div class="tcl-hero-stage">
+          <div class="tcl-system tcl-system-hero"
+               data-tcl-system
+               data-nodes="DATA:-90,MODEL:-30,EVALUATION:30,EXPLANATION:90,HUMAN:150,GOVERNANCE:210"
+               data-sequence="DATA>MODEL|MODEL>EVALUATION; EVALUATION>EXPLANATION|EXPLANATION>HUMAN; HUMAN>GOVERNANCE; GOVERNANCE>DATA"
+               data-spokes="true">
+            <div class="tcl-core">
+              <img src="assets/images/curious-mark-light-transparent.png" alt="The Curious Lab logosu" width="1254" height="1254" fetchpriority="high" decoding="async">
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 02 — MANIFESTO -->
+    <section class="tcl-manifesto" id="manifesto" aria-labelledby="tcl-manifesto-title">
+      <div class="container">
+        <p class="tcl-kicker" lang="en">Manifesto</p>
+        <h2 id="tcl-manifesto-title" lang="en">AI does not exist in isolation.</h2>
+        <p class="tcl-manifesto-body">Modeller; veriyle, insanlarla ve kurumlarla birlikte çalışır. The Curious Lab bu ilişkileri inceleyerek yapay zekanın nasıl davrandığını, nasıl açıklanabileceğini ve çevresindeki sistemleri nasıl değiştirdiğini anlamaya çalışır.</p>
+      </div>
+    </section>
+
+    <!-- 03 — RESEARCH AREAS -->
+    <section class="tcl-areas" id="research" aria-labelledby="tcl-areas-title">
+      <div class="container">
+        <p class="tcl-kicker tcl-areas-kicker" lang="en">Research areas</p>
+        <h2 id="tcl-areas-title" class="sr-only">Araştırma alanları</h2>
+
+        <div class="tcl-areas-grid">
+          <div class="tcl-areas-stage">
+            <div class="tcl-stage-sticky">
+              <div class="tcl-system tcl-system-areas"
+                   data-tcl-system
+                   data-morph="true"
+                   data-nodes="DATA:-90,MODEL:30,EVALUATION:150"
+                   data-sequence="DATA>MODEL; MODEL>EVALUATION; EVALUATION>DATA"></div>
+              <p class="tcl-stage-caption" aria-hidden="true" lang="en"><span data-tcl-caption>data · model · evaluation</span></p>
             </div>
           </div>
 
-          <figure class="research-lab-mark">
-            <img src="assets/images/curious-mark-light-transparent.png" alt="The Curious Lab insan ve yapay zeka ağı logosu" width="1254" height="1254">
-            <blockquote>
-              <p lang="en">“The test of all knowledge is experiment. Experiment is the sole judge of scientific ‘truth.’”</p>
-              <footer lang="en">Richard P. Feynman</footer>
-            </blockquote>
-          </figure>
+          <article class="tcl-scene" data-tcl-scene
+                   data-nodes="DATA:-90,MODEL:30,EVALUATION:150"
+                   data-sequence="DATA>MODEL; MODEL>EVALUATION; EVALUATION>DATA"
+                   data-caption="data · model · evaluation">
+            <p class="tcl-scene-meta" lang="en"><b>01</b> <span>Model behaviour</span></p>
+            <h3 lang="en">AI Systems &amp; Model Behaviour</h3>
+            <p>Yapay zeka modellerinin davranışı, değerlendirme ölçütleri ve açıklanabilirlik yöntemleri. Bir modelin ne zaman güvenilir olduğunu, nerede bozulduğunu ve sınırlarının nerede başladığını inceliyoruz.</p>
+          </article>
+
+          <article class="tcl-scene" data-tcl-scene
+                   data-nodes="GOVERNANCE:-90,MODEL:30,HUMAN:150"
+                   data-sequence="MODEL>HUMAN; HUMAN>GOVERNANCE; GOVERNANCE>MODEL"
+                   data-caption="model · human · governance">
+            <p class="tcl-scene-meta" lang="en"><b>02</b> <span>Organizations</span></p>
+            <h3 lang="en">AI in Organizations</h3>
+            <p>Yapay zeka araçlarının ekiplerin kararları, çalışma pratikleri ve sorumluluk dağılımı üzerindeki etkileri. Bir model kuruma girdiğinde asıl değişen şey çoğu zaman modelin kendisi değildir.</p>
+          </article>
+
+          <article class="tcl-scene" data-tcl-scene
+                   data-nodes="EXPLANATION:-90,MODEL:30,HUMAN:150"
+                   data-sequence="MODEL>EXPLANATION; EXPLANATION>HUMAN; HUMAN>MODEL"
+                   data-caption="model · explanation · human">
+            <p class="tcl-scene-meta" lang="en"><b>03</b> <span>Literacy</span></p>
+            <h3 lang="en">AI Literacy &amp; Understanding</h3>
+            <p>Teknik olmayan grupların yapay zeka sistemlerini anlaması, değerlendirmesi ve eleştirel biçimde kullanması. Açıklama, ancak karşısındaki kişide bir anlam oluşturduğunda açıklamadır.</p>
+          </article>
         </div>
       </div>
     </section>
 
-    <section class="research-lab-section research-lab-fields" id="research" aria-labelledby="research-fields-title">
+    <!-- 04 — HOW WE WORK -->
+    <section class="tcl-method" aria-labelledby="tcl-method-title">
       <div class="container">
-        <div class="research-lab-section-head">
-          <p class="research-lab-kicker" lang="en">Research areas</p>
-          <h2 id="research-fields-title">Araştırma alanları</h2>
-          <p>Çalışmalar güncel literatür, sistem incelemesi ve kullanım bağlamını birlikte ele alır.</p>
-        </div>
+        <p class="tcl-kicker" lang="en">How we work</p>
+        <h2 id="tcl-method-title">Çalışma biçimi</h2>
 
-        <div class="research-lab-field-list">
-          <article>
-            <span>01</span>
-            <h3>Model değerlendirme ve açıklanabilirlik</h3>
-            <p>Yapay zeka modellerinin davranışı, değerlendirme ölçütleri, açıklanabilirlik yöntemleri ve kullanım sınırları.</p>
-          </article>
-          <article>
-            <span>02</span>
-            <h3>Kurumsal kullanım</h3>
-            <p>Yapay zeka araçlarının ekiplerin kararları, çalışma pratikleri ve sorumluluk dağılımı üzerindeki etkileri.</p>
-          </article>
-          <article>
-            <span>03</span>
-            <h3>Yapay zeka okuryazarlığı</h3>
-            <p>Teknik olmayan grupların yapay zeka sistemlerini anlaması, değerlendirmesi ve eleştirel biçimde kullanması.</p>
-          </article>
-        </div>
-      </div>
-    </section>
-
-    <section class="research-lab-section research-lab-method" aria-labelledby="research-method-title">
-      <div class="container research-lab-method-grid">
-        <div>
-          <p class="research-lab-kicker" lang="en">Method</p>
-          <h2 id="research-method-title">Çalışma biçimi</h2>
-          <p>Her çalışma açık bir araştırma sorusuyla başlar. Literatür, mevcut sistemler ve uygulama bağlamı incelenir. Bulgular, kaynağı ve sınırları belirtilerek paylaşılır.</p>
-        </div>
-        <ol>
-          <li><span>01</span><div><strong>Soru</strong><p>Kapsam ve araştırma sorusu tanımlanır.</p></div></li>
-          <li><span>02</span><div><strong>İnceleme</strong><p>Kanıtlar ve sistem davranışları incelenir.</p></div></li>
-          <li><span>03</span><div><strong>Paylaşım</strong><p>Bulgular araştırma notu veya çerçeve olarak yayımlanır.</p></div></li>
+        <ol class="tcl-method-track">
+          <span class="tcl-method-rail" aria-hidden="true"><i data-tcl-rail></i></span>
+          <li class="tcl-method-step" data-tcl-step>
+            <span class="tcl-method-dot" aria-hidden="true"></span>
+            <h3 lang="en">Question</h3>
+            <p>Ne anlamamız gerekiyor? Her çalışma açık bir araştırma sorusuyla başlar.</p>
+          </li>
+          <li class="tcl-method-step" data-tcl-step>
+            <span class="tcl-method-dot" aria-hidden="true"></span>
+            <h3 lang="en">Explore</h3>
+            <p>Modeller, kanıtlar ve sistemler birlikte incelenir; bağlamından koparılmaz.</p>
+          </li>
+          <li class="tcl-method-step" data-tcl-step>
+            <span class="tcl-method-dot" aria-hidden="true"></span>
+            <h3 lang="en">Share</h3>
+            <p>Öğrendiklerimizi kaynağı ve sınırlarıyla birlikte erişilebilir hale getiririz.</p>
+          </li>
         </ol>
       </div>
     </section>
 
-    <section class="research-lab-open" aria-labelledby="open-research-title">
-      <div class="container">
+    <!-- 05 — OPEN RESEARCH -->
+    <section class="tcl-open" aria-labelledby="tcl-open-title">
+      <div class="container tcl-open-grid">
         <div>
-          <p class="research-lab-kicker" lang="en">Open research</p>
-          <h2 id="open-research-title">Açık çalışmalar</h2>
+          <p class="tcl-kicker" lang="en">Open research</p>
+          <h2 id="tcl-open-title" lang="en">Open by default.</h2>
+          <p>Araştırma sırasında ortaya çıkan modelleri, veri çalışmalarını ve deneyleri mümkün olduğunca açık paylaşmaya çalışıyoruz.</p>
+          <a class="tcl-link" href="https://huggingface.co/thecuriouslab" target="_blank" rel="noopener noreferrer" lang="en">
+            <span>Explore on Hugging Face</span>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7.5 16.5 16.5 7.5"/><path d="M9 7.5h7.5V15"/></svg>
+          </a>
         </div>
-        <p>Herkese açık modeller, deneyler ve araştırma notları The Curious Lab’in Hugging Face sayfasında yer alır.</p>
-        <a href="https://huggingface.co/thecuriouslab" target="_blank" rel="noopener noreferrer">huggingface.co/thecuriouslab <span>↗</span></a>
+        <div class="tcl-open-stage">
+          <div class="tcl-system tcl-system-open"
+               data-tcl-system
+               data-mode="emit"
+               data-nodes="RESEARCH:-90,NOTES:-18,MODELS:54,DATASETS:126,EXPERIMENTS:198"></div>
+        </div>
       </div>
     </section>
+
+    <!-- 06 — ABOUT + CONTACT -->
+    <section class="tcl-about" aria-labelledby="tcl-about-title">
+      <div class="container tcl-about-grid">
+        <div>
+          <p class="tcl-kicker" lang="en">About</p>
+          <h2 id="tcl-about-title" lang="en">An independent research lab.</h2>
+          <p>The Curious Lab; yapay zeka, kurumlar ve toplum kesişimindeki soruları araştırır. Çalışmalar bağımsız yürütülür ve bulgular kaynağıyla birlikte paylaşılır.</p>
+          <p class="tcl-about-founder" lang="en">Founded by <a href="hakkinda.html">Fatih Bildirici, PhD(c)</a>.</p>
+        </div>
+        <figure class="tcl-quote">
+          <img class="tcl-quote-portrait" src="assets/images/feynman-portrait.png" alt="Richard P. Feynman çizimi" width="300" height="606" loading="lazy" decoding="async">
+          <blockquote lang="en"><p>“The test of all knowledge is experiment. Experiment is the sole judge of scientific ‘truth.’”</p></blockquote>
+          <figcaption lang="en">Richard P. Feynman</figcaption>
+        </figure>
+      </div>
+    </section>
+
+    <section class="tcl-cta" aria-labelledby="tcl-cta-title">
+      <div class="container">
+        <h2 id="tcl-cta-title" lang="en">What are you curious about?</h2>
+        <p>Araştırma fikirleri, iş birlikleri ve sohbetler için yazabilirsiniz.</p>
+        <a class="tcl-link tcl-link-lg" href="iletisim.html" lang="en">
+          <span>Get in touch</span>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 12h15"/><path d="M13.5 6.5 19.5 12l-6 5.5"/></svg>
+        </a>
+      </div>
+    </section>
+
   </main>
 
   <footer class="footer">
@@ -186,5 +264,6 @@
   </footer>
 
   <script src="script.js"></script>
+  <script src="curious-lab.js"></script>
 </body>
 </html>

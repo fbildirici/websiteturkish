@@ -364,7 +364,7 @@ document.addEventListener('DOMContentLoaded', function() {
 // Shared, restrained reveal motion for cards and content groups across the site.
 function initSiteRevealMotion() {
   const targets = document.querySelectorAll([
-    '.wid-card',
+    '.cap-panel',
     '.hl-row',
     '.compact-card',
     '.youtube-card',
