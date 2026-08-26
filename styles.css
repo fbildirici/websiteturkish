@@ -11127,7 +11127,7 @@ body {
 }
 
 .tcl-page .container {
-  max-width: 1240px;
+  max-width: 1320px;
 }
 
 .tcl-kicker {
@@ -12389,8 +12389,8 @@ body {
    Right: kicker, statement, and hairline-separated facts.
    ========================================================================= */
 .tcl-areas-grid {
-  grid-template-columns: minmax(0, 1.02fr) minmax(0, 1fr);
-  column-gap: clamp(44px, 5vw, 88px);
+  grid-template-columns: minmax(0, 1.32fr) minmax(0, 1fr);
+  column-gap: clamp(40px, 4.2vw, 72px);
 }
 
 /* Panel sits on the left; the four topic blocks stack on the right. */
@@ -12413,11 +12413,11 @@ body {
 }
 
 .tcl-panel {
-  padding: 22px 22px 20px;
+  padding: 26px 26px 24px;
   border: 1px solid var(--tcl-line);
-  border-radius: 18px;
+  border-radius: 20px;
   background: #fff;
-  box-shadow: 0 22px 52px rgba(13, 23, 48, 0.07);
+  box-shadow: 0 26px 60px rgba(13, 23, 48, 0.09);
 }
 
 .tcl-panel-cap {
@@ -12448,69 +12448,28 @@ body {
 
 .tcl-shot {
   margin: 0;
-  aspect-ratio: 16 / 10;
-  background: #dde4ef;
+  aspect-ratio: 4 / 3;
+  background: #0a1d44;
 }
 
 .tcl-shot img,
+.tcl-shot video,
 .tcl-panel-frames img {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  /* The stills come from different venues and light; one navy duotone makes
-     them read as a single designed set rather than an event album. */
-  transition: opacity 0.28s ease, transform 7s ease-out, filter 0.5s ease;
+  transition: opacity 0.28s ease, transform 7s ease-out;
 }
 
-/* Hero tile keeps its life; the strip goes deeper so the two read as
-   foreground and supporting evidence rather than four equal photos. */
-.tcl-shot img {
-  filter: grayscale(0.45) contrast(1.06) saturate(1.05);
+/* Media keeps its own colour. */
+.tcl-shot,
+.tcl-panel-frames li {
+  isolation: isolate;
+  background: #0a1d44;
 }
 
-.tcl-panel-frames img {
-  filter: grayscale(0.92) contrast(1.08) brightness(1.02);
-}
-
-.tcl-shot::after,
-.tcl-panel-frames li::after {
-  content: '';
-  position: absolute;
-  inset: 0;
-  z-index: 1;
-  pointer-events: none;
-  mix-blend-mode: multiply;
-}
-
-.tcl-shot::after {
-  background:
-    linear-gradient(180deg, rgba(4, 20, 52, 0) 46%, rgba(4, 20, 52, 0.72) 100%),
-    linear-gradient(160deg, rgba(0, 48, 128, 0.26) 0%, rgba(4, 24, 62, 0.34) 100%);
-}
-
-.tcl-panel-frames li::after {
-  background:
-    linear-gradient(180deg, rgba(4, 20, 52, 0.08) 40%, rgba(4, 20, 52, 0.7) 100%),
-    linear-gradient(160deg, rgba(0, 48, 128, 0.55) 0%, rgba(4, 24, 62, 0.68) 100%);
-}
-
-.tcl-shot::before {
-  content: '';
-  position: absolute;
-  inset: 0;
-  z-index: 2;
-  pointer-events: none;
-  background: radial-gradient(120% 80% at 78% 12%, rgba(244, 146, 78, 0.22), transparent 58%);
-}
-
-.tcl-shot:hover img {
-  filter: grayscale(0.12) contrast(1.05) saturate(1.08);
-}
-
-.tcl-panel-frames li:hover img {
-  filter: grayscale(0.45) contrast(1.06) brightness(1.04);
-}
-
+.tcl-shot .tcl-tag,
+.tcl-panel-frames .tcl-tag,
 /* A slow drift keeps the stills from reading as static screenshots. */
 .js .tcl-shot img {
   transform: scale(1.06);
@@ -12530,15 +12489,19 @@ body {
   /* Block, not a centring grid: the children size themselves from their insets
      so the diagram gets real dimensions to measure. */
   display: block;
-  background: linear-gradient(155deg, #06265f 0%, #041b46 100%);
+  border: 1px solid var(--tcl-line);
+  background: #fff;
 }
 
 .tcl-readout {
   position: absolute;
-  top: 9px;
-  right: 10px;
-  z-index: 2;
-  color: rgba(255, 255, 255, 0.62);
+  top: 10px;
+  right: 11px;
+  z-index: 3;
+  max-width: calc(100% - 22px);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  color: #8a93a5;
   font-family: var(--font-sans);
   font-size: 8.5px;
   font-weight: 650;
@@ -12564,60 +12527,21 @@ body {
 .tcl-system-mini .tcl-node-dot {
   width: 7px;
   height: 7px;
-  background: #9dc0ff;
-  box-shadow: 0 0 0 3px rgba(157, 192, 255, 0.16);
+  background: var(--tcl-navy);
+  box-shadow: 0 0 0 3px rgba(0, 48, 128, 0.12);
 }
 
 .tcl-system-mini .tcl-link-base {
-  stroke: rgba(255, 255, 255, 0.22);
+  stroke: rgba(0, 48, 128, 0.18);
 }
 
 .tcl-system-mini .tcl-link-live {
-  stroke: #9dc0ff;
+  stroke: var(--tcl-navy);
   stroke-width: 1.4;
 }
 
 .tcl-system-mini .tcl-pulse {
   fill: #f4924e;
-}
-
-.tcl-steps {
-  position: absolute;
-  inset: 24px 12px 10px;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  gap: 5px;
-  margin: 0;
-  padding: 0;
-  list-style: none;
-}
-
-.tcl-steps li {
-  display: flex;
-  align-items: baseline;
-  gap: 8px;
-  color: rgba(255, 255, 255, 0.42);
-  font-family: var(--font-sans);
-  font-size: 9px;
-  font-weight: 600;
-  letter-spacing: 0.04em;
-  transition: color 0.35s ease;
-}
-
-.tcl-steps li b {
-  color: rgba(255, 255, 255, 0.3);
-  font-weight: 750;
-  transition: color 0.35s ease;
-}
-
-.tcl-steps li.is-live,
-.tcl-steps li.is-live b {
-  color: #fff;
-}
-
-.tcl-steps li.is-live b {
-  color: #f4924e;
 }
 
 /* Pill label, shared by every tile in the panel. */
@@ -12632,8 +12556,9 @@ body {
   max-width: calc(100% - 18px);
   padding: 4px 9px;
   border-radius: 999px;
-  background: rgba(10, 22, 46, 0.72);
-  color: #fff;
+  background: rgba(255, 255, 255, 0.92);
+  border: 1px solid var(--tcl-line);
+  color: #24466f;
   font-family: var(--font-sans);
   font-size: 9px;
   font-weight: 650;
@@ -12670,25 +12595,8 @@ body {
 }
 
 .tcl-panel-frames li {
-  aspect-ratio: 6 / 5;
-  background: #dde4ef;
-}
-
-.tcl-frame-idx {
-  position: absolute;
-  top: 8px;
-  left: 9px;
-  z-index: 2;
-  color: rgba(255, 255, 255, 0.9);
-  font-family: var(--font-sans);
-  font-size: 8.5px;
-  font-weight: 750;
-  letter-spacing: 0.1em;
-  text-shadow: 0 1px 4px rgba(6, 20, 51, 0.6);
-}
-
-.tcl-frame-label {
-  font-size: 9px;
+  aspect-ratio: 1 / 1;
+  background: #0a1d44;
 }
 
 /* Frames re-enter in sequence whenever the topic changes. */
@@ -12798,19 +12706,27 @@ body {
 
 @media (max-width: 620px) {
   .tcl-panel {
-    padding: 16px 16px 15px;
+    padding: 14px 14px 14px;
   }
 
-  .tcl-panel-frames {
+  /* Hero on its own row; the two technical tiles pair up beneath it. */
+  .tcl-panel-top {
     grid-template-columns: 1fr;
     gap: 8px;
   }
 
-  .tcl-panel-frames li {
-    flex-direction: row;
-    align-items: baseline;
-    gap: 10px;
-    padding: 10px 12px;
+  .tcl-side {
+    grid-template-rows: none;
+    grid-template-columns: 1fr 1fr;
+    gap: 8px;
+  }
+
+  .tcl-tile {
+    min-height: 132px;
+  }
+
+  .tcl-panel-frames {
+    gap: 8px;
   }
 
   .tcl-facts li {
@@ -12830,5 +12746,313 @@ body {
     animation: none;
     opacity: 1;
     transform: none;
+  }
+}
+
+/* Feynman portrait above the quote — drawn from the lab's own mark. */
+.tcl-quote-portrait {
+  display: block;
+  width: 96px;
+  height: auto;
+  margin: 0 0 20px;
+}
+
+/* --- Panel diagram: instrument-grade finish --- */
+.tcl-system-mini .tcl-node-dot {
+  transition: transform 0.55s cubic-bezier(0.22, 1, 0.36, 1),
+              box-shadow 0.55s ease, background 0.55s ease;
+}
+
+/* The two nodes on the live link step forward while it draws. */
+.tcl-system-mini .tcl-node.is-live .tcl-node-dot {
+  transform: scale(1.55);
+  background: var(--tcl-navy);
+  box-shadow: 0 0 0 5px rgba(0, 48, 128, 0.14), 0 0 12px rgba(0, 48, 128, 0.35);
+}
+
+.tcl-ring {
+  fill: none;
+  stroke: rgba(0, 48, 128, 0.45);
+  stroke-width: 1.1;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.tcl-pulse-trail {
+  fill: #f4924e;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.tcl-system-mini .tcl-link-live {
+  stroke-width: 1.6;
+  stroke-linecap: round;
+}
+
+
+
+@media (prefers-reduced-motion: reduce) {
+  .tcl-ring,
+  .tcl-pulse-trail {
+    display: none;
+  }
+
+}
+
+/* Rings take their colour from the field they bloom on. */
+.tcl-system-hero .tcl-ring,
+.tcl-system-open .tcl-ring {
+  stroke: rgba(0, 48, 128, 0.4);
+}
+
+/* --- Tile B: a small layered network with a propagation wave --- */
+@keyframes tcl-edge-fire {
+  0%, 62%, 100% { stroke: rgba(157, 192, 255, 0.16); stroke-width: 0.7; }
+  16% { stroke: rgba(190, 216, 255, 0.85); stroke-width: 1.1; }
+}
+
+@keyframes tcl-node-fire {
+  0%, 62%, 100% { fill: rgba(157, 192, 255, 0.34); r: 3.4; }
+  14% { fill: #ffffff; r: 4.4; }
+}
+
+/* The one step being drawn, named under the net. */
+.tcl-net-step {
+  position: absolute;
+  left: 12px;
+  right: 12px;
+  bottom: 11px;
+  margin: 0;
+  padding-bottom: 5px;
+  color: #24466f;
+  font-family: var(--font-sans);
+  font-size: 9.5px;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.tcl-net-step::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 1px;
+  background: linear-gradient(90deg, #f4924e, rgba(244, 146, 78, 0.3));
+  transform: scaleX(var(--tcl-step, 0));
+  transform-origin: left center;
+}
+
+/* --- Tile A: direction made explicit on the concept graph --- */
+.tcl-arrow-head {
+  fill: var(--tcl-navy);
+}
+
+.tcl-system-hero .tcl-arrow-head,
+.tcl-system-open .tcl-arrow-head {
+  fill: #003080;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .tcl-net-step::after {
+    transform: scaleX(1);
+  }
+}
+
+/* =========================================================================
+   PER-TOPIC MECHANISM DRAWINGS
+   Navy line work on the open panel — no filled tiles. Each research area
+   shows the mechanism it actually studies, not a shared decoration.
+   ========================================================================= */
+.tcl-mech {
+  position: absolute;
+  inset: 22px 12px 32px;
+}
+
+.tcl-mech-svg {
+  width: 100%;
+  height: 100%;
+  overflow: visible;
+}
+
+/* --- XAI: a saliency field --- */
+.tcl-cell {
+  fill: rgba(0, 48, 128, 0.07);
+}
+
+.js .tcl-cell {
+  animation: tcl-cell-scan 3.4s var(--d, 0s) ease-in-out infinite;
+}
+
+.js .tcl-cell.is-hot {
+  animation-name: tcl-cell-hot;
+}
+
+@keyframes tcl-cell-scan {
+  0%, 55%, 100% { fill: rgba(0, 48, 128, 0.07); }
+  22% { fill: rgba(0, 48, 128, 0.16); }
+}
+
+@keyframes tcl-cell-hot {
+  0%, 55%, 100% { fill: rgba(0, 48, 128, 0.1); }
+  22% { fill: rgba(0, 48, 128, 0.82); }
+}
+
+/* --- RL: a policy rollout over a state grid --- */
+.tcl-grid-dot {
+  fill: rgba(0, 48, 128, 0.18);
+}
+
+.tcl-route {
+  fill: none;
+  stroke: var(--tcl-navy);
+  stroke-width: 1.6;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  stroke-dasharray: 1;
+  stroke-dashoffset: 1;
+}
+
+.js .tcl-route {
+  animation: tcl-route-draw 5.2s var(--d, 0s) ease-in-out infinite;
+}
+
+.tcl-route-head {
+  fill: var(--tcl-accent);
+  opacity: 0;
+}
+
+.js .tcl-route-head {
+  animation: tcl-head-show 5.2s var(--d, 0s) linear infinite;
+}
+
+@keyframes tcl-route-draw {
+  0% { stroke-dashoffset: 1; opacity: 1; }
+  38% { stroke-dashoffset: 0; opacity: 1; }
+  46% { opacity: 1; }
+  56%, 100% { stroke-dashoffset: 0; opacity: 0; }
+}
+
+@keyframes tcl-head-show {
+  0%, 48% { opacity: 1; }
+  52%, 100% { opacity: 0; }
+}
+
+/* --- XRL: a decision tree with one path accounted for --- */
+.tcl-branch {
+  fill: none;
+  stroke: rgba(0, 48, 128, 0.28);
+  stroke-width: 1.1;
+}
+
+.tcl-branch.is-path {
+  stroke: var(--tcl-navy);
+  stroke-width: 1.7;
+  stroke-dasharray: 1;
+  stroke-dashoffset: 1;
+}
+
+.js .tcl-branch.is-path {
+  animation: tcl-branch-draw 4.2s var(--d, 0s) ease-in-out infinite;
+}
+
+.tcl-branch-node {
+  fill: rgba(0, 48, 128, 0.34);
+}
+
+.tcl-branch-node.is-path {
+  fill: var(--tcl-navy);
+}
+
+.js .tcl-branch-node.is-path {
+  animation: tcl-branch-pop 4.2s var(--d, 0s) ease-out infinite;
+}
+
+@keyframes tcl-branch-draw {
+  0%, 6% { stroke-dashoffset: 1; }
+  34%, 86% { stroke-dashoffset: 0; }
+  100% { stroke-dashoffset: 1; }
+}
+
+@keyframes tcl-branch-pop {
+  0%, 8% { r: 2.8; fill: rgba(0, 48, 128, 0.34); }
+  30%, 86% { r: 4; fill: var(--tcl-navy); }
+  100% { r: 2.8; fill: rgba(0, 48, 128, 0.34); }
+}
+
+/* --- AI in the World: adoption spreading through an organisation --- */
+.tcl-spread-edge {
+  stroke: rgba(0, 48, 128, 0.14);
+  stroke-width: 0.9;
+}
+
+.js .tcl-spread-edge {
+  animation: tcl-spread-line 4s var(--d, 0s) ease-in-out infinite;
+}
+
+.tcl-spread-node {
+  fill: rgba(0, 48, 128, 0.2);
+}
+
+.js .tcl-spread-node {
+  animation: tcl-spread-dot 4s var(--d, 0s) ease-out infinite;
+}
+
+@keyframes tcl-spread-line {
+  0%, 4% { stroke: rgba(0, 48, 128, 0.1); }
+  26%, 72% { stroke: rgba(0, 48, 128, 0.45); }
+  100% { stroke: rgba(0, 48, 128, 0.1); }
+}
+
+@keyframes tcl-spread-dot {
+  0%, 4% { fill: rgba(0, 48, 128, 0.16); }
+  22% { fill: var(--tcl-accent); }
+  40%, 72% { fill: var(--tcl-navy); }
+  100% { fill: rgba(0, 48, 128, 0.16); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .js .tcl-cell,
+  .js .tcl-route,
+  .js .tcl-route-head,
+  .js .tcl-branch.is-path,
+  .js .tcl-branch-node.is-path,
+  .js .tcl-spread-edge,
+  .js .tcl-spread-node {
+    animation: none;
+  }
+
+  /* Without motion each mechanism still has to state its result. */
+  .tcl-cell.is-hot {
+    fill: rgba(0, 48, 128, 0.82);
+  }
+
+  .tcl-route {
+    stroke-dashoffset: 0;
+    opacity: 1;
+  }
+
+  .tcl-route-head {
+    display: none;
+  }
+
+  .tcl-branch.is-path {
+    stroke-dashoffset: 0;
+  }
+
+  .tcl-branch-node.is-path {
+    r: 4;
+    fill: var(--tcl-navy);
+  }
+
+  .tcl-spread-edge {
+    stroke: rgba(0, 48, 128, 0.45);
+  }
+
+  .tcl-spread-node {
+    fill: var(--tcl-navy);
   }
 }

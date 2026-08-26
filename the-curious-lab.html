@@ -97,8 +97,7 @@
 
                 <div class="tcl-panel-top">
                   <figure class="tcl-shot">
-                    <img data-tcl-shot src="assets/images/lab/xai-shot.jpg" alt="" width="760" height="470" loading="lazy" decoding="async">
-                    <figcaption class="tcl-tag"><i aria-hidden="true"></i><span data-tcl-shot-label>ICHORA 2026 · Feynman Explanation Prompting</span></figcaption>
+                    <video data-tcl-shot src="assets/video/lab/xai.mp4" autoplay muted loop playsinline preload="metadata" aria-hidden="true"></video>
                   </figure>
 
                   <div class="tcl-side">
@@ -113,27 +112,28 @@
                     </div>
 
                     <div class="tcl-tile">
-                      <span class="tcl-readout" lang="en">sequence</span>
-                      <ol class="tcl-steps" data-tcl-steps aria-hidden="true"></ol>
+                      <span class="tcl-readout" data-tcl-mech-label lang="en">saliency</span>
+                      <div class="tcl-mech" data-tcl-mech aria-hidden="true"></div>
+                      <p class="tcl-net-step" data-tcl-step-line aria-hidden="true"></p>
                     </div>
                   </div>
                 </div>
 
                 <p class="tcl-panel-cap" lang="en"><span data-tcl-cap-bottom>What we actually look at</span></p>
                 <ol class="tcl-panel-frames" data-tcl-frames>
-                  <li><span class="tcl-frame-idx">01</span><img src="assets/images/lab/xai-1.jpg" alt="" width="360" height="300" loading="lazy" decoding="async"><span class="tcl-tag"><i aria-hidden="true"></i><span class="tcl-frame-label">Modelin ne yapt&#305;&#287;&#305;</span></span></li>
-                  <li><span class="tcl-frame-idx">02</span><img src="assets/images/lab/xai-2.jpg" alt="" width="360" height="300" loading="lazy" decoding="async"><span class="tcl-tag"><i aria-hidden="true"></i><span class="tcl-frame-label">Nas&#305;l a&#231;&#305;klad&#305;&#287;&#305;m&#305;z</span></span></li>
-                  <li><span class="tcl-frame-idx">03</span><img src="assets/images/lab/xai-3.jpg" alt="" width="360" height="300" loading="lazy" decoding="async"><span class="tcl-tag"><i aria-hidden="true"></i><span class="tcl-frame-label">&#304;nsana ne kazand&#305;rd&#305;&#287;&#305;</span></span></li>
+                  <li><img src="assets/images/lab/xai-1.jpg" alt="" width="360" height="300" loading="lazy" decoding="async"><span class="tcl-frame-label sr-only">Modelin ne yapt&#305;&#287;&#305;</span></li>
+                  <li><img src="assets/images/lab/xai-2.jpg" alt="" width="360" height="300" loading="lazy" decoding="async"><span class="tcl-frame-label sr-only">Nas&#305;l a&#231;&#305;klad&#305;&#287;&#305;m&#305;z</span></li>
+                  <li><img src="assets/images/lab/xai-3.jpg" alt="" width="360" height="300" loading="lazy" decoding="async"><span class="tcl-frame-label sr-only">&#304;nsana ne kazand&#305;rd&#305;&#287;&#305;</span></li>
                 </ol>
               </div>
             </div>
           </div>
 
           <!-- 01 · XAI -->
-          <article class="tcl-scene" data-tcl-scene
+          <article class="tcl-scene" data-tcl-scene data-mech="saliency" data-mech-label="saliency"
                    data-nodes="MODEL:-90,EXPLANATION:0,HUMAN:90,EVALUATION:180"
                    data-sequence="MODEL>EXPLANATION; EXPLANATION>HUMAN; HUMAN>EVALUATION; EVALUATION>MODEL"
-                   data-shot="assets/images/lab/xai-shot.jpg" data-shot-label="ICHORA 2026 · Feynman Explanation Prompting" data-strip="assets/images/lab/xai-1.jpg|assets/images/lab/xai-2.jpg|assets/images/lab/xai-3.jpg"
+                   data-shot="assets/video/lab/xai.mp4" data-shot-label="Inside the model" data-strip="assets/images/lab/xai-1.jpg|assets/images/lab/xai-2.jpg|assets/images/lab/xai-3.jpg"
                    data-caption="model · explanation · human · evaluation"
                    data-cap="Explanation, model and person in one loop"
                    data-frames="Modelin ne yaptığı|Nasıl açıkladığımız|İnsana ne kazandırdığı">
@@ -157,10 +157,10 @@
           </article>
 
           <!-- 02 · RL -->
-          <article class="tcl-scene" data-tcl-scene
+          <article class="tcl-scene" data-tcl-scene data-mech="rollout" data-mech-label="policy rollout"
                    data-nodes="ENVIRONMENT:-90,POLICY:0,ACTION:90,REWARD:180"
                    data-sequence="ENVIRONMENT>POLICY; POLICY>ACTION; ACTION>REWARD; REWARD>ENVIRONMENT"
-                   data-shot="assets/images/lab/rl-shot.jpg" data-shot-label="Akademik oturum · AYBÜ" data-strip="assets/images/lab/rl-1.jpg|assets/images/lab/rl-2.jpg|assets/images/lab/rl-3.jpg"
+                   data-shot="assets/video/lab/rl.mp4" data-shot-label="Agent · interaction loop" data-strip="assets/images/lab/rl-1.jpg|assets/images/lab/rl-2.jpg|assets/images/lab/rl-3.jpg"
                    data-caption="environment · policy · action · reward"
                    data-cap="The loop an agent learns inside"
                    data-frames="Ajanın gördüğü|Denediği eylem|Ödülün söylediği">
@@ -184,10 +184,10 @@
           </article>
 
           <!-- 03 · XRL -->
-          <article class="tcl-scene" data-tcl-scene
+          <article class="tcl-scene" data-tcl-scene data-mech="trace" data-mech-label="decision trace"
                    data-nodes="POLICY:-90,DECISION:0,EXPLANATION:90,HUMAN:180"
                    data-sequence="POLICY>DECISION; DECISION>EXPLANATION; EXPLANATION>HUMAN; HUMAN>POLICY"
-                   data-shot="assets/images/lab/xrl-shot.jpg" data-shot-label="NOMS 2026 · From Black-Box to Glass-Box" data-strip="assets/images/lab/xrl-1.jpg|assets/images/lab/xrl-2.jpg|assets/images/lab/xrl-3.jpg"
+                   data-shot="assets/video/lab/xrl.mp4" data-shot-label="Decision trace" data-strip="assets/images/lab/xrl-1.jpg|assets/images/lab/xrl-2.jpg|assets/images/lab/xrl-3.jpg"
                    data-caption="policy · decision · explanation · human"
                    data-cap="Accounting for a sequence, not a single output"
                    data-frames="Verilen karar|Arkasındaki yol|Verebildiğimiz hesap">
@@ -211,10 +211,10 @@
           </article>
 
           <!-- 04 · AI in the World -->
-          <article class="tcl-scene" data-tcl-scene
+          <article class="tcl-scene" data-tcl-scene data-mech="diffusion" data-mech-label="adoption"
                    data-nodes="MODEL:-90,ORGANIZATION:0,HUMAN:90,GOVERNANCE:180"
                    data-sequence="MODEL>ORGANIZATION; ORGANIZATION>HUMAN; HUMAN>GOVERNANCE; GOVERNANCE>MODEL"
-                   data-shot="assets/images/lab/world-shot.jpg" data-shot-label="Savunma Sanayii ve Yapay Zeka Zirvesi" data-strip="assets/images/lab/world-1.jpg|assets/images/lab/world-2.jpg|assets/images/lab/world-3.jpg"
+                   data-shot="assets/video/lab/world.mp4" data-shot-label="Systems in operation" data-strip="assets/images/lab/world-1.jpg|assets/images/lab/world-2.jpg|assets/images/lab/world-3.jpg"
                    data-caption="model · organization · human · governance"
                    data-cap="Where the model stops being only a model"
                    data-frames="Modelin girdiği süreç|Değişen karar|Kurulan denetim">
