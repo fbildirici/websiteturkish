@@ -12,7 +12,14 @@
     EVALUATION: 'reliability · robustness',
     EXPLANATION: 'interpretability · understanding',
     HUMAN: 'trust · interaction',
-    GOVERNANCE: 'organizations · oversight'
+    GOVERNANCE: 'organizations · oversight',
+    // Reinforcement-learning vocabulary for the RL and XRL configurations.
+    ENVIRONMENT: 'state · dynamics',
+    POLICY: 'behaviour · control',
+    ACTION: 'choice · consequence',
+    REWARD: 'signal · objective',
+    DECISION: 'sequence · context',
+    ORGANIZATION: 'process · responsibility'
   };
 
   var DRAW = 760;      // ms to draw one link
@@ -168,6 +175,10 @@
     sys.t0 = performance.now();
     sys.cycle = cycleLength(phases);
     sys.dirty = true;
+    sys.liveStep = -1;
+    // Under reduced motion the loop parks itself once everything is drawn, so a
+    // later morph has to wake it or the new configuration is never painted.
+    ensureRunning();
   }
 
   function linkId(a, b) {
@@ -311,7 +322,10 @@
       while (delta > 180) delta -= 360;
       while (delta < -180) delta += 360;
       node.angle += delta * ease;
-      node.opacity += (node.targetOpacity - node.opacity) * (reduceMotion ? 1 : 0.09);
+      // Departing nodes clear out faster than arrivals fade in, so a morph
+      // never leaves two labels stacked on the same ring position.
+      var fade = node.targetOpacity < node.opacity ? 0.20 : 0.07;
+      node.opacity += (node.targetOpacity - node.opacity) * (reduceMotion ? 1 : fade);
 
       if (sys.mode === 'emit') {
         var cyclePos = ((now / 5200) + (node.phaseA / 6.28)) % 1;
@@ -391,6 +405,19 @@
     var lead = null;
     var leadProgress = 0;
 
+    // Mirror the active phase into the panel's readout and step list.
+    if (sys.stepEls) {
+      var idx = sys.phases.indexOf(state.phase);
+      if (idx !== sys.liveStep) {
+        sys.liveStep = idx;
+        sys.stepEls.forEach(function (el, i) { el.classList.toggle('is-live', i === idx); });
+        if (sys.readout && state.phase[0]) {
+          sys.readout.textContent =
+            state.phase[0][0].toLowerCase() + ' \u2192 ' + state.phase[0][1].toLowerCase();
+        }
+      }
+    }
+
     state.phase.forEach(function (pair, index) {
       var link = sys.links[linkId(pair[0], pair[1])];
       if (!link || !link.p0) return;
@@ -449,6 +476,60 @@
     if (!scenes.length || !stageSystem) return;
 
     var caption = document.querySelector('[data-tcl-caption]');
+    var capTop = document.querySelector('[data-tcl-cap-top]');
+    var frames = document.querySelector('[data-tcl-frames]');
+    var shot = document.querySelector('[data-tcl-shot]');
+    var shotLabel = document.querySelector('[data-tcl-shot-label]');
+    var stepList = document.querySelector('[data-tcl-steps]');
+    var stripImgs = frames
+      ? Array.prototype.slice.call(frames.querySelectorAll('img'))
+      : [];
+
+    // Cross-fade rather than swap, so a slow image never shows a blank tile.
+    function fadeTo(img, src) {
+      if (!img || !src || img.getAttribute('src') === src) return;
+      var next = new Image();
+      next.onload = function () {
+        img.style.opacity = '0';
+        window.setTimeout(function () {
+          img.src = src;
+          img.style.opacity = '';
+        }, 180);
+      };
+      next.src = src;
+    }
+
+    function swapShot(src, label) {
+      fadeTo(shot, src);
+      if (shotLabel && label) shotLabel.textContent = label;
+    }
+
+    function swapStrip(list) {
+      stripImgs.forEach(function (img, i) { fadeTo(img, list[i]); });
+    }
+
+    // The phase list mirrors exactly what the diagram is drawing.
+    function buildSteps(phases) {
+      if (!stepList) return;
+      stepList.textContent = '';
+      phases.forEach(function (phase, i) {
+        var li = document.createElement('li');
+        var n = document.createElement('b');
+        n.textContent = ('0' + (i + 1)).slice(-2);
+        var t = document.createElement('span');
+        t.textContent = phase.map(function (pair) {
+          return pair[0].toLowerCase() + ' \u2192 ' + pair[1].toLowerCase();
+        }).join(', ');
+        li.appendChild(n);
+        li.appendChild(t);
+        stepList.appendChild(li);
+      });
+      stageSystem.stepEls = Array.prototype.slice.call(stepList.children);
+      stageSystem.readout = document.querySelector('[data-tcl-readout]');
+    }
+    var frameLabels = frames
+      ? Array.prototype.slice.call(frames.querySelectorAll('.tcl-frame-label'))
+      : [];
     var active = null;
 
     function activate(scene) {
@@ -462,6 +543,22 @@
         false
       );
       if (caption) caption.textContent = scene.getAttribute('data-caption') || '';
+      if (capTop) capTop.textContent = scene.getAttribute('data-cap') || '';
+
+      var labels = (scene.getAttribute('data-frames') || '').split('|');
+      frameLabels.forEach(function (el, i) {
+        if (!labels[i]) return;
+        el.textContent = labels[i];
+      });
+
+      swapShot(scene.getAttribute('data-shot'), scene.getAttribute('data-shot-label'));
+      swapStrip((scene.getAttribute('data-strip') || '').split('|'));
+      buildSteps(parseSequence(scene.getAttribute('data-sequence')));
+      if (frames) {
+        frames.classList.remove('is-swapping');
+        void frames.offsetWidth;   // restart the stagger on every scene change
+        frames.classList.add('is-swapping');
+      }
     }
 
     if (!('IntersectionObserver' in window)) {

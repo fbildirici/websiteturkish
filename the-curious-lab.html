@@ -88,43 +88,155 @@
         <h2 id="tcl-areas-title" class="sr-only">Araştırma alanları</h2>
 
         <div class="tcl-areas-grid">
+
+          <!-- Left: the lab panel — one system, four configurations -->
           <div class="tcl-areas-stage">
             <div class="tcl-stage-sticky">
-              <div class="tcl-system tcl-system-areas"
-                   data-tcl-system
-                   data-morph="true"
-                   data-nodes="DATA:-90,MODEL:30,EVALUATION:150"
-                   data-sequence="DATA>MODEL; MODEL>EVALUATION; EVALUATION>DATA"></div>
-              <p class="tcl-stage-caption" aria-hidden="true" lang="en"><span data-tcl-caption>data · model · evaluation</span></p>
+              <div class="tcl-panel">
+                <p class="tcl-panel-cap" lang="en"><span data-tcl-cap-top>Explanation, model and person in one loop</span></p>
+
+                <div class="tcl-panel-top">
+                  <figure class="tcl-shot">
+                    <img data-tcl-shot src="assets/images/lab/xai-shot.jpg" alt="" width="760" height="470" loading="lazy" decoding="async">
+                    <figcaption class="tcl-tag"><i aria-hidden="true"></i><span data-tcl-shot-label>ICHORA 2026 · Feynman Explanation Prompting</span></figcaption>
+                  </figure>
+
+                  <div class="tcl-side">
+                    <div class="tcl-tile">
+                      <span class="tcl-readout" data-tcl-readout>model &#8594; explanation</span>
+                      <div class="tcl-system tcl-system-areas tcl-system-mini"
+                           data-tcl-system
+                           data-morph="true"
+                           data-nodes="MODEL:-90,EXPLANATION:0,HUMAN:90,EVALUATION:180"
+                           data-sequence="MODEL>EXPLANATION; EXPLANATION>HUMAN; HUMAN>EVALUATION; EVALUATION>MODEL"></div>
+                      <span class="tcl-tag"><i aria-hidden="true"></i><span data-tcl-caption>model · explanation · human · evaluation</span></span>
+                    </div>
+
+                    <div class="tcl-tile">
+                      <span class="tcl-readout" lang="en">sequence</span>
+                      <ol class="tcl-steps" data-tcl-steps aria-hidden="true"></ol>
+                    </div>
+                  </div>
+                </div>
+
+                <p class="tcl-panel-cap" lang="en"><span data-tcl-cap-bottom>What we actually look at</span></p>
+                <ol class="tcl-panel-frames" data-tcl-frames>
+                  <li><span class="tcl-frame-idx">01</span><img src="assets/images/lab/xai-1.jpg" alt="" width="360" height="300" loading="lazy" decoding="async"><span class="tcl-tag"><i aria-hidden="true"></i><span class="tcl-frame-label">Modelin ne yapt&#305;&#287;&#305;</span></span></li>
+                  <li><span class="tcl-frame-idx">02</span><img src="assets/images/lab/xai-2.jpg" alt="" width="360" height="300" loading="lazy" decoding="async"><span class="tcl-tag"><i aria-hidden="true"></i><span class="tcl-frame-label">Nas&#305;l a&#231;&#305;klad&#305;&#287;&#305;m&#305;z</span></span></li>
+                  <li><span class="tcl-frame-idx">03</span><img src="assets/images/lab/xai-3.jpg" alt="" width="360" height="300" loading="lazy" decoding="async"><span class="tcl-tag"><i aria-hidden="true"></i><span class="tcl-frame-label">&#304;nsana ne kazand&#305;rd&#305;&#287;&#305;</span></span></li>
+                </ol>
+              </div>
             </div>
           </div>
 
+          <!-- 01 · XAI -->
           <article class="tcl-scene" data-tcl-scene
-                   data-nodes="DATA:-90,MODEL:30,EVALUATION:150"
-                   data-sequence="DATA>MODEL; MODEL>EVALUATION; EVALUATION>DATA"
-                   data-caption="data · model · evaluation">
-            <p class="tcl-scene-meta" lang="en"><b>01</b> <span>Model behaviour</span></p>
-            <h3 lang="en">AI Systems &amp; Model Behaviour</h3>
-            <p>Yapay zeka modellerinin davranışı, değerlendirme ölçütleri ve açıklanabilirlik yöntemleri. Bir modelin ne zaman güvenilir olduğunu, nerede bozulduğunu ve sınırlarının nerede başladığını inceliyoruz.</p>
+                   data-nodes="MODEL:-90,EXPLANATION:0,HUMAN:90,EVALUATION:180"
+                   data-sequence="MODEL>EXPLANATION; EXPLANATION>HUMAN; HUMAN>EVALUATION; EVALUATION>MODEL"
+                   data-shot="assets/images/lab/xai-shot.jpg" data-shot-label="ICHORA 2026 · Feynman Explanation Prompting" data-strip="assets/images/lab/xai-1.jpg|assets/images/lab/xai-2.jpg|assets/images/lab/xai-3.jpg"
+                   data-caption="model · explanation · human · evaluation"
+                   data-cap="Explanation, model and person in one loop"
+                   data-frames="Modelin ne yaptığı|Nasıl açıkladığımız|İnsana ne kazandırdığı">
+            <p class="tcl-scene-kicker" lang="en">The Lab · 01 · XAI</p>
+            <h3 lang="en">Explanation is not decoration.</h3>
+            <p>Bir açıklama, karşısındaki kişide doğru bir anlam oluşturmuyorsa işe yaramaz. Modelin gerçekte ne yaptığına sadık kalan, ölçülebilir ve insana dayanan açıklama yöntemleri üzerinde çalışıyoruz.</p>
+            <ul class="tcl-facts">
+              <li>
+                <span class="tcl-fact-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="8.5"/><circle cx="12" cy="12" r="4"/><circle cx="12" cy="12" r="0.6" fill="currentColor"/></svg></span>
+                <div><b lang="en">Faithfulness</b><p>Açıklama modelin gerçek davranışını mı anlatıyor, yoksa makul görünen bir hikâye mi üretiyor?</p></div>
+              </li>
+              <li>
+                <span class="tcl-fact-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="8.4" r="3.1"/><path d="M3.4 19.6a5.6 5.6 0 0 1 11.2 0"/><path d="M16.2 6.1a3.1 3.1 0 0 1 0 5.8"/><path d="M17.6 14.4a5.6 5.6 0 0 1 3 4.6"/></svg></span>
+                <div><b lang="en">Human-grounded evaluation</b><p>Açıklamanın başarısı, onu okuyan kişinin daha doğru karar verip veremediğiyle ölçülür.</p></div>
+              </li>
+              <li>
+                <span class="tcl-fact-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3.2 3 7.6l9 4.4 9-4.4z"/><path d="m3 12 9 4.4 9-4.4"/><path d="m3 16.4 9 4.4 9-4.4"/></svg></span>
+                <div><b lang="en">System-level explanation</b><p>Tek bir tahmin değil; birbirine bağlı sistemlerin bütün davranışı açıklanabilir olmalı.</p></div>
+              </li>
+            </ul>
           </article>
 
+          <!-- 02 · RL -->
           <article class="tcl-scene" data-tcl-scene
-                   data-nodes="GOVERNANCE:-90,MODEL:30,HUMAN:150"
-                   data-sequence="MODEL>HUMAN; HUMAN>GOVERNANCE; GOVERNANCE>MODEL"
-                   data-caption="model · human · governance">
-            <p class="tcl-scene-meta" lang="en"><b>02</b> <span>Organizations</span></p>
-            <h3 lang="en">AI in Organizations</h3>
-            <p>Yapay zeka araçlarının ekiplerin kararları, çalışma pratikleri ve sorumluluk dağılımı üzerindeki etkileri. Bir model kuruma girdiğinde asıl değişen şey çoğu zaman modelin kendisi değildir.</p>
+                   data-nodes="ENVIRONMENT:-90,POLICY:0,ACTION:90,REWARD:180"
+                   data-sequence="ENVIRONMENT>POLICY; POLICY>ACTION; ACTION>REWARD; REWARD>ENVIRONMENT"
+                   data-shot="assets/images/lab/rl-shot.jpg" data-shot-label="Akademik oturum · AYBÜ" data-strip="assets/images/lab/rl-1.jpg|assets/images/lab/rl-2.jpg|assets/images/lab/rl-3.jpg"
+                   data-caption="environment · policy · action · reward"
+                   data-cap="The loop an agent learns inside"
+                   data-frames="Ajanın gördüğü|Denediği eylem|Ödülün söylediği">
+            <p class="tcl-scene-kicker" lang="en">The Lab · 02 · RL</p>
+            <h3 lang="en">Behaviour that is learned, not written.</h3>
+            <p>Pekiştirmeli öğrenmede davranış kural olarak yazılmaz, etkileşimden öğrenilir. Bu da ödülün nasıl tanımlandığını ve ajanın nerede sessizce bozulduğunu asıl soru haline getirir.</p>
+            <ul class="tcl-facts">
+              <li>
+                <span class="tcl-fact-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3.4 14 9.2l6 .5-4.6 3.9 1.4 5.9L12 16.4 7.2 19.5l1.4-5.9L4 9.7l6-.5z"/></svg></span>
+                <div><b lang="en">Reward design</b><p>Ödül fonksiyonu davranışın gizli şartnamesidir; yanlış tanımlanan ödül, yanlış davranışı doğru sayar.</p></div>
+              </li>
+              <li>
+                <span class="tcl-fact-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M3.5 20.5h17"/><path d="M3.5 20.5V4"/><path d="m6.5 16 4-4.5 3.5 3 5-6.5"/></svg></span>
+                <div><b lang="en">Generalisation</b><p>Eğitim ortamında çalışan bir politika, dağılım kaydığında ne kadar ayakta kalıyor?</p></div>
+              </li>
+              <li>
+                <span class="tcl-fact-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3.2 4.5 6.2v6c0 4.4 3.1 7.7 7.5 9.1 4.4-1.4 7.5-4.7 7.5-9.1v-6z"/><path d="m9 12 2.2 2.2L15.5 10"/></svg></span>
+                <div><b lang="en">Safe exploration</b><p>Öğrenmek denemeyi gerektirir; hangi denemelerin gerçek dünyada kabul edilebilir olduğunu tanımlamak gerekir.</p></div>
+              </li>
+            </ul>
           </article>
 
+          <!-- 03 · XRL -->
           <article class="tcl-scene" data-tcl-scene
-                   data-nodes="EXPLANATION:-90,MODEL:30,HUMAN:150"
-                   data-sequence="MODEL>EXPLANATION; EXPLANATION>HUMAN; HUMAN>MODEL"
-                   data-caption="model · explanation · human">
-            <p class="tcl-scene-meta" lang="en"><b>03</b> <span>Literacy</span></p>
-            <h3 lang="en">AI Literacy &amp; Understanding</h3>
-            <p>Teknik olmayan grupların yapay zeka sistemlerini anlaması, değerlendirmesi ve eleştirel biçimde kullanması. Açıklama, ancak karşısındaki kişide bir anlam oluşturduğunda açıklamadır.</p>
+                   data-nodes="POLICY:-90,DECISION:0,EXPLANATION:90,HUMAN:180"
+                   data-sequence="POLICY>DECISION; DECISION>EXPLANATION; EXPLANATION>HUMAN; HUMAN>POLICY"
+                   data-shot="assets/images/lab/xrl-shot.jpg" data-shot-label="NOMS 2026 · From Black-Box to Glass-Box" data-strip="assets/images/lab/xrl-1.jpg|assets/images/lab/xrl-2.jpg|assets/images/lab/xrl-3.jpg"
+                   data-caption="policy · decision · explanation · human"
+                   data-cap="Accounting for a sequence, not a single output"
+                   data-frames="Verilen karar|Arkasındaki yol|Verebildiğimiz hesap">
+            <p class="tcl-scene-kicker" lang="en">The Lab · 03 · XRL</p>
+            <h3 lang="en">Why did the agent do that?</h3>
+            <p>Açıklanabilir pekiştirmeli öğrenme, tek bir tahmini değil bir karar dizisini açıklamayı gerektirir. Bir eylemin nedeni çoğu zaman o anda değil, onlarca adım öncesindedir.</p>
+            <ul class="tcl-facts">
+              <li>
+                <span class="tcl-fact-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="6" cy="18" r="2.4"/><circle cx="18" cy="6" r="2.4"/><path d="M8.4 18h5.1a4 4 0 0 0 0-8H10a4 4 0 0 1 0-4h5.6"/></svg></span>
+                <div><b lang="en">Policy-level explanation</b><p>Tek bir eylemi değil, politikanın genel eğilimini anlaşılır kılmak.</p></div>
+              </li>
+              <li>
+                <span class="tcl-fact-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="8.5"/><path d="M12 7v5.3l3.4 2"/></svg></span>
+                <div><b lang="en">Temporal credit</b><p>Sonucu doğuran adımı, aradaki gürültünün içinden ayırt edebilmek.</p></div>
+              </li>
+              <li>
+                <span class="tcl-fact-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M3.5 12h3l2.5 5 4-14 2.5 9h5"/></svg></span>
+                <div><b lang="en">Trust in autonomy</b><p>Otonom bir sistemin ne zaman devredilmeye hazır olduğuna kim, neye bakarak karar verir?</p></div>
+              </li>
+            </ul>
           </article>
+
+          <!-- 04 · AI in the World -->
+          <article class="tcl-scene" data-tcl-scene
+                   data-nodes="MODEL:-90,ORGANIZATION:0,HUMAN:90,GOVERNANCE:180"
+                   data-sequence="MODEL>ORGANIZATION; ORGANIZATION>HUMAN; HUMAN>GOVERNANCE; GOVERNANCE>MODEL"
+                   data-shot="assets/images/lab/world-shot.jpg" data-shot-label="Savunma Sanayii ve Yapay Zeka Zirvesi" data-strip="assets/images/lab/world-1.jpg|assets/images/lab/world-2.jpg|assets/images/lab/world-3.jpg"
+                   data-caption="model · organization · human · governance"
+                   data-cap="Where the model stops being only a model"
+                   data-frames="Modelin girdiği süreç|Değişen karar|Kurulan denetim">
+            <p class="tcl-scene-kicker" lang="en">The Lab · 04 · AI in the World</p>
+            <h3 lang="en">Where models meet people.</h3>
+            <p>Bir model kuruma girdiğinde asıl değişen şey çoğu zaman modelin kendisi değildir: kararlar, sorumluluk dağılımı ve çalışma pratikleri değişir. Yapay zeka okuryazarlığı da tam burada teknik bir konu olmaktan çıkar.</p>
+            <ul class="tcl-facts">
+              <li>
+                <span class="tcl-fact-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="7" height="6" rx="1.6"/><rect x="14" y="14" width="7" height="6" rx="1.6"/><path d="M10 7h4.5a2 2 0 0 1 2 2v5"/></svg></span>
+                <div><b lang="en">Organizational integration</b><p>Model süreçlerin neresine giriyor ve hangi kararı kim onaylıyor?</p></div>
+              </li>
+              <li>
+                <span class="tcl-fact-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M3.8 4.6h5.9a3 3 0 0 1 2.3 3v11.8a2.6 2.6 0 0 0-2.3-1.9H3.8z"/><path d="M20.2 4.6h-5.9a3 3 0 0 0-2.3 3v11.8a2.6 2.6 0 0 1 2.3-1.9h5.9z"/></svg></span>
+                <div><b lang="en">AI literacy</b><p>Teknik olmayan ekiplerin sistemi anlaması, değerlendirmesi ve gerektiğinde eleştirebilmesi.</p></div>
+              </li>
+              <li>
+                <span class="tcl-fact-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M12 4v16"/><path d="M6.5 20.5h11"/><path d="M4 8h16"/><path d="M4 8 1.8 13a2.6 2.6 0 0 0 4.4 0z"/><path d="M20 8l-2.2 5a2.6 2.6 0 0 0 4.4 0z"/></svg></span>
+                <div><b lang="en">Governance &amp; oversight</b><p>Denetimin kâğıt üstünde değil, işleyen bir mekanizma olarak kurulması.</p></div>
+              </li>
+            </ul>
+          </article>
+
         </div>
       </div>
     </section>

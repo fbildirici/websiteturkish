@@ -12382,3 +12382,453 @@ body {
   color: #b6bfcd;
   font-weight: 400;
 }
+
+/* =========================================================================
+   THE CURIOUS LAB — RESEARCH AREAS, PANEL + NARRATIVE
+   Left: one sticky lab panel that reconfigures per topic.
+   Right: kicker, statement, and hairline-separated facts.
+   ========================================================================= */
+.tcl-areas-grid {
+  grid-template-columns: minmax(0, 1.02fr) minmax(0, 1fr);
+  column-gap: clamp(44px, 5vw, 88px);
+}
+
+/* Panel sits on the left; the four topic blocks stack on the right. */
+.tcl-areas-stage {
+  grid-column: 1;
+  grid-row: 1 / span 4;
+}
+
+.tcl-scene {
+  grid-column: 2;
+}
+
+.tcl-stage-sticky {
+  top: 92px;
+  display: block;
+  /* The earlier rule centred items; in block layout that shrink-wraps the
+     panel, so reset alignment and let it fill the column. */
+  place-items: normal;
+  min-height: 0;
+}
+
+.tcl-panel {
+  padding: 22px 22px 20px;
+  border: 1px solid var(--tcl-line);
+  border-radius: 18px;
+  background: #fff;
+  box-shadow: 0 22px 52px rgba(13, 23, 48, 0.07);
+}
+
+.tcl-panel-cap {
+  margin: 0 0 14px;
+  color: #7b8497;
+  font-family: var(--font-sans);
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  line-height: 1.5;
+  text-transform: uppercase;
+}
+
+/* --- panel: one big shot, two dark technical tiles, a three-frame strip --- */
+.tcl-panel-top {
+  display: grid;
+  grid-template-columns: minmax(0, 1.62fr) minmax(0, 1fr);
+  gap: 10px;
+}
+
+.tcl-shot,
+.tcl-tile,
+.tcl-panel-frames li {
+  position: relative;
+  overflow: hidden;
+  border-radius: 12px;
+}
+
+.tcl-shot {
+  margin: 0;
+  aspect-ratio: 16 / 10;
+  background: #dde4ef;
+}
+
+.tcl-shot img,
+.tcl-panel-frames img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  /* The stills come from different venues and light; one navy duotone makes
+     them read as a single designed set rather than an event album. */
+  transition: opacity 0.28s ease, transform 7s ease-out, filter 0.5s ease;
+}
+
+/* Hero tile keeps its life; the strip goes deeper so the two read as
+   foreground and supporting evidence rather than four equal photos. */
+.tcl-shot img {
+  filter: grayscale(0.45) contrast(1.06) saturate(1.05);
+}
+
+.tcl-panel-frames img {
+  filter: grayscale(0.92) contrast(1.08) brightness(1.02);
+}
+
+.tcl-shot::after,
+.tcl-panel-frames li::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  pointer-events: none;
+  mix-blend-mode: multiply;
+}
+
+.tcl-shot::after {
+  background:
+    linear-gradient(180deg, rgba(4, 20, 52, 0) 46%, rgba(4, 20, 52, 0.72) 100%),
+    linear-gradient(160deg, rgba(0, 48, 128, 0.26) 0%, rgba(4, 24, 62, 0.34) 100%);
+}
+
+.tcl-panel-frames li::after {
+  background:
+    linear-gradient(180deg, rgba(4, 20, 52, 0.08) 40%, rgba(4, 20, 52, 0.7) 100%),
+    linear-gradient(160deg, rgba(0, 48, 128, 0.55) 0%, rgba(4, 24, 62, 0.68) 100%);
+}
+
+.tcl-shot::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  pointer-events: none;
+  background: radial-gradient(120% 80% at 78% 12%, rgba(244, 146, 78, 0.22), transparent 58%);
+}
+
+.tcl-shot:hover img {
+  filter: grayscale(0.12) contrast(1.05) saturate(1.08);
+}
+
+.tcl-panel-frames li:hover img {
+  filter: grayscale(0.45) contrast(1.06) brightness(1.04);
+}
+
+/* A slow drift keeps the stills from reading as static screenshots. */
+.js .tcl-shot img {
+  transform: scale(1.06);
+}
+
+.js .tcl-shot:hover img {
+  transform: scale(1.12);
+}
+
+.tcl-side {
+  display: grid;
+  grid-template-rows: 1fr 1fr;
+  gap: 10px;
+}
+
+.tcl-tile {
+  /* Block, not a centring grid: the children size themselves from their insets
+     so the diagram gets real dimensions to measure. */
+  display: block;
+  background: linear-gradient(155deg, #06265f 0%, #041b46 100%);
+}
+
+.tcl-readout {
+  position: absolute;
+  top: 9px;
+  right: 10px;
+  z-index: 2;
+  color: rgba(255, 255, 255, 0.62);
+  font-family: var(--font-sans);
+  font-size: 8.5px;
+  font-weight: 650;
+  letter-spacing: 0.06em;
+  white-space: nowrap;
+}
+
+/* Label-free constellation: the tile is small, the labels live in the pill. */
+.tcl-system-mini {
+  position: absolute;
+  inset: 22px 14px 30px;
+  width: auto;
+  max-width: none;
+  height: auto;
+  aspect-ratio: auto;
+}
+
+.tcl-system-mini .tcl-node-label,
+.tcl-system-mini .tcl-node-terms {
+  display: none;
+}
+
+.tcl-system-mini .tcl-node-dot {
+  width: 7px;
+  height: 7px;
+  background: #9dc0ff;
+  box-shadow: 0 0 0 3px rgba(157, 192, 255, 0.16);
+}
+
+.tcl-system-mini .tcl-link-base {
+  stroke: rgba(255, 255, 255, 0.22);
+}
+
+.tcl-system-mini .tcl-link-live {
+  stroke: #9dc0ff;
+  stroke-width: 1.4;
+}
+
+.tcl-system-mini .tcl-pulse {
+  fill: #f4924e;
+}
+
+.tcl-steps {
+  position: absolute;
+  inset: 24px 12px 10px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 5px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.tcl-steps li {
+  display: flex;
+  align-items: baseline;
+  gap: 8px;
+  color: rgba(255, 255, 255, 0.42);
+  font-family: var(--font-sans);
+  font-size: 9px;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  transition: color 0.35s ease;
+}
+
+.tcl-steps li b {
+  color: rgba(255, 255, 255, 0.3);
+  font-weight: 750;
+  transition: color 0.35s ease;
+}
+
+.tcl-steps li.is-live,
+.tcl-steps li.is-live b {
+  color: #fff;
+}
+
+.tcl-steps li.is-live b {
+  color: #f4924e;
+}
+
+/* Pill label, shared by every tile in the panel. */
+.tcl-tag {
+  position: absolute;
+  left: 9px;
+  bottom: 9px;
+  z-index: 2;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  max-width: calc(100% - 18px);
+  padding: 4px 9px;
+  border-radius: 999px;
+  background: rgba(10, 22, 46, 0.72);
+  color: #fff;
+  font-family: var(--font-sans);
+  font-size: 9px;
+  font-weight: 650;
+  letter-spacing: 0.03em;
+  line-height: 1.3;
+  backdrop-filter: blur(8px);
+}
+
+.tcl-tag i {
+  flex: 0 0 5px;
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: #f4924e;
+}
+
+.tcl-tag span {
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+.tcl-panel-top + .tcl-panel-cap {
+  margin: 18px 0 12px;
+}
+
+.tcl-panel-frames {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 10px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.tcl-panel-frames li {
+  aspect-ratio: 6 / 5;
+  background: #dde4ef;
+}
+
+.tcl-frame-idx {
+  position: absolute;
+  top: 8px;
+  left: 9px;
+  z-index: 2;
+  color: rgba(255, 255, 255, 0.9);
+  font-family: var(--font-sans);
+  font-size: 8.5px;
+  font-weight: 750;
+  letter-spacing: 0.1em;
+  text-shadow: 0 1px 4px rgba(6, 20, 51, 0.6);
+}
+
+.tcl-frame-label {
+  font-size: 9px;
+}
+
+/* Frames re-enter in sequence whenever the topic changes. */
+.js .tcl-panel-frames.is-swapping li {
+  animation: tcl-frame-in 0.5s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+.js .tcl-panel-frames.is-swapping li:nth-child(2) { animation-delay: 90ms; }
+.js .tcl-panel-frames.is-swapping li:nth-child(3) { animation-delay: 180ms; }
+
+@keyframes tcl-frame-in {
+  from { opacity: 0; transform: translateY(7px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* ---------- right column ---------- */
+.tcl-scene-kicker {
+  margin: 0 0 20px;
+  color: var(--tcl-navy);
+  font-family: var(--font-sans);
+  font-size: 10.5px;
+  font-weight: 700;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+}
+
+.tcl-scene h3 {
+  max-width: 560px;
+  font-size: clamp(30px, 3.3vw, 46px);
+  line-height: 1.08;
+  letter-spacing: -0.045em;
+}
+
+.tcl-scene > p {
+  max-width: 520px;
+  margin: 22px 0 0;
+  font-size: 16px;
+  line-height: 1.78;
+}
+
+.tcl-facts {
+  margin: 34px 0 0;
+  padding: 0;
+  list-style: none;
+  border-top: 1px solid var(--tcl-line);
+}
+
+.tcl-facts li {
+  display: grid;
+  grid-template-columns: 24px minmax(0, 1fr);
+  gap: 16px;
+  padding: 20px 0;
+  border-bottom: 1px solid var(--tcl-line);
+}
+
+.tcl-fact-icon {
+  display: block;
+  color: var(--tcl-navy);
+}
+
+.tcl-fact-icon svg {
+  width: 21px;
+  height: 21px;
+}
+
+.tcl-facts b {
+  display: block;
+  margin-bottom: 7px;
+  color: var(--tcl-ink);
+  font-size: 15px;
+  font-weight: 700;
+  letter-spacing: -0.015em;
+}
+
+.tcl-facts p {
+  margin: 0;
+  max-width: 480px;
+  color: var(--tcl-muted);
+  font-size: 14.5px;
+  line-height: 1.7;
+}
+
+/* ---------- responsive ---------- */
+@media (max-width: 1080px) {
+  .tcl-areas-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .tcl-areas-stage {
+    grid-column: 1;
+    grid-row: 1;
+  }
+
+  .tcl-scene {
+    grid-column: 1;
+  }
+
+  .tcl-stage-sticky {
+    top: 84px;
+    padding: 8px 0 30px;
+  }
+
+  .tcl-panel .tcl-system-areas {
+    width: min(100%, 280px);
+  }
+}
+
+@media (max-width: 620px) {
+  .tcl-panel {
+    padding: 16px 16px 15px;
+  }
+
+  .tcl-panel-frames {
+    grid-template-columns: 1fr;
+    gap: 8px;
+  }
+
+  .tcl-panel-frames li {
+    flex-direction: row;
+    align-items: baseline;
+    gap: 10px;
+    padding: 10px 12px;
+  }
+
+  .tcl-facts li {
+    grid-template-columns: 20px minmax(0, 1fr);
+    gap: 13px;
+    padding: 17px 0;
+  }
+
+  .tcl-fact-icon svg {
+    width: 19px;
+    height: 19px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .js .tcl-panel-frames.is-swapping li {
+    animation: none;
+    opacity: 1;
+    transform: none;
+  }
+}
