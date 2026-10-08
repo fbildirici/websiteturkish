@@ -364,7 +364,7 @@ document.addEventListener('DOMContentLoaded', function() {
 // Shared, restrained reveal motion for cards and content groups across the site.
 function initSiteRevealMotion() {
   const targets = document.querySelectorAll([
-    '.cap-panel',
+    '.cap-stage',
     '.hl-row',
     '.compact-card',
     '.youtube-card',
@@ -628,6 +628,36 @@ document.addEventListener('DOMContentLoaded', function() {
       if (link.getAttribute('href') === '#' + current) {
         link.classList.add('active');
       }
+    });
+  });
+});
+
+
+// "Neler Yapıyorum" — source cards drive the detail card.
+document.addEventListener('DOMContentLoaded', function() {
+  const stage = document.getElementById('capStage');
+  if (!stage) return;
+  const tabs = Array.from(stage.querySelectorAll('.cap-src'));
+  const panes = Array.from(stage.querySelectorAll('.cap-pane'));
+  function select(i, focus) {
+    tabs.forEach(function(t, n) {
+      const on = n === i;
+      t.classList.toggle('is-active', on);
+      t.setAttribute('aria-selected', on ? 'true' : 'false');
+      t.tabIndex = on ? 0 : -1;
+      panes[n].classList.toggle('is-active', on);
+      panes[n].hidden = !on;
+    });
+    if (focus) tabs[i].focus();
+  }
+  tabs.forEach(function(t, i) {
+    t.addEventListener('click', function() { select(i); });
+    t.addEventListener('mouseenter', function() {
+      if (window.matchMedia('(hover: hover)').matches) select(i);
+    });
+    t.addEventListener('keydown', function(e) {
+      if (e.key === 'ArrowDown' || e.key === 'ArrowRight') { e.preventDefault(); select((i + 1) % tabs.length, true); }
+      if (e.key === 'ArrowUp' || e.key === 'ArrowLeft') { e.preventDefault(); select((i - 1 + tabs.length) % tabs.length, true); }
     });
   });
 });
