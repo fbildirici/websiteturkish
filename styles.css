@@ -9827,82 +9827,87 @@ body {
 
 /* =========================================================================
    NELER YAPIYORUM — SOURCE CARDS → WIKI CARD
-   Soft stacked source cards on the left, linked by a dashed line to one
+   Soft grainy source cards on the left, joined by a dashed line to one
    larger detail card on the right. Brand palette only.
    ========================================================================= */
 .what-i-do-section {
-  padding: 84px 0 96px;
+  position: relative;
+  padding: 88px 0 104px;
+  background: #f3f5f8;
 }
 
 .what-i-do-section .section-subtitle-main {
-  margin-bottom: 56px;
+  margin-bottom: 64px;
 }
 
 .cap-stage {
-  --cap-navy: #003080;
-  --cap-ink: #111827;
-  --cap-muted: #58637a;
-  --cap-accent: #d8632a;
-  --cap-line: rgba(15, 23, 42, 0.08);
+  --navy: #003080;
+  --navy-hi: #1a4aa8;
+  --indigo: #4c5fb8;
+  --orange: #d8632a;
+  --ink: #111827;
+  --muted: #5c677d;
+  --grain: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 0.1  0 0 0 0 0.15  0 0 0 0 0.25  0 0 0 0.55 0'/%3E%3C/filter%3E%3Crect width='160' height='160' filter='url(%23n)' opacity='0.07'/%3E%3C/svg%3E");
   position: relative;
   display: grid;
-  grid-template-columns: minmax(0, 0.92fr) minmax(0, 1fr);
-  gap: 76px;
+  grid-template-columns: minmax(0, 0.9fr) minmax(0, 1fr);
+  gap: 84px;
   align-items: center;
-  max-width: 1120px;
+  max-width: 1140px;
   margin: 0 auto;
 }
 
+/* ---------- Source cards ---------- */
 .cap-sources {
   display: flex;
   flex-direction: column;
-  gap: 34px;
+  gap: 40px;
 }
 
 .cap-src {
   position: relative;
   display: flex;
-  gap: 16px;
+  align-items: flex-start;
+  gap: 18px;
   width: 100%;
-  padding: 22px 24px 20px;
+  padding: 24px 28px 22px 24px;
   text-align: left;
   font: inherit;
   color: inherit;
   cursor: pointer;
-  background: rgba(255, 255, 255, 0.62);
-  border: 1px solid rgba(255, 255, 255, 0.9);
-  border-radius: 22px;
-  box-shadow: 0 10px 28px rgba(15, 23, 42, 0.07);
-  opacity: 0.55;
-  transition: opacity 0.35s ease, transform 0.35s ease, box-shadow 0.35s ease, background-color 0.35s ease;
+  border: 1px solid rgba(255, 255, 255, 0.85);
+  border-radius: 24px;
+  background: var(--grain), linear-gradient(180deg, rgba(255, 255, 255, 0.86), rgba(250, 250, 252, 0.7));
+  box-shadow: 0 14px 34px rgba(31, 41, 71, 0.09), 0 1px 2px rgba(31, 41, 71, 0.05), inset 0 1px 0 #fff;
+  opacity: 0.5;
+  transition: opacity 0.4s ease, transform 0.4s cubic-bezier(0.4, 0, 0.2, 1), box-shadow 0.4s ease;
 }
 
-.cap-src:hover,
+.cap-src:nth-child(2) { opacity: 0.62; }
+.cap-src:nth-child(3) { opacity: 0.42; }
+
+.cap-src:hover { opacity: 0.9; }
+
 .cap-src.is-active {
   opacity: 1;
-}
-
-.cap-src.is-active {
-  background: #fff;
-  transform: translateX(6px);
-  box-shadow: 0 16px 36px rgba(15, 23, 42, 0.10);
+  transform: translateX(8px);
+  box-shadow: 0 22px 46px rgba(31, 41, 71, 0.13), 0 1px 2px rgba(31, 41, 71, 0.05), inset 0 1px 0 #fff;
 }
 
 .cap-src:focus-visible {
-  outline: 2px solid var(--cap-navy);
-  outline-offset: 3px;
+  outline: 2px solid var(--navy);
+  outline-offset: 4px;
   opacity: 1;
 }
 
-/* Dashed connector from the active card to the detail card. */
+/* Dashed connector with a dot at the card edge. */
 .cap-src::after {
   content: '';
   position: absolute;
   top: 50%;
-  left: 100%;
-  width: 76px;
-  height: 0;
-  border-top: 1.5px dashed rgba(0, 48, 128, 0.35);
+  left: calc(100% + 2px);
+  width: 90px;
+  border-top: 1.5px dashed rgba(17, 24, 39, 0.38);
   opacity: 0;
   transition: opacity 0.3s ease;
   pointer-events: none;
@@ -9913,53 +9918,64 @@ body {
   position: absolute;
   top: 50%;
   left: 100%;
-  width: 7px;
-  height: 7px;
-  margin: -3.5px 0 0 -3.5px;
+  width: 8px;
+  height: 8px;
+  margin: -4px 0 0 -4px;
   border-radius: 50%;
-  background: var(--cap-navy);
+  background: #4a4f58;
   opacity: 0;
   transition: opacity 0.3s ease;
   pointer-events: none;
 }
 
 .cap-src.is-active::after,
-.cap-src.is-active::before {
-  opacity: 1;
-}
+.cap-src.is-active::before { opacity: 1; }
 
-.cap-src-icon {
+/* ---------- App icons ---------- */
+.cap-app {
+  position: relative;
   flex: none;
   display: grid;
   place-items: center;
-  width: 54px;
-  height: 54px;
-  border-radius: 14px;
+  width: 60px;
+  height: 60px;
+  border-radius: 17px;
   color: #fff;
-  background: linear-gradient(150deg, #1a4aa8 0%, var(--cap-navy) 60%, #002566 100%);
-  box-shadow: 0 6px 14px rgba(0, 48, 128, 0.22);
+  overflow: hidden;
+  background: linear-gradient(155deg, #2f64c7 0%, var(--navy) 58%, #001f55 100%);
+  box-shadow: 0 8px 18px rgba(0, 48, 128, 0.26), inset 0 1px 0 rgba(255, 255, 255, 0.35), inset 0 -2px 4px rgba(0, 0, 0, 0.18);
 }
 
-.cap-src:nth-child(2) .cap-src-icon {
-  background: linear-gradient(150deg, #4c5fb8 0%, #34459b 100%);
-  box-shadow: 0 6px 14px rgba(52, 69, 155, 0.22);
+.cap-app::before {
+  content: '';
+  position: absolute;
+  inset: 0 0 50% 0;
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.26), rgba(255, 255, 255, 0));
 }
 
-.cap-src:nth-child(3) .cap-src-icon {
-  background: linear-gradient(150deg, #ee8a4e 0%, var(--cap-accent) 100%);
-  box-shadow: 0 6px 14px rgba(216, 99, 42, 0.26);
+.cap-app svg {
+  position: relative;
+  width: 30px;
+  height: 30px;
+  filter: drop-shadow(0 1px 1px rgba(0, 0, 0, 0.25));
 }
 
-.cap-src-icon svg {
-  width: 26px;
-  height: 26px;
+.cap-talk .cap-app {
+  background: linear-gradient(155deg, #7585d6 0%, var(--indigo) 55%, #2f3f93 100%);
+  box-shadow: 0 8px 18px rgba(52, 69, 155, 0.28), inset 0 1px 0 rgba(255, 255, 255, 0.35), inset 0 -2px 4px rgba(0, 0, 0, 0.16);
+}
+
+.cap-res .cap-app {
+  background: linear-gradient(155deg, #f4a169 0%, var(--orange) 58%, #b94d1b 100%);
+  box-shadow: 0 8px 18px rgba(216, 99, 42, 0.3), inset 0 1px 0 rgba(255, 255, 255, 0.4), inset 0 -2px 4px rgba(0, 0, 0, 0.14);
 }
 
 .cap-src-body {
   display: flex;
   flex-direction: column;
-  gap: 6px;
+  gap: 5px;
   min-width: 0;
+  flex: 1;
 }
 
 .cap-src-head {
@@ -9970,55 +9986,51 @@ body {
 }
 
 .cap-src-name {
-  color: var(--cap-ink);
-  font-size: 17px;
+  color: var(--ink);
+  font-size: 18px;
   font-weight: 700;
-  letter-spacing: -0.01em;
+  letter-spacing: -0.015em;
 }
 
-.cap-src-tag {
-  color: #8a93a5;
-  font-size: 13px;
-  font-weight: 500;
+.cap-src-when {
+  color: #9099ab;
+  font-size: 14px;
 }
 
 .cap-src-text {
-  color: var(--cap-muted);
-  font-size: 15.5px;
+  color: #4a566b;
+  font-size: 16.5px;
   line-height: 1.5;
 }
 
 .cap-src-note {
-  color: #9aa3b4;
-  font-size: 13px;
+  margin-top: 6px;
+  color: #98a1b2;
+  font-size: 13.5px;
 }
 
-/* Detail card */
+/* ---------- Detail (wiki) card ---------- */
 .cap-wiki {
   position: relative;
-  padding: 38px 42px 40px;
-  background: #fff;
-  border-radius: 28px;
-  box-shadow: 0 26px 60px rgba(15, 23, 42, 0.11), 0 2px 6px rgba(15, 23, 42, 0.04);
+  padding: 40px 44px 44px;
+  border-radius: 32px;
+  background: var(--grain), #fcfcfd;
+  border: 1px solid rgba(255, 255, 255, 0.9);
+  box-shadow: 0 34px 70px rgba(31, 41, 71, 0.14), 0 2px 6px rgba(31, 41, 71, 0.05), inset 0 1px 0 #fff;
 }
 
 .cap-wiki-eyebrow {
-  margin: 0 0 22px;
-  color: #6b7488;
-  font-size: 15px;
+  margin: 0 0 26px;
+  color: #5c667a;
+  font-size: 17px;
   font-weight: 500;
 }
 
-.cap-pane[hidden] {
-  display: none;
-}
-
-.cap-pane.is-active {
-  animation: cap-pane-in 0.4s ease both;
-}
+.cap-pane[hidden] { display: none; }
+.cap-pane.is-active { animation: cap-pane-in 0.45s ease both; }
 
 @keyframes cap-pane-in {
-  from { opacity: 0; transform: translateY(8px); }
+  from { opacity: 0; transform: translateY(10px); }
   to { opacity: 1; transform: none; }
 }
 
@@ -10026,88 +10038,107 @@ body {
   display: flex;
   align-items: center;
   gap: 14px;
-  margin-bottom: 18px;
+  margin-bottom: 22px;
 }
 
-.cap-who-icon {
-  display: grid;
-  place-items: center;
-  width: 42px;
-  height: 42px;
+.cap-avatar {
+  width: 44px;
+  height: 44px;
+  flex: none;
   border-radius: 50%;
-  color: var(--cap-navy);
-  background: rgba(0, 48, 128, 0.08);
-}
-
-.cap-who-icon svg {
-  width: 22px;
-  height: 22px;
+  object-fit: cover;
+  object-position: 50% 12%;
+  background: #dfe5f1;
+  box-shadow: 0 0 0 2px #fff, 0 3px 10px rgba(31, 41, 71, 0.18);
 }
 
 .cap-title {
   margin: 0;
-  color: var(--cap-ink);
-  font-size: 22px;
-  font-weight: 700;
+  color: var(--ink);
+  font-size: 23px;
+  font-weight: 600;
   letter-spacing: -0.02em;
   line-height: 1.25;
 }
 
-.cap-desc {
-  margin: 0 0 8px;
-  color: #3b475c;
-  font-size: 17px;
-  line-height: 1.7;
+.cap-desc,
+.cap-lines li {
+  color: #2f3a4e;
+  font-size: 17.5px;
+  line-height: 1.95;
 }
 
+.cap-desc { margin: 0 0 6px; }
+
 .cap-lines {
-  margin: 0 0 26px;
+  margin: 0 0 30px;
   padding: 0;
   list-style: none;
 }
 
-.cap-lines li {
-  position: relative;
-  padding: 3px 0 3px 22px;
-  color: #3b475c;
-  font-size: 17px;
-  line-height: 1.7;
-}
+.cap-lines li { padding: 0; }
 
-.cap-lines li::before {
-  content: '';
-  position: absolute;
-  left: 4px;
-  top: 0.95em;
-  width: 7px;
-  height: 7px;
-  border-radius: 50%;
-  background: var(--cap-accent);
-  box-shadow: 0 0 0 3px rgba(216, 99, 42, 0.12);
-}
-
-.cap-active {
-  display: flex;
-  flex-wrap: wrap;
+/* Inline source pill, like the Gmail/Calendar chips in the reference. */
+.cap-pill {
+  display: inline-flex;
   align-items: center;
-  justify-content: space-between;
-  gap: 12px 20px;
-  padding: 18px 22px;
-  background: #f6f4ef;
-  border: 1px solid rgba(15, 23, 42, 0.09);
+  gap: 6px;
+  margin-left: 4px;
+  padding: 3px 12px 3px 5px;
+  vertical-align: 1px;
+  color: #7b8497;
+  font-size: 14px;
+  line-height: 1.5;
+  white-space: nowrap;
+  background: #f3f1ec;
+  border: 1px solid rgba(17, 24, 39, 0.08);
+  border-radius: 999px;
+}
+
+.cap-pill-ic {
+  display: grid;
+  place-items: center;
+  width: 20px;
+  height: 20px;
+  color: #fff;
+  border-radius: 6px;
+  background: linear-gradient(155deg, #2f64c7, var(--navy));
+}
+
+.cap-talk .cap-pill-ic { background: linear-gradient(155deg, #7585d6, var(--indigo)); }
+.cap-res .cap-pill-ic { background: linear-gradient(155deg, #f4a169, var(--orange)); }
+
+.cap-pill-ic svg { width: 12px; height: 12px; }
+
+/* "Active work" box */
+.cap-active {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  align-items: center;
+  gap: 4px 20px;
+  padding: 20px 24px 20px;
+  background: #f6f3ed;
+  border: 1px solid rgba(120, 100, 70, 0.22);
   border-radius: 14px;
 }
 
 .cap-active-label {
-  color: #7a8294;
+  grid-column: 1 / -1;
+  color: #8b8271;
   font-size: 14px;
+}
+
+.cap-active-title {
+  color: var(--ink);
+  font-size: 17px;
+  font-weight: 600;
 }
 
 .cap-link {
   display: inline-flex;
   align-items: center;
   gap: 8px;
-  color: var(--cap-navy);
+  color: var(--navy);
   font-size: 15.5px;
   font-weight: 700;
   text-decoration: none;
@@ -10119,47 +10150,27 @@ body {
   transition: transform 0.25s ease;
 }
 
-.cap-link:hover svg {
-  transform: translateX(4px);
+.cap-link:hover svg { transform: translateX(4px); }
+
+@media (max-width: 1040px) {
+  .cap-stage { gap: 64px; }
+  .cap-src::after { width: 64px; }
 }
 
-@media (max-width: 960px) {
-  .cap-stage {
-    grid-template-columns: 1fr;
-    gap: 22px;
-  }
-
-  .cap-sources {
-    gap: 14px;
-  }
-
-  .cap-src {
-    opacity: 0.8;
-  }
-
-  .cap-src.is-active {
-    transform: none;
-  }
-
-  .cap-src::after,
-  .cap-src::before {
-    display: none;
-  }
-
-  .cap-wiki {
-    padding: 28px 24px 30px;
-  }
+@media (max-width: 900px) {
+  .cap-stage { grid-template-columns: 1fr; gap: 24px; }
+  .cap-sources { gap: 14px; }
+  .cap-src, .cap-src:nth-child(2), .cap-src:nth-child(3) { opacity: 0.75; }
+  .cap-src.is-active { opacity: 1; transform: none; }
+  .cap-src::after, .cap-src::before { display: none; }
+  .cap-wiki { padding: 28px 22px 30px; border-radius: 24px; }
+  .cap-desc, .cap-lines li { font-size: 16.5px; line-height: 1.85; }
+  .cap-active { grid-template-columns: 1fr; }
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .cap-pane.is-active {
-    animation: none;
-  }
-
-  .cap-src,
-  .cap-link svg {
-    transition: none;
-  }
+  .cap-pane.is-active { animation: none; }
+  .cap-src, .cap-link svg { transition: none; }
 }
 
 /* =========================================================================
