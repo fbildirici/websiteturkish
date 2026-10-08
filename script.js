@@ -364,7 +364,7 @@ document.addEventListener('DOMContentLoaded', function() {
 // Shared, restrained reveal motion for cards and content groups across the site.
 function initSiteRevealMotion() {
   const targets = document.querySelectorAll([
-    '.cap-stage',
+    '.cap-panel',
     '.hl-row',
     '.compact-card',
     '.youtube-card',
@@ -631,4 +631,3 @@ document.addEventListener('DOMContentLoaded', function() {
     });
   });
 });
-
