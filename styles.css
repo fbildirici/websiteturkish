@@ -9834,7 +9834,7 @@ body {
 .what-i-do-section {
   position: relative;
   padding: 88px 0 112px;
-  background: #f3f5f8;
+  background: url("data:image/svg+xml,%3Csvg xmlns=\'http://www.w3.org/2000/svg\' width=\'200\' height=\'200\'%3E%3Cfilter id=\'n\'%3E%3CfeTurbulence type=\'fractalNoise\' baseFrequency=\'0.9\' numOctaves=\'3\' stitchTiles=\'stitch\'/%3E%3CfeColorMatrix values=\'0 0 0 0 0.12  0 0 0 0 0.14  0 0 0 0 0.2  0 0 0 0.6 0\'/%3E%3C/filter%3E%3Crect width=\'200\' height=\'200\' filter=\'url(%23n)\' opacity=\'0.06\'/%3E%3C/svg%3E"), #f3f5f8;
 }
 
 .what-i-do-section .section-subtitle-main {
@@ -9885,56 +9885,35 @@ body {
   position: relative;
   display: flex;
   align-items: flex-start;
-  gap: 17px;
+  gap: 16px;
   padding: 22px 26px 20px 22px;
-  border: 1px solid rgba(255, 255, 255, 0.95);
+  border: 1px solid rgba(255, 255, 255, 0.7);
   border-radius: 20px;
-  background: var(--grain), linear-gradient(180deg, rgba(255, 255, 255, 0.88), rgba(250, 250, 252, 0.72));
-  box-shadow:
-    0 18px 36px -12px rgba(31, 41, 71, 0.12),
-    0 1px 3px rgba(31, 41, 71, 0.04),
-    inset 0 1px 0 #fff;
+  background: var(--grain), rgba(255, 255, 255, 0.72);
+  box-shadow: 0 14px 32px -12px rgba(31, 41, 71, 0.11), 0 1px 2px rgba(31, 41, 71, 0.03);
 }
 
 .cap-src.cap-res { opacity: 0.42; }
 
 .cap-app {
-  position: relative;
   flex: none;
   display: grid;
   place-items: center;
-  width: 50px;
-  height: 50px;
-  border-radius: 14px;
-  overflow: hidden;
+  width: 46px;
+  height: 46px;
+  border-radius: 13px;
   color: #fff;
-  background: linear-gradient(155deg, #3a70d0 0%, var(--navy) 56%, #001a48 100%);
-  box-shadow: 0 4px 10px rgba(0, 48, 128, 0.18), inset 0 0 0 1px rgba(255, 255, 255, 0.12), inset 0 1px 0 rgba(255, 255, 255, 0.28);
-}
-
-.cap-app::before {
-  content: '';
-  position: absolute;
-  inset: 0 0 52% 0;
-  background: linear-gradient(180deg, rgba(255, 255, 255, 0.16), rgba(255, 255, 255, 0));
+  background: var(--navy);
 }
 
 .cap-app svg {
-  position: relative;
-  width: 25px;
-  height: 25px;
-  stroke-width: 1.6;
+  width: 23px;
+  height: 23px;
+  stroke-width: 1.7;
 }
 
-.cap-talk .cap-app {
-  background: linear-gradient(155deg, #8695dd 0%, var(--indigo) 54%, #2b3a8a 100%);
-  box-shadow: 0 4px 10px rgba(52, 69, 155, 0.2), inset 0 0 0 1px rgba(255, 255, 255, 0.12), inset 0 1px 0 rgba(255, 255, 255, 0.28);
-}
-
-.cap-res .cap-app {
-  background: linear-gradient(155deg, #f7ac78 0%, var(--orange) 56%, #aa4414 100%);
-  box-shadow: 0 4px 10px rgba(216, 99, 42, 0.22), inset 0 0 0 1px rgba(255, 255, 255, 0.12), inset 0 1px 0 rgba(255, 255, 255, 0.3);
-}
+.cap-talk .cap-app { background: var(--indigo); }
+.cap-res .cap-app { background: var(--orange); }
 
 .cap-src-body { flex: 1; min-width: 0; }
 
@@ -9949,22 +9928,22 @@ body {
 .cap-src-name {
   margin: 0;
   color: var(--ink);
-  font-size: 16.5px;
-  font-weight: 650;
+  font-size: 16px;
+  font-weight: 600;
   letter-spacing: -0.01em;
   line-height: 1.3;
 }
 
 .cap-src-when {
   flex: none;
-  color: #9aa2b3;
-  font-size: 14px;
+  color: #a9b0be;
+  font-size: 13.5px;
 }
 
 .cap-src-text {
   margin: 0;
-  color: #4a566b;
-  font-size: 15.5px;
+  color: #5f6a7e;
+  font-size: 15px;
   line-height: 1.55;
 }
 
@@ -9977,19 +9956,16 @@ body {
 /* ---------- right: detail card ---------- */
 .cap-wiki {
   padding: 44px 48px 46px;
-  border: 1px solid rgba(255, 255, 255, 0.95);
+  border: 1px solid rgba(255, 255, 255, 0.8);
   border-radius: 28px;
-  background: var(--grain), linear-gradient(180deg, #fefefe, #fafafc);
-  box-shadow:
-    0 32px 64px -18px rgba(31, 41, 71, 0.16),
-    0 2px 6px rgba(31, 41, 71, 0.04),
-    inset 0 1px 0 #fff;
+  background: var(--grain), rgba(255, 255, 255, 0.86);
+  box-shadow: 0 28px 60px -20px rgba(31, 41, 71, 0.15), 0 1px 3px rgba(31, 41, 71, 0.03);
 }
 
 .cap-wiki-eyebrow {
   margin: 0 0 24px;
-  color: #4b566b;
-  font-size: 17px;
+  color: #5a6478;
+  font-size: 16px;
 }
 
 .cap-who {
@@ -10017,9 +9993,9 @@ body {
 
 .cap-line {
   margin: 0;
-  color: #3a4356;
-  font-size: 16.5px;
-  line-height: 2;
+  color: #3d4658;
+  font-size: 16px;
+  line-height: 2.05;
 }
 
 .cap-ref {
@@ -10040,8 +10016,8 @@ body {
   font-size: 13px;
   line-height: 1.55;
   white-space: nowrap;
-  background: #f4f2ed;
-  border: 1px solid rgba(17, 24, 39, 0.09);
+  background: #f5f3ee;
+  border: 1px solid rgba(17, 24, 39, 0.07);
   border-radius: 999px;
 }
 
@@ -10052,19 +10028,18 @@ body {
   height: 18px;
   color: #fff;
   border-radius: 5px;
-  background: linear-gradient(155deg, #3a70d0, var(--navy));
-  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.35);
+  background: var(--navy);
 }
 
-.cap-talk .cap-pill-ic { background: linear-gradient(155deg, #8695dd, var(--indigo)); }
-.cap-res .cap-pill-ic { background: linear-gradient(155deg, #f7ac78, var(--orange)); }
+.cap-talk .cap-pill-ic { background: var(--indigo); }
+.cap-res .cap-pill-ic { background: var(--orange); }
 
 .cap-pill-ic svg { width: 11px; height: 11px; }
 
 .cap-active {
-  margin-top: 26px;
-  padding-top: 22px;
-  border-top: 1px solid rgba(17, 24, 39, 0.07);
+  margin-top: 22px;
+  padding-top: 0;
+  border-top: 0;
 }
 
 .cap-active-links {
@@ -10078,8 +10053,8 @@ body {
   align-items: center;
   gap: 7px;
   color: var(--navy);
-  font-size: 14.5px;
-  font-weight: 600;
+  font-size: 14px;
+  font-weight: 500;
   text-decoration: none;
 }
 
