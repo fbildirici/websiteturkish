@@ -1,18 +1,25 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-label="Fatih Bildirici">
   <defs>
-    <linearGradient id="fbTile" x1="6" y1="2" x2="58" y2="62" gradientUnits="userSpaceOnUse">
-      <stop stop-color="#0A4BB0"/>
+    <linearGradient id="fbTile" x1="8" y1="0" x2="56" y2="64" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#0B4DB5"/>
       <stop offset=".55" stop-color="#003080"/>
-      <stop offset="1" stop-color="#001C4F"/>
+      <stop offset="1" stop-color="#001A48"/>
     </linearGradient>
-    <linearGradient id="fbSheen" x1="12" y1="4" x2="34" y2="34" gradientUnits="userSpaceOnUse">
-      <stop stop-color="#FFFFFF" stop-opacity=".18"/>
+    <linearGradient id="fbSheen" x1="0" y1="0" x2="0" y2="34" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#FFFFFF" stop-opacity=".2"/>
       <stop offset="1" stop-color="#FFFFFF" stop-opacity="0"/>
     </linearGradient>
+    <linearGradient id="fbNode" x1="42" y1="28" x2="54" y2="40" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#F7A46E"/>
+      <stop offset="1" stop-color="#D8632A"/>
+    </linearGradient>
   </defs>
-  <rect width="64" height="64" rx="15" fill="url(#fbTile)"/>
-  <rect width="64" height="64" rx="15" fill="url(#fbSheen)"/>
-  <rect x="1.25" y="1.25" width="61.5" height="61.5" rx="13.9" fill="none" stroke="#FFFFFF" stroke-opacity=".20" stroke-width="1.5"/>
-  <path d="M13 17h16v5.5H19.5v6.5H26v5.5h-6.5V47H13V17Z" fill="#FFFFFF"/>
-  <path fill="#FFFFFF" fill-rule="evenodd" d="M32.5 17h10.5a7.25 7.25 0 0 1 4.4 13.02A7.75 7.75 0 0 1 42.5 47H32.5V17Zm6.5 5.5h4a2.25 2.25 0 0 1 0 4.5h-4v-4.5Zm0 14.5h3.5a2.25 2.25 0 0 1 0 4.5H39V37Z"/>
+  <rect width="64" height="64" rx="16" fill="url(#fbTile)"/>
+  <rect width="64" height="64" rx="16" fill="url(#fbSheen)"/>
+  <g fill="#FFFFFF" transform="translate(-3 0)">
+    <rect x="19" y="13" width="8.4" height="38" rx="2.6"/>
+    <rect x="19" y="13" width="27" height="8.4" rx="2.6"/>
+    <rect x="19" y="29.2" width="19" height="8.4" rx="2.6"/>
+  </g>
+  <circle cx="45.2" cy="33.4" r="5.6" fill="url(#fbNode)"/>
 </svg>
