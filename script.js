@@ -364,7 +364,6 @@ document.addEventListener('DOMContentLoaded', function() {
 // Shared, restrained reveal motion for cards and content groups across the site.
 function initSiteRevealMotion() {
   const targets = document.querySelectorAll([
-    '.cap-panel',
     '.hl-row',
     '.compact-card',
     '.youtube-card',
@@ -630,4 +629,54 @@ document.addEventListener('DOMContentLoaded', function() {
       }
     });
   });
+});
+
+
+// "Neler Yapıyorum" — staged reveal and the dashed link into the detail card.
+document.addEventListener('DOMContentLoaded', function() {
+  const stage = document.getElementById('capStage');
+  if (!stage) return;
+  const svg = document.getElementById('capLinkSvg');
+  const path = document.getElementById('capLinkPath');
+  const dot = document.getElementById('capLinkDot');
+  const from = stage.querySelector('.cap-src.cap-talk');
+  const wiki = stage.querySelector('.cap-wiki');
+  const target = stage.querySelector('.cap-line.cap-talk');
+
+  function drawLink() {
+    if (!from || !wiki || !target || window.innerWidth <= 900) return;
+    const s = stage.getBoundingClientRect();
+    const a = from.getBoundingClientRect();
+    const w = wiki.getBoundingClientRect();
+    const t = target.getBoundingClientRect();
+    const x1 = a.right - s.left;
+    const y1 = a.top + a.height / 2 - s.top;
+    const x2 = w.left - s.left;
+    const y2 = Math.min(Math.max(t.top + 18 - s.top, w.top - s.top + 40), w.bottom - s.top - 40);
+    const dx = (x2 - x1) * 0.55;
+    svg.setAttribute('width', s.width);
+    svg.setAttribute('height', s.height);
+    path.setAttribute('d', 'M' + x1 + ' ' + y1 + ' C' + (x1 + dx) + ' ' + y1 + ' ' + (x2 - dx) + ' ' + y2 + ' ' + x2 + ' ' + y2);
+    dot.setAttribute('cx', x1);
+    dot.setAttribute('cy', y1);
+  }
+
+  drawLink();
+  window.addEventListener('resize', drawLink);
+  window.addEventListener('load', drawLink);
+
+  if ('IntersectionObserver' in window) {
+    const io = new IntersectionObserver(function(entries) {
+      entries.forEach(function(en) {
+        if (en.isIntersecting) {
+          drawLink();
+          stage.classList.add('is-visible');
+          io.disconnect();
+        }
+      });
+    }, { threshold: 0.25 });
+    io.observe(stage);
+  } else {
+    stage.classList.add('is-visible');
+  }
 });
