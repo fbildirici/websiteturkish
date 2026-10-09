@@ -632,49 +632,106 @@ document.addEventListener('DOMContentLoaded', function() {
 });
 
 
-// "Neler Yapıyorum" — staged reveal and the dashed link into the detail card.
+// "Neler Yapıyorum" — staged reveal, plus a dashed link that follows the scroll
+// from one source card to its line in the detail card.
 document.addEventListener('DOMContentLoaded', function() {
+  const track = document.getElementById('capTrack');
   const stage = document.getElementById('capStage');
-  if (!stage) return;
+  if (!track || !stage) return;
   const svg = document.getElementById('capLinkSvg');
   const path = document.getElementById('capLinkPath');
   const dot = document.getElementById('capLinkDot');
-  const from = stage.querySelector('.cap-src.cap-talk');
   const wiki = stage.querySelector('.cap-wiki');
-  const target = stage.querySelector('.cap-line.cap-talk');
+  const cards = Array.from(stage.querySelectorAll('.cap-src'));
+  const lines = Array.from(stage.querySelectorAll('.cap-line.cap-edu, .cap-line.cap-talk, .cap-line.cap-res'));
+  lines.forEach(function(l) { l.setAttribute('data-cap', ''); });
+  const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const sticky = window.matchMedia('(min-width: 901px) and (min-height: 720px)');
 
-  function drawLink() {
-    if (!from || !wiki || !target || window.innerWidth <= 900) return;
+  let active = -1;
+  let cur = null;
+  let raf = 0;
+
+  function targets() {
     const s = stage.getBoundingClientRect();
-    const a = from.getBoundingClientRect();
+    const a = cards[active].getBoundingClientRect();
     const w = wiki.getBoundingClientRect();
-    const t = target.getBoundingClientRect();
-    const x1 = a.right - s.left;
-    const y1 = a.top + a.height / 2 - s.top;
-    const x2 = w.left - s.left;
-    const y2 = Math.min(Math.max(t.top + 18 - s.top, w.top - s.top + 40), w.bottom - s.top - 40);
-    const dx = (x2 - x1) * 0.55;
-    svg.setAttribute('width', s.width);
-    svg.setAttribute('height', s.height);
-    path.setAttribute('d', 'M' + x1 + ' ' + y1 + ' C' + (x1 + dx) + ' ' + y1 + ' ' + (x2 - dx) + ' ' + y2 + ' ' + x2 + ' ' + y2);
-    dot.setAttribute('cx', x1);
-    dot.setAttribute('cy', y1);
+    const t = lines[active].getBoundingClientRect();
+    const ty = Math.min(Math.max(t.top + 17, w.top + 40), w.bottom - 40);
+    return {
+      w: s.width, h: s.height,
+      x1: a.right - s.left, y1: a.top + a.height / 2 - s.top,
+      x2: w.left - s.left, y2: ty - s.top
+    };
   }
 
-  drawLink();
-  window.addEventListener('resize', drawLink);
-  window.addEventListener('load', drawLink);
+  function render(v) {
+    const dx = (v.x2 - v.x1) * 0.55;
+    svg.setAttribute('width', v.w);
+    svg.setAttribute('height', v.h);
+    path.setAttribute('d', 'M' + v.x1 + ' ' + v.y1 + ' C' + (v.x1 + dx) + ' ' + v.y1 + ' ' + (v.x2 - dx) + ' ' + v.y2 + ' ' + v.x2 + ' ' + v.y2);
+    dot.setAttribute('cx', v.x1);
+    dot.setAttribute('cy', v.y1);
+  }
+
+  function step() {
+    raf = 0;
+    if (window.innerWidth <= 900 || active < 0) return;
+    const t = targets();
+    if (!cur || reduce) cur = t;
+    const k = 0.14;
+    ['y1', 'y2'].forEach(function(p) { cur[p] += (t[p] - cur[p]) * k; });
+    ['w', 'h', 'x1', 'x2'].forEach(function(p) { cur[p] = t[p]; });
+    render(cur);
+    if (Math.abs(t.y1 - cur.y1) > 0.4 || Math.abs(t.y2 - cur.y2) > 0.4) raf = requestAnimationFrame(step);
+  }
+
+  function kick() { if (!raf) raf = requestAnimationFrame(step); }
+
+  function pick() {
+    let idx = 0;
+    if (sticky.matches) {
+      const r = track.getBoundingClientRect();
+      const range = Math.max(1, r.height - window.innerHeight);
+      const p = Math.min(1, Math.max(0, -r.top / range));
+      idx = Math.min(cards.length - 1, Math.floor(p * cards.length * 0.999));
+    } else {
+      const mid = window.innerHeight / 2;
+      let best = Infinity;
+      cards.forEach(function(c, i) {
+        const b = c.getBoundingClientRect();
+        const d = Math.abs(b.top + b.height / 2 - mid);
+        if (d < best) { best = d; idx = i; }
+      });
+    }
+    if (idx !== active) {
+      active = idx;
+      stage.classList.add('has-active');
+      cards.forEach(function(c, i) { c.classList.toggle('is-active', i === idx); });
+      lines.forEach(function(l, i) { l.classList.toggle('is-active', i === idx); });
+    }
+    kick();
+  }
+
+  let ticking = false;
+  window.addEventListener('scroll', function() {
+    if (ticking) return;
+    ticking = true;
+    requestAnimationFrame(function() { ticking = false; pick(); });
+  }, { passive: true });
+  window.addEventListener('resize', function() { cur = null; pick(); });
+  window.addEventListener('load', function() { cur = null; pick(); });
+  pick();
 
   if ('IntersectionObserver' in window) {
     const io = new IntersectionObserver(function(entries) {
       entries.forEach(function(en) {
         if (en.isIntersecting) {
-          drawLink();
           stage.classList.add('is-visible');
           io.disconnect();
         }
       });
-    }, { threshold: 0.25 });
+    }, { threshold: 0.2 });
     io.observe(stage);
   } else {
     stage.classList.add('is-visible');
