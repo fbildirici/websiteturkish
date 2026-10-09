@@ -709,6 +709,7 @@ document.addEventListener('DOMContentLoaded', function() {
       stage.classList.add('has-active');
       cards.forEach(function(c, i) { c.classList.toggle('is-active', i === idx); });
       lines.forEach(function(l, i) { l.classList.toggle('is-active', i === idx); });
+      stage.querySelectorAll('.cap-steps i').forEach(function(d, i) { d.classList.toggle('is-active', i === idx); });
     }
     kick();
   }
