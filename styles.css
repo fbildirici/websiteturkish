@@ -9899,21 +9899,18 @@ body {
   flex: none;
   display: grid;
   place-items: center;
-  width: 46px;
-  height: 46px;
-  border-radius: 13px;
-  color: #fff;
-  background: var(--navy);
+  width: 48px;
+  height: 48px;
+  border-radius: 14px;
+  background: linear-gradient(180deg, #fff 0%, #f3f5f9 100%);
+  border: 1px solid rgba(17, 24, 39, 0.06);
+  box-shadow: 0 8px 16px -6px rgba(31, 41, 71, 0.2), 0 1px 2px rgba(31, 41, 71, 0.06), inset 0 1px 0 #fff;
 }
 
 .cap-app svg {
-  width: 23px;
-  height: 23px;
-  stroke-width: 1.7;
+  width: 28px;
+  height: 28px;
 }
-
-.cap-talk .cap-app { background: var(--indigo); }
-.cap-res .cap-app { background: var(--orange); }
 
 .cap-src-body { flex: 1; min-width: 0; }
 
@@ -10024,17 +10021,11 @@ body {
 .cap-pill-ic {
   display: grid;
   place-items: center;
-  width: 18px;
-  height: 18px;
-  color: #fff;
-  border-radius: 5px;
-  background: var(--navy);
+  width: 16px;
+  height: 16px;
 }
 
-.cap-talk .cap-pill-ic { background: var(--indigo); }
-.cap-res .cap-pill-ic { background: var(--orange); }
-
-.cap-pill-ic svg { width: 11px; height: 11px; }
+.cap-pill-ic svg { width: 16px; height: 16px; }
 
 .cap-active {
   margin-top: 22px;
