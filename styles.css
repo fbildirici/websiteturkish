@@ -10576,82 +10576,62 @@ body {
 }
 
 /* =========================================================================
-   NELER YAPIYORUM — SOFT CARD REFINEMENT
-   Separate rounded grain cards with app-style icons, softer app windows
-   and beige source pills. Overrides the editorial grid above.
+   NELER YAPIYORUM — MINIMAL CARDS
+   Flat white cards, hairline borders, one soft shadow, tinted line icons.
+   Overrides the editorial grid above.
    ========================================================================= */
 .cap-frame {
-  --cap-grain: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 0.1  0 0 0 0 0.15  0 0 0 0 0.25  0 0 0 0.55 0'/%3E%3C/filter%3E%3Crect width='160' height='160' filter='url(%23n)' opacity='0.07'/%3E%3C/svg%3E");
   border: 0;
-  max-width: 1120px;
+  max-width: 1080px;
 }
 
 .cap-frame::before,
 .cap-frame::after { display: none; }
 
-.cap-grid { gap: 28px; }
+.cap-grid { gap: 24px; }
 
 .cap-panel,
 .cap-panel-alt,
 .cap-panel-wide {
-  border: 1px solid rgba(255, 255, 255, 0.9);
-  border-radius: 32px;
+  border: 1px solid rgba(17, 24, 39, 0.06);
+  border-radius: 28px;
   padding: 44px 44px 40px;
-  background: var(--cap-grain), linear-gradient(180deg, #fefefe 0%, #fafafc 100%);
-  box-shadow: 0 26px 56px rgba(31, 41, 71, 0.10), 0 2px 5px rgba(31, 41, 71, 0.04), inset 0 1px 0 #fff;
+  background: #fff;
+  box-shadow: 0 1px 2px rgba(31, 41, 71, 0.04), 0 18px 40px -12px rgba(31, 41, 71, 0.08);
 }
 
-.cap-panel-wide { gap: 56px; padding: 46px 52px; }
+.cap-panel-wide { gap: 64px; padding: 48px 52px; }
 
 .cap-panel::before { display: none; }
 
-.cap-panel-body { max-width: 440px; }
+.cap-panel-body { max-width: 420px; }
 
-/* App-style icon + kicker row */
+/* Flat tinted icon */
 .cap-app {
-  position: relative;
   display: grid;
   place-items: center;
-  width: 52px;
-  height: 52px;
-  margin-bottom: 20px;
-  border-radius: 15px;
-  overflow: hidden;
-  color: #fff;
-  background: linear-gradient(155deg, #2f64c7 0%, #003080 58%, #001f55 100%);
-  box-shadow: 0 8px 18px rgba(0, 48, 128, 0.26), inset 0 1px 0 rgba(255, 255, 255, 0.35), inset 0 -2px 4px rgba(0, 0, 0, 0.18);
-}
-
-.cap-app::before {
-  content: '';
-  position: absolute;
-  inset: 0 0 50% 0;
-  background: linear-gradient(180deg, rgba(255, 255, 255, 0.26), rgba(255, 255, 255, 0));
+  width: 44px;
+  height: 44px;
+  margin-bottom: 22px;
+  border-radius: 13px;
+  color: #003080;
+  background: rgba(0, 48, 128, 0.07);
 }
 
 .cap-app svg {
-  position: relative;
-  width: 26px;
-  height: 26px;
-  filter: drop-shadow(0 1px 1px rgba(0, 0, 0, 0.25));
+  width: 22px;
+  height: 22px;
 }
 
-.cap-panel-alt .cap-app {
-  background: linear-gradient(155deg, #7585d6 0%, #4c5fb8 55%, #2f3f93 100%);
-  box-shadow: 0 8px 18px rgba(52, 69, 155, 0.28), inset 0 1px 0 rgba(255, 255, 255, 0.35), inset 0 -2px 4px rgba(0, 0, 0, 0.16);
-}
-
-.cap-panel-wide .cap-app {
-  background: linear-gradient(155deg, #f4a169 0%, #d8632a 58%, #b94d1b 100%);
-  box-shadow: 0 8px 18px rgba(216, 99, 42, 0.3), inset 0 1px 0 rgba(255, 255, 255, 0.4), inset 0 -2px 4px rgba(0, 0, 0, 0.14);
-}
+.cap-panel-alt .cap-app { color: #4c5fb8; background: rgba(76, 95, 184, 0.09); }
+.cap-panel-wide .cap-app { color: #d8632a; background: rgba(216, 99, 42, 0.09); }
 
 .cap-kicker {
-  margin-bottom: 10px;
-  color: #8a93a5;
-  font-size: 13.5px;
+  margin-bottom: 8px;
+  color: #98a1b2;
+  font-size: 13px;
   font-weight: 500;
-  letter-spacing: 0;
+  letter-spacing: 0.01em;
 }
 
 .cap-kicker::before,
@@ -10659,63 +10639,89 @@ body {
 .cap-panel-wide .cap-kicker::before { display: none; }
 
 .cap-title {
-  font-size: 23px;
+  margin-bottom: 12px;
+  font-size: 22px;
   font-weight: 600;
   letter-spacing: -0.025em;
 }
 
 .cap-desc {
-  color: #4a566b;
-  font-size: 16px;
+  color: #5c677d;
+  font-size: 15.5px;
   line-height: 1.75;
 }
 
-/* Beige source pills, as in the reference */
+.cap-chips { gap: 6px; margin-top: 22px; }
+
 .cap-chips li {
-  padding: 5px 13px;
+  padding: 5px 12px;
   border: 1px solid rgba(17, 24, 39, 0.08);
   border-radius: 999px;
-  background: #f3f1ec;
+  background: transparent;
   color: #6f7788;
-  font-size: 13px;
+  font-size: 12.5px;
   font-weight: 500;
 }
 
-.cap-link { font-size: 15px; }
+.cap-link {
+  margin-top: 24px;
+  font-size: 14.5px;
+  font-weight: 600;
+}
 
-/* Quieter app windows */
+/* Quiet visuals: hairlines, no heavy shadows */
+.cap-viz { padding-top: 36px; }
+
 .cap-window,
 .cap-bubble,
 .cap-mic {
-  border: 1px solid rgba(17, 24, 39, 0.06);
-  border-radius: 20px;
+  border: 1px solid rgba(17, 24, 39, 0.07);
+  border-radius: 18px;
   background: #fff;
-  box-shadow: 0 16px 36px rgba(31, 41, 71, 0.08), 0 1px 2px rgba(31, 41, 71, 0.04);
+  box-shadow: none;
 }
 
-.cap-bubble { border-radius: 18px 18px 18px 6px; color: #4a566b; font-weight: 500; }
+.cap-bubble {
+  border-radius: 16px 16px 16px 5px;
+  color: #5c677d;
+  font-weight: 500;
+}
 
 .cap-bubble-solid {
-  border-radius: 18px 18px 6px 18px;
+  border-color: transparent;
+  border-radius: 16px 16px 5px 16px;
   color: #fff;
-  background: linear-gradient(150deg, #1a4aa8 0%, #002566 100%);
-  box-shadow: 0 14px 28px rgba(0, 48, 128, 0.24);
+  background: #003080;
+  box-shadow: none;
 }
 
-.cap-window-bar { border-bottom: 1px solid rgba(17, 24, 39, 0.05); background: #fbfbfc; }
+.cap-window-bar {
+  border-bottom: 1px solid rgba(17, 24, 39, 0.05);
+  background: transparent;
+}
+
 .cap-window-dots { display: none; }
-.cap-window-title { font-weight: 600; color: #4a566b; }
-.cap-window-chip { border-radius: 999px; background: #f3f1ec; border-color: rgba(17, 24, 39, 0.07); color: #6f7788; font-weight: 500; }
-.cap-module-name { font-weight: 500; }
-.cap-track { height: 4px; }
+.cap-window-title { color: #5c677d; font-weight: 600; }
+
+.cap-window-chip {
+  border-color: rgba(17, 24, 39, 0.08);
+  border-radius: 999px;
+  background: transparent;
+  color: #98a1b2;
+  font-weight: 500;
+}
+
+.cap-window::after { display: none; }
+.cap-module-name { color: #4a566b; font-weight: 500; }
+.cap-track { height: 3px; background: #eef0f4; }
+.cap-mic-icon { background: rgba(0, 48, 128, 0.06); }
 
 @media (max-width: 860px) {
   .cap-panel,
   .cap-panel-alt,
-  .cap-panel-wide { padding: 32px 26px 30px; border-radius: 26px; }
-  .cap-grid { gap: 20px; }
+  .cap-panel-wide { padding: 32px 26px 30px; border-radius: 24px; }
+  .cap-grid { gap: 18px; }
 }
-
 
 /* =========================================================================
    ÇALIŞMALARIMDAN KESİTLER — ANIMATED INFO-CARD VISUALS
