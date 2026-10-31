@@ -1,25 +1,19 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-label="Fatih Bildirici">
   <defs>
-    <linearGradient id="fbTile" x1="8" y1="0" x2="56" y2="64" gradientUnits="userSpaceOnUse">
-      <stop stop-color="#0B4DB5"/>
-      <stop offset=".55" stop-color="#003080"/>
+    <linearGradient id="tile" x1="8" y1="4" x2="56" y2="60" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#0A4AA7"/>
+      <stop offset="0.5" stop-color="#003080"/>
       <stop offset="1" stop-color="#001A48"/>
     </linearGradient>
-    <linearGradient id="fbSheen" x1="0" y1="0" x2="0" y2="34" gradientUnits="userSpaceOnUse">
-      <stop stop-color="#FFFFFF" stop-opacity=".2"/>
-      <stop offset="1" stop-color="#FFFFFF" stop-opacity="0"/>
-    </linearGradient>
-    <linearGradient id="fbNode" x1="42" y1="28" x2="54" y2="40" gradientUnits="userSpaceOnUse">
-      <stop stop-color="#F7A46E"/>
-      <stop offset="1" stop-color="#D8632A"/>
+    <linearGradient id="bMark" x1="30" y1="14" x2="55" y2="50" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#8FE3DA"/>
+      <stop offset="1" stop-color="#4DB6AD"/>
     </linearGradient>
   </defs>
-  <rect width="64" height="64" rx="16" fill="url(#fbTile)"/>
-  <rect width="64" height="64" rx="16" fill="url(#fbSheen)"/>
-  <g fill="#FFFFFF" transform="translate(-3 0)">
-    <rect x="19" y="13" width="8.4" height="38" rx="2.6"/>
-    <rect x="19" y="13" width="27" height="8.4" rx="2.6"/>
-    <rect x="19" y="29.2" width="19" height="8.4" rx="2.6"/>
-  </g>
-  <circle cx="45.2" cy="33.4" r="5.6" fill="url(#fbNode)"/>
+
+  <rect width="64" height="64" rx="15" fill="url(#tile)"/>
+  <rect x="1" y="1" width="62" height="62" rx="14" fill="none" stroke="#FFFFFF" stroke-opacity="0.14" stroke-width="2"/>
+
+  <path fill="url(#bMark)" d="M30 13h11.2c7.4 0 12 3.8 12 9.8 0 3.6-1.8 6.5-4.7 8 4 1.4 6.5 4.6 6.5 8.9C55 46.3 50.2 51 41.8 51H30v-7h11.2c3.7 0 5.7-1.6 5.7-4.4 0-2.8-2-4.5-5.7-4.5H30v-7h10.4c3 0 4.8-1.4 4.8-4.1 0-2.6-1.8-4-4.8-4H30z"/>
+  <path fill="#FFFFFF" d="M14 13h24v7.5H22.3v9.1h13.2V37H22.3v14H14z"/>
 </svg>
